@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="INSTAGRAM ORGANICO">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6222cc"/><stop offset="1" stop-color="#310778"/></linearGradient></defs>
+<rect width="1200" height="675" fill="url(#bg)"/>
+<circle cx="980" cy="180" r="150" fill="#82e5ce" opacity="0.7"/>
+<circle cx="1090" cy="470" r="80" fill="#fff" opacity="0.5"/>
+<rect x="90" y="250" width="420" height="16" rx="8" fill="#fff" opacity="0.85"/>
+<rect x="90" y="292" width="300" height="16" rx="8" fill="#fff" opacity="0.55"/>
+<rect x="90" y="180" width="90" height="8" rx="4" fill="#82e5ce"/>
+<text x="90" y="400" font-family="Karla, Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="4" fill="#fff" opacity="0.8">INSTAGRAM ORGANICO</text>
+</svg>

@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@theme {
+  /* Ink */
+  --color-ink: #0b0b1f;
+  --color-ink-soft: rgb(11 11 31 / 0.66);
+
+  /* Brand */
+  --color-purple: #6423cd;
+  --color-purple-hover: #411686;
+  --color-purple-light: #7f56d9;
+
+  /* Neutrals */
+  --color-light-grey: #e9f0f1;
+  --color-light-grey-2: #f5f5f5;
+
+  /* Status */
+  --color-turquoise: #82e5ce;
+  --color-error: #e72f3c;
+
+  /* Type */
+  --font-display: var(--font-karla), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
+
+  /* Radius — the reference uses 0.5rem essentially everywhere */
+  --radius-card: 0.5rem;
+}
+
+/*
+ * Fluid heading scale. The reference steps its headings down at 991px / 767px /
+ * 479px; clamp() reproduces the same range (h1 tops out at 5rem, bottoms out at
+ * 2.25rem) without four separate media queries.
+ */
+@layer base {
+  body {
+    background: #fff;
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.75;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 0;
+    /* Spanish compounds like "VISUALIZACIONES" are long; without this they
+       overflow narrow columns instead of wrapping. */
+    overflow-wrap: break-word;
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 7vw, 5rem);
+    line-height: 1.25;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 5.5vw, 4rem);
+    line-height: 1.35;
+  }
+
+  h3 {
+    font-size: clamp(1.75rem, 4.5vw, 3.5rem);
+    line-height: 1.5;
+  }
+
+  h4 {
+    font-size: clamp(1.375rem, 2.5vw, 2rem);
+    line-height: 1.5;
+  }
+}
+
+@utility bg-brand-gradient {
+  background-image: linear-gradient(90deg, #6222cc, #310778);
+}
+
+/* Card lift used by every clickable card in the site */
+@utility card-hover {
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    opacity: 0.8;
+  }
+}
+
+/*
+ * Continuous left-scrolling marquee.
+ *
+ * The track holds exactly two identical copies of the slides, so translating
+ * by -50% lands on the start of the second copy and the loop is seamless.
+ * Each slide carries its own margin-right rather than the track using `gap`:
+ * with `gap` the two halves differ by one gap and the loop visibly jumps.
+ */
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee-left 30s linear infinite;
+  will-change: transform;
+}
+
+.marquee-viewport:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  /* Without motion the row must still be reachable, so let it scroll by hand */
+  .marquee-viewport {
+    overflow-x: auto;
+  }
+}
+
+/* Horizontal scroll track for the work slider — no carousel library needed */
+@utility snap-track {
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+::selection {
+  background: var(--color-purple);
+  color: #fff;
+}
+
+/*
+ * Scroll reveal: sections and text ease in with a slight upward slide as
+ * they enter the viewport. Reveal.tsx toggles `is-visible` once via
+ * IntersectionObserver and disconnects, so it never re-hides on scroll up.
+ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

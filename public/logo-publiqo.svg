@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80" role="img" aria-label="Publiqo">
+<defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6222cc"/><stop offset="1" stop-color="#310778"/></linearGradient></defs>
+<rect x="0" y="14" width="52" height="52" rx="14" fill="url(#lg)"/>
+<text x="14" y="52" font-family="Karla, Arial, sans-serif" font-size="30" font-weight="800" fill="#fff">P</text>
+<text x="70" y="52" font-family="Karla, Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="1" fill="#0b0b1f">PUBLIQO</text>
+</svg>
