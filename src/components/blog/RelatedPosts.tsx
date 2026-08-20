@@ -1,22 +1,36 @@
-import Link from "next/link";
+import { Section } from "@/components/ui/Section";
+import { BlogPostCard } from "@/components/BlogPostCard";
 import type { PostMeta } from "@/types/blog";
 
-/** Ranks by shared tags, falling back to most recent so the block is never empty. */
+/**
+ * Ranks by shared tags, then by recency so the block is never empty.
+ *
+ * Posts inside the same topic hub score higher than posts that merely share a
+ * geography tag: "barcelona" is on sixteen of the twenty-eight articles, so
+ * without this weighting every post would recommend the same three.
+ */
 export function pickRelated(
   current: PostMeta,
   all: PostMeta[],
   limit = 3,
 ): PostMeta[] {
   const others = all.filter((post) => post.slug !== current.slug);
-  const tags = new Set(current.tags ?? []);
+  const tags = current.tags ?? [];
+  const primary = tags[0];
 
   return others
-    .map((post) => ({
-      post,
-      shared: (post.tags ?? []).filter((tag) => tags.has(tag)).length,
-    }))
+    .map((post) => {
+      const shared = (post.tags ?? []).filter((tag) => tags.includes(tag));
+      return {
+        post,
+        score:
+          shared.length +
+          // Same cluster: worth more than any number of incidental matches.
+          (primary && post.tags?.includes(primary) ? 3 : 0),
+      };
+    })
     .sort((a, b) => {
-      if (b.shared !== a.shared) return b.shared - a.shared;
+      if (b.score !== a.score) return b.score - a.score;
       return a.post.date < b.post.date ? 1 : -1;
     })
     .slice(0, limit)
@@ -27,23 +41,16 @@ export function RelatedPosts({ posts }: { posts: PostMeta[] }) {
   if (!posts.length) return null;
 
   return (
-    <section className="mt-16 border-t-2 border-light-grey pt-12">
-      <h2 className="text-3xl text-ink">Seguir leyendo</h2>
+    <Section tone="grey" padding="large">
+      <h2 className="text-[1.875rem] normal-case tracking-[-0.01em] text-ink">
+        Seguir leyendo
+      </h2>
 
-      <ul className="mt-8 space-y-6">
+      <div className="mt-10 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
-          <li key={post.slug}>
-            <Link href={`/blog/${post.slug}`} className="group block">
-              <h3 className="text-xl leading-snug text-ink transition-colors group-hover:text-purple">
-                {post.title}
-              </h3>
-              <p className="mt-2 text-base leading-relaxed text-ink-soft">
-                {post.description}
-              </p>
-            </Link>
-          </li>
+          <BlogPostCard key={post.slug} post={post} />
         ))}
-      </ul>
-    </section>
+      </div>
+    </Section>
   );
 }

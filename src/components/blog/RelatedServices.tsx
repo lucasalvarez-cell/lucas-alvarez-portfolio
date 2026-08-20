@@ -8,23 +8,20 @@ import type { Service } from "@/lib/constants";
  * the content that ranks for their topic, and neither does /contacto.
  */
 const TAG_TO_SERVICE: Record<string, string> = {
+  /* Topic hubs — every post carries one of these as its first tag. */
   "redes-sociales": "gestion-redes-sociales",
-  "crecimiento-organico": "estrategia-contenido-crecimiento-organico",
-  "estrategia-contenido": "estrategia-contenido-crecimiento-organico",
-  turismo: "gestion-redes-sociales",
-  campings: "gestion-redes-sociales",
   seo: "seo",
-  "negocios-locales": "seo",
+  publicidad: "seo",
   "diseno-web": "desarrollo-web",
-  "desarrollo-web": "desarrollo-web",
-  "google-ads": "seo",
-  sem: "seo",
-  "meta-ads": "gestion-redes-sociales",
-  publicidad: "gestion-redes-sociales",
-  consultoria: "auditoria-consultoria-digital",
-  auditoria: "auditoria-consultoria-digital",
-  agencia: "auditoria-consultoria-digital",
+  turismo: "gestion-redes-sociales",
   "marketing-digital": "auditoria-consultoria-digital",
+
+  /* Secondary tags. */
+  "estrategia-contenido": "estrategia-contenido-crecimiento-organico",
+  "negocios-locales": "seo",
+  auditoria: "auditoria-consultoria-digital",
+  agencias: "auditoria-consultoria-digital",
+  pymes: "auditoria-consultoria-digital",
   publiqo: "auditoria-consultoria-digital",
 };
 

@@ -1,5 +1,6 @@
 import {
   CONTACT,
+  ORGANIZATION_PROFILE_URLS,
   SERVICES,
   SITE_DESCRIPTION,
   SITE_LANG,
@@ -8,6 +9,7 @@ import {
   SOCIAL_PROFILE_URLS,
 } from "./constants";
 import type { Service } from "./constants";
+import { coverAlt } from "./cover-svg";
 import type { PostFrontmatter, PostMeta } from "@/types/blog";
 import type { CaseStudy } from "@/types/case-study";
 
@@ -56,6 +58,16 @@ export function personSchema() {
       },
     },
     worksFor: { "@id": ORGANIZATION_ID },
+    /* Consolidates the entity on one page instead of leaving it implied by
+       whichever URL a crawler happens to land on first. */
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/sobre-mi` },
+    hasOccupation: {
+      "@type": "Occupation",
+      name: "Estratega de contenido y social media manager",
+      occupationLocation: { "@type": "City", name: "Barcelona" },
+      skills:
+        "Estrategia de contenido, gestión de redes sociales, SEO, Google Ads, Meta Ads, desarrollo web",
+    },
     ...(SOCIAL_PROFILE_URLS.length ? { sameAs: SOCIAL_PROFILE_URLS } : {}),
   };
 }
@@ -68,7 +80,7 @@ export function organizationSchema() {
     description:
       "Publiqo es una agencia de marketing digital en Barcelona especializada en gestión de redes sociales, estrategia de contenido, SEO, desarrollo web y campañas de Google Ads y Meta Ads.",
     url: "https://publiqo.es/",
-    sameAs: ["https://publiqo.es/"],
+    sameAs: ORGANIZATION_PROFILE_URLS,
     logo: {
       "@type": "ImageObject",
       url: `${SITE_URL}/logo-publiqo.svg`,
@@ -222,6 +234,65 @@ export function blogGraph(posts: PostMeta[]) {
   });
 }
 
+/**
+ * The ranking as an ItemList.
+ *
+ * The comparison table is the block AI answers quote most from these pages, so
+ * it is worth handing over already parsed: position, name and the one-line
+ * description, in the order the article defends. `ItemListOrderDescending`
+ * because position 1 is the recommendation, not the first row alphabetically.
+ */
+export function rankingSchema(post: PostFrontmatter) {
+  if (!post.ranking?.length) return null;
+
+  const url = `${SITE_URL}/blog/${post.slug}`;
+
+  return {
+    "@context": CONTEXT,
+    "@type": "ItemList",
+    "@id": `${url}#ranking`,
+    name: post.title,
+    itemListOrder: "https://schema.org/ItemListOrderDescending",
+    numberOfItems: post.ranking.length,
+    itemListElement: post.ranking.map((entry) => ({
+      "@type": "ListItem",
+      position: entry.position,
+      name: entry.name,
+      description: entry.specialty,
+      url: `${url}#${entry.anchor}`,
+    })),
+  };
+}
+
+/** A topic hub: the cluster page listing every post on one subject. */
+export function topicGraph(
+  topic: { tag: string; title: string; description: string },
+  posts: PostMeta[],
+) {
+  const url = `${SITE_URL}/blog/tema/${topic.tag}`;
+
+  return graph({
+    "@type": "CollectionPage",
+    "@id": `${url}#page`,
+    url,
+    name: topic.title,
+    description: topic.description,
+    inLanguage: SITE_LANG,
+    isPartOf: { "@id": `${SITE_URL}/blog#blog` },
+    about: topic.title,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: posts.length,
+      itemListElement: posts.map((post, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `${SITE_URL}/blog/${post.slug}`,
+        name: post.title,
+      })),
+    },
+  });
+}
+
 export function blogPostingSchema(post: PostFrontmatter, wordCount: number) {
   const url = `${SITE_URL}/blog/${post.slug}`;
 
@@ -236,12 +307,28 @@ export function blogPostingSchema(post: PostFrontmatter, wordCount: number) {
     wordCount,
     keywords: post.tags?.join(", "),
     articleSection: post.tags?.[0]?.replace(/-/g, " "),
-    image: {
-      "@type": "ImageObject",
-      url: `${url}/opengraph-image`,
-      width: 1200,
-      height: 630,
-    },
+    /*
+     * Two images, and they do different jobs: the cover is the artwork that
+     * appears on the page and carries the post's own figure, the OG card is
+     * the 1200x630 raster social platforms need. Declaring both gives Google
+     * something to index for the article and something to show in a share.
+     */
+    image: [
+      {
+        "@type": "ImageObject",
+        url: `${url}/cover.svg`,
+        width: 1200,
+        height: 675,
+        caption: coverAlt(post.cover),
+        encodingFormat: "image/svg+xml",
+      },
+      {
+        "@type": "ImageObject",
+        url: `${url}/opengraph-image`,
+        width: 1200,
+        height: 630,
+      },
+    ],
     author: { "@id": PERSON_ID },
     publisher: { "@id": ORGANIZATION_ID },
     isPartOf: { "@id": `${SITE_URL}/blog#blog` },

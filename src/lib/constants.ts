@@ -25,17 +25,45 @@ export const SOCIALS = {
   /**
    * `href: null` hides the link everywhere it is rendered. A placeholder "#"
    * ships a dead link into the crawl, so the profile URL goes here or nowhere.
+   *
+   * TODO(lucas): pegar la URL real. Ahora mismo `sameAs` tiene una sola
+   * entrada, y las menciones de marca pesan bastante más que los enlaces a la
+   * hora de que un buscador con IA cite la fuente.
    */
   linkedin: {
     label: "LinkedIn",
     href: null as string | null,
   },
+  /* TODO(lucas): canal propio, si lo hay. */
+  youtube: {
+    label: "YouTube",
+    href: null as string | null,
+  },
 };
+
+/**
+ * Channels Lucas designs the content system for. They are not his profiles, so
+ * they do not belong in `Person.sameAs`; they are evidence of the work and go
+ * in the organisation's `sameAs` once the URLs are filled in.
+ *
+ * TODO(lucas): pegar las URLs de Reino Selva y RayWild.
+ */
+export const MANAGED_CHANNELS: { name: string; href: string | null }[] = [
+  { name: "Reino Selva", href: null },
+  { name: "RayWild", href: null },
+];
 
 /** Every social profile with a real URL — feeds `sameAs` in the Person schema. */
 export const SOCIAL_PROFILE_URLS: string[] = [
   SOCIALS.instagram.href,
   SOCIALS.linkedin.href,
+  SOCIALS.youtube.href,
+].filter((href): href is string => Boolean(href));
+
+/** Organisation `sameAs`: its own site plus any channel with a real URL. */
+export const ORGANIZATION_PROFILE_URLS: string[] = [
+  PUBLIQO_URL,
+  ...MANAGED_CHANNELS.map((channel) => channel.href),
 ].filter((href): href is string => Boolean(href));
 
 /**

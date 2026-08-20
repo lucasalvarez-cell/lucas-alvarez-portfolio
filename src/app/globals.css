@@ -4,6 +4,12 @@
   /* Ink */
   --color-ink: #0b0b1f;
   --color-ink-soft: rgb(11 11 31 / 0.66);
+  /*
+   * Long-form body text. `ink-soft` is tuned for short supporting lines under a
+   * heading; across two thousand words it reads washed out, so article prose
+   * gets its own step — still not full black, but ~9:1 against white.
+   */
+  --color-ink-body: rgb(11 11 31 / 0.8);
 
   /* Brand */
   --color-purple: #6423cd;
@@ -32,6 +38,22 @@
  * 2.25rem) without four separate media queries.
  */
 @layer base {
+  /*
+   * The header is `sticky top-0`, so an in-page jump would otherwise land with
+   * the target heading hidden underneath it. Every anchor on the site goes
+   * through here: the article index, the ranking table and the FAQ links.
+   */
+  html {
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   body {
     background: #fff;
     color: var(--color-ink);

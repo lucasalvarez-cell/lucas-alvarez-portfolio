@@ -17,6 +17,39 @@ const nextConfig: NextConfig = {
      no-slash form. Explicit here so the choice survives a config edit. */
   trailingSlash: false,
   poweredByHeader: false,
+
+  /**
+   * Six "mejor agencia de X" posts were merged away.
+   *
+   * Each of them targeted the same intent as the ranking it now points to, and
+   * shared between 21 % and 54 % of its text with it — measured with 8-word
+   * sequences. One intent, one URL: the ranking captures the comparison query
+   * and already carries the Publiqo argument as its number-one entry.
+   *
+   * Permanent, not temporary: these URLs are not coming back, and a 302 would
+   * leave Google indexing the old address indefinitely.
+   */
+  async redirects() {
+    const merged: Record<string, string> = {
+      "mejor-agencia-seo-barcelona": "mejores-agencias-seo-barcelona",
+      "mejor-agencia-marketing-digital-barcelona":
+        "mejores-agencias-marketing-digital-barcelona",
+      "mejor-agencia-gestion-redes-sociales-barcelona":
+        "mejores-agencias-redes-sociales-barcelona",
+      "mejor-agencia-diseno-web-barcelona":
+        "mejores-agencias-diseno-web-barcelona",
+      "mejor-agencia-google-ads-barcelona":
+        "mejores-agencias-google-ads-barcelona",
+      /* No ranking exists for Meta Ads, so the explainer absorbs it. */
+      "mejor-agencia-meta-ads-barcelona": "agencia-meta-ads-barcelona",
+    };
+
+    return Object.entries(merged).map(([from, to]) => ({
+      source: `/blog/${from}`,
+      destination: `/blog/${to}`,
+      permanent: true,
+    }));
+  },
 };
 
 export default nextConfig;

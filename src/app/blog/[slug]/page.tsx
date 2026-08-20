@@ -1,29 +1,39 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
 import { CTASection } from "@/components/sections/CTASection";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { mdxComponents } from "@/components/MdxComponents";
+import { PostCover } from "@/components/blog/PostCover";
+import { ArticleMeta } from "@/components/blog/ArticleMeta";
+import { ReadingProgress } from "@/components/blog/ReadingProgress";
 import {
   TableOfContents,
-  getHeadings,
+  TableOfContentsMobile,
 } from "@/components/blog/TableOfContents";
+import { KeyTakeaways, QuickAnswer } from "@/components/blog/QuickAnswer";
+import { RankingTable } from "@/components/blog/RankingTable";
+import { Methodology } from "@/components/blog/Methodology";
+import { AuthorBox } from "@/components/blog/AuthorBox";
 import { FaqSection } from "@/components/blog/FaqSection";
 import { RelatedPosts, pickRelated } from "@/components/blog/RelatedPosts";
 import { RelatedServices } from "@/components/blog/RelatedServices";
+import { SidebarCta } from "@/components/blog/SidebarCta";
+import { getHeadings, type Heading } from "@/lib/headings";
 import { buildMetadata } from "@/lib/seo";
 import {
   blogPostingSchema,
   breadcrumbSchema,
   faqSchema,
+  rankingSchema,
 } from "@/lib/schema";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { TAG_LABELS, getTopic } from "@/lib/topics";
+import type { Post } from "@/types/blog";
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
@@ -60,6 +70,44 @@ function readingMinutes(words: number): number {
   return Math.max(1, Math.round(words / 200));
 }
 
+/**
+ * The index has to describe the page the reader is on, not just the MDX file.
+ * Four of the sections on a post are rendered by this template rather than
+ * written in the body — the quick answer, the ranking table, the method and
+ * the FAQ — and they are all real H2s in the output.
+ */
+function buildIndex(post: Post): Heading[] {
+  const before: Heading[] = [];
+  const after: Heading[] = [];
+
+  if (post.quickAnswer) {
+    before.push({ level: 2, text: "Respuesta rápida", id: "respuesta-rapida" });
+  }
+  if (post.ranking?.length) {
+    before.push({
+      level: 2,
+      text: "El ranking, de un vistazo",
+      id: "ranking-resumen",
+    });
+  }
+  if (post.methodology?.length) {
+    before.push({
+      level: 2,
+      text: "Cómo he montado esta lista",
+      id: "metodologia",
+    });
+  }
+  if (post.faq?.length) {
+    after.push({
+      level: 2,
+      text: "Preguntas frecuentes",
+      id: "preguntas-frecuentes",
+    });
+  }
+
+  return [...before, ...getHeadings(post.content), ...after];
+}
+
 export default async function BlogPostPage({
   params,
 }: {
@@ -69,111 +117,158 @@ export default async function BlogPostPage({
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
+  const posts = getAllPosts();
   const words = wordCount(post.content);
-  const published = post.date;
-  const modified = post.updated ?? post.date;
-  const formatDate = (value: string) =>
-    new Date(value).toLocaleDateString("es-ES", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
-
-  const headings = getHeadings(post.content);
-  const related = pickRelated(post, getAllPosts());
+  const headings = buildIndex(post);
+  const related = pickRelated(post, posts);
   const faq = faqSchema(post.faq);
+  const ranking = rankingSchema(post);
+
+  /*
+   * Only the tags that actually have a hub page become a breadcrumb step. A
+   * two-post topic produces no URL, and a breadcrumb pointing at a 404 is
+   * worse than a shorter breadcrumb.
+   */
+  const primaryTag = post.tags?.find((tag) => getTopic(tag, posts));
 
   return (
     <article>
+      <ReadingProgress />
+
       <JsonLd data={blogPostingSchema(post, words)} />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Blog", path: "/blog" },
+          ...(primaryTag
+            ? [
+                {
+                  name: TAG_LABELS[primaryTag] ?? primaryTag,
+                  path: `/blog/tema/${primaryTag}`,
+                },
+              ]
+            : []),
           { name: post.title, path: `/blog/${post.slug}` },
         ])}
       />
       {faq ? <JsonLd data={faq} /> : null}
+      {ranking ? <JsonLd data={ranking} /> : null}
 
-      <Section tone="gradient" padding="large" containerClassName="max-w-3xl">
-        <nav aria-label="Migas de pan" className="text-base text-white/60">
-          <Link href="/" className="transition-colors hover:text-white">
-            Inicio
-          </Link>
-          <span aria-hidden className="px-2">
-            /
-          </span>
-          <Link href="/blog" className="transition-colors hover:text-white">
-            Blog
-          </Link>
-        </nav>
+      {/*
+        A light editorial header instead of the brand gradient band. The
+        gradient is right for a landing hero; on an article it puts a full
+        screen of purple between the reader and the first sentence, and the
+        pages that win these queries all open on the text.
+      */}
+      <header className="border-b-2 border-light-grey bg-light-grey/30">
+        <Container className="max-w-[70rem] py-10 sm:py-14">
+          <nav aria-label="Migas de pan" className="text-base text-ink-soft">
+            <Link href="/" className="transition-colors hover:text-purple">
+              Inicio
+            </Link>
+            <span aria-hidden className="px-2 text-ink-soft/40">
+              /
+            </span>
+            <Link href="/blog" className="transition-colors hover:text-purple">
+              Blog
+            </Link>
+            {primaryTag ? (
+              <>
+                <span aria-hidden className="px-2 text-ink-soft/40">
+                  /
+                </span>
+                <Link
+                  href={`/blog/tema/${primaryTag}`}
+                  className="transition-colors hover:text-purple"
+                >
+                  {TAG_LABELS[primaryTag] ?? primaryTag.replace(/-/g, " ")}
+                </Link>
+              </>
+            ) : null}
+          </nav>
 
-        {post.tags?.length ? (
-          <p className="mt-8 text-sm font-semibold uppercase tracking-[0.2em] text-white/60">
-            {post.tags.join(" · ").replace(/-/g, " ")}
-          </p>
-        ) : null}
+          <div className="mt-8 max-w-4xl">
+            <h1 className="text-balance text-[clamp(2rem,4.5vw,3.25rem)] normal-case leading-[1.1] tracking-[-0.02em] text-ink">
+              {post.title}
+            </h1>
 
-        <h1 className="mt-3 text-white">{post.title}</h1>
+            <p className="mt-6 max-w-2xl text-xl leading-relaxed text-ink-body">
+              {post.description}
+            </p>
 
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
-          {post.description}
-        </p>
+            <ArticleMeta
+              published={post.date}
+              updated={post.updated}
+              minutes={readingMinutes(words)}
+            />
+          </div>
+        </Container>
+      </header>
 
-        <p className="mt-8 text-base text-white/60">
-          Por{" "}
-          <Link
-            href="/sobre-mi"
-            rel="author"
-            className="font-semibold text-white/80 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white"
-          >
-            Lucas Álvarez
-          </Link>{" "}
-          ·{" "}
-          <time dateTime={published}>{formatDate(published)}</time> ·{" "}
-          {readingMinutes(words)} min de lectura
-        </p>
-
-        {modified !== published ? (
-          <p className="mt-2 text-sm text-white/50">
-            Actualizado el{" "}
-            <time dateTime={modified}>{formatDate(modified)}</time>
-          </p>
-        ) : null}
-      </Section>
-
-      <Container className="max-w-3xl py-16">
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[var(--radius-card)] bg-light-grey">
-          <Image
-            src={post.coverImage}
-            alt={post.coverImageAlt}
-            fill
-            sizes="(min-width: 768px) 48rem, 90vw"
-            className="object-cover"
-            priority
-          />
+      <Container className="max-w-[70rem] py-10 sm:py-14">
+        <div className="overflow-hidden rounded-[var(--radius-card)]">
+          <div className="aspect-[16/9] w-full sm:aspect-[21/9]">
+            <PostCover cover={post.cover} slug={post.slug} priority />
+          </div>
         </div>
 
-        <TableOfContents headings={headings} />
+        <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-14">
+          <div className="min-w-0 max-w-[44rem]">
+            <TableOfContentsMobile headings={headings} />
 
-        <div className="mt-12">
-          <MDXRemote
-            source={post.content}
-            components={mdxComponents}
-            options={{
-              mdxOptions: {
-                remarkPlugins: [remarkGfm],
-                rehypePlugins: [rehypeSlug],
-              },
-            }}
-          />
+            {post.quickAnswer ? (
+              <div className="mt-8 lg:mt-0">
+                <QuickAnswer
+                  question={post.title}
+                  answer={post.quickAnswer}
+                />
+              </div>
+            ) : null}
+
+            {post.keyTakeaways?.length ? (
+              <KeyTakeaways items={post.keyTakeaways} />
+            ) : null}
+
+            {post.ranking?.length ? (
+              <RankingTable entries={post.ranking} />
+            ) : null}
+
+            {post.methodology?.length ? (
+              <Methodology
+                items={post.methodology}
+                disclosure={post.disclosure}
+              />
+            ) : null}
+
+            <div className="mt-4">
+              <MDXRemote
+                source={post.content}
+                components={mdxComponents}
+                options={{
+                  mdxOptions: {
+                    remarkPlugins: [remarkGfm],
+                    rehypePlugins: [rehypeSlug],
+                  },
+                }}
+              />
+            </div>
+
+            {post.faq?.length ? <FaqSection items={post.faq} /> : null}
+
+            <AuthorBox />
+
+            <RelatedServices tags={post.tags} />
+          </div>
+
+          <aside className="hidden lg:block">
+            <div className="sticky top-28 space-y-8">
+              <TableOfContents headings={headings} />
+              <SidebarCta />
+            </div>
+          </aside>
         </div>
-
-        {post.faq?.length ? <FaqSection items={post.faq} /> : null}
-
-        <RelatedServices tags={post.tags} />
-
-        <RelatedPosts posts={related} />
       </Container>
+
+      <RelatedPosts posts={related} />
 
       <CTASection
         title="¿Quieres que mire tu caso?"

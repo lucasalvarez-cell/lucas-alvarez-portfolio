@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SERVICES, SITE_URL } from "@/lib/constants";
 import { getAllPosts } from "@/lib/blog";
+import { activeTopics, postsByTopic } from "@/lib/topics";
 import { getPublishedCaseStudies } from "@/content/casos-de-exito";
 
 /**
@@ -96,10 +97,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  /* Topic hubs inherit the newest date among the posts they list. */
+  const topicRoutes: MetadataRoute.Sitemap = activeTopics(posts).map(
+    (topic) => ({
+      url: `${SITE_URL}/blog/tema/${topic.tag}`,
+      lastModified: newest(
+        postsByTopic(posts, topic.tag).map((post) => post.updated ?? post.date)
+      ),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    })
+  );
+
   return [
     ...staticRoutes,
     ...serviceRoutes,
     ...caseStudyRoutes,
+    ...topicRoutes,
     ...postRoutes,
   ];
 }
