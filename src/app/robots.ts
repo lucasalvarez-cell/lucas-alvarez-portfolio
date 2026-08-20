@@ -7,10 +7,12 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        /* Next's internal build assets carry no crawlable content and only
-           burn crawl budget. The image optimiser stays open so Google Images
-           can still fetch the served variants. */
-        disallow: ["/_next/static/chunks/", "/api/"],
+        /* JS and CSS under /_next/ stay crawlable on purpose: Googlebot renders
+           the page before judging it, and blocking those files shows up as
+           "blocked resource" and degrades how the page is assessed. AI crawlers
+           (GPTBot, ClaudeBot, PerplexityBot, Google-Extended) are likewise left
+           allowed — being citable is the point. */
+        disallow: ["/api/"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { CONTACT } from "@/lib/constants";
 
@@ -123,6 +124,26 @@ export function ContactForm() {
           .
         </p>
       ) : null}
+
+      <div className="flex items-start gap-3">
+        <input
+          id="privacy-consent"
+          name="privacy-consent"
+          type="checkbox"
+          required
+          className="mt-1 h-4 w-4 shrink-0 rounded border-2 border-light-grey text-purple outline-none focus-visible:ring-2 focus-visible:ring-turquoise"
+        />
+        <label htmlFor="privacy-consent" className="text-sm text-ink-soft">
+          He leído y acepto la{" "}
+          <Link
+            href="/politica-privacidad"
+            className="font-semibold text-purple underline decoration-purple/30 underline-offset-4 transition-colors hover:decoration-purple"
+          >
+            política de privacidad
+          </Link>
+          .
+        </label>
+      </div>
 
       <Button type="submit" disabled={status === "loading"}>
         {status === "loading" ? "Enviando…" : "Enviar"}

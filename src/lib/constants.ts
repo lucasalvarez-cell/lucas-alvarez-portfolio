@@ -66,6 +66,11 @@ export const NAV_LINKS = [
   { label: "Contacto", href: "/contacto" },
 ];
 
+export const LEGAL_LINKS = [
+  { label: "Política de privacidad", href: "/politica-privacidad" },
+  { label: "Política de cookies", href: "/politica-cookies" },
+];
+
 /** One alternating text/image block on a service detail page. */
 export type ServiceSection = {
   title: string;

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CONTACT, NAV_LINKS, SERVICES, SOCIALS } from "@/lib/constants";
+import { CONTACT, LEGAL_LINKS, NAV_LINKS, SERVICES, SOCIALS } from "@/lib/constants";
 import { Container } from "@/components/ui/Container";
 
 export function Footer() {
@@ -120,10 +120,22 @@ export function Footer() {
       </Container>
 
       <div className="border-t border-white/15 py-6">
-        <Container>
+        <Container className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
           <p className="text-sm text-white/60">
             © {year} Lucas Álvarez · Publiqo
           </p>
+          <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            {LEGAL_LINKS.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="text-sm text-white/60 transition-colors hover:text-white"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </Container>
       </div>
     </footer>
