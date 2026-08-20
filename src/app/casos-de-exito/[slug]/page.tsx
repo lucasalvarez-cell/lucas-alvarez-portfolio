@@ -8,16 +8,17 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { CaseStudyCard } from "@/components/CaseStudyCard";
 import { CTASection } from "@/components/sections/CTASection";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/seo";
+import { breadcrumbSchema, caseStudySchema } from "@/lib/schema";
 import { filled } from "@/lib/content";
-import { CASE_STUDIES } from "@/content/casos-de-exito";
+import {
+  getCaseStudyBySlug,
+  getPublishedCaseStudies,
+} from "@/content/casos-de-exito";
 import type { CaseStudy } from "@/types/case-study";
 
-const PUBLISHED = CASE_STUDIES.filter((c) => !c.isPlaceholder);
-
-function getCaseStudy(slug: string) {
-  return PUBLISHED.find((c) => c.slug === slug);
-}
+const PUBLISHED = getPublishedCaseStudies();
 
 function getNeighbors(current: CaseStudy) {
   const index = PUBLISHED.findIndex((c) => c.slug === current.slug);
@@ -38,17 +39,12 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const caseStudy = getCaseStudy(slug);
+  const caseStudy = getCaseStudyBySlug(slug);
   if (!caseStudy) return {};
 
-  const description =
-    filled(caseStudy.result) ??
-    filled(caseStudy.whatWeDid) ??
-    `Caso de éxito: ${caseStudy.client}.`;
-
   return buildMetadata({
-    title: caseStudy.client,
-    description,
+    title: `${caseStudy.client}: ${caseStudy.headline}`,
+    description: caseStudy.metaDescription,
     path: `/casos-de-exito/${caseStudy.slug}`,
   });
 }
@@ -59,7 +55,7 @@ export default async function CasoDeExitoPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const caseStudy = getCaseStudy(slug);
+  const caseStudy = getCaseStudyBySlug(slug);
   if (!caseStudy) notFound();
 
   const sector = filled(caseStudy.sector);
@@ -78,6 +74,17 @@ export default async function CasoDeExitoPage({
 
   return (
     <>
+      <JsonLd data={caseStudySchema(caseStudy)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Casos de éxito", path: "/casos-de-exito" },
+          {
+            name: `${caseStudy.client}: ${caseStudy.headline}`,
+            path: `/casos-de-exito/${caseStudy.slug}`,
+          },
+        ])}
+      />
+
       {/* Hero */}
       <Section tone="gradient" padding="huge">
         <Link
@@ -88,14 +95,16 @@ export default async function CasoDeExitoPage({
         </Link>
 
         <div className="mt-8 flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-16">
-          <Reveal className="flex-1">
+          <Reveal immediate className="flex-1">
             {sector ? (
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-turquoise">
                 {sector}
               </p>
             ) : null}
 
-            <h1 className="mt-3 text-white">{caseStudy.client}</h1>
+            <h1 className="mt-3 text-white">
+              {caseStudy.client}: {caseStudy.headline}
+            </h1>
 
             {challenge ? (
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
@@ -104,7 +113,7 @@ export default async function CasoDeExitoPage({
             ) : null}
           </Reveal>
 
-          <Reveal delay={150} className="w-full lg:w-2/5">
+          <Reveal immediate className="w-full lg:w-2/5">
             <div
               className="relative aspect-[6.16/6] overflow-hidden rounded-[var(--radius-card)]"
               style={{ backgroundColor: caseStudy.logoBg ?? "#ffffff" }}

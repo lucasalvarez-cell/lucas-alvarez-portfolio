@@ -4,6 +4,10 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "reino-selva",
     client: "Reino Selva",
+    headline: "2,6M de visualizaciones en un mes",
+    metaDescription:
+      "Cómo Reino Selva pasó de un crecimiento plano a 2,6M de visualizaciones, 1,5M de alcance y 105,7 mil interacciones en un solo mes, rehaciendo formato y guionaje.",
+    updated: "2026-08-19",
     sector: "YouTube y redes sociales · Naturaleza y documental",
     logo: "/images/logos/reino-selva-tile.png",
     logoBg: "#ffffff",
@@ -25,6 +29,10 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "camping-collvert",
     client: "Camping Collvert",
+    headline: "+250 % de visualizaciones en un mes",
+    metaDescription:
+      "Cómo Camping Collvert subió un 250 % sus visualizaciones en el primer mes sin publicidad ni publicar más: línea editorial, formato y guionaje fijos.",
+    updated: "2026-08-19",
     sector: "Turismo y camping",
     logo: "/images/logos/camping-collvert-tile.png",
     logoBg: "#ffffff",
@@ -42,6 +50,10 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "camping-puzol",
     client: "Camping Puzol",
+    headline: "+62 % de visualizaciones en un mes",
+    metaDescription:
+      "Cómo Camping Puzol subió un 62 % sus visualizaciones en el primer mes cambiando los primeros segundos de cada pieza y el orden del calendario.",
+    updated: "2026-08-19",
     sector: "Turismo y camping",
     logo: "/images/logos/camping-puzol-tile.png",
     logoBg: "#ffffff",
@@ -58,6 +70,10 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "camping-victoria",
     client: "Camping Victòria",
+    headline: "x6 en visualizaciones",
+    metaDescription:
+      "Cómo Camping Victòria multiplicó por seis sus visualizaciones: primero validar el formato con datos, y solo después pasar de uno a dos posts por semana.",
+    updated: "2026-08-19",
     sector: "Turismo y camping · Canet de Mar",
     logo: "/images/logos/camping-victoria-tile.png",
     logoBg: "#ffffff",
@@ -76,6 +92,10 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "zernio",
     client: "Zernio",
+    headline: "14.500 visualizaciones en 28 días",
+    metaDescription:
+      "Cómo el canal de YouTube de Zernio llegó a 14.500 visualizaciones, 180 horas de reproducción y +70 suscriptores en 28 días con un sistema repetible de guion, grabación y edición.",
+    updated: "2026-08-19",
     sector: "YouTube · Producción audiovisual y guionaje",
     logo: "/images/logos/zernio-tile.png",
     logoBg: "#ffffff",
@@ -96,3 +116,12 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Guionización, grabación y edición de vídeo con calidad de estudio para el canal de YouTube de Zernio",
   },
 ];
+
+/** Cases with real content. Placeholders never get a URL or a sitemap entry. */
+export function getPublishedCaseStudies(): CaseStudy[] {
+  return CASE_STUDIES.filter((caseStudy) => !caseStudy.isPlaceholder);
+}
+
+export function getCaseStudyBySlug(slug: string): CaseStudy | undefined {
+  return getPublishedCaseStudies().find((caseStudy) => caseStudy.slug === slug);
+}

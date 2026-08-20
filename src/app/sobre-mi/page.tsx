@@ -4,10 +4,12 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { CTASection } from "@/components/sections/CTASection";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/seo";
+import { breadcrumbSchema, profilePageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Sobre mí",
+  title: "Sobre mí: Lucas Álvarez, estratega digital en Barcelona",
   description:
     "Lucas Álvarez, estratega digital en Barcelona y cofundador de Publiqo junto a Martí. Gestiono redes sociales, estrategia de contenido, SEO y desarrollo web para marcas.",
   path: "/sobre-mi",
@@ -16,8 +18,13 @@ export const metadata: Metadata = buildMetadata({
 export default function SobreMiPage() {
   return (
     <>
+      <JsonLd data={profilePageSchema()} />
+      <JsonLd
+        data={breadcrumbSchema([{ name: "Sobre mí", path: "/sobre-mi" }])}
+      />
+
       <Section tone="gradient" padding="large">
-        <Reveal>
+        <Reveal immediate>
           <SectionHeading
             kicker="Sobre mí"
             title="Estrategia antes que suerte"
@@ -32,7 +39,7 @@ export default function SobreMiPage() {
           <Reveal className="relative mx-auto w-full max-w-sm lg:mx-0 lg:max-w-none">
             <div className="relative aspect-4/5 overflow-hidden rounded-[var(--radius-card)]">
               <Image
-                src="/images/placeholders/about-portrait.jpg"
+                src="/images/lucas-alvarez.jpg"
                 alt="Lucas Álvarez, estratega digital en Barcelona y cofundador de Publiqo"
                 fill
                 sizes="(min-width: 1024px) 35vw, 90vw"

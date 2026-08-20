@@ -8,7 +8,7 @@ export function Hero() {
     <section className="bg-brand-gradient text-white">
       <Container className="py-20 sm:py-24">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <Reveal>
+          <Reveal immediate>
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-turquoise">
               Estratega de contenido y social media manager · Barcelona
             </p>
@@ -34,12 +34,12 @@ export function Hero() {
           </Reveal>
 
           <Reveal
-            delay={150}
+            immediate
             className="relative mx-auto w-full max-w-md lg:max-w-none"
           >
             <div className="relative aspect-4/5 overflow-hidden rounded-[var(--radius-card)]">
               <Image
-                src="/images/placeholders/hero-portrait.jpg"
+                src="/images/lucas-alvarez.jpg"
                 alt="Lucas Álvarez, estratega de contenido y social media manager en Barcelona"
                 fill
                 priority

@@ -3,11 +3,13 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { ContactForm } from "@/components/ContactForm";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { CONTACT, SOCIALS } from "@/lib/constants";
 import { buildMetadata } from "@/lib/seo";
+import { breadcrumbSchema, contactPageSchema } from "@/lib/schema";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contacto",
+  title: "Contacto: hablemos de tu marca",
   description:
     "Hablemos de tu cuenta: gestión de redes sociales, estrategia de contenido, SEO o desarrollo web en Barcelona. Respondo personalmente en menos de 24 h laborables.",
   path: "/contacto",
@@ -21,8 +23,13 @@ const detailLink =
 export default function ContactoPage() {
   return (
     <>
+      <JsonLd data={contactPageSchema()} />
+      <JsonLd
+        data={breadcrumbSchema([{ name: "Contacto", path: "/contacto" }])}
+      />
+
       <Section tone="gradient" padding="large">
-        <Reveal>
+        <Reveal immediate>
           <SectionHeading
             kicker="Contacto"
             title="Cuéntame qué está fallando"
@@ -60,24 +67,28 @@ export default function ContactoPage() {
             <span className={detailLabel}>Redes</span>
             <p className="mt-2 flex flex-wrap items-center gap-3">
               <a
-                href={SOCIALS.linkedin.href}
-                target="_blank"
-                rel="noreferrer noopener"
-                className={detailLink}
-              >
-                LinkedIn
-              </a>
-              <span aria-hidden className="text-ink-soft">
-                ·
-              </span>
-              <a
                 href={SOCIALS.instagram.href}
                 target="_blank"
-                rel="noreferrer noopener"
+                rel="noreferrer noopener me"
                 className={detailLink}
               >
                 Instagram
               </a>
+              {SOCIALS.linkedin.href ? (
+                <>
+                  <span aria-hidden className="text-ink-soft">
+                    ·
+                  </span>
+                  <a
+                    href={SOCIALS.linkedin.href}
+                    target="_blank"
+                    rel="noreferrer noopener me"
+                    className={detailLink}
+                  >
+                    LinkedIn
+                  </a>
+                </>
+              ) : null}
             </p>
           </li>
           <li>

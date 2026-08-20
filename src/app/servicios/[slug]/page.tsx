@@ -8,7 +8,7 @@ import { CTASection } from "@/components/sections/CTASection";
 import { ServiceCrossSell } from "@/components/sections/ServiceCrossSell";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/seo";
-import { serviceSchema } from "@/lib/schema";
+import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
 import { SERVICES, getServiceBySlug } from "@/lib/constants";
 
 export function generateStaticParams() {
@@ -25,7 +25,7 @@ export async function generateMetadata({
   if (!service) return {};
 
   return buildMetadata({
-    title: service.title,
+    title: service.metaTitle,
     description: service.metaDescription,
     path: `/servicios/${service.slug}`,
   });
@@ -43,6 +43,12 @@ export default async function ServicioPage({
   return (
     <>
       <JsonLd data={serviceSchema(service)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Servicios", path: "/servicios" },
+          { name: service.title, path: `/servicios/${service.slug}` },
+        ])}
+      />
 
       {/* Hero — service name on the brand gradient */}
       <Section tone="gradient" padding="large">

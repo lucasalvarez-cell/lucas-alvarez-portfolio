@@ -16,6 +16,7 @@ import {
 } from "@/components/blog/TableOfContents";
 import { FaqSection } from "@/components/blog/FaqSection";
 import { RelatedPosts, pickRelated } from "@/components/blog/RelatedPosts";
+import { RelatedServices } from "@/components/blog/RelatedServices";
 import { buildMetadata } from "@/lib/seo";
 import {
   blogPostingSchema,
@@ -38,16 +39,25 @@ export async function generateMetadata({
   if (!post) return {};
 
   return buildMetadata({
-    title: post.title,
+    title: post.metaTitle ?? post.title,
     description: post.description,
     path: `/blog/${post.slug}`,
-    image: post.coverImage,
+    article: {
+      publishedTime: post.date,
+      modifiedTime: post.updated ?? post.date,
+      section: post.tags?.[0]?.replace(/-/g, " "),
+      tags: post.tags,
+    },
   });
 }
 
+function wordCount(content: string): number {
+  return content.trim().split(/\s+/).length;
+}
+
 /** ~200 words per minute, rounded up — matches how most readers pace prose. */
-function readingMinutes(content: string): number {
-  return Math.max(1, Math.round(content.trim().split(/\s+/).length / 200));
+function readingMinutes(words: number): number {
+  return Math.max(1, Math.round(words / 200));
 }
 
 export default async function BlogPostPage({
@@ -59,20 +69,29 @@ export default async function BlogPostPage({
   const post = getPostBySlug(slug);
   if (!post) notFound();
 
-  const formattedDate = new Date(post.date).toLocaleDateString("es-ES", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
+  const words = wordCount(post.content);
+  const published = post.date;
+  const modified = post.updated ?? post.date;
+  const formatDate = (value: string) =>
+    new Date(value).toLocaleDateString("es-ES", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
 
   const headings = getHeadings(post.content);
   const related = pickRelated(post, getAllPosts());
-  const faq = faqSchema(post);
+  const faq = faqSchema(post.faq);
 
   return (
     <article>
-      <JsonLd data={blogPostingSchema(post)} />
-      <JsonLd data={breadcrumbSchema(post)} />
+      <JsonLd data={blogPostingSchema(post, words)} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Blog", path: "/blog" },
+          { name: post.title, path: `/blog/${post.slug}` },
+        ])}
+      />
       {faq ? <JsonLd data={faq} /> : null}
 
       <Section tone="gradient" padding="large" containerClassName="max-w-3xl">
@@ -101,9 +120,25 @@ export default async function BlogPostPage({
         </p>
 
         <p className="mt-8 text-base text-white/60">
-          Por Lucas Álvarez · {formattedDate} ·{" "}
-          {readingMinutes(post.content)} min de lectura
+          Por{" "}
+          <Link
+            href="/sobre-mi"
+            rel="author"
+            className="font-semibold text-white/80 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white"
+          >
+            Lucas Álvarez
+          </Link>{" "}
+          ·{" "}
+          <time dateTime={published}>{formatDate(published)}</time> ·{" "}
+          {readingMinutes(words)} min de lectura
         </p>
+
+        {modified !== published ? (
+          <p className="mt-2 text-sm text-white/50">
+            Actualizado el{" "}
+            <time dateTime={modified}>{formatDate(modified)}</time>
+          </p>
+        ) : null}
       </Section>
 
       <Container className="max-w-3xl py-16">
@@ -134,6 +169,8 @@ export default async function BlogPostPage({
         </div>
 
         {post.faq?.length ? <FaqSection items={post.faq} /> : null}
+
+        <RelatedServices tags={post.tags} />
 
         <RelatedPosts posts={related} />
       </Container>

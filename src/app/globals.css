@@ -167,3 +167,16 @@
     transition: none;
   }
 }
+
+/*
+ * Without scripting there is no IntersectionObserver to add `is-visible`, so
+ * every revealed block would stay at opacity 0 and the page would render blank.
+ * Text-only crawlers and readers with JS off get the content unanimated.
+ */
+@media (scripting: none) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

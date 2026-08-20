@@ -5,7 +5,7 @@ export const contentType = OG_CONTENT_TYPE;
 
 export default function Image() {
   return ogImage({
-    kicker: "Estratega digital · Barcelona",
-    title: "+250 % de visualizaciones en un mes, sin publicidad",
+    kicker: "Resultados",
+    title: "Casos de éxito: +250 %, +62 % y x6 de visualizaciones en un mes",
   });
 }

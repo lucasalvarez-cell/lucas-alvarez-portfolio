@@ -4,11 +4,16 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { CaseStudyCard } from "@/components/CaseStudyCard";
 import { CTASection } from "@/components/sections/CTASection";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/seo";
-import { CASE_STUDIES } from "@/content/casos-de-exito";
+import { breadcrumbSchema, caseStudiesGraph } from "@/lib/schema";
+import {
+  CASE_STUDIES,
+  getPublishedCaseStudies,
+} from "@/content/casos-de-exito";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Casos de éxito",
+  title: "Casos de éxito en redes sociales y contenido",
   description:
     "Resultados reales: +250 % de visualizaciones para Camping Collvert, +62 % para Camping Puzol, x6 para Camping Victòria y 2,6 M de visualizaciones para Reino Selva.",
   path: "/casos-de-exito",
@@ -17,8 +22,15 @@ export const metadata: Metadata = buildMetadata({
 export default function CasosDeExitoPage() {
   return (
     <>
+      <JsonLd data={caseStudiesGraph(getPublishedCaseStudies())} />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "Casos de éxito", path: "/casos-de-exito" },
+        ])}
+      />
+
       <Section tone="gradient" padding="huge">
-        <Reveal>
+        <Reveal immediate>
           <SectionHeading
             kicker="Resultados"
             title="Cuentas que estaban paradas"

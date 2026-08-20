@@ -5,7 +5,7 @@ export const contentType = OG_CONTENT_TYPE;
 
 export default function Image() {
   return ogImage({
-    kicker: "Estratega digital · Barcelona",
-    title: "+250 % de visualizaciones en un mes, sin publicidad",
+    kicker: "Sobre mí",
+    title: "Estratega digital en Barcelona y cofundador de Publiqo",
   });
 }

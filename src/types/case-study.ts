@@ -1,6 +1,18 @@
 export type CaseStudy = {
   slug: string;
   client: string;
+  /**
+   * The headline result in a few words. Carries the page <title>, the H1 kicker
+   * and the OG card, so a listing entry reads as a result and not just a name.
+   */
+  headline: string;
+  /**
+   * SEO meta description. Written to fit a SERP snippet — `result` is prose and
+   * runs far past the ~160 characters Google shows.
+   */
+  metaDescription: string;
+  /** ISO date of the last substantive update, for `dateModified` and sitemaps. */
+  updated: string;
   sector: string;
   challenge: string;
   whatWeDid: string;

@@ -6,11 +6,11 @@ import { ServiceCard } from "@/components/ServiceCard";
 import { CTASection } from "@/components/sections/CTASection";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/seo";
-import { servicesGraph } from "@/lib/schema";
+import { breadcrumbSchema, servicesGraph } from "@/lib/schema";
 import { SERVICES } from "@/lib/constants";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Servicios",
+  title: "Servicios de marketing digital en Barcelona",
   description:
     "Gestión de redes sociales, estrategia de contenido, SEO, desarrollo web y consultoría digital en Barcelona. Contratables por separado o como sistema completo.",
   path: "/servicios",
@@ -20,9 +20,12 @@ export default function ServiciosPage() {
   return (
     <>
       <JsonLd data={servicesGraph()} />
+      <JsonLd
+        data={breadcrumbSchema([{ name: "Servicios", path: "/servicios" }])}
+      />
 
       <Section tone="gradient" padding="large">
-        <Reveal>
+        <Reveal immediate>
           <SectionHeading
             kicker="Servicios"
             title="Gestión de redes sociales, contenido y SEO en Barcelona"

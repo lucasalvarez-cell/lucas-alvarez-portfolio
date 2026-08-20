@@ -1,5 +1,11 @@
 export const SITE_URL = "https://lucasalvarez.info";
 export const SITE_NAME = "Lucas Álvarez";
+export const SITE_LOCALE = "es_ES";
+export const SITE_LANG = "es";
+
+/** Default meta/OG description, reused by the root layout and the WebSite node. */
+export const SITE_DESCRIPTION =
+  "Estratega de contenido y social media manager en Barcelona. Cofundador de Publiqo. Gestiono las redes sociales de marcas reales: +250 % de visualizaciones en un mes para Camping Collvert, x6 para Camping Victòria.";
 
 export const PUBLIQO_URL = "https://publiqo.es/";
 
@@ -16,11 +22,21 @@ export const SOCIALS = {
     handle: "@lucasalvarez.x",
     href: "https://www.instagram.com/lucasalvarez.x",
   },
+  /**
+   * `href: null` hides the link everywhere it is rendered. A placeholder "#"
+   * ships a dead link into the crawl, so the profile URL goes here or nowhere.
+   */
   linkedin: {
     label: "LinkedIn",
-    href: "#",
+    href: null as string | null,
   },
 };
+
+/** Every social profile with a real URL — feeds `sameAs` in the Person schema. */
+export const SOCIAL_PROFILE_URLS: string[] = [
+  SOCIALS.instagram.href,
+  SOCIALS.linkedin.href,
+].filter((href): href is string => Boolean(href));
 
 /**
  * Brands Lucas has worked with. Each slug has three files in
@@ -67,6 +83,8 @@ export type Service = {
   description: string;
   /** Lede shown under the H1 on the service detail page. */
   intro: string;
+  /** SEO <title> for the detail page. Carries the city; `title` does not. */
+  metaTitle: string;
   metaDescription: string;
   sections: ServiceSection[];
 };
@@ -82,6 +100,7 @@ export const SERVICES: Service[] = [
       "Gestión completa de redes sociales para marcas: diagnóstico del perfil, línea editorial, guionaje, plan de grabación, publicación y análisis mensual de resultados para escalar lo que funciona y descartar lo que no.",
     intro:
       "Publicar más no arregla una cuenta estancada. Camping Collvert subió un 250 % sus visualizaciones en un mes sin publicar el doble: publicando otra cosa.",
+    metaTitle: "Gestión de redes sociales en Barcelona",
     metaDescription:
       "Gestión de redes sociales en Barcelona: estrategia, guionaje, publicación y análisis. +250 % de visualizaciones en un mes para Camping Collvert. Social media manager en Barcelona.",
     sections: [
@@ -111,6 +130,7 @@ export const SERVICES: Service[] = [
       "Estrategia de contenido para marcas que quieren crecer sin depender de publicidad: diagnóstico de posicionamiento, definición de pilares, formatos validados con datos y un sistema de producción que tu equipo pueda mantener sin mí.",
     intro:
       "El crecimiento orgánico no se compra. Se construye una vez, se documenta y se repite. Eso es lo que entrego: el sistema, no una campaña.",
+    metaTitle: "Estrategia de contenido y crecimiento orgánico en Barcelona",
     metaDescription:
       "Estrategia de contenido en Barcelona: pilares, formatos validados con datos y un sistema repetible para crecer sin publicidad de pago. Content strategist en Barcelona.",
     sections: [
@@ -139,6 +159,7 @@ export const SERVICES: Service[] = [
       "SEO técnico, estrategia de palabras clave y arquitectura de contenido para que tu web gane visibilidad en Google y atraiga tráfico que se convierte en clientes, no en visitas.",
     intro:
       "Las redes sociales crean demanda. El SEO la recoge cuando ya existe. Las dos cosas juntas son lo que hace que un negocio deje de depender de la publicidad.",
+    metaTitle: "SEO y posicionamiento web en Barcelona",
     metaDescription:
       "SEO en Barcelona: auditoría técnica, Core Web Vitals, palabras clave y arquitectura de contenido para atraer tráfico cualificado desde Google.",
     sections: [
@@ -167,6 +188,7 @@ export const SERVICES: Service[] = [
       "Diseño y desarrollo de webs y landing pages rápidas, accesibles y optimizadas para buscadores, construidas desde el primer día alrededor de una acción concreta: que el visitante contacte, reserve o compre.",
     intro:
       "Una web bonita que no convierte es un gasto con buen aspecto. Cada página empieza por una pregunta: qué queremos que haga quien llega aquí.",
+    metaTitle: "Diseño y desarrollo web en Barcelona",
     metaDescription:
       "Diseño y desarrollo web en Barcelona: sitios rápidos, accesibles y optimizados para SEO, pensados para convertir visitas en clientes.",
     sections: [
@@ -194,6 +216,7 @@ export const SERVICES: Service[] = [
       "Auditoría de tu presencia digital completa (redes sociales, web y SEO) con un plan de acción priorizado por impacto y esfuerzo, listo para que lo ejecute tu equipo o para que lo ejecute yo.",
     intro:
       "A veces no necesitas externalizar la gestión. Necesitas saber exactamente qué hacer y en qué orden. Eso es lo que entrega una auditoría.",
+    metaTitle: "Auditoría y consultoría digital en Barcelona",
     metaDescription:
       "Auditoría y consultoría de marketing digital en Barcelona: diagnóstico de redes, web y SEO con un plan de acción priorizado por impacto.",
     sections: [

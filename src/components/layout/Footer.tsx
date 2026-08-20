@@ -40,7 +40,7 @@ export function Footer() {
               <a
                 href={SOCIALS.instagram.href}
                 target="_blank"
-                rel="noreferrer noopener"
+                rel="noreferrer noopener me"
                 aria-label="Instagram"
                 className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white/40 transition-colors hover:border-white hover:bg-white hover:text-purple"
               >
@@ -57,10 +57,11 @@ export function Footer() {
                   <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
                 </svg>
               </a>
+              {SOCIALS.linkedin.href ? (
               <a
                 href={SOCIALS.linkedin.href}
                 target="_blank"
-                rel="noreferrer noopener"
+                rel="noreferrer noopener me"
                 aria-label="LinkedIn"
                 className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white/40 transition-colors hover:border-white hover:bg-white hover:text-purple"
               >
@@ -73,6 +74,7 @@ export function Footer() {
                   <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3V9Zm7 0h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C21.4 8.65 22 10.9 22 14v7h-4v-6.2c0-1.48-.03-3.4-2.07-3.4-2.07 0-2.39 1.62-2.39 3.29V21h-4V9Z" />
                 </svg>
               </a>
+              ) : null}
             </div>
           </div>
 
@@ -104,7 +106,7 @@ export function Footer() {
                 {SERVICES.map((service) => (
                   <li key={service.slug}>
                     <Link
-                      href="/servicios"
+                      href={`/servicios/${service.slug}`}
                       className="text-base text-white/80 transition-colors hover:text-white"
                     >
                       {service.title}
