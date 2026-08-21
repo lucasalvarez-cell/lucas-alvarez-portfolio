@@ -88,7 +88,7 @@ export function notificationEmail(
   });
 
   const text = [
-    "NUEVO CONTACTO — lucasalvarez.info",
+    "NUEVO CONTACTO · lucasalvarez.info",
     "",
     `Nombre:    ${name}`,
     `Email:     ${email}`,

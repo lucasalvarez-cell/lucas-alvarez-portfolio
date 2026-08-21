@@ -145,7 +145,7 @@ export function coverAlt(cover: PostCover): string {
 
   if (cover.kind === "metric" && cover.metric) {
     return `${subject}: ${cover.metric}${
-      cover.metricLabel ? ` — ${cover.metricLabel}` : ""
+      cover.metricLabel ? ` (${cover.metricLabel})` : ""
     }, sobre una gráfica de crecimiento`;
   }
   if (cover.kind === "rank") {

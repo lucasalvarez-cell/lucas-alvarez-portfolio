@@ -313,7 +313,7 @@ export const SERVICES: Service[] = [
       {
         question: "¿Qué diferencia hay entre esto y la gestión de redes sociales?",
         answer:
-          "La gestión es que lo haga yo cada mes. La estrategia es que aprendáis a hacerlo vosotros. Aquí entrego el sistema documentado —pilares, plantillas, proceso y métricas— y me voy. Mucha gente contrata primero la estrategia y después decide si quiere ejecutarla internamente o pasármela.",
+          "La gestión es que lo haga yo cada mes. La estrategia es que aprendáis a hacerlo vosotros. Aquí entrego el sistema documentado (pilares, plantillas, proceso y métricas) y me voy. Mucha gente contrata primero la estrategia y después decide si quiere ejecutarla internamente o pasármela.",
       },
       {
         question: "¿Cuánto cuesta una estrategia de contenido?",
@@ -518,7 +518,7 @@ export const SERVICES: Service[] = [
       {
         title: "Definir la acción",
         detail:
-          "Cada página empieza por una pregunta: qué queremos que haga quien llega aquí. Contactar, reservar, comprar o llamar. Todo lo demás —estructura, textos, botones— se ordena detrás de esa respuesta. Una web sin esa decisión tomada acaba siendo un folleto.",
+          "Cada página empieza por una pregunta: qué queremos que haga quien llega aquí. Contactar, reservar, comprar o llamar. Todo lo demás (estructura, textos, botones) se ordena detrás de esa respuesta. Una web sin esa decisión tomada acaba siendo un folleto.",
         deliverable: "Mapa de páginas con su objetivo",
         timing: "Semana 1",
       },

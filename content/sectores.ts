@@ -278,7 +278,7 @@ export const SECTOR_PAGES: SectorPage[] = [
     intro:
       "Un restaurante no necesita seguidores. Necesita llenar el martes. Son dos objetivos distintos y llevan a contenidos distintos.",
     quickAnswer:
-      "En hostelería, el contenido que llena mesas no es el plato bonito: es el plato en movimiento y la escena del local lleno. Instagram y TikTok funcionan como escaparate de decisión inmediata —la gente elige dónde comer con menos de dos horas de antelación— así que lo que importa es aparecer cerca, con hambre y en el momento justo. Desde 490 € al mes.",
+      "En hostelería, el contenido que llena mesas no es el plato bonito: es el plato en movimiento y la escena del local lleno. Instagram y TikTok funcionan como escaparate de decisión inmediata (la gente elige dónde comer con menos de dos horas de antelación), así que lo que importa es aparecer cerca, con hambre y en el momento justo. Desde 490 € al mes.",
     sections: [
       {
         title: "La decisión se toma con dos horas de antelación",
@@ -307,7 +307,7 @@ export const SECTOR_PAGES: SectorPage[] = [
       {
         title: "Entre semana y fin de semana son dos negocios",
         body: [
-          "Casi ningún restaurante tiene un problema de fin de semana. Tiene un problema de martes. Y el contenido que llena un sábado —el ambiente, la sobremesa larga, el grupo— no es el que llena un martes.",
+          "Casi ningún restaurante tiene un problema de fin de semana. Tiene un problema de martes. Y el contenido que llena un sábado (el ambiente, la sobremesa larga, el grupo) no es el que llena un martes.",
           "Entre semana se vende otra cosa: rapidez, menú, precio cerrado, sitio tranquilo para comer con un portátil, café decente. Es contenido menos vistoso y más útil, y es el que mueve la caja los cinco días que de verdad deciden el año.",
           "Separar los dos calendarios es una de las decisiones que más rápido se nota, y casi nadie la toma porque el contenido de fin de semana es el que da más 'me gusta'. Los 'me gusta' no pagan la nómina del martes.",
         ],
@@ -372,7 +372,7 @@ export const SECTOR_PAGES: SectorPage[] = [
     intro:
       "«Lo nuestro es muy aburrido para redes» es la frase que más veces he oído en industria. Casi siempre es falsa, y suele significar otra cosa.",
     quickAnswer:
-      "Una empresa industrial no vende en redes sociales: vende confianza y talento. El contenido de proceso —cómo se fabrica algo, con qué tolerancia, por qué se hace así— rinde muy bien porque casi nadie lo publica, y sirve a la vez para que un cliente potencial te tome en serio y para que alguien quiera trabajar contigo. Desde 490 € al mes.",
+      "Una empresa industrial no vende en redes sociales: vende confianza y talento. El contenido de proceso (cómo se fabrica algo, con qué tolerancia, por qué se hace así) rinde muy bien porque casi nadie lo publica, y sirve a la vez para que un cliente potencial te tome en serio y para que alguien quiera trabajar contigo. Desde 490 € al mes.",
     sections: [
       {
         title: "El proceso es el contenido, y casi nadie lo publica",
@@ -409,7 +409,7 @@ export const SECTOR_PAGES: SectorPage[] = [
       {
         title: "Qué hace falta de tu lado",
         body: [
-          "Menos de lo que parece, pero no cero. Necesito acceso a la planta con cierta regularidad —una sesión al mes suele bastar— y una persona de dentro que pueda responder a preguntas técnicas cuando el guion las necesite. Sin eso, el contenido se queda en imágenes bonitas sin criterio, que es lo que produce cualquier proveedor que no entra en la nave.",
+          "Menos de lo que parece, pero no cero. Necesito acceso a la planta con cierta regularidad (una sesión al mes suele bastar) y una persona de dentro que pueda responder a preguntas técnicas cuando el guion las necesite. Sin eso, el contenido se queda en imágenes bonitas sin criterio, que es lo que produce cualquier proveedor que no entra en la nave.",
           "Lo que no hace falta es que nadie de la empresa se convierta en presentador. En industria, el protagonista puede ser perfectamente la máquina y la pieza.",
         ],
       },
@@ -423,7 +423,7 @@ export const SECTOR_PAGES: SectorPage[] = [
       {
         question: "¿Y si mi producto es aburrido?",
         answer:
-          "Casi nunca lo es; lo que pasa es que llevas veinte años viéndolo. El proceso de fabricación —el corte, la máquina, la pieza saliendo con tolerancia de centésimas— funciona muy bien en vídeo justo porque casi nadie del sector lo publica. La prueba barata es enseñar material en bruto a alguien de fuera y ver dónde se queda mirando.",
+          "Casi nunca lo es; lo que pasa es que llevas veinte años viéndolo. El proceso de fabricación (el corte, la máquina, la pieza saliendo con tolerancia de centésimas) funciona muy bien en vídeo justo porque casi nadie del sector lo publica. La prueba barata es enseñar material en bruto a alguien de fuera y ver dónde se queda mirando.",
       },
       {
         question: "¿LinkedIn o Instagram?",
@@ -609,7 +609,7 @@ export function assertSectorPages(): void {
     const words = sectorPageWordCount(page);
     if (words < 700) {
       throw new Error(
-        `Sector page ${id}: ${words} palabras. El mínimo son 700 — por debajo de eso es una plantilla rellenada, no una página de sector.`,
+        `Sector page ${id}: ${words} palabras. El mínimo son 700: por debajo de eso es una plantilla rellenada, no una página de sector.`,
       );
     }
 

@@ -79,7 +79,7 @@ export function autoReplyEmail(submission: ContactSubmission): {
       spacer(24),
       `<tr><td>${label("Tu mensaje")}<p style="margin:0 0 12px;font-family:${FONT_BODY};font-size:14px;line-height:20px;mso-line-height-rule:exactly;color:${COLORS.soft};" class="t-muted">${details}</p>${quoteBlock(escapeHtmlWithBreaks(message))}</td></tr>`,
       spacer(24),
-      `<tr><td style="font-family:${FONT_DISPLAY};font-size:16px;line-height:24px;mso-line-height-rule:exactly;color:${COLORS.ink};" class="t-heading">— Lucas Álvarez</td></tr>`,
+      `<tr><td style="font-family:${FONT_DISPLAY};font-size:16px;line-height:24px;mso-line-height-rule:exactly;color:${COLORS.ink};" class="t-heading">Lucas Álvarez</td></tr>`,
     ].join("\n"),
   );
 
@@ -108,7 +108,7 @@ export function autoReplyEmail(submission: ContactSubmission): {
     "",
     message,
     "",
-    "— Lucas Álvarez",
+    "Lucas Álvarez",
     "",
     "--",
     "Recibes este correo porque has escrito a través del formulario de",

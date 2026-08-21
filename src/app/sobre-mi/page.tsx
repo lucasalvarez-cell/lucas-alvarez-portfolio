@@ -102,9 +102,9 @@ export default function SobreMiPage() {
             <p className="mt-5">
               Camping Victòria multiplicó por seis sus visualizaciones
               simplemente pasando de uno a dos posts por semana, porque para
-              entonces ya sabíamos qué formato funcionaba. Ese orden —
-              diagnosticar, validar el formato y solo después subir la
-              frecuencia — es lo único que traslado igual de un sector a otro.
+              entonces ya sabíamos qué formato funcionaba. Ese orden (diagnosticar,
+              validar el formato y solo después subir la frecuencia) es lo
+              único que traslado igual de un sector a otro.
               Los pilares de contenido de un camping y de una imprenta
               industrial no se parecen en nada; la forma de encontrarlos sí.
             </p>

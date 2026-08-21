@@ -208,7 +208,7 @@ export const TOPICS: Topic[] = [
       "Estacionalidad, formato y frecuencia en el sector donde más cuentas he gestionado, con los números encima de la mesa.",
     overview: [
       "El turismo de temporada tiene un problema de calendario antes que un problema de contenido. Casi todos los alojamientos encienden las redes en mayo, publican a diario en agosto y desaparecen en septiembre, que es exactamente al revés de como funciona el canal: en julio ya has vendido o ya no has vendido.",
-      "El segundo problema es de formato. Un catálogo de instalaciones —la piscina vacía, el bungalow recién hecho, el cartel de la entrada— le habla a alguien que ya ha decidido venir. Quien todavía no sabe que existes no está buscando una parcela: está imaginando un fin de semana, y eso se enseña con la escena, no con el inventario.",
+      "El segundo problema es de formato. Un catálogo de instalaciones (la piscina vacía, el bungalow recién hecho, el cartel de la entrada) le habla a alguien que ya ha decidido venir. Quien todavía no sabe que existes no está buscando una parcela: está imaginando un fin de semana, y eso se enseña con la escena, no con el inventario.",
       "Las cifras que aparecen en estos artículos son de tres campings cuyas cuentas gestiono, todas orgánicas: +250 % de visualizaciones en un mes en Camping Collvert, +62 % en Camping Puzol y ×6 en Camping Victòria. En los tres el cambio fue de formato, y solo en uno se tocó la frecuencia, al final.",
     ],
     path: [

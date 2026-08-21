@@ -57,12 +57,12 @@ export function AuthorBox() {
             Gestiono personalmente las cuentas de las que hablo en este blog:
             tres campings de la costa catalana, una marca de café, impresión
             industrial y dos canales de YouTube de naturaleza. Las cifras que
-            cito —{" "}
+            cito (
             <span className="font-semibold text-ink">
               +250 % en Camping Collvert, ×6 en Camping Victòria, 2,6 M de
               visualizaciones en Reino Selva
-            </span>{" "}
-            — salen de esas cuentas, no de un caso de estudio ajeno.
+            </span>
+            ) salen de esas cuentas, no de un caso de estudio ajeno.
           </p>
 
           <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-base">

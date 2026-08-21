@@ -277,11 +277,14 @@ export function NotForList({
       <ul className="mt-8 space-y-4">
         {items.map((item) => (
           <li key={item} className="flex gap-3.5">
+            {/* Marcador de lista, no puntuación. Sin `mt-1`: ese desplazamiento
+                estaba calculado para una raya, que se alinea con la altura de
+                la x; el punto medio ya viene centrado en su caja. */}
             <span
               aria-hidden
-              className="mt-1 shrink-0 font-display font-extrabold text-ink-soft"
+              className="shrink-0 font-display font-extrabold text-ink-soft"
             >
-              —
+              ·
             </span>
             <span className="max-w-3xl text-lg leading-relaxed text-ink-body">
               {item}

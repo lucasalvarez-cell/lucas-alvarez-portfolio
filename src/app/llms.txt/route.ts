@@ -49,7 +49,7 @@ export function GET(): Response {
    * they will be read rather than being left to be inferred from links.
    */
   const body = [
-    `# ${SITE_NAME} — Social media manager y estratega de contenido en Barcelona`,
+    `# ${SITE_NAME} · Social media manager y estratega de contenido en Barcelona`,
     "",
     "> Gestiono las redes sociales y la estrategia de contenido de marcas en",
     "> Barcelona y Cataluña, y también en remoto para el resto de España.",
