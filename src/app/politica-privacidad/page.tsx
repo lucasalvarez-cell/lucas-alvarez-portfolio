@@ -70,35 +70,57 @@ export default function PoliticaPrivacidadPage() {
           <p className={p}>
             Los datos que envías a través del formulario de contacto (nombre,
             email y mensaje) se utilizan únicamente para responder a tu
-            consulta y, en su caso, prestarte los servicios que solicites. No
-            se usan para elaborar perfiles ni para fines distintos a los
-            indicados.
+            consulta y, en su caso, prestarte los servicios que solicites. Al
+            enviarlo, el sitio comprueba de forma automática y momentánea la
+            dirección IP desde la que se envía, con el único fin de evitar el
+            envío masivo de formularios: esa comprobación no se guarda en
+            ninguna base de datos, no aparece en el correo que recibo y
+            desaparece en cuestión de minutos. No se usan para elaborar
+            perfiles ni para fines distintos a los indicados.
           </p>
 
           <h2 className={h2}>Legitimación</h2>
           <p className={p}>
             La base legal para el tratamiento es tu consentimiento, otorgado
             libremente al rellenar y enviar el formulario de contacto (art.
-            6.1.a RGPD).
+            6.1.a RGPD). La comprobación antispam descrita más arriba se
+            ampara en el interés legítimo en mantener la seguridad del sitio
+            (art. 6.1.f RGPD).
           </p>
 
           <h2 className={h2}>Destinatarios</h2>
           <p className={p}>
             El formulario de contacto de este sitio utiliza{" "}
-            <strong className="font-semibold text-ink">Web3Forms</strong>{" "}
-            como proveedor externo para la gestión y el envío de los mensajes
-            recibidos, que actúa como encargado del tratamiento. Tus datos
-            también pueden ser accesibles al proveedor de alojamiento web del
-            sitio, en la medida necesaria para su funcionamiento técnico. No
-            se cede ni se vende información a terceros con fines comerciales,
-            y no se realizan transferencias internacionales de datos fuera de
-            lo estrictamente necesario para prestar estos servicios.
+            <strong className="font-semibold text-ink">Resend</strong> (Resend,
+            Inc.) como proveedor de envío de correo electrónico, que actúa como
+            encargado del tratamiento: es quien entrega tu mensaje a mi buzón y
+            quien te envía el acuse de recibo. Tus datos son también accesibles
+            para <strong className="font-semibold text-ink">Vercel</strong>, el
+            proveedor de alojamiento del sitio, en la medida necesaria para su
+            funcionamiento técnico. No se cede ni se vende información a
+            terceros con fines comerciales.
+          </p>
+          <p className={p}>
+            Ambos proveedores son sociedades estadounidenses, por lo que el
+            envío de tu mensaje implica una transferencia internacional de
+            datos. Esa transferencia se realiza al amparo de las cláusulas
+            contractuales tipo aprobadas por la Comisión Europea y del Marco de
+            Privacidad de Datos UE-EE. UU., al que Resend está adherida. Si
+            prefieres que no se produzca esa transferencia, puedes escribirme
+            directamente a{" "}
+            <a href={`mailto:${CONTACT.email}`} className={link}>
+              {CONTACT.email}
+            </a>{" "}
+            en lugar de usar el formulario.
           </p>
 
           <h2 className={h2}>Plazo de conservación</h2>
           <p className={p}>
-            Los datos se conservan mientras exista una relación o intercambio
-            contigo y, en todo caso, hasta que solicites su supresión.
+            Los mensajes recibidos se conservan en mi buzón de correo mientras
+            exista una relación o intercambio contigo y, en todo caso, hasta
+            que solicites su supresión. El proveedor de envío conserva una
+            copia técnica del correo durante un periodo limitado con fines de
+            diagnóstico de entrega.
           </p>
 
           <h2 className={h2}>Tus derechos</h2>
@@ -132,7 +154,10 @@ export default function PoliticaPrivacidadPage() {
           <h2 className={h2}>Procedencia de los datos</h2>
           <p className={p}>
             Los únicos datos tratados son los que tú mismo facilitas
-            directamente a través del formulario de contacto de este sitio.
+            directamente a través del formulario de contacto de este sitio, más
+            los datos técnicos que cualquier servidor web registra
+            necesariamente al atender una petición (como la dirección IP), que
+            no se cruzan con los anteriores ni se utilizan para identificarte.
           </p>
 
           <h2 className={h2}>Menores de edad</h2>
