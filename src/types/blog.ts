@@ -1,8 +1,8 @@
 /** One question/answer pair, rendered as an accordion and as FAQPage schema. */
-export type FaqItem = {
-  question: string;
-  answer: string;
-};
+/* Re-exported so existing blog imports keep working; the canonical
+   definition is shared with service and sector pages. */
+export type { FaqItem } from "./content";
+import type { FaqItem } from "./content";
 
 /**
  * Drives the generated cover art. There is no photography on this blog on

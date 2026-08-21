@@ -9,16 +9,30 @@ import type { FaqItem } from "@/types/blog";
  * highest-yield element for being quoted in AI answers — measured at a 13,6 %
  * citation rate against 4,2 % for pages without it.
  */
-export function FaqSection({ items }: { items: FaqItem[] }) {
+export function FaqSection({
+  items,
+  /*
+   * Overridable so a service or sector page can name its subject in the H2.
+   * Fourteen pages all headed "Preguntas frecuentes" waste fourteen headings;
+   * "Preguntas frecuentes sobre gestión de redes sociales en Barcelona" is a
+   * real keyword surface and makes the blocks distinguishable to a crawler.
+   */
+  title = "Preguntas frecuentes",
+  id = "preguntas-frecuentes",
+}: {
+  items: FaqItem[];
+  title?: string;
+  id?: string;
+}) {
   if (!items.length) return null;
 
   return (
-    <section className="mt-16" aria-labelledby="preguntas-frecuentes">
+    <section className="mt-16" aria-labelledby={id}>
       <h2
-        id="preguntas-frecuentes"
+        id={id}
         className="scroll-mt-28 text-[1.875rem] normal-case leading-tight tracking-[-0.01em] text-ink"
       >
-        Preguntas frecuentes
+        {title}
       </h2>
 
       <div className="mt-8 space-y-3">

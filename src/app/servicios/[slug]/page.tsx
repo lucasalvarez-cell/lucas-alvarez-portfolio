@@ -6,9 +6,19 @@ import { Section } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { CTASection } from "@/components/sections/CTASection";
 import { ServiceCrossSell } from "@/components/sections/ServiceCrossSell";
+import { QuickAnswer } from "@/components/blog/QuickAnswer";
+import { FaqSection } from "@/components/blog/FaqSection";
+import {
+  IncludesList,
+  NotForList,
+  PriceBlock,
+  ProcessSteps,
+  ProofStrip,
+  SectorLinks,
+} from "@/components/service/ServiceBlocks";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/seo";
-import { breadcrumbSchema, serviceSchema } from "@/lib/schema";
+import { breadcrumbSchema, serviceGraph } from "@/lib/schema";
 import { SERVICES, getServiceBySlug } from "@/lib/constants";
 
 export function generateStaticParams() {
@@ -42,7 +52,7 @@ export default async function ServicioPage({
 
   return (
     <>
-      <JsonLd data={serviceSchema(service)} />
+      <JsonLd data={serviceGraph(service)} />
       <JsonLd
         data={breadcrumbSchema([
           { name: "Servicios", path: "/servicios" },
@@ -59,7 +69,7 @@ export default async function ServicioPage({
           <span aria-hidden>←</span> Todos los servicios
         </Link>
 
-        <h1 className="mt-8 max-w-4xl text-white">{service.title}</h1>
+        <h1 className="mt-8 max-w-4xl text-white">{service.h1}</h1>
 
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-white/75">
           {service.intro}
@@ -107,6 +117,61 @@ export default async function ServicioPage({
           })}
         </div>
       </section>
+
+      {/*
+        Everything below is what turned a ~400-word page into one that can
+        compete. The order is deliberate: the extractable answer first, then
+        what you get, how it works, what it costs, that it has worked, who it
+        is not for, and the objections. Sections 1, 4, 5 and 6 are the passages
+        AI answers quote, because each is complete without the rest of the page.
+      */}
+      <Section padding="large">
+        <div className="max-w-4xl">
+          <QuickAnswer
+            question={service.h1}
+            answer={service.quickAnswer}
+            label="En corto"
+            id="en-corto"
+          />
+
+          <IncludesList
+            items={service.includes}
+            title={`Qué incluye ${service.title.toLowerCase()}`}
+          />
+
+          <ProcessSteps steps={service.process} title="Cómo trabajo, paso a paso" />
+
+          <PriceBlock
+            pricing={service.pricing}
+            title={`Cuánto cuesta ${service.title.toLowerCase()}`}
+          />
+
+          <ProofStrip
+            slugs={service.proof}
+            title="Resultados de cuentas reales"
+          />
+
+          <SectorLinks
+            serviceSlug={service.slug}
+            title="Por sector"
+          />
+
+          <NotForList
+            items={service.notFor}
+            title="Para quién no es este servicio"
+          />
+
+          {/*
+            The same array reaches `faqSchema()` in `serviceGraph()`. Marking up
+            questions a visitor cannot see is the most common cause of a
+            structured-data manual action, so there is exactly one source.
+          */}
+          <FaqSection
+            items={service.faq}
+            title={`Preguntas frecuentes sobre ${service.title.toLowerCase()}`}
+          />
+        </div>
+      </Section>
 
       <CTASection
         title="¿Te encaja este servicio?"

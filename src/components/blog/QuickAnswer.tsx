@@ -13,20 +13,24 @@
 export function QuickAnswer({
   question,
   answer,
+  label = "Respuesta rápida",
+  id = "respuesta-rapida",
 }: {
   question: string;
   answer: string;
+  label?: string;
+  id?: string;
 }) {
   return (
     <section
-      aria-labelledby="respuesta-rapida"
+      aria-labelledby={id}
       className="rounded-[var(--radius-card)] border-2 border-purple/25 bg-purple/[0.04] p-6 sm:p-8"
     >
       <h2
-        id="respuesta-rapida"
+        id={id}
         className="font-display text-sm font-extrabold uppercase tracking-[0.2em] text-purple"
       >
-        Respuesta rápida
+        {label}
       </h2>
 
       <p className="sr-only">{question}</p>

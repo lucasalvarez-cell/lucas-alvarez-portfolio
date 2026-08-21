@@ -9,7 +9,7 @@ import type { CaseStudy } from "@/types/case-study";
  * sitting directly on the gradient background (markbaroth.com/portfolio style).
  */
 export function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
-  const { client, isPlaceholder, logo, logoBg } = caseStudy;
+  const { client, headline, isPlaceholder, logo, logoBg } = caseStudy;
   const sector = filled(caseStudy.sector);
 
   if (isPlaceholder) {
@@ -34,6 +34,10 @@ export function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
       ) : null}
 
       <h3 className="mt-1 text-2xl text-white">{client}</h3>
+
+      <p className="mt-3 text-lg font-semibold leading-snug text-turquoise">
+        {headline}
+      </p>
     </Link>
   );
 }

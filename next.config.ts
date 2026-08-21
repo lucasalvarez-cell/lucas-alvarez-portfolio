@@ -29,6 +29,27 @@ const nextConfig: NextConfig = {
    * Permanent, not temporary: these URLs are not coming back, and a 302 would
    * leave Google indexing the old address indefinitely.
    */
+  /**
+   * Baseline security headers. Not a ranking factor, but HTTPS enforcement is
+   * a trust signal Google reads, and the rest are free.
+   */
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=63072000; includeSubDomains; preload",
+          },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+        ],
+      },
+    ];
+  },
+
   async redirects() {
     const merged: Record<string, string> = {
       "mejor-agencia-seo-barcelona": "mejores-agencias-seo-barcelona",

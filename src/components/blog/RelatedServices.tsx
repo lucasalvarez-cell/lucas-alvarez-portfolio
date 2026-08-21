@@ -11,7 +11,10 @@ const TAG_TO_SERVICE: Record<string, string> = {
   /* Topic hubs — every post carries one of these as its first tag. */
   "redes-sociales": "gestion-redes-sociales",
   seo: "seo",
-  publicidad: "seo",
+  /* Was pointing at the SEO service because no advertising page existed. Four
+     posts target Google Ads and Meta Ads intent and now have somewhere real to
+     send a reader. */
+  publicidad: "publicidad-meta-ads-google-ads",
   "diseno-web": "desarrollo-web",
   turismo: "gestion-redes-sociales",
   "marketing-digital": "auditoria-consultoria-digital",

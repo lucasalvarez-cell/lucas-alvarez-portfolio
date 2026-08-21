@@ -201,13 +201,69 @@ export const TOPICS: Topic[] = [
   {
     tag: "turismo",
     label: "Turismo y campings",
-    title: "Marketing para campings, hoteles y turismo",
+    title: "Guías de marketing para campings, hoteles y turismo",
     description:
-      "Qué funciona en marketing digital para campings, hoteles y turismo en Cataluña: formato, frecuencia, estacionalidad y las cifras de tres campings reales.",
+      "Estacionalidad, formato y frecuencia en campings, hoteles y alojamientos: qué publicar cada mes y las cifras de tres campings que gestiono.",
     intro:
       "Estacionalidad, formato y frecuencia en el sector donde más cuentas he gestionado, con los números encima de la mesa.",
-    overview: [],
-    path: [],
+    overview: [
+      "El turismo de temporada tiene un problema de calendario antes que un problema de contenido. Casi todos los alojamientos encienden las redes en mayo, publican a diario en agosto y desaparecen en septiembre, que es exactamente al revés de como funciona el canal: en julio ya has vendido o ya no has vendido.",
+      "El segundo problema es de formato. Un catálogo de instalaciones —la piscina vacía, el bungalow recién hecho, el cartel de la entrada— le habla a alguien que ya ha decidido venir. Quien todavía no sabe que existes no está buscando una parcela: está imaginando un fin de semana, y eso se enseña con la escena, no con el inventario.",
+      "Las cifras que aparecen en estos artículos son de tres campings cuyas cuentas gestiono, todas orgánicas: +250 % de visualizaciones en un mes en Camping Collvert, +62 % en Camping Puzol y ×6 en Camping Victòria. En los tres el cambio fue de formato, y solo en uno se tocó la frecuencia, al final.",
+    ],
+    path: [
+      {
+        decision: "Cuándo trabajar el contenido para notarlo el verano siguiente",
+        slug: "como-llenar-camping-temporada-baja",
+        label: "Llenar en temporada baja",
+      },
+      {
+        decision: "Qué grabar y en qué orden publicarlo",
+        slug: "que-publicar-instagram-camping",
+        label: "30 días de contenido",
+      },
+      {
+        decision: "Cómo bajar la comisión de los portales",
+        slug: "conseguir-reservas-directas-sin-booking",
+        label: "Reservas directas",
+      },
+      {
+        decision: "El método completo, con los tres casos",
+        slug: "marketing-digital-campings-turismo-cataluna",
+        label: "Marketing para campings",
+      },
+    ],
+  },
+  {
+    tag: "marca-personal",
+    label: "Marca personal",
+    title: "Marca personal y crecimiento orgánico",
+    description:
+      "Cómo se construye una audiencia propia: encontrar el formato, escribir el gancho y saber cuándo un perfil está listo para monetizar.",
+    intro:
+      "El sistema que probé en mi propia cuenta antes de aplicarlo a las de nadie más.",
+    overview: [
+      "Todo lo que aplico en cuentas de clientes lo probé antes en la mía. @lucasalvarez.x llegó a 116 mil seguidores y a un acuerdo de embajador con Gymshark, y los canales de YouTube que diseño funcionan con el mismo marco: estructura fija, gancho escrito aparte y frecuencia al final.",
+      "El error que más tiempo cuesta en marca personal es publicar de todo esperando que algo funcione. No solo impide que nadie te reconozca: impide aprender, porque para saber si un formato funciona hace falta repetirlo lo suficiente como para poder comparar.",
+      "Y el que más dinero cuesta es confundir tamaño con valor. Un perfil de veinte mil seguidores muy definido cierra acuerdos que uno de doscientos mil sin identidad no cierra, porque una marca no compra alcance: compra acceso a un público que puede describir.",
+    ],
+    path: [
+      {
+        decision: "Qué funcionó y qué haría distinto",
+        slug: "como-crecer-marca-personal-instagram",
+        label: "Crecer una marca personal",
+      },
+      {
+        decision: "Dónde se pierde de verdad la audiencia",
+        slug: "primeros-tres-segundos-video",
+        label: "El gancho de los 3 segundos",
+      },
+      {
+        decision: "Cuándo estás listo para cobrar",
+        slug: "cuantos-seguidores-para-monetizar",
+        label: "Monetizar una audiencia",
+      },
+    ],
   },
 ];
 
@@ -231,6 +287,10 @@ export const TAG_LABELS: Record<string, string> = {
   pymes: "Pymes",
   auditoria: "Auditoría",
   agencias: "Elegir agencia",
+  "marca-personal": "Marca personal",
+  hosteleria: "Hostelería",
+  salud: "Clínicas y salud",
+  deporte: "Gimnasios y deporte",
 };
 
 export function postsByTopic(posts: PostMeta[], tag: string): PostMeta[] {

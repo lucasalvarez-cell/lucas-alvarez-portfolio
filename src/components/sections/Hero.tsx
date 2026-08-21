@@ -10,18 +10,30 @@ export function Hero() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal immediate>
             <p className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-turquoise">
-              Estratega de contenido y social media manager · Barcelona
+              Barcelona · Cataluña · Remoto
             </p>
-            {/* Sized for the half-width column, not the full viewport */}
+            {/*
+              The claim used to be the H1 and the role used to be the kicker,
+              which left the strongest on-page signal on the site carrying no
+              word anybody searches for. They swapped: the H1 says what this is
+              and where, and the claim keeps the same visual weight one line
+              below, where it still does its selling.
+
+              Sized for the half-width column, not the full viewport.
+            */}
             <h1 className="text-[clamp(2rem,4.4vw,3.75rem)]">
+              Social media manager y estratega de contenido en Barcelona
+            </h1>
+            <p className="mt-6 max-w-xl text-[clamp(1.25rem,2vw,1.75rem)] font-semibold leading-tight text-turquoise">
               +250 % de visualizaciones en un mes. Sin gastar un euro en
               publicidad.
-            </h1>
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-white/75">
-              Soy Lucas Álvarez, estratega de contenido en Barcelona y
-              cofundador de Publiqo. Gestiono las redes sociales y la estrategia
-              de contenido de marcas que estaban estancadas: campings, industria
-              y canales de YouTube que hoy crecen todos los meses.
+            </p>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75">
+              Soy Lucas Álvarez. Gestiono las redes sociales y la estrategia de
+              contenido de marcas que estaban estancadas: campings, hostelería,
+              industria y canales de YouTube que hoy crecen todos los meses.
+              Servicios desde 290 €, y lo lleva la misma persona que te lo
+              vende. Cofundador de Publiqo.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Button href="/casos-de-exito" variant="light">

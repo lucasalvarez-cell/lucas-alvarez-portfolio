@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SERVICES, SITE_URL } from "@/lib/constants";
+import { SECTOR_PAGES, assertSectorPages } from "@/content/sectores";
 import { getAllPosts } from "@/lib/blog";
 import { activeTopics, postsByTopic } from "@/lib/topics";
 import { getPublishedCaseStudies } from "@/content/casos-de-exito";
@@ -32,6 +33,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${SITE_URL}/servicios`,
+      lastModified: latestOverall,
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/precios`,
       lastModified: latestOverall,
       changeFrequency: "monthly",
       priority: 0.9,
@@ -74,6 +81,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  /* Throws if a sector page is thin or recycles an FAQ answer from another. */
+  assertSectorPages();
+
+  const sectorRoutes: MetadataRoute.Sitemap = SECTOR_PAGES.map((page) => ({
+    url: `${SITE_URL}/servicios/${page.service}/${page.sector}`,
+    /* Their own `updated`, not the site-wide latest: fourteen routes all
+       stamped with the same date is the signal that makes Google stop reading
+       the field at all. */
+    lastModified: new Date(page.updated),
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
   const serviceRoutes: MetadataRoute.Sitemap = SERVICES.map((service) => ({
     url: `${SITE_URL}/servicios/${service.slug}`,
     lastModified: latestOverall,
@@ -112,6 +132,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes,
     ...serviceRoutes,
+    ...sectorRoutes,
     ...caseStudyRoutes,
     ...topicRoutes,
     ...postRoutes,

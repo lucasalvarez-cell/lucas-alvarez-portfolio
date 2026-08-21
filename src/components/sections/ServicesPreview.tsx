@@ -13,7 +13,7 @@ export function ServicesPreview() {
         </Reveal>
 
         <div className="mt-20 grid gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.slice(0, 3).map((service, index) => (
+          {SERVICES.map((service, index) => (
             <Reveal key={service.slug} delay={index * 80}>
               <ServiceCard service={service} tone="dark" />
             </Reveal>

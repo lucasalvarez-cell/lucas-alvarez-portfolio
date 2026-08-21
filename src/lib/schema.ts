@@ -1,6 +1,9 @@
 import {
+  BUSINESS_DESCRIPTION,
+  BUSINESS_NAME,
   CONTACT,
   ORGANIZATION_PROFILE_URLS,
+  PUBLIQO_URL,
   SERVICES,
   SITE_DESCRIPTION,
   SITE_LANG,
@@ -8,14 +11,26 @@ import {
   SITE_URL,
   SOCIAL_PROFILE_URLS,
 } from "./constants";
-import type { Service } from "./constants";
+import type { Service, ServicePricing } from "./constants";
+import type { Sector, SectorPage } from "@/content/sectores";
 import { coverAlt } from "./cover-svg";
 import type { PostFrontmatter, PostMeta } from "@/types/blog";
 import type { CaseStudy } from "@/types/case-study";
 
 const PERSON_ID = `${SITE_URL}/#person`;
-const ORGANIZATION_ID = `${SITE_URL}/#organization`;
+/**
+ * The business that actually sells the services, on this domain.
+ *
+ * This replaces a node that used to be `${SITE_URL}/#organization` while
+ * describing Publiqo, whose url is publiqo.es. That combination asserted that
+ * the organisation *of this site* lives somewhere else, which is the reason
+ * none of the service pages accumulated any entity signal of their own.
+ */
+const BUSINESS_ID = `${SITE_URL}/#business`;
+/** Publiqo's canonical node belongs on Publiqo's own domain, keyed to it. */
+const PUBLIQO_ID = `${PUBLIQO_URL}#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
+const HOME_PAGE_ID = `${SITE_URL}/#webpage`;
 
 const CONTEXT = "https://schema.org";
 
@@ -57,7 +72,10 @@ export function personSchema() {
         addressCountry: "ES",
       },
     },
-    worksFor: { "@id": ORGANIZATION_ID },
+    worksFor: { "@id": PUBLIQO_ID },
+    memberOf: { "@id": PUBLIQO_ID },
+    /* The business he sells through, on this domain. */
+    owns: { "@id": BUSINESS_ID },
     /* Consolidates the entity on one page instead of leaving it implied by
        whichever URL a crawler happens to land on first. */
     mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/sobre-mi` },
@@ -72,23 +90,27 @@ export function personSchema() {
   };
 }
 
-export function organizationSchema() {
+/**
+ * The service provider. A `ProfessionalService` (a LocalBusiness subtype) that
+ * lives on this domain and is named after Lucas, because he is who you hire.
+ *
+ * No `streetAddress` on purpose: this is a service-area business with no
+ * verifiable storefront, and inventing an address — or borrowing a coworking
+ * one — is the fastest route to a Google Business Profile suspension.
+ */
+export function businessSchema() {
   return {
     "@type": "ProfessionalService",
-    "@id": ORGANIZATION_ID,
-    name: "Publiqo",
-    description:
-      "Publiqo es una agencia de marketing digital en Barcelona especializada en gestión de redes sociales, estrategia de contenido, SEO, desarrollo web y campañas de Google Ads y Meta Ads.",
-    url: "https://publiqo.es/",
-    sameAs: ORGANIZATION_PROFILE_URLS,
-    logo: {
-      "@type": "ImageObject",
-      url: `${SITE_URL}/logo-publiqo.svg`,
-    },
-    image: `${SITE_URL}/logo-publiqo.svg`,
+    "@id": BUSINESS_ID,
+    name: BUSINESS_NAME,
+    alternateName: "Lucas Álvarez · Social media manager en Barcelona",
+    description: BUSINESS_DESCRIPTION,
+    url: SITE_URL,
+    image: `${SITE_URL}/images/lucas-alvarez.jpg`,
     email: CONTACT.email,
     telephone: CONTACT.phoneDisplay,
-    founder: [{ "@id": PERSON_ID }, { "@type": "Person", name: "Martí" }],
+    founder: { "@id": PERSON_ID },
+    employee: { "@id": PERSON_ID },
     address: {
       "@type": "PostalAddress",
       addressLocality: "Barcelona",
@@ -100,6 +122,8 @@ export function organizationSchema() {
       { "@type": "AdministrativeArea", name: "Cataluña" },
       { "@type": "Country", name: "España" },
     ],
+    priceRange: "€€",
+    currenciesAccepted: "EUR",
     knowsLanguage: ["es", "ca", "en"],
     contactPoint: {
       "@type": "ContactPoint",
@@ -109,6 +133,34 @@ export function organizationSchema() {
       areaServed: "ES",
       availableLanguage: ["Spanish", "Catalan", "English"],
     },
+    ...(SOCIAL_PROFILE_URLS.length ? { sameAs: SOCIAL_PROFILE_URLS } : {}),
+  };
+}
+
+/**
+ * Publiqo, kept as a credibility signal and nothing more.
+ *
+ * Deliberately minimal: no telephone, email, address or areaServed. This domain
+ * does not get to publish a third party's NAP, and duplicating it from a site
+ * Publiqo does not control is a citation-consistency liability. The node exists
+ * so `Person.worksFor` resolves to something real.
+ */
+export function publiqoSchema() {
+  return {
+    "@type": "Organization",
+    "@id": PUBLIQO_ID,
+    name: "Publiqo",
+    description:
+      "Agencia de marketing digital en Barcelona cofundada por Lucas Álvarez.",
+    url: PUBLIQO_URL,
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/logo-publiqo.svg`,
+    },
+    founder: [{ "@id": PERSON_ID }, { "@type": "Person", name: "Martí" }],
+    ...(ORGANIZATION_PROFILE_URLS.length
+      ? { sameAs: ORGANIZATION_PROFILE_URLS }
+      : {}),
   };
 }
 
@@ -120,13 +172,19 @@ export function webSiteSchema() {
     name: SITE_NAME,
     description: SITE_DESCRIPTION,
     inLanguage: SITE_LANG,
-    publisher: { "@id": PERSON_ID },
+    publisher: { "@id": BUSINESS_ID },
+    copyrightHolder: { "@id": PERSON_ID },
   };
 }
 
 /** Emitted once from the root layout, so every page carries the entity graph. */
 export function siteGraph() {
-  return graph(personSchema(), organizationSchema(), webSiteSchema());
+  return graph(
+    personSchema(),
+    businessSchema(),
+    publiqoSchema(),
+    webSiteSchema(),
+  );
 }
 
 type Crumb = { name: string; path: string };
@@ -147,25 +205,219 @@ export function breadcrumbSchema(crumbs: Crumb[]) {
   };
 }
 
+/**
+ * A published starting price.
+ *
+ * `minPrice` rather than `price`, and deliberately: every figure on this site
+ * is a floor ("desde 490 €"). Asserting a flat `price` for a starting point
+ * is a false claim, and a generative engine will quote it back verbatim.
+ *
+ * Worth being clear about the payoff: `Service` is not eligible for a price
+ * rich result in Google. This markup buys entity comprehension and citation in
+ * AI answers to "cuánto cuesta…", not a price chip in the SERP. The visible
+ * price block is what does the conversion work.
+ */
+function offerNode(url: string, pricing: ServicePricing) {
+  return {
+    "@type": "Offer",
+    "@id": `${url}#offer`,
+    url,
+    priceCurrency: "EUR",
+    availability: "https://schema.org/InStock",
+    seller: { "@id": BUSINESS_ID },
+    eligibleRegion: { "@type": "Country", name: "ES" },
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      minPrice: pricing.from,
+      priceCurrency: "EUR",
+      unitText: pricing.per ?? "proyecto",
+      /* A monthly billing increment on a one-off project fee would be a
+         contradiction in the data, so it only ships on retainers. */
+      ...(pricing.per === "mes"
+        ? {
+            referenceQuantity: {
+              "@type": "QuantitativeValue",
+              value: 1,
+              unitCode: "MON",
+            },
+            billingIncrement: 1,
+          }
+        : {}),
+    },
+  };
+}
+
 function serviceNode(service: Service) {
+  const url = `${SITE_URL}/servicios/${service.slug}`;
+
   return {
     "@type": "Service",
-    "@id": `${SITE_URL}/servicios/${service.slug}#service`,
-    name: service.title,
+    "@id": `${url}#service`,
+    name: service.h1,
     serviceType: service.title,
     description: service.description,
-    url: `${SITE_URL}/servicios/${service.slug}`,
-    provider: { "@id": ORGANIZATION_ID },
+    url,
+    provider: { "@id": BUSINESS_ID },
     areaServed: [
       { "@type": "City", name: "Barcelona" },
+      { "@type": "AdministrativeArea", name: "Cataluña" },
       { "@type": "Country", name: "España" },
     ],
+    offers: offerNode(url, service.pricing),
     availableChannel: {
       "@type": "ServiceChannel",
-      serviceUrl: `${SITE_URL}/servicios/${service.slug}`,
+      serviceUrl: url,
       servicePhone: CONTACT.phoneDisplay,
     },
   };
+}
+
+/**
+ * The catalogue of everything on sale, as a *partial* node re-declaring
+ * `BUSINESS_ID`. `@graph` merges nodes that share an `@id`, so this augments
+ * the site-wide business node instead of duplicating it.
+ *
+ * Not emitted site-wide on purpose: `siteGraph()` ships on every document, and
+ * adding the catalogue to all of them is real weight for no marginal signal. It
+ * goes only where the question it answers is actually being asked.
+ */
+function offerCatalogNode() {
+  return {
+    "@id": BUSINESS_ID,
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Servicios de marketing digital en Barcelona",
+      itemListElement: SERVICES.map((service) => ({
+        "@type": "Offer",
+        "@id": `${SITE_URL}/servicios/${service.slug}#offer`,
+        itemOffered: {
+          "@id": `${SITE_URL}/servicios/${service.slug}#service`,
+        },
+      })),
+    },
+  };
+}
+
+/**
+ * The home page as a node of its own. It had none: the only JSON-LD it carried
+ * was the site-wide graph, so the strongest page on the site described the
+ * entity without ever describing itself.
+ *
+ * `WebPage` and not `ProfilePage`, because `/sobre-mi` is already the
+ * `ProfilePage` and `Person.mainEntityOfPage` points there. Two profile pages
+ * for one person split exactly the signal this consolidation exists to gather.
+ */
+export function homeGraph(name: string) {
+  return graph(
+    {
+      "@type": "WebPage",
+      "@id": HOME_PAGE_ID,
+      url: SITE_URL,
+      name,
+      description: SITE_DESCRIPTION,
+      inLanguage: SITE_LANG,
+      isPartOf: { "@id": WEBSITE_ID },
+      about: { "@id": BUSINESS_ID },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/images/lucas-alvarez.jpg`,
+      },
+    },
+    offerCatalogNode(),
+  );
+}
+
+/**
+ * The pricing page.
+ *
+ * This is the page most likely to be the source an AI answer cites for
+ * "cuánto cuesta un social media manager en Barcelona", so it carries the
+ * catalogue with every Offer resolved rather than referenced.
+ */
+export function pricingGraph() {
+  const url = `${SITE_URL}/precios`;
+
+  return graph(
+    {
+      "@type": "WebPage",
+      "@id": `${url}#page`,
+      url,
+      name: "Precios de gestión de redes sociales, contenido y SEO en Barcelona",
+      inLanguage: SITE_LANG,
+      isPartOf: { "@id": WEBSITE_ID },
+      about: { "@id": BUSINESS_ID },
+      mainEntity: {
+        "@type": "OfferCatalog",
+        name: "Precios de servicios de marketing digital",
+        itemListElement: SERVICES.map((service) =>
+          offerNode(`${SITE_URL}/servicios/${service.slug}`, service.pricing),
+        ),
+      },
+    },
+    offerCatalogNode(),
+  );
+}
+
+/**
+ * A sector landing page.
+ *
+ * `audience` is the field that keeps these from reading as one Service node
+ * copied N times: it states, in the graph, that this is a distinct offering
+ * aimed at a distinct kind of buyer. `isRelatedTo` points back at the parent so
+ * the hierarchy in the URL is also expressed in the data.
+ */
+export function sectorGraph(
+  page: SectorPage,
+  service: Service,
+  sector: Sector,
+) {
+  const url = `${SITE_URL}/servicios/${page.service}/${page.sector}`;
+  const faq = faqSchema(page.faq, url);
+
+  return graph(
+    {
+      "@type": "Service",
+      "@id": `${url}#service`,
+      name: page.h1,
+      serviceType: service.title,
+      description: page.metaDescription,
+      url,
+      provider: { "@id": BUSINESS_ID },
+      audience: {
+        "@type": "BusinessAudience",
+        name: sector.name,
+        audienceType: sector.label,
+      },
+      areaServed: [
+        { "@type": "City", name: "Barcelona" },
+        { "@type": "AdministrativeArea", name: "Cataluña" },
+        { "@type": "Country", name: "España" },
+      ],
+      offers: offerNode(url, page.pricing ?? service.pricing),
+      isRelatedTo: {
+        "@id": `${SITE_URL}/servicios/${page.service}#service`,
+      },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${url}#page`,
+      url,
+      name: page.h1,
+      description: page.metaDescription,
+      inLanguage: SITE_LANG,
+      isPartOf: { "@id": WEBSITE_ID },
+      about: { "@id": `${url}#service` },
+    },
+    ...(faq ? [faq] : []),
+  );
+}
+
+/** Everything a single service page needs: the Service node and its FAQ. */
+export function serviceGraph(service: Service) {
+  const url = `${SITE_URL}/servicios/${service.slug}`;
+  const faq = faqSchema(service.faq, url);
+
+  return graph(serviceNode(service), ...(faq ? [faq] : []));
 }
 
 /** The services index: an ItemList of every service, plus the service nodes. */
@@ -188,20 +440,37 @@ export function servicesGraph() {
         })),
       },
     },
-    ...SERVICES.map(serviceNode)
+    ...SERVICES.map(serviceNode),
+    offerCatalogNode(),
   );
 }
 
-export function serviceSchema(service: Service) {
-  return graph(serviceNode(service));
-}
-
-export function faqSchema(faq?: { question: string; answer: string }[]) {
+/**
+ * `url` binds the FAQPage to a page instead of leaving it floating; the blog
+ * calls this without one and is unaffected.
+ *
+ * Two rules the callers have to hold up, because schema cannot enforce them:
+ * one FAQPage per document, and the array passed here must be the same array
+ * rendered by `<FaqSection>`. Marking up questions a visitor cannot see is the
+ * single most common cause of a structured-data manual action.
+ *
+ * Note on payoff: Google withdrew FAQ rich results for non-government and
+ * non-health sites in 2023. This earns AI citation and entity comprehension,
+ * not a SERP accordion.
+ */
+export function faqSchema(
+  faq?: { question: string; answer: string }[],
+  url?: string,
+) {
   if (!faq?.length) return null;
 
   return {
     "@context": CONTEXT,
     "@type": "FAQPage",
+    ...(url
+      ? { "@id": `${url}#faq`, url, mainEntityOfPage: { "@id": url } }
+      : {}),
+    inLanguage: SITE_LANG,
     mainEntity: faq.map((item) => ({
       "@type": "Question",
       name: item.question,
@@ -221,7 +490,7 @@ export function blogGraph(posts: PostMeta[]) {
       "Cómo elegir agencia de marketing digital, SEO, diseño web o gestión de redes sociales en Barcelona.",
     inLanguage: SITE_LANG,
     isPartOf: { "@id": WEBSITE_ID },
-    publisher: { "@id": ORGANIZATION_ID },
+    publisher: { "@id": BUSINESS_ID },
     blogPost: posts.map((post) => ({
       "@type": "BlogPosting",
       "@id": `${SITE_URL}/blog/${post.slug}#post`,
@@ -330,7 +599,7 @@ export function blogPostingSchema(post: PostFrontmatter, wordCount: number) {
       },
     ],
     author: { "@id": PERSON_ID },
-    publisher: { "@id": ORGANIZATION_ID },
+    publisher: { "@id": BUSINESS_ID },
     isPartOf: { "@id": `${SITE_URL}/blog#blog` },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
   });
@@ -360,7 +629,7 @@ export function caseStudySchema(caseStudy: CaseStudy) {
       ...(caseStudy.link ? { url: caseStudy.link } : {}),
     },
     author: { "@id": PERSON_ID },
-    publisher: { "@id": ORGANIZATION_ID },
+    publisher: { "@id": BUSINESS_ID },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
   });
 }
@@ -405,6 +674,6 @@ export function contactPageSchema() {
     name: "Contacto",
     inLanguage: SITE_LANG,
     isPartOf: { "@id": WEBSITE_ID },
-    mainEntity: { "@id": ORGANIZATION_ID },
+    mainEntity: { "@id": BUSINESS_ID },
   });
 }

@@ -1,0 +1,13 @@
+# Keep line endings stable in the repo.
+#
+# Without this, every file written with LF gets rewritten to CRLF on checkout
+# and git reports the whole tree as modified on the next touch, which buries
+# real diffs in noise.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.webp binary
+*.avif binary
