@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { ContactForm } from "@/components/ContactForm";
 import { FaqSection } from "@/components/blog/FaqSection";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { CONTACT, SOCIALS } from "@/lib/constants";
+import { CONTACT, SOCIALS, contactServiceOptions } from "@/lib/constants";
 import { buildMetadata } from "@/lib/seo";
 import { breadcrumbSchema, contactPageSchema, faqSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/constants";
@@ -137,7 +137,7 @@ export default function ContactoPage() {
         </Reveal>
 
         <Reveal delay={150}>
-          <ContactForm />
+          <ContactForm services={contactServiceOptions()} />
         </Reveal>
       </Section>
 

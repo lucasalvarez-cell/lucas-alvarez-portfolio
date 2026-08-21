@@ -109,10 +109,16 @@ export type {
   FaqItem,
   ProcessStep,
   Service,
+  ServiceOption,
   ServicePricing,
   ServiceSection,
 } from "@/content/servicios";
-export { SERVICES, getServiceBySlug } from "@/content/servicios";
+export {
+  SERVICES,
+  SERVICE_OPTION_UNDECIDED,
+  contactServiceOptions,
+  getServiceBySlug,
+} from "@/content/servicios";
 
 /**
  * The business entity, as distinct from the person. Both are real and both are

@@ -14,12 +14,25 @@
  * "almost certainly" is not a security posture.
  */
 
-export type ContactField = "name" | "email" | "message" | "consent" | "form";
+import { contactServiceOptions, type ServiceOption } from "@/content/servicios";
+
+export type ContactField =
+  | "name"
+  | "email"
+  | "phone"
+  | "service"
+  | "message"
+  | "consent"
+  | "form";
 export type ContactErrors = Partial<Record<ContactField, string>>;
 
 export type ContactSubmission = {
   name: string;
   email: string;
+  /** Empty string when not provided — the field is optional. */
+  phone: string;
+  /** Resolved against the canonical list, never the raw value from the client. */
+  service: ServiceOption;
   message: string;
 };
 
@@ -36,6 +49,11 @@ const NAME_MAX = 80;
 const EMAIL_MAX = 254;
 const MESSAGE_MIN = 10;
 const MESSAGE_MAX = 5000;
+/** E.164 caps a whole international number at 15 digits; 6 is below any real one. */
+const PHONE_MIN_DIGITS = 6;
+const PHONE_MAX_DIGITS = 15;
+/** Room for "+34 600 12 34 56" and its punctuation, and not much more. */
+const PHONE_MAX_RAW = 30;
 
 /** A person needs longer than this to read three fields and write a message. */
 const MIN_FILL_MS = 3000;
@@ -86,6 +104,26 @@ function hasHeaderRisk(value: string): boolean {
  */
 const EMAIL_RE =
   /^[^\s@,;:<>"'\\()[\]]+@[a-z0-9](?:[a-z0-9-]*[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)*\.[a-z]{2,}$/i;
+
+/**
+ * Everything a person plausibly types between the digits of a phone number, plus
+ * a leading `+`.
+ *
+ * Deliberately permissive. The field is optional, so a strict rule cannot buy
+ * data quality — the visitor who writes their number in an unexpected shape does
+ * not go and fix it, they leave the field blank or the form entirely. Anything
+ * that gets through here is still only ever read by a human before it is dialled.
+ */
+const PHONE_ALLOWED_RE = /^\+?[\d\s.\-()]+$/;
+
+function countDigits(value: string): number {
+  let digits = 0;
+  for (let i = 0; i < value.length; i += 1) {
+    const code = value.charCodeAt(i);
+    if (code >= 48 && code <= 57) digits += 1;
+  }
+  return digits;
+}
 
 /**
  * Lowercase the domain, never the local part.
@@ -145,6 +183,19 @@ export function parseContactPayload(raw: unknown): ParseResult {
   const emailHasHeaderRisk = hasHeaderRisk(rawEmail);
   const email = normaliseEmail(stripControlChars(rawEmail).trim());
 
+  /* Checked for header risk like `name` and `email`: the phone number does not
+     reach a mail header today, but it is one line and it means nobody has to
+     remember this the day it does. */
+  const rawPhone = asString(payload.phone);
+  const phoneHasHeaderRisk = hasHeaderRisk(rawPhone);
+  const phone = stripControlChars(rawPhone).replace(/\s+/g, " ").trim();
+
+  /* The client sends a slug; the label comes from the canonical list. So the
+     only service text that can ever reach an email is text from this repo. */
+  const service = contactServiceOptions().find(
+    (option) => option.value === asString(payload.service).trim(),
+  );
+
   const message = stripControlChars(asString(payload.message))
     .replace(/\r\n/g, "\n")
     .replace(/\n{3,}/g, "\n\n")
@@ -170,6 +221,23 @@ export function parseContactPayload(raw: unknown): ParseResult {
     errors.email = "Ese email no parece válido. Revísalo y te respondo ahí.";
   }
 
+  if (phone) {
+    if (
+      phoneHasHeaderRisk ||
+      phone.length > PHONE_MAX_RAW ||
+      !PHONE_ALLOWED_RE.test(phone) ||
+      countDigits(phone) < PHONE_MIN_DIGITS ||
+      countDigits(phone) > PHONE_MAX_DIGITS
+    ) {
+      errors.phone =
+        "Ese teléfono no parece válido. Déjalo en blanco si prefieres.";
+    }
+  }
+
+  if (!service) {
+    errors.service = "Elige el servicio que te interesa.";
+  }
+
   if (message.length < MESSAGE_MIN) {
     errors.message = "Cuéntame un poco más.";
   } else if (message.length > MESSAGE_MAX) {
@@ -181,9 +249,11 @@ export function parseContactPayload(raw: unknown): ParseResult {
       "Necesito que aceptes la política de privacidad para poder responderte.";
   }
 
-  if (Object.keys(errors).length > 0) {
+  /* `!service` is already an error above; it is repeated here so the compiler
+     can narrow the type, not because the case is reachable on its own. */
+  if (Object.keys(errors).length > 0 || !service) {
     return { status: "invalid", errors };
   }
 
-  return { status: "ok", data: { name, email, message } };
+  return { status: "ok", data: { name, email, phone, service, message } };
 }

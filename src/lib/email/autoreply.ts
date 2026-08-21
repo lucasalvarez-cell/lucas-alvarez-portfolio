@@ -38,16 +38,26 @@ import {
  *   display heading. Shouting at a stranger who just wrote to you is a
  *   newsletter masthead, which is the register this email must avoid.
  *
- * What it keeps is the one thing that justifies its existence: a verbatim copy
- * of what they sent. People close the tab and immediately wonder what they
- * actually wrote.
+ * What it keeps is the one thing that justifies its existence: a copy of what
+ * they sent. People close the tab and immediately wonder what they actually
+ * wrote. The service and the phone number ride along inside that copy, as a
+ * quiet line above the quote — they are their own words read back, not a pitch,
+ * and seeing the chosen service is how a wrong click gets corrected before the
+ * reply rather than after it.
  */
 export function autoReplyEmail(submission: ContactSubmission): {
   subject: string;
   html: string;
   text: string;
 } {
-  const { name, message } = submission;
+  const { name, phone, service, message } = submission;
+
+  /* Part of the copy, so it uses the same muted register as a caption and never
+     a heading. `service.label` comes from this repo, `phone` from the visitor —
+     both escaped, on the principle that the rule holds regardless of source. */
+  const details = [`Servicio: ${escapeHtml(service.label)}`]
+    .concat(phone ? [`Teléfono: ${escapeHtml(phone)}`] : [])
+    .join(" · ");
 
   const rawFirstName = name.split(/\s+/)[0] ?? "";
   const firstName =
@@ -67,7 +77,7 @@ export function autoReplyEmail(submission: ContactSubmission): {
       spacer(16),
       rule(),
       spacer(24),
-      `<tr><td>${label("Tu mensaje")}${quoteBlock(escapeHtmlWithBreaks(message))}</td></tr>`,
+      `<tr><td>${label("Tu mensaje")}<p style="margin:0 0 12px;font-family:${FONT_BODY};font-size:14px;line-height:20px;mso-line-height-rule:exactly;color:${COLORS.soft};" class="t-muted">${details}</p>${quoteBlock(escapeHtmlWithBreaks(message))}</td></tr>`,
       spacer(24),
       `<tr><td style="font-family:${FONT_DISPLAY};font-size:16px;line-height:24px;mso-line-height-rule:exactly;color:${COLORS.ink};" class="t-heading">— Lucas Álvarez</td></tr>`,
     ].join("\n"),
@@ -93,6 +103,9 @@ export function autoReplyEmail(submission: ContactSubmission): {
     "",
     "TU MENSAJE",
     "----------",
+    `Servicio: ${service.label}`,
+    ...(phone ? [`Teléfono: ${phone}`] : []),
+    "",
     message,
     "",
     "— Lucas Álvarez",

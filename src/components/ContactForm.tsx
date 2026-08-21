@@ -5,10 +5,14 @@ import Link from "next/link";
 import { clsx } from "clsx";
 import { Button } from "@/components/ui/Button";
 import { CONTACT } from "@/lib/constants";
+import type { ServiceOption } from "@/content/servicios";
 
 type Status = "idle" | "loading" | "success" | "error" | "rate-limited";
 type FieldErrors = Partial<
-  Record<"name" | "email" | "message" | "consent" | "form", string>
+  Record<
+    "name" | "email" | "phone" | "service" | "message" | "consent" | "form",
+    string
+  >
 >;
 
 const fieldStyles =
@@ -18,11 +22,27 @@ const labelStyles = "block text-sm font-semibold text-ink";
 
 const errorStyles = "mt-2 text-sm text-error";
 
-export function ContactForm() {
+/* A native select arrow ignores the border width and radius the rest of the
+   fields use, so the control is reset with `appearance-none` and given the
+   chevron back as a background image. Inline rather than a Tailwind arbitrary
+   value because the data URI carries spaces and quotes, which do not survive
+   bracket syntax cleanly. */
+const selectChevron = {
+  backgroundImage:
+    "url(\"data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%236423cd' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 8 5 5 5-5'/%3E%3C/svg%3E\")",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "right 1rem center",
+  backgroundSize: "1.25rem 1.25rem",
+} as const;
+
+export function ContactForm({ services }: { services: ServiceOption[] }) {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<FieldErrors>({});
   const [notice, setNotice] = useState<string | null>(null);
   const [receiptSent, setReceiptSent] = useState(false);
+  /* Tracked only so the placeholder option can be greyed out while nothing is
+     chosen — the value itself is read from `FormData` like every other field. */
+  const [service, setService] = useState("");
   /* Fixed once, when the form first renders. The server discards a submission
      that arrives faster than a person could plausibly have typed it. */
   const [renderedAt] = useState(() => Date.now());
@@ -64,6 +84,8 @@ export function ContactForm() {
         body: JSON.stringify({
           name: formData.get("name"),
           email: formData.get("email"),
+          phone: formData.get("phone"),
+          service: formData.get("service"),
           message: formData.get("message"),
           consent: formData.get("privacy-consent") === "on",
           website: formData.get("website"),
@@ -177,6 +199,72 @@ export function ContactForm() {
         {errors.email ? (
           <p id="email-error" className={errorStyles}>
             {errors.email}
+          </p>
+        ) : null}
+      </div>
+
+      <div>
+        <label htmlFor="phone" className={labelStyles}>
+          Teléfono <span className="font-normal text-ink-soft">(opcional)</span>
+        </label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          inputMode="tel"
+          autoComplete="tel"
+          placeholder="600 12 34 56"
+          onChange={() => clearError("phone")}
+          aria-invalid={errors.phone ? true : undefined}
+          aria-describedby={errors.phone ? "phone-error" : undefined}
+          className={clsx(fieldStyles, errors.phone && "border-error")}
+        />
+        {errors.phone ? (
+          <p id="phone-error" className={errorStyles}>
+            {errors.phone}
+          </p>
+        ) : null}
+      </div>
+
+      <div>
+        <label htmlFor="service" className={labelStyles}>
+          Servicio que te interesa
+        </label>
+        <select
+          id="service"
+          name="service"
+          required
+          value={service}
+          onChange={(event) => {
+            setService(event.target.value);
+            clearError("service");
+          }}
+          style={selectChevron}
+          aria-invalid={errors.service ? true : undefined}
+          aria-describedby={errors.service ? "service-error" : undefined}
+          className={clsx(
+            fieldStyles,
+            "appearance-none pr-11",
+            service === "" && "text-ink-soft/50",
+            errors.service && "border-error",
+          )}
+        >
+          <option value="" disabled>
+            Selecciona una opción
+          </option>
+          {services.map((option) => (
+            <option
+              key={option.value}
+              value={option.value}
+              className="text-ink"
+            >
+              {option.label}
+            </option>
+          ))}
+        </select>
+        {errors.service ? (
+          <p id="service-error" className={errorStyles}>
+            {errors.service}
           </p>
         ) : null}
       </div>

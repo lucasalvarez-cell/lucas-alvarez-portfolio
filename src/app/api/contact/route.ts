@@ -133,7 +133,7 @@ export async function POST(request: Request): Promise<Response> {
      would make the second send return the first's cached response. */
   const digest = createHash("sha256")
     .update(
-      `${submission.email}|${submission.message}|${Math.floor(sentAt.getTime() / 60_000)}`,
+      `${submission.email}|${submission.phone}|${submission.service.value}|${submission.message}|${Math.floor(sentAt.getTime() / 60_000)}`,
     )
     .digest("hex")
     .slice(0, 40);

@@ -69,7 +69,8 @@ export default function PoliticaPrivacidadPage() {
           <h2 className={h2}>Finalidad del tratamiento</h2>
           <p className={p}>
             Los datos que envías a través del formulario de contacto (nombre,
-            email y mensaje) se utilizan únicamente para responder a tu
+            email, teléfono si decides facilitarlo, servicio de tu interés y
+            mensaje) se utilizan únicamente para responder a tu
             consulta y, en su caso, prestarte los servicios que solicites. Al
             enviarlo, el sitio comprueba de forma automática y momentánea la
             dirección IP desde la que se envía, con el único fin de evitar el

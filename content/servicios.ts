@@ -865,3 +865,42 @@ export const SERVICES: Service[] = [
 export function getServiceBySlug(slug: string): Service | undefined {
   return SERVICES.find((service) => service.slug === slug);
 }
+
+/** Una entrada del desplegable de servicios del formulario de contacto. */
+export type ServiceOption = {
+  value: string;
+  label: string;
+  /** Versión corta, para el asunto del email de aviso. */
+  shortLabel: string;
+};
+
+/**
+ * Valor de escape del desplegable. No es un servicio y nunca tendrá página:
+ * está para que quien no sepa todavía qué necesita pueda enviar el formulario
+ * en lugar de elegir algo al azar y ensuciar el dato.
+ */
+export const SERVICE_OPTION_UNDECIDED = "no-lo-se";
+
+/**
+ * Las opciones del desplegable, derivadas de `SERVICES` para que añadir un
+ * servicio no obligue a acordarse de este fichero.
+ *
+ * Se llama desde el Server Component de `/contacto` y el resultado viaja al
+ * formulario como prop: importar `SERVICES` desde un componente `"use client"`
+ * arrastraría al bundle toda la prosa de este fichero —fichas, FAQs, precios—
+ * para usar seis títulos.
+ */
+export function contactServiceOptions(): ServiceOption[] {
+  return [
+    ...SERVICES.map((service) => ({
+      value: service.slug,
+      label: service.title,
+      shortLabel: service.shortTitle,
+    })),
+    {
+      value: SERVICE_OPTION_UNDECIDED,
+      label: "Todavía no lo sé / Otro",
+      shortLabel: "Sin definir",
+    },
+  ];
+}
