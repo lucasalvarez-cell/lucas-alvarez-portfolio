@@ -53,9 +53,9 @@ export function autoReplyEmail(submission: ContactSubmission): {
   const { name, phone, service, message } = submission;
 
   /* Part of the copy, so it uses the same muted register as a caption and never
-     a heading. `service.label` comes from this repo, `phone` from the visitor —
+     a heading. `service.fullLabel` is from this repo, `phone` from the visitor —
      both escaped, on the principle that the rule holds regardless of source. */
-  const details = [`Servicio: ${escapeHtml(service.label)}`]
+  const details = [`Servicio: ${escapeHtml(service.fullLabel)}`]
     .concat(phone ? [`Teléfono: ${escapeHtml(phone)}`] : [])
     .join(" · ");
 
@@ -103,7 +103,7 @@ export function autoReplyEmail(submission: ContactSubmission): {
     "",
     "TU MENSAJE",
     "----------",
-    `Servicio: ${service.label}`,
+    `Servicio: ${service.fullLabel}`,
     ...(phone ? [`Teléfono: ${phone}`] : []),
     "",
     message,

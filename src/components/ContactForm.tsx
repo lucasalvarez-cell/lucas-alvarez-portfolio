@@ -159,114 +159,122 @@ export function ContactForm({ services }: { services: ServiceOption[] }) {
         aria-hidden="true"
       />
 
-      <div>
-        <label htmlFor="name" className={labelStyles}>
-          Nombre
-        </label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          required
-          autoComplete="name"
-          onChange={() => clearError("name")}
-          aria-invalid={errors.name ? true : undefined}
-          aria-describedby={errors.name ? "name-error" : undefined}
-          className={clsx(fieldStyles, errors.name && "border-error")}
-        />
-        {errors.name ? (
-          <p id="name-error" className={errorStyles}>
-            {errors.name}
-          </p>
-        ) : null}
-      </div>
+      {/* The four short answers share two rows instead of taking a line each.
+          Six columns rather than two so the split can be uneven where the
+          content is: a phone number is a fixed handful of digits, a service
+          name is not, so the phone takes a third of its row and the dropdown
+          the rest. One column below `sm`, where half a phone screen is not a
+          usable field. */}
+      <div className="grid gap-6 sm:grid-cols-6">
+        <div className="sm:col-span-3">
+          <label htmlFor="name" className={labelStyles}>
+            Nombre
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            autoComplete="name"
+            onChange={() => clearError("name")}
+            aria-invalid={errors.name ? true : undefined}
+            aria-describedby={errors.name ? "name-error" : undefined}
+            className={clsx(fieldStyles, errors.name && "border-error")}
+          />
+          {errors.name ? (
+            <p id="name-error" className={errorStyles}>
+              {errors.name}
+            </p>
+          ) : null}
+        </div>
 
-      <div>
-        <label htmlFor="email" className={labelStyles}>
-          Email
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          autoComplete="email"
-          onChange={() => clearError("email")}
-          aria-invalid={errors.email ? true : undefined}
-          aria-describedby={errors.email ? "email-error" : undefined}
-          className={clsx(fieldStyles, errors.email && "border-error")}
-        />
-        {errors.email ? (
-          <p id="email-error" className={errorStyles}>
-            {errors.email}
-          </p>
-        ) : null}
-      </div>
+        <div className="sm:col-span-3">
+          <label htmlFor="email" className={labelStyles}>
+            Email
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            onChange={() => clearError("email")}
+            aria-invalid={errors.email ? true : undefined}
+            aria-describedby={errors.email ? "email-error" : undefined}
+            className={clsx(fieldStyles, errors.email && "border-error")}
+          />
+          {errors.email ? (
+            <p id="email-error" className={errorStyles}>
+              {errors.email}
+            </p>
+          ) : null}
+        </div>
 
-      <div>
-        <label htmlFor="phone" className={labelStyles}>
-          Teléfono <span className="font-normal text-ink-soft">(opcional)</span>
-        </label>
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          inputMode="tel"
-          autoComplete="tel"
-          placeholder="600 12 34 56"
-          onChange={() => clearError("phone")}
-          aria-invalid={errors.phone ? true : undefined}
-          aria-describedby={errors.phone ? "phone-error" : undefined}
-          className={clsx(fieldStyles, errors.phone && "border-error")}
-        />
-        {errors.phone ? (
-          <p id="phone-error" className={errorStyles}>
-            {errors.phone}
-          </p>
-        ) : null}
-      </div>
+        <div className="sm:col-span-2">
+          <label htmlFor="phone" className={labelStyles}>
+            Teléfono <span className="font-normal text-ink-soft">(opcional)</span>
+          </label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            placeholder="600 12 34 56"
+            onChange={() => clearError("phone")}
+            aria-invalid={errors.phone ? true : undefined}
+            aria-describedby={errors.phone ? "phone-error" : undefined}
+            className={clsx(fieldStyles, errors.phone && "border-error")}
+          />
+          {errors.phone ? (
+            <p id="phone-error" className={errorStyles}>
+              {errors.phone}
+            </p>
+          ) : null}
+        </div>
 
-      <div>
-        <label htmlFor="service" className={labelStyles}>
-          Servicio que te interesa
-        </label>
-        <select
-          id="service"
-          name="service"
-          required
-          value={service}
-          onChange={(event) => {
-            setService(event.target.value);
-            clearError("service");
-          }}
-          style={selectChevron}
-          aria-invalid={errors.service ? true : undefined}
-          aria-describedby={errors.service ? "service-error" : undefined}
-          className={clsx(
-            fieldStyles,
-            "appearance-none pr-11",
-            service === "" && "text-ink-soft/50",
-            errors.service && "border-error",
-          )}
-        >
-          <option value="" disabled>
-            Selecciona una opción
-          </option>
-          {services.map((option) => (
-            <option
-              key={option.value}
-              value={option.value}
-              className="text-ink"
-            >
-              {option.label}
+        <div className="sm:col-span-4">
+          <label htmlFor="service" className={labelStyles}>
+            Servicio que te interesa
+          </label>
+          <select
+            id="service"
+            name="service"
+            required
+            value={service}
+            onChange={(event) => {
+              setService(event.target.value);
+              clearError("service");
+            }}
+            style={selectChevron}
+            aria-invalid={errors.service ? true : undefined}
+            aria-describedby={errors.service ? "service-error" : undefined}
+            className={clsx(
+              fieldStyles,
+              "appearance-none truncate pr-11",
+              service === "" && "text-ink-soft/50",
+              errors.service && "border-error",
+            )}
+          >
+            <option value="" disabled>
+              Selecciona una opción
             </option>
-          ))}
-        </select>
-        {errors.service ? (
-          <p id="service-error" className={errorStyles}>
-            {errors.service}
-          </p>
-        ) : null}
+            {services.map((option) => (
+              <option
+                key={option.value}
+                value={option.value}
+                className="text-ink"
+              >
+                {option.label}
+              </option>
+            ))}
+          </select>
+          {errors.service ? (
+            <p id="service-error" className={errorStyles}>
+              {errors.service}
+            </p>
+          ) : null}
+        </div>
       </div>
 
       <div>

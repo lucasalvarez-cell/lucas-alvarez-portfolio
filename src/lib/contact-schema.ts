@@ -229,8 +229,9 @@ export function parseContactPayload(raw: unknown): ParseResult {
       countDigits(phone) < PHONE_MIN_DIGITS ||
       countDigits(phone) > PHONE_MAX_DIGITS
     ) {
-      errors.phone =
-        "Ese teléfono no parece válido. Déjalo en blanco si prefieres.";
+      /* Short on purpose: this sits under a field a third of a row wide, and
+         the label right above it already says the number is optional. */
+      errors.phone = "Revisa el teléfono.";
     }
   }
 

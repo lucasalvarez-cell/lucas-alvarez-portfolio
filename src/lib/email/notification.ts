@@ -45,8 +45,8 @@ export function notificationEmail(
   /* Gmail truncates the subject around 60–70 characters on mobile, so the two
      tokens that actually help triage go there and nothing else: who wrote, and
      what about. The name goes first and is capped; the service uses `shortTitle`
-     ("SEO", "Redes sociales") rather than the full title, which is what that
-     field exists for. The message excerpt belongs in the preheader, where there
+     ("SEO", "Redes sociales") rather than the full name, which is also what
+     the visitor picked from — the full name goes in the body. The message excerpt belongs in the preheader, where there
      is room for it. */
   const subjectName = name.length > 40 ? `${name.slice(0, 39)}…` : name;
 
@@ -70,7 +70,7 @@ export function notificationEmail(
       `<tr><td>${label("Su mensaje")}${quoteBlock(escapeHtmlWithBreaks(message))}</td></tr>`,
       spacer(24),
       `<tr><td>${rows(
-        metaRow("Servicio", escapeHtml(service.label)) +
+        metaRow("Servicio", escapeHtml(service.fullLabel)) +
           metaRow("Recibido", escapeHtml(formatMadrid(sentAt))) +
           metaRow("Página", "/contacto"),
       )}</td></tr>`,
@@ -93,7 +93,7 @@ export function notificationEmail(
     `Nombre:    ${name}`,
     `Email:     ${email}`,
     ...(phone ? [`Teléfono:  ${phone}`] : []),
-    `Servicio:  ${service.label}`,
+    `Servicio:  ${service.fullLabel}`,
     `Recibido:  ${formatMadrid(sentAt)}`,
     "Página:    /contacto",
     "",
@@ -106,7 +106,7 @@ export function notificationEmail(
   ].join("\n");
 
   return {
-    subject: `Nuevo mensaje de ${subjectName} · ${service.shortLabel}`,
+    subject: `Nuevo mensaje de ${subjectName} · ${service.label}`,
     html,
     text,
   };

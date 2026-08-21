@@ -869,9 +869,17 @@ export function getServiceBySlug(slug: string): Service | undefined {
 /** Una entrada del desplegable de servicios del formulario de contacto. */
 export type ServiceOption = {
   value: string;
+  /**
+   * Lo que se lee en el desplegable, y en el asunto del email de aviso.
+   *
+   * Es `shortTitle` y no `title` por una razón de espacio: el campo comparte
+   * fila con el teléfono, y «Estrategia de contenido y crecimiento orgánico»
+   * no cabe ahí sin recortarse. Además es la misma palabra que usa el menú de
+   * servicios, así que quien llega desde ahí reconoce lo que eligió.
+   */
   label: string;
-  /** Versión corta, para el asunto del email de aviso. */
-  shortLabel: string;
+  /** El nombre completo del servicio, para el cuerpo de los dos emails. */
+  fullLabel: string;
 };
 
 /**
@@ -894,13 +902,13 @@ export function contactServiceOptions(): ServiceOption[] {
   return [
     ...SERVICES.map((service) => ({
       value: service.slug,
-      label: service.title,
-      shortLabel: service.shortTitle,
+      label: service.shortTitle,
+      fullLabel: service.title,
     })),
     {
       value: SERVICE_OPTION_UNDECIDED,
       label: "Todavía no lo sé / Otro",
-      shortLabel: "Sin definir",
+      fullLabel: "Todavía no lo sé / Otro",
     },
   ];
 }
