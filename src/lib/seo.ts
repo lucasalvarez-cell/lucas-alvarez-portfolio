@@ -88,7 +88,7 @@ export function buildMetadata({
             type: "article" as const,
             publishedTime: article.publishedTime,
             modifiedTime: article.modifiedTime ?? article.publishedTime,
-            authors: [SITE_URL],
+            authors: [`${SITE_URL}/sobre-mi`],
             section: article.section,
             tags: article.tags,
           }

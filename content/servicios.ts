@@ -219,14 +219,14 @@ export const SERVICES: Service[] = [
       {
         title: "Primero el diagnóstico, después el calendario",
         body: "Antes de planificar una sola publicación reviso qué está pasando de verdad en tu perfil: qué formatos has probado, en qué segundo se cae la retención, qué ganchos aguantan, qué frecuencia sostienes y a qué audiencia estás atrayendo realmente frente a la que crees tener. De ahí sale una línea editorial concreta, con objetivos medibles por plataforma. La mayoría de cuentas estancadas no publican poco: publican lo que no toca.",
-        image: "/images/placeholders/work-01.jpg",
+        image: "/images/work/work-01.jpg",
         imageAlt:
           "Análisis de formatos y retención de una cuenta de Instagram gestionada por Lucas Álvarez",
       },
       {
         title: "Guion, grabación, publicación y análisis",
         body: "Me encargo del guion, del plan de grabación, de la edición, de la publicación y del seguimiento. Cada mes revisamos qué ha rendido y ajustamos: se escala el formato ganador y se retira el que no aporta. Es exactamente el proceso con el que Camping Puzol subió un 62 % sus visualizaciones en un mes y con el que Camping Victòria las multiplicó por seis al pasar de uno a dos posts semanales, una vez identificado el formato que le funcionaba.",
-        image: "/images/placeholders/work-02.jpg",
+        image: "/images/work/work-02.jpg",
         imageAlt:
           "Resultados mensuales de gestión de redes sociales para Camping Puzol y Camping Victòria",
       },
@@ -345,13 +345,13 @@ export const SERVICES: Service[] = [
       {
         title: "Entender por qué no está funcionando",
         body: "El punto de partida es un diagnóstico honesto: tu posicionamiento actual, tu audiencia real frente a la que asumes, y los mensajes que estás lanzando. Casi ningún perfil estancado tiene un problema de volumen. Tiene un problema de enfoque: habla a quien no le escucha, o en un formato que esa audiencia concreta no consume. Hasta que eso no está resuelto, producir más contenido solo multiplica el mismo error.",
-        image: "/images/placeholders/work-03.jpg",
+        image: "/images/work/work-03.jpg",
         imageAlt: "Diagnóstico de posicionamiento y audiencia real de una marca",
       },
       {
         title: "Un sistema que sobrevive sin mí",
         body: "Construyo un marco que tu equipo o tú podéis mantener: pilares de contenido definidos, formatos ganadores identificados con datos, plantillas de guion y un proceso de producción claro. Es el mismo tipo de sistema que diseñé para los canales de YouTube Reino Selva y RayWild, donde el guion, el título y la descripción siguen una estructura fija y replicable. El objetivo no es un pico puntual de alcance: es una base que siga creciendo cuando yo ya no lleve el día a día.",
-        image: "/images/placeholders/work-04.jpg",
+        image: "/images/work/work-04.jpg",
         imageAlt:
           "Sistema de guion, títulos y descripciones diseñado para los canales Reino Selva y RayWild",
       },
@@ -476,13 +476,13 @@ export const SERVICES: Service[] = [
       {
         title: "Base técnica sólida",
         body: "Reviso lo que impide que Google entienda y priorice tu web: velocidad de carga y Core Web Vitals, indexación, estructura de URLs, datos estructurados, versión móvil y errores de rastreo. Sin esta base, cualquier esfuerzo de contenido rinde por debajo de su potencial: estás escribiendo para un buscador que no te está leyendo bien.",
-        image: "/images/placeholders/work-05.jpg",
+        image: "/images/work/work-05.jpg",
         imageAlt: "Auditoría técnica de SEO y Core Web Vitals",
       },
       {
         title: "Palabras clave que traen clientes, no visitas",
         body: "Identifico las búsquedas que hacen tus clientes reales, no las que tienen más volumen, y diseño la arquitectura de contenido que responde a cada intención. Una página, una intención, un objetivo. Es la diferencia entre subir en un ranking y que suene el teléfono.",
-        image: "/images/placeholders/work-06.jpg",
+        image: "/images/work/work-06.jpg",
         imageAlt:
           "Estrategia de palabras clave y arquitectura de contenido orientada a conversión",
       },
@@ -602,13 +602,13 @@ export const SERVICES: Service[] = [
       {
         title: "Rendimiento y accesibilidad de serie",
         body: "Desarrollo con tecnologías modernas que priorizan la velocidad de carga y el rendimiento en móvil, porque afectan directamente al posicionamiento y a la tasa de conversión. La accesibilidad no es un extra que se añade al final: forma parte de cómo se construye cada componente. Una web que carga un segundo más tarde no es una web peor: es una web con menos clientes.",
-        image: "/images/placeholders/work-01.jpg",
+        image: "/images/work/work-01.jpg",
         imageAlt: "Desarrollo web optimizado para velocidad de carga y accesibilidad",
       },
       {
         title: "Construida para convertir",
         body: "La estructura, los textos y las llamadas a la acción se ordenan según lo que queremos que pase en esa página, y se miden después con datos reales de uso para poder ajustarlos. El diseño no es una cuestión de gusto: es una cuestión de dónde mira la gente y qué hace a continuación.",
-        image: "/images/placeholders/work-02.jpg",
+        image: "/images/work/work-02.jpg",
         imageAlt: "Estructura de una landing page orientada a conversión",
       },
     ],
@@ -725,13 +725,13 @@ export const SERVICES: Service[] = [
       {
         title: "El creativo decide, la segmentación acompaña",
         body: "En Meta Ads la plataforma es mucho mejor que cualquier persona encontrando al público adecuado, siempre que el anuncio consiga pararlo. Por eso el trabajo se concentra donde de verdad cambia el resultado: guion, gancho y montaje de la pieza. Produzco los anuncios en el mismo sitio donde diseño la estrategia, así que el creativo que funciona en orgánico se convierte en anuncio sin pasar por tres proveedores.",
-        image: "/images/placeholders/work-05.jpg",
+        image: "/images/work/work-05.jpg",
         imageAlt: "Producción de creativos en vídeo para campañas de Meta Ads",
       },
       {
         title: "Medir clientes, no impresiones",
         body: "Antes de gastar un euro se configura el seguimiento de conversiones y se comprueba con una conversión real que registra bien. A partir de ahí, cada informe habla de cuánto cuesta conseguir un cliente y qué se hace el mes que viene, no de cuántas personas vieron el anuncio. El objetivo de una cuenta publicitaria no es alcance: es margen.",
-        image: "/images/placeholders/work-06.jpg",
+        image: "/images/work/work-06.jpg",
         imageAlt: "Informe de coste por conversión de una campaña de Google Ads",
       },
     ],
@@ -848,13 +848,13 @@ export const SERVICES: Service[] = [
       {
         title: "Diagnóstico completo, sin puntos ciegos",
         body: "Analizo tu presencia digital como un conjunto: perfiles sociales, web, posicionamiento en buscadores y la coherencia del mensaje entre todos ellos. Los problemas de una marca rara vez están aislados en un solo canal, y tratarlos por separado suele ser exactamente la razón por la que llevan años sin resolverse.",
-        image: "/images/placeholders/work-03.jpg",
+        image: "/images/work/work-03.jpg",
         imageAlt: "Auditoría completa de presencia digital: redes sociales, web y SEO",
       },
       {
         title: "Una lista priorizada, no un informe",
         body: "El resultado no es un PDF de cien páginas que nadie abre. Es una lista concreta de acciones ordenadas por impacto y esfuerzo: qué hacer esta semana, qué puede esperar y qué no merece la pena hacer nunca. Si quieres, después acompaño la implementación; si no, te queda un plan que puede ejecutar cualquiera.",
-        image: "/images/placeholders/work-04.jpg",
+        image: "/images/work/work-04.jpg",
         imageAlt:
           "Plan de acción de marketing digital priorizado por impacto y esfuerzo",
       },

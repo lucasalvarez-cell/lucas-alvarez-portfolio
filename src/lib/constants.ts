@@ -25,14 +25,10 @@ export const SOCIALS = {
   /**
    * `href: null` hides the link everywhere it is rendered. A placeholder "#"
    * ships a dead link into the crawl, so the profile URL goes here or nowhere.
-   *
-   * TODO(lucas): pegar la URL real. Ahora mismo `sameAs` tiene una sola
-   * entrada, y las menciones de marca pesan bastante más que los enlaces a la
-   * hora de que un buscador con IA cite la fuente.
    */
   linkedin: {
     label: "LinkedIn",
-    href: null as string | null,
+    href: "https://www.linkedin.com/in/lucas-alvarez-199b63219/" as string | null,
   },
   /* TODO(lucas): canal propio, si lo hay. */
   youtube: {

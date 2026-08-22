@@ -15,7 +15,7 @@ export function CTASection({
   return (
     <section className="relative overflow-hidden bg-ink text-white">
       <Image
-        src="/images/placeholders/cta-image.jpg"
+        src="/images/cta-image.jpg"
         alt=""
         aria-hidden
         fill

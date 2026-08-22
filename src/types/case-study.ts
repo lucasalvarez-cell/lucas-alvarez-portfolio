@@ -11,6 +11,12 @@ export type CaseStudy = {
    * runs far past the ~160 characters Google shows.
    */
   metaDescription: string;
+  /**
+   * ISO date the case first went live, for `datePublished`. Kept separate from
+   * `updated`: reusing one date for both makes every case claim it was
+   * published on the day it was last edited, which reads as churn.
+   */
+  published: string;
   /** ISO date of the last substantive update, for `dateModified` and sitemaps. */
   updated: string;
   sector: string;

@@ -25,6 +25,12 @@ export function generateStaticParams() {
   return SERVICES.map((service) => ({ slug: service.slug }));
 }
 
+/* Every slug is known at build time, so an unknown one is a 404 and not a page
+   rendered on demand. Without this the miss path renders, `generateMetadata`
+   returns {} and the page inherits the root layout's canonical to the home
+   page before `notFound()` gets a chance to run. */
+export const dynamicParams = false;
+
 export async function generateMetadata({
   params,
 }: {

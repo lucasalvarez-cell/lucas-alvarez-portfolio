@@ -8,12 +8,22 @@ import { NAV_LINKS } from "@/lib/constants";
  * A 404 still gets crawled, so it says `noindex` explicitly rather than relying
  * on the status code alone, and it keeps the site's links reachable so a stale
  * inbound link does not become a dead end.
+ *
+ * `robots` has to stay. Next emits its own `noindex` for this route, so the
+ * page ends up with two robots tags either way, but dropping this one makes the
+ * page inherit the root layout's `index, follow` and the two tags contradict
+ * each other. Duplicated and in agreement beats deduplicated and contradictory.
+ *
+ * `canonical: null` is the other half: without it the page inherits the root
+ * layout's `alternates: { canonical: "/" }` and every 404 on the site declares
+ * itself a copy of the home page.
  */
 export const metadata: Metadata = {
   title: "Página no encontrada",
   description:
     "La página que buscas no existe o ha cambiado de dirección. Estas son las secciones del sitio.",
   robots: { index: false, follow: true },
+  alternates: { canonical: null },
 };
 
 export default function NotFound() {

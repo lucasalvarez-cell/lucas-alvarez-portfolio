@@ -614,7 +614,7 @@ export function caseStudySchema(caseStudy: CaseStudy) {
     "@id": `${url}#article`,
     headline: `${caseStudy.client}: ${caseStudy.headline}`,
     description: caseStudy.metaDescription,
-    datePublished: caseStudy.updated,
+    datePublished: caseStudy.published,
     dateModified: caseStudy.updated,
     inLanguage: SITE_LANG,
     image: {

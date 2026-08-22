@@ -32,12 +32,19 @@ import {
   rankingSchema,
 } from "@/lib/schema";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { SITE_URL } from "@/lib/constants";
 import { TAG_LABELS, getTopic } from "@/lib/topics";
 import type { Post } from "@/types/blog";
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }));
 }
+
+/* Every slug is known at build time, so an unknown one is a 404 and not a page
+   rendered on demand. Without this the miss path renders, `generateMetadata`
+   returns {} and the page inherits the root layout's canonical to the home
+   page before `notFound()` gets a chance to run. */
+export const dynamicParams = false;
 
 export async function generateMetadata({
   params,
@@ -121,7 +128,7 @@ export default async function BlogPostPage({
   const words = wordCount(post.content);
   const headings = buildIndex(post);
   const related = pickRelated(post, posts);
-  const faq = faqSchema(post.faq);
+  const faq = faqSchema(post.faq, `${SITE_URL}/blog/${post.slug}`);
   const ranking = rankingSchema(post);
 
   /*

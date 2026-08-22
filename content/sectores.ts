@@ -1,5 +1,5 @@
 import type { FaqItem } from "@/types/content";
-import type { ServicePricing } from "./servicios";
+import { getServiceBySlug, type ServicePricing } from "./servicios";
 
 /**
  * Sector landing pages: one service crossed with one industry.
@@ -604,6 +604,14 @@ export function assertSectorPages(): void {
 
     if (!getSectorBySlug(page.sector)) {
       throw new Error(`Sector page ${id}: el sector "${page.sector}" no existe.`);
+    }
+
+    /* The symmetric check. Without it a typo in `service` still gets a sitemap
+       entry, and the URL it points at is a 404. */
+    if (!getServiceBySlug(page.service)) {
+      throw new Error(
+        `Sector page ${id}: el servicio "${page.service}" no existe.`,
+      );
     }
 
     const words = sectorPageWordCount(page);
