@@ -1,0 +1,119 @@
+---
+title: "Qué es el CTR y cuándo un CTR bajo es un problema"
+metaTitle: "Qué es el CTR y cómo se interpreta"
+description: "Qué es el CTR, cómo se calcula, qué se considera bueno en buscador y en publicidad, y por qué un CTR alto puede estar escondiendo un problema."
+date: "2026-09-27"
+slug: "que-es-el-ctr"
+tags: ["analitica", "publicidad"]
+quickAnswer: "El CTR es el porcentaje de personas que hacen clic sobre las que han visto algo. Se calcula dividiendo clics entre impresiones. En resultados orgánicos de Google, un 3 % a 5 % es normal para posiciones medias; en Google Ads, entre un 2 % y un 6 % según sector. Aislado no significa nada."
+keyTakeaways:
+  - "El CTR compara clics con impresiones, no con visitas. Mil impresiones con cinco clics no son mil visitas, son cinco."
+  - "El CTR solo se puede juzgar contra la posición. Un 2 % en la primera posición es malísimo y en la décima es excelente."
+  - "Un CTR que sube y conversiones que no se mueven suele significar que el título promete algo que la página no cumple."
+  - "En Search Console, las búsquedas con muchas impresiones y CTR cero en posición 8 a 25 son las que menos esfuerzo necesitan para dar resultado."
+  - "Un CTR muy alto con conversión baja es peor señal que un CTR bajo con conversión alta: significa que estás pagando o atrayendo clics que no te sirven."
+faq:
+  - question: "¿Cómo se calcula el CTR?"
+    answer: "Se divide el número de clics entre el número de impresiones y se multiplica por cien. Si tu resultado ha aparecido mil veces en Google y le han hecho clic treinta personas, tu CTR es del 3 %. La parte que se malinterpreta es la impresión: una impresión es que has aparecido en la lista de resultados, aunque el usuario no haya bajado hasta donde estabas. Por eso un número alto de impresiones con pocos clics no significa que la gente te haya rechazado, a menudo significa que no te ha visto."
+  - question: "¿Qué CTR se considera bueno?"
+    answer: "Depende de la posición y del sector, así que una cifra suelta engaña. En resultados orgánicos, la primera posición se mueve en torno al 25 % o 30 %, la tercera baja al 10 % y a partir de la décima cae por debajo del 2 %. En Google Ads, la media de búsqueda ronda el 2 % al 6 % según sector, y en anuncios de display baja por debajo del 0,5 %. La comparación útil no es contra la media del mercado sino contra tu propia posición y contra tu histórico."
+  - question: "¿Un CTR alto es siempre bueno?"
+    answer: "No, y es uno de los engaños más frecuentes. Si el título promete algo que la página no cumple, el CTR sube y la gente se va en tres segundos. En publicidad es peor, porque cada uno de esos clics se paga. Un CTR del 8 % con una conversión del 0,2 % es una máquina de quemar presupuesto muy eficiente. La métrica útil es el CTR junto a lo que pasa después, nunca sola."
+  - question: "¿Cómo mejoro el CTR en resultados de Google?"
+    answer: "Reescribiendo el título y la meta descripción de la página, que es lo que se lee en el resultado. El título tiene que llevar la búsqueda al principio y decir algo concreto: un número, un plazo, un precio, una restricción. La descripción expande con lo que hace distinta a tu página. Y hay una vía que casi nadie usa: mirar en Search Console qué búsquedas te dan impresiones y no clics, y escribir el título pensando en esa búsqueda concreta y no en el tema general."
+  - question: "¿Afecta el CTR al posicionamiento?"
+    answer: "Google ha evitado confirmarlo como factor directo durante años y la respuesta honesta es que no se sabe con certeza. Lo que sí es seguro es el efecto práctico: si mejoras el CTR, entran más visitas con el mismo posicionamiento, y eso ya justifica el trabajo sin necesidad de que sea una señal de ranking. Optimizar títulos por si acaso influye en el algoritmo es un mal motivo; hacerlo porque duplica las visitas de la misma posición es un buen motivo."
+  - question: "¿Qué diferencia hay entre el CTR de búsqueda y el de un correo?"
+    answer: "Lo que cuenta como impresión. En búsqueda, aparecer en la lista ya es una impresión aunque nadie baje. En email marketing, la impresión suele ser la apertura, así que el CTR mide clics sobre correos abiertos, un público que ya ha mostrado interés. Por eso los porcentajes no son comparables entre canales: un 3 % es normal en un resultado orgánico y sería flojo en un correo a una lista propia, donde lo habitual está entre el 2 % y el 5 % sobre enviados y bastante más sobre abiertos."
+---
+
+El CTR es el porcentaje de gente que hace clic sobre la que ha visto algo. Las siglas vienen de *click-through rate*, y en castellano se dice tasa de clics.
+
+La fórmula es sencilla: clics dividido entre impresiones, por cien. Lo difícil no es calcularlo, es interpretarlo, porque aislado no significa nada.
+
+## ¿Qué cuenta como una impresión?
+
+Esta es la parte que más se malinterpreta y la que más conclusiones equivocadas genera.
+
+En Google, una impresión es que tu resultado ha aparecido en la lista, aunque el usuario no haya bajado hasta donde estabas. Si estás en la posición veintitrés, casi nadie llega ahí, y tu CTR va a ser cercano a cero. Eso no significa que la gente te haya rechazado: significa que no te ha visto.
+
+De ahí sale el error más común: confundir impresiones con visitas. Mil impresiones con cinco clics no son mil visitas. Son cinco.
+
+## Qué se considera normal
+
+| Contexto | CTR habitual |
+|---|---|
+| Orgánico, posición 1 | 25 % a 30 % |
+| Orgánico, posición 3 | En torno al 10 % |
+| Orgánico, posición 10 | Por debajo del 2 % |
+| Google Ads, búsqueda | 2 % a 6 % según sector |
+| Google Ads, display | Por debajo del 0,5 % |
+| Email a lista propia | 2 % a 5 % sobre enviados |
+
+Son referencias, no objetivos. La comparación útil no es contra la media del mercado: es contra tu propia posición y contra tu mes anterior.
+
+<Callout type="aviso" title="La regla que evita casi todos los errores">
+El CTR solo se puede juzgar contra la posición. Un 2 % en la primera posición es malísimo. Un 2 % en la décima es excelente. Sin la posición al lado, el número no dice nada.
+</Callout>
+
+## El filón que casi nadie usa
+
+En Search Console, informe de rendimiento, pestaña de consultas. Ordena por impresiones y busca este patrón: muchas impresiones, cero o casi cero clics, posición entre 8 y 25.
+
+Google te está diciendo que eres relevante para esa búsqueda pero no eres la respuesta. Son las consultas que menos esfuerzo necesitan para moverse, porque el trabajo de relevancia ya está medio hecho.
+
+La otra lectura es al revés y también es útil: búsquedas donde estás en posición 3 con un 1 % de clics. Ahí el problema no es el posicionamiento, es lo que sale escrito en el resultado. El detalle de dónde encontrar esto está en [cómo usar Search Console](/blog/como-usar-google-search-console).
+
+## Cómo se mejora
+
+Lo que se lee en un resultado de Google son dos cosas: el título y la descripción. Son las dos que se reescriben.
+
+**El título.** La búsqueda al principio, y algo concreto después: un número, un plazo, un precio, una restricción. «Cuánto cuesta una página web en 2026: precios reales» funciona mejor que «Nuestros servicios de diseño web».
+
+**La descripción.** Entre 130 y 150 caracteres, voz activa, y expande el título con lo que hace distinta a tu página. Sin comillas, porque Google corta ahí.
+
+Y un detalle que cambia bastante: escribe el título pensando en la búsqueda concreta que te da impresiones, no en el tema general de la página.
+
+## Cuándo un CTR alto es una mala noticia
+
+Cuando el título promete algo que la página no cumple.
+
+El CTR sube, la gente entra y se va en tres segundos. En orgánico eso te cuesta credibilidad. En publicidad te cuesta dinero, porque cada uno de esos clics se paga.
+
+Un CTR del 8 % con una conversión del 0,2 % es una máquina muy eficiente de quemar presupuesto. Por eso esta métrica no se mira nunca sola: se mira junto a lo que pasa después del clic.
+
+## El CTR en publicidad, que funciona distinto
+
+En Google Ads el CTR no es solo una métrica de resultado: es un ingrediente del precio.
+
+El nivel de calidad de cada palabra clave mide tres cosas, y una de ellas es si tu anuncio recibe más o menos clics de lo esperado para su posición. Un CTR por encima de lo esperado sube el nivel de calidad, y un nivel de calidad alto abarata el clic.
+
+Es decir: en publicidad, mejorar el CTR no solo trae más visitas, también las hace más baratas. Es de los pocos sitios donde el trabajo bien hecho se traduce directamente en dinero ahorrado. Lo he desarrollado en [qué es el SEM](/blog/que-es-el-sem).
+
+## Lo que yo miro en su lugar
+
+El CTR me sirve para diagnosticar, no para juzgar. Cuando reviso una cuenta o una web, lo uso para responder a una pregunta concreta: ¿el problema está antes o después del clic?
+
+Si hay impresiones y no hay clics, el problema está en lo que se lee en el resultado o en la posición. Si hay clics y no hay contactos, el problema está en la página.
+
+Esa distinción es lo único que decide en qué trabajar el mes siguiente, y es lo primero que reviso en cualquier [auditoría](/servicios/auditoria-consultoria-digital).
+
+## ¿Cómo se mide el CTR en cada sitio?
+
+Los tres paneles que lo dan, y lo que cada uno llama impresión, que es donde nacen casi todas las confusiones.
+
+**Search Console.** Informe de rendimiento, casilla «CTR medio». La impresión es haber aparecido en la lista de resultados. Se puede filtrar por consulta, por página, por país y por dispositivo, y esa última segmentación es la más reveladora: es habitual que el CTR en móvil sea la mitad que en ordenador para la misma posición, porque en la pantalla pequeña caben menos resultados antes del pliegue.
+
+**Google Ads.** Columna CTR, disponible por campaña, por grupo de anuncios, por palabra clave y por anuncio. Aquí la impresión es que tu anuncio se haya mostrado, así que el número es más limpio que en orgánico. La vista que de verdad sirve es la de palabra clave: una sola con CTR muy bajo puede estar arrastrando el nivel de calidad de todo el grupo.
+
+**Las herramientas de email.** La impresión suele ser la apertura, no el envío, así que conviene mirar si el porcentaje que te dan es sobre enviados o sobre abiertos. La diferencia entre las dos lecturas puede ser de cinco veces, y es la razón por la que las comparaciones de CTR entre canales casi nunca significan nada.
+
+## Un aviso sobre los objetivos de CTR
+
+He visto informes mensuales donde el objetivo era subir el CTR medio del sitio. Es un objetivo que se puede cumplir empeorando el negocio.
+
+Basta con dejar de aparecer en búsquedas amplias donde estás en posición veinte: desaparecen miles de impresiones sin clics, el CTR medio sube y has perdido visibilidad. El número mejora y la situación empeora.
+
+Los objetivos útiles son de clics, de contactos o de ventas. El CTR es una herramienta de diagnóstico, no una meta.
+
+El objetivo bien planteado suena distinto: subir los clics de las diez búsquedas que ya nos dan impresiones sin clics, sin perder ninguna de las que hoy convierten. Ese sí se puede cumplir sin hacerle daño al negocio, y es el que dejo escrito cuando un [servicio de SEO](/servicios/seo) arranca.
