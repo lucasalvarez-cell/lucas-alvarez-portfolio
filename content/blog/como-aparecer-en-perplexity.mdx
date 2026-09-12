@@ -1,0 +1,128 @@
+---
+title: "Cómo aparecer en Perplexity cuando alguien pregunta por tu sector"
+metaTitle: "Cómo aparecer en Perplexity"
+description: "Qué fuentes cita Perplexity, por qué Reddit pesa tanto y qué hay que cambiar en tu web para entrar en sus respuestas. Con lo que funciona y lo que no."
+date: "2026-10-18"
+slug: "como-aparecer-en-perplexity"
+tags: ["ia-y-busqueda", "seo"]
+quickAnswer: "Perplexity cita sobre todo comunidades: Reddit es su fuente principal con mucha diferencia, seguida de Wikipedia y de páginas con datos concretos. Para aparecer hacen falta tres cosas: que su rastreador pueda leerte, tener pasajes con cifras y fuente, y existir en las conversaciones reales de tu sector."
+keyTakeaways:
+  - "Reddit es la fuente dominante de Perplexity, muy por encima de la autoridad de dominio medida por enlaces."
+  - "Comprueba primero que PerplexityBot no está bloqueado en tu robots.txt. Muchos sitios lo cerraron en 2024 y nadie ha vuelto a mirarlo."
+  - "Perplexity enseña las fuentes de forma prominente y con numeración, así que ser citado aquí trae más clics que ser citado en otros asistentes."
+  - "Lo que cita son párrafos con un dato y una fuente. Las opiniones sin evidencia no aparecen."
+  - "Solo una minoría pequeña de dominios aparece citada a la vez por Perplexity y por Google para la misma consulta: son sistemas distintos."
+faq:
+  - question: "¿Por qué Perplexity cita tanto Reddit?"
+    answer: "Porque su diseño prioriza lo que parece experiencia real por encima de lo que parece contenido comercial. Perplexity se construyó como una alternativa al buscador para quien desconfía de las páginas escritas para posicionar, y las conversaciones de foro son lo más parecido a preguntar a alguien que ha usado el producto. Eso lo hace muy útil para el usuario y bastante incómodo para un negocio, porque significa que buena parte de tu visibilidad ahí no depende de tu web sino de si se habla de ti en sitios que no controlas."
+  - question: "¿Cómo compruebo si Perplexity puede leer mi web?"
+    answer: "Abre tu dominio seguido de barra robots.txt y busca PerplexityBot. Si aparece con una regla de bloqueo, estás fuera de sus respuestas y nada más importa. Muchos sitios lo cerraron en 2024 y en 2025, cuando el debate iba de derechos de autor, y nadie ha vuelto a revisar ese fichero desde entonces. La segunda comprobación es igual de importante: los rastreadores de estos sistemas no ejecutan JavaScript, así que mira el código fuente de tu página y busca un párrafo de tu texto. Si no está ahí, para ellos tu página está vacía."
+  - question: "¿Merece la pena participar en Reddit para esto?"
+    answer: "Merece la pena si vas a hacerlo bien y durante meses, y es contraproducente si vas a colocar enlaces. Las comunidades de este tipo detectan el marketing con una facilidad que sorprende a quien viene de otros canales, y una cuenta que solo aparece para recomendarse a sí misma se marca y se expulsa. Lo que funciona es responder preguntas de tu especialidad con criterio, sin enlace, durante bastante tiempo, hasta que tu nombre aparece porque alguien más lo menciona. Es lento y es la única vía que aguanta."
+  - question: "¿Trae clics de verdad aparecer en Perplexity?"
+    answer: "Más que en otros asistentes, y es su característica más útil para un negocio. Perplexity enseña las fuentes numeradas y de forma prominente junto a cada afirmación, así que quien lee la respuesta ve de dónde sale cada dato y entra a comprobarlo con bastante frecuencia. El volumen absoluto sigue siendo pequeño comparado con la búsqueda clásica, pero la calidad es alta: quien llega ha leído una recomendación con tu nombre dentro y viene con el trabajo de convencimiento medio hecho."
+  - question: "¿Sirve lo que hago para Google o hay que hacer algo distinto?"
+    answer: "Sirve la mitad y hay una mitad específica. Lo que comparten es la base: contenido con pasajes autocontenidos, cifras con fuente, estructura clara y una web que se pueda leer desde el servidor. Lo que cambia es el peso de las señales externas: en Google manda lo que ya rankea, y en Perplexity manda lo que se comenta en comunidades. Eso significa que un negocio pequeño con poca autoridad de dominio puede aparecer en Perplexity antes que en Google, si en su sector se habla de él."
+  - question: "¿Qué contenido de mi web tiene más posibilidades?"
+    answer: "El que trae datos que no están en otro sitio y el que compara opciones con criterio. Una tabla con precios reales de tu sector, un caso con cifras concretas, una comparación entre dos formas de resolver un problema con sus ventajas y sus inconvenientes. Lo que no aparece nunca es la página de «quiénes somos», el texto de servicio lleno de adjetivos y cualquier cosa que se pueda resumir como una promesa. La prueba casera es si el párrafo se sostiene leído solo y dice algo que se puede verificar."
+  - question: "¿Cómo mido mi visibilidad en Perplexity?"
+    answer: "A mano, porque no hay panel oficial. Coge las diez preguntas que haría un cliente tuyo, hazlas en Perplexity una vez al mes y anota si apareces, con qué frase y junto a quién. Es tedioso y es el único dato fiable que vas a tener. Para la parte de tráfico, filtra en tu analítica las visitas cuyo origen sea el dominio de Perplexity: van a ser pocas, y lo interesante no es cuántas son sino qué páginas tuyas están atrayendo esas citas."
+---
+
+Perplexity cita sobre todo comunidades. Reddit es su fuente principal con mucha diferencia, seguida de Wikipedia y de páginas con datos concretos.
+
+Eso hace que la estrategia para aparecer aquí sea distinta a la de Google, y bastante más incómoda: buena parte del trabajo no está en tu web.
+
+## Las tres condiciones
+
+| Condición | Dónde se trabaja | Cuánto tarda |
+|---|---|---|
+| Que te puedan leer | Tu robots.txt y tu servidor | Una tarde |
+| Pasajes con datos y fuente | Tu contenido | Semanas |
+| Existir en la conversación | Reddit y foros del sector | Meses |
+
+La tercera es la que pesa más y la única que no controlas del todo.
+
+## Condición 1: que te puedan leer
+
+Abre `tudominio.com/robots.txt` y busca `PerplexityBot`. Si aparece bloqueado, estás fuera y nada más importa.
+
+Muchos sitios lo cerraron en 2024 y 2025, cuando el debate iba de derechos de autor, y nadie ha vuelto a revisar ese fichero desde entonces.
+
+<Callout type="aviso" title="El segundo bloqueo, que no está en el robots.txt">
+Los rastreadores de estos sistemas no ejecutan JavaScript. Mira el código fuente de tu página con el botón derecho y busca un párrafo de tu texto. Si no está ahí, para ellos tu página está vacía, por muy bien redactada que esté.
+</Callout>
+
+## Condición 2: pasajes con datos y fuente
+
+Lo que cita son párrafos que se sostienen leídos solos, con una cifra dentro y su procedencia.
+
+Lo que no cita nunca: la página de «quiénes somos», el texto de servicio lleno de adjetivos y cualquier cosa que se pueda resumir como una promesa.
+
+La prueba casera es de diez segundos: copia una sección de tu artículo, pégala sola en un documento y mira si sigue diciendo algo verificable.
+
+El contenido que más posibilidades tiene:
+
+Una tabla con precios reales de tu sector. Un caso con cifras concretas. Una comparación entre dos formas de resolver un problema, con sus ventajas y sus inconvenientes. Un dato que hayas medido tú.
+
+## Condición 3: existir en la conversación
+
+Aquí está la parte incómoda y la que más pesa.
+
+Reddit es la fuente dominante de Perplexity, muy por encima de la autoridad de dominio medida por enlaces. Y no se puede comprar.
+
+Lo que funciona es responder preguntas de tu especialidad con criterio, sin colocar el enlace, durante bastante tiempo, hasta que tu nombre aparece porque alguien más lo menciona.
+
+Lo que no funciona, y además se detecta, es crear cuentas para recomendarse a uno mismo. Las comunidades de este tipo identifican el marketing con una facilidad que sorprende a quien viene de otros canales.
+
+Si tu sector tiene foros propios en español, cuentan igual. Lo que el sistema valora es la conversación real, no la plataforma.
+
+## ¿Por qué trae más clics que otros asistentes?
+
+Porque Perplexity enseña las fuentes numeradas y de forma prominente junto a cada afirmación.
+
+Quien lee la respuesta ve de dónde sale cada dato y entra a comprobarlo con bastante frecuencia. En otros asistentes la cita está más escondida.
+
+El volumen absoluto sigue siendo pequeño comparado con la búsqueda clásica. La calidad es alta: quien llega ha leído una recomendación con tu nombre dentro.
+
+## Lo que comparte con Google y lo que no
+
+Comparte la base: pasajes autocontenidos, cifras con fuente, estructura clara y una web legible desde el servidor. Todo eso está en [cómo aparecer en las respuestas de IA de Google](/blog/como-aparecer-en-las-respuestas-de-ia-de-google).
+
+Lo que cambia es el peso de las señales externas. En Google manda lo que ya rankea; en Perplexity manda lo que se comenta.
+
+Eso tiene una consecuencia buena para un negocio pequeño: **puedes aparecer en Perplexity antes que en Google**, si en tu sector se habla de ti. La autoridad de dominio, que es el muro frente a las marcas grandes, pesa mucho menos aquí.
+
+Y una consecuencia menos buena: solo una minoría pequeña de dominios aparece citada a la vez por Perplexity y por Google para la misma consulta. Son sistemas distintos y hay que trabajarlos por separado.
+
+## Cómo se mide
+
+A mano, porque no hay panel oficial.
+
+<Checklist title="La revisión mensual, veinte minutos">
+- Diez preguntas que haría un cliente tuyo, hechas en Perplexity.
+- Anota si apareces, con qué frase y junto a quién.
+- Las mismas diez cada mes, para poder comparar.
+- En tu analítica, filtra las visitas cuyo origen sea el dominio de Perplexity.
+- Mira qué páginas tuyas están atrayendo esas citas, que es el dato útil.
+</Checklist>
+
+Lo interesante no es cuántas visitas son. Es qué contenido tuyo está siendo citado, porque eso te dice qué formato replicar.
+
+## Lo que no sirve
+
+**El fichero llms.txt.** No hay evidencia de que Perplexity lo consulte, y Google dice explícitamente que a su buscador no le afecta. Ponerlo cuesta diez minutos y venderlo como palanca es otra cosa.
+
+**Repetir la marca muchas veces en el texto.** Es la densidad de palabra clave de hace quince años con ropa nueva.
+
+**Pagar por menciones en webs que existen para vender menciones.** No las valora y el rastro es evidente.
+
+**Bloquear a los rastreadores «por si acaso».** Es la decisión más cara que se puede tomar ahora mismo si quieres que te recomienden.
+
+## Lo que haría el primer mes
+
+Revisar el robots.txt y el código fuente. Reescribir los cinco artículos más importantes para que respondan en las primeras sesenta palabras y lleven una cifra con fuente. Y hacer las diez preguntas de control para tener un punto de partida.
+
+La parte de comunidades empieza el mes dos y no se termina nunca. El contexto general de todo esto, con lo que dice Google y lo que no funciona, está en [qué es el GEO](/blog/que-es-el-geo).
+
+Si quieres una foto inicial hecha por alguien de fuera, mi [auditoría y consultoría digital](/servicios/auditoria-consultoria-digital) cuesta 290 € e incluye esta revisión.
