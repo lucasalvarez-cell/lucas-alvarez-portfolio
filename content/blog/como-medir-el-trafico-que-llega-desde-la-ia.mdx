@@ -1,0 +1,128 @@
+---
+title: "Cómo medir el tráfico que llega desde la IA"
+metaTitle: "Cómo medir el tráfico que llega desde la IA"
+description: "Cómo separar en tu analítica las visitas que vienen de ChatGPT, Perplexity y otros asistentes, qué esperar de ese volumen y qué mirar en su lugar."
+date: "2026-10-26"
+slug: "como-medir-el-trafico-que-llega-desde-la-ia"
+tags: ["ia-y-busqueda", "analitica"]
+quickAnswer: "El tráfico de asistentes se mide filtrando en tu analítica las visitas cuyo origen sea el dominio de cada uno: chatgpt.com, perplexity.ai, copilot.microsoft.com y claude.ai. Conviene crear un canal propio que los agrupe. El volumen va a ser pequeño y la calidad alta, porque quien llega ya ha leído una recomendación."
+keyTakeaways:
+  - "Sin configurar nada, ese tráfico se cuela en «directo» o en «referencia» y no lo distingues del resto."
+  - "Crea un grupo de canales propio en tu analítica con los dominios de los asistentes. Son cinco minutos y sin eso este canal no existe en tus informes."
+  - "El volumen va a ser pequeño comparado con la búsqueda clásica. Medirlo por visitas es el error: lo que importa es cuántas acaban en contacto."
+  - "No hay panel oficial para las citas. La única forma fiable de saber si te mencionan es preguntar a mano cada mes."
+  - "Google no distingue en Search Console el clic que viene de su resumen generado del clic normal, así que ese lado hay que inferirlo por tipo de consulta."
+faq:
+  - question: "¿Qué dominios tengo que filtrar?"
+    answer: "Los cuatro que traen algo de volumen en España son chatgpt.com, perplexity.ai, copilot.microsoft.com y claude.ai, y conviene añadir también gemini.google.com aunque parte de su tráfico se mezcle con el del buscador. Lo práctico es crear un grupo de canales propio que los agrupe bajo un nombre como «Asistentes de IA», porque mirarlos uno a uno en la lista de referencias es tedioso y además se pierden entre decenas de dominios con una o dos visitas. Con el grupo creado, ese canal aparece junto a buscador, redes y directo en tus informes de adquisición."
+  - question: "¿Por qué mi tráfico de IA aparece como directo?"
+    answer: "Porque algunos asistentes no envían la información de procedencia cuando alguien pincha una fuente, igual que pasa con los enlaces abiertos desde una aplicación de mensajería o desde un PDF. Ese tráfico se acumula en «directo», que es donde tu analítica pone todo lo que no puede identificar. No hay forma de recuperarlo del todo, y la manera de reducir la incertidumbre es mirar las páginas de entrada: si el tráfico directo aterriza en un artículo interno que nadie escribiría de memoria, no es directo, es un enlace compartido o citado en algún sitio."
+  - question: "¿Puedo ver en Search Console si Google me cita en su resumen?"
+    answer: "No de forma separada, y es la limitación más molesta de esta medición. Google no distingue en sus informes el clic que viene de un resumen generado del clic de un resultado clásico: todo aparece junto en el rendimiento de búsqueda. Lo que sí se puede hacer es inferirlo por tipo de consulta: si las búsquedas informativas pierden clics manteniendo impresiones y las comerciales no se mueven, eso es el resumen resolviendo arriba. Es un diagnóstico indirecto y es el único disponible ahora mismo."
+  - question: "¿Cuánto tráfico debería esperar de este canal?"
+    answer: "Poco en volumen y bueno en calidad, y conviene fijar la expectativa antes de mirar los números para no llevarse una decepción injusta. En la mayoría de negocios pequeños españoles este canal mueve entre un uno y un cinco por ciento del tráfico total, con excepciones en sectores muy técnicos donde sube. Lo relevante es otra cosa: quien llega desde una respuesta generada ya ha leído una recomendación con tu nombre dentro, así que viene con el trabajo de convencimiento medio hecho y suele convertir mejor que la media."
+  - question: "¿Cómo sé si me están citando aunque no venga tráfico?"
+    answer: "Preguntando a mano, porque no hay panel. Coge las diez preguntas que haría un cliente tuyo, hazlas en ChatGPT, en Perplexity y en el buscador de Google una vez al mes, y anota si apareces, con qué frase y junto a quién. Siempre las mismas diez y siempre el mismo día del mes, para que la comparación sirva. Es tedioso y es el único dato fiable: ser citado sin recibir clic sigue teniendo valor, porque tu nombre aparece en la recomendación y eso llega después por otras vías."
+  - question: "¿Merece la pena montar toda esta medición?"
+    answer: "Merece la pena si vas a hacer algo con el dato, y no si es para tener un número más en un informe. Lo que justifica el esfuerzo es la segunda parte: saber qué páginas tuyas están atrayendo citas, porque eso te dice qué formato replicar. Si descubres que las tres páginas citadas son las que llevan una tabla con cifras propias, ya sabes qué escribir el mes que viene. Sin esa lectura, el porcentaje de tráfico de asistentes es una curiosidad."
+  - question: "¿Cambiará esto pronto?"
+    answer: "Es lo más probable, porque la presión de los editores para tener datos de citación es fuerte y la falta de un panel oficial es el hueco más evidente del sector ahora mismo. Han aparecido herramientas de pago que rastrean menciones en asistentes, con la limitación de que consultan desde sus propios sistemas y no desde la sesión de tus clientes, así que sus datos son indicativos. Mientras no haya nada oficial, la combinación de un canal propio en analítica y diez preguntas a mano cada mes es lo más fiable y cuesta media hora."
+---
+
+El tráfico que llega desde asistentes de inteligencia artificial no aparece en tus informes a menos que lo configures. Sin hacer nada, se cuela en «directo» o se pierde entre decenas de dominios de referencia con dos visitas cada uno.
+
+Configurarlo son cinco minutos y es la única forma de saber si este canal existe en tu caso.
+
+## Los dominios que hay que filtrar
+
+| Asistente | Dominio de origen |
+|---|---|
+| ChatGPT | `chatgpt.com` |
+| Perplexity | `perplexity.ai` |
+| Copilot de Microsoft | `copilot.microsoft.com` |
+| Claude | `claude.ai` |
+| Gemini | `gemini.google.com` |
+
+Lo práctico no es mirarlos uno a uno. Es crear un grupo de canales propio que los agrupe bajo un nombre como «Asistentes de IA», para que aparezca junto a buscador, redes y directo en el informe de adquisición.
+
+<Callout type="dato" title="Por qué parte de ese tráfico sale como directo">
+Algunos asistentes no envían la información de procedencia cuando alguien pincha una fuente, igual que pasa con los enlaces abiertos desde WhatsApp o desde un PDF. Ese tráfico se acumula en «directo». La pista para detectarlo: si el tráfico directo aterriza en un artículo interno que nadie escribiría de memoria, no es directo.
+</Callout>
+
+## El lado de Google, que no se puede separar
+
+Aquí está la limitación más molesta de toda esta medición.
+
+Google no distingue en Search Console el clic que viene de su resumen generado del clic de un resultado clásico. Todo aparece junto.
+
+Lo que sí se puede hacer es inferirlo por tipo de consulta: si las búsquedas informativas pierden clics manteniendo impresiones y las comerciales no se mueven, eso es el resumen resolviendo arriba.
+
+Es un diagnóstico indirecto y es el único disponible. El método completo está en [por qué ha bajado mi tráfico orgánico](/blog/por-que-ha-bajado-mi-trafico-organico).
+
+## Cuánto esperar de este canal
+
+Poco en volumen y bueno en calidad. Conviene fijar la expectativa antes de mirar los números.
+
+En la mayoría de negocios pequeños españoles este canal mueve entre un uno y un cinco por ciento del tráfico total. En sectores muy técnicos sube.
+
+Lo relevante es otra cosa: quien llega desde una respuesta generada ya ha leído una recomendación con tu nombre dentro. Viene con el trabajo de convencimiento medio hecho.
+
+Medir este canal por visitas es el error. Si trae treinta al mes y dos acaban en presupuesto, rinde mejor que un artículo con mil visitas informativas que no deja ninguna.
+
+## La parte que no se mide con herramientas
+
+Ser citado sin recibir clic sigue teniendo valor, y eso no aparece en ninguna analítica.
+
+La única forma de saberlo es preguntar a mano.
+
+<Checklist title="La revisión mensual, media hora">
+- Diez preguntas que haría un cliente tuyo, no búsquedas de tu marca.
+- Hechas en ChatGPT, Perplexity y el buscador de Google.
+- Siempre las mismas diez y el mismo día del mes.
+- Anota si apareces, con qué frase y junto a quién.
+- Guarda una captura, porque las respuestas cambian.
+</Checklist>
+
+Preguntar por tu propia marca no dice nada: el sistema va a encontrar tu web igual que la encuentra Google. Lo que importa es la consulta que hace alguien que todavía no te conoce.
+
+## Lo que hago con ese dato
+
+La medición solo justifica el esfuerzo si lleva a una decisión, y aquí la decisión es concreta.
+
+Miro qué páginas mías están siendo citadas. Si las tres que aparecen son las que llevan una tabla con cifras propias, ya sé qué formato replicar el mes que viene.
+
+Ese es el uso útil. El porcentaje de tráfico de asistentes, por sí solo, es una curiosidad de informe.
+
+Qué formatos se citan y cuáles se ignoran está en [cómo aparecer en las respuestas de IA de Google](/blog/como-aparecer-en-las-respuestas-de-ia-de-google).
+
+## Las herramientas de pago
+
+Han aparecido servicios que rastrean menciones de marca en asistentes y dan un panel con evolución.
+
+Tienen una limitación que conviene entender: consultan desde sus propios sistemas y no desde la sesión de tus clientes, así que sus datos son indicativos y no exactos. Las respuestas de estos modelos varían entre usuarios y entre momentos.
+
+Para un negocio pequeño, la combinación de un canal propio en analítica y diez preguntas a mano cada mes es suficiente y cuesta media hora. Pagar por esto tiene sentido cuando la visibilidad en asistentes es una parte importante del negocio.
+
+## El error de montar demasiada medición
+
+He visto propiedades de analítica con quince grupos de canales, veinte eventos personalizados y tres paneles a medida, en negocios que reciben trescientas visitas al mes.
+
+Nadie abre eso, porque no hay ninguna decisión que dependa de ello.
+
+Un grupo de canales para los asistentes y diez preguntas al mes es todo lo que hace falta. Cómo dejar el resto de la medición en lo mínimo útil está en [cómo configurar GA4 en un negocio pequeño](/blog/como-configurar-ga4-en-un-negocio-pequeno).
+
+## Qué mirar si el dato sale a cero
+
+Es lo más probable los primeros meses y no significa necesariamente que no te citen.
+
+Antes de concluir nada, comprueba dos cosas técnicas. Que tu `robots.txt` no bloquea a GPTBot, OAI-SearchBot, ClaudeBot ni PerplexityBot. Y que el contenido de tu web llega escrito desde el servidor, porque estos rastreadores no ejecutan JavaScript.
+
+Las dos comprobaciones son de cinco minutos y son la causa más frecuente de invisibilidad total en este canal. Están detalladas en [cómo aparecer en ChatGPT](/blog/como-aparecer-en-chatgpt).
+
+## Lo que cambiará pronto
+
+La falta de un panel oficial de citación es el hueco más evidente del sector ahora mismo, y la presión de los editores para tenerlo es fuerte.
+
+Mientras no exista, conviene guardar el histórico propio: esas diez preguntas anotadas cada mes van a ser, dentro de un año, el único dato comparable que tengas.
+
+Si prefieres que alguien monte esta medición y te diga qué leer en ella, es parte de lo que hago en una [auditoría y consultoría digital](/servicios/auditoria-consultoria-digital) por 290 €.
