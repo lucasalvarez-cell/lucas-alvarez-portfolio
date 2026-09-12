@@ -56,7 +56,9 @@ export default async function TopicPage({
   const topicPosts = postsByTopic(posts, topic.tag);
   const others = activeTopics(posts).filter((other) => other.tag !== topic.tag);
 
-  const pillar = topicPosts.find((post) => post.pillar);
+  const pillar = topic.pillarSlug
+    ? topicPosts.find((post) => post.slug === topic.pillarSlug)
+    : topicPosts.find((post) => post.pillar);
   const rest = topicPosts.filter((post) => post.slug !== pillar?.slug);
 
   /* The reading path is written ahead of the posts it names, because a cluster

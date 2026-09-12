@@ -6,7 +6,7 @@ import { BlogPostCard } from "@/components/BlogPostCard";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/seo";
 import { blogGraph, breadcrumbSchema } from "@/lib/schema";
-import { getAllPosts } from "@/lib/blog";
+import { getAllPosts, featuredPost } from "@/lib/blog";
 import { activeTopics } from "@/lib/topics";
 import { pageCount, pageSlice } from "@/lib/pagination";
 import { Pagination } from "@/components/blog/Pagination";
@@ -24,7 +24,7 @@ export default function BlogPage() {
 
   // The pillar is the entry point of the whole blog, so it gets the width and
   // the type size to say so. Everything else keeps the standard card.
-  const featured = posts.find((post) => post.pillar) ?? posts[0];
+  const featured = featuredPost(posts);
   const rest = posts.filter((post) => post.slug !== featured?.slug);
 
   /* Page 1 shows the pillar plus the first 24. The rest live under

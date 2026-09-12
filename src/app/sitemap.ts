@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SERVICES, SITE_URL } from "@/lib/constants";
 import { SECTOR_PAGES, assertSectorPages } from "@/content/sectores";
-import { getAllPosts } from "@/lib/blog";
+import { getAllPosts, featuredPost } from "@/lib/blog";
 import { assertPosts } from "@/lib/blog-validate";
 import { pageCount } from "@/lib/pagination";
 import { activeTopics, postsByTopic } from "@/lib/topics";
@@ -23,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const latestPost = newest(posts.map((post) => post.updated ?? post.date));
   const latestCase = newest(caseStudies.map((caseStudy) => caseStudy.updated));
   const latestOverall = new Date(
-    Math.max(latestPost.getTime(), latestCase.getTime())
+    Math.max(latestPost.getTime(), latestCase.getTime()),
   );
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -117,7 +117,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(caseStudy.updated),
       changeFrequency: "yearly",
       priority: 0.7,
-    })
+    }),
   );
 
   const postRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
@@ -131,7 +131,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
      discovered because the posts on page 4 have no other route in, and a
      paginated page that Google never fetches is forty posts it never sees.
      Priority steps down from the index's 0.8 without falling off a cliff. */
-  const featuredSlug = (posts.find((post) => post.pillar) ?? posts[0])?.slug;
+  const featuredSlug = featuredPost(posts)?.slug;
   const indexPages = pageCount(
     posts.filter((post) => post.slug !== featuredSlug).length,
   );
@@ -150,11 +150,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     (topic) => ({
       url: `${SITE_URL}/blog/tema/${topic.tag}`,
       lastModified: newest(
-        postsByTopic(posts, topic.tag).map((post) => post.updated ?? post.date)
+        postsByTopic(posts, topic.tag).map((post) => post.updated ?? post.date),
       ),
       changeFrequency: "monthly",
       priority: 0.7,
-    })
+    }),
   );
 
   return [

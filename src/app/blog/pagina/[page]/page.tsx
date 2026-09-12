@@ -8,7 +8,7 @@ import { Pagination } from "@/components/blog/Pagination";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/schema";
-import { getAllPosts } from "@/lib/blog";
+import { getAllPosts, featuredPost } from "@/lib/blog";
 import { pageCount, pageSlice, POSTS_PER_PAGE } from "@/lib/pagination";
 
 /**
@@ -27,7 +27,7 @@ export const dynamicParams = false;
 
 function pagesOf(): { total: number; rest: ReturnType<typeof getAllPosts> } {
   const posts = getAllPosts();
-  const featured = posts.find((post) => post.pillar) ?? posts[0];
+  const featured = featuredPost(posts);
   const rest = posts.filter((post) => post.slug !== featured?.slug);
   return { total: pageCount(rest.length), rest };
 }

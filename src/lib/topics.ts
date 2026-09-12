@@ -23,6 +23,16 @@ export type Topic = {
   overview: string[];
   /** Reading order, framed by the decision each article resolves. */
   path: { decision: string; slug: string; label: string }[];
+  /**
+   * The post this hub leads with.
+   *
+   * Declared here instead of read off `pillar: true` in the frontmatter,
+   * because five posts carry that flag *and* the `seo` tag: picking the first
+   * match out of a date-sorted list would hand the SEO hub to whichever pillar
+   * happens to be newest. Left out, the hub falls back to that behaviour,
+   * which is fine for a cluster with a single pillar in it.
+   */
+  pillarSlug?: string;
 };
 
 /**
@@ -76,6 +86,7 @@ export const TOPICS: Topic[] = [
   },
   {
     tag: "seo",
+    pillarSlug: "que-es-el-seo",
     label: "SEO",
     title: "SEO y posicionamiento web",
     description:
@@ -230,6 +241,7 @@ export const TOPICS: Topic[] = [
   },
   {
     tag: "turismo",
+    pillarSlug: "seo-para-hoteles",
     label: "Turismo y campings",
     title: "Guías de marketing para campings, hoteles y turismo",
     description:
@@ -243,7 +255,8 @@ export const TOPICS: Topic[] = [
     ],
     path: [
       {
-        decision: "Cuándo trabajar el contenido para notarlo el verano siguiente",
+        decision:
+          "Cuándo trabajar el contenido para notarlo el verano siguiente",
         slug: "como-llenar-camping-temporada-baja",
         label: "Llenar en temporada baja",
       },
@@ -297,8 +310,10 @@ export const TOPICS: Topic[] = [
   },
   {
     tag: "ia-y-busqueda",
+    pillarSlug: "como-aparecer-en-chatgpt",
     label: "IA y búsqueda",
-    title: "Aparecer en ChatGPT, en las respuestas de IA de Google y en Perplexity",
+    title:
+      "Aparecer en ChatGPT, en las respuestas de IA de Google y en Perplexity",
     description:
       "Cómo se consigue que un asistente de IA cite tu web: qué contenido levantan, qué ignoran, cómo se mide ese tráfico y qué ha cambiado desde 2025.",
     intro:
@@ -338,6 +353,7 @@ export const TOPICS: Topic[] = [
   },
   {
     tag: "precios",
+    pillarSlug: "cuanto-cuesta-una-pagina-web",
     label: "Precios y presupuestos",
     title: "Qué cuesta cada cosa en marketing digital",
     description:

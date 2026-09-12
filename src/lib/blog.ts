@@ -89,3 +89,26 @@ export function getPostBySlug(slug: string): Post | null {
 
   return { ...meta, content };
 }
+
+/**
+ * The post the index leads with.
+ *
+ * Named explicitly instead of "the first post carrying `pillar: true`":
+ * sixteen posts carry that flag, so with a date-sorted list the front page
+ * would hand its widest card to whichever pillar published most recently and
+ * then drift again the next time one lands. This is the blog's entry point for
+ * someone who knows nothing, which is a fixed editorial decision, not a
+ * consequence of the calendar.
+ *
+ * Falls back down the list so the index still works before that post's
+ * publication date, and on a blog where it does not exist at all.
+ */
+const FEATURED_SLUG = "que-es-el-seo";
+
+export function featuredPost(posts: PostMeta[]): PostMeta | undefined {
+  return (
+    posts.find((post) => post.slug === FEATURED_SLUG) ??
+    posts.find((post) => post.pillar) ??
+    posts[0]
+  );
+}

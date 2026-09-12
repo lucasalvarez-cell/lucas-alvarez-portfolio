@@ -67,7 +67,10 @@ export function assertPosts(): void {
      answer to a FAQ is two pages competing to be the one Google quotes. */
   const seenAnswers = new Map<string, string>();
 
-  for (const { slug, raw } of readAllPostSources()) {
+  const sources = readAllPostSources();
+  const onDisk = new Set(sources.map((source) => source.slug));
+
+  for (const { slug, raw } of sources) {
     const { data, content } = matter(raw);
     const post = data as Partial<PostFrontmatter>;
     const id = `${slug}.mdx`;
@@ -143,6 +146,21 @@ export function assertPosts(): void {
       throw new Error(
         `Post ${id}: hay un guión largo en la línea ${line}. Glosa o enumeración van entre paréntesis, un inciso corto entre comas, y un separador es un punto medio.`,
       );
+    }
+
+    /* <Serie> drops an unpublished slug on purpose, which is exactly what
+       makes a typo in one invisible: the row simply never appears, on the
+       pillar of a cluster, for the life of the site. Checked against every
+       file on disk rather than the published ones, because the whole point of
+       the component is naming posts whose date has not arrived. */
+    for (const match of raw.matchAll(/<Serie[^>]*\bslugs="([^"]*)"/g)) {
+      for (const wanted of match[1].split(",").map((s) => s.trim())) {
+        if (wanted && !onDisk.has(wanted)) {
+          throw new Error(
+            `Post ${id}: <Serie> nombra "${wanted}", que no existe en content/blog. El componente oculta lo que no está publicado, así que una errata aquí no se ve nunca.`,
+          );
+        }
+      }
     }
 
     for (const item of post.faq ?? []) {
