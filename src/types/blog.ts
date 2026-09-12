@@ -4,31 +4,6 @@
 export type { FaqItem } from "./content";
 import type { FaqItem } from "./content";
 
-/**
- * Drives the generated cover art. There is no photography on this blog on
- * purpose: a stock photo repeated across six posts is worse than no photo, and
- * a cover built from the post's own numbers carries information a photo can't.
- */
-export type PostCover = {
-  /** Tints the accent and picks the motif palette. */
-  theme:
-    | "seo"
-    | "ads"
-    | "social"
-    | "web"
-    | "content"
-    | "audit"
-    | "local";
-  /** Which composition to draw. */
-  kind: "metric" | "rank" | "guide" | "compare";
-  /** `metric` covers: the headline figure, e.g. "×6" or "+250 %". */
-  metric?: string;
-  /** Caption under the figure or the rank, e.g. "Camping Victòria · 1 mes". */
-  metricLabel?: string;
-  /** Small uppercase label in the corner, e.g. "SEO · Barcelona". */
-  kicker?: string;
-};
-
 /** One row of the at-a-glance table that opens every ranking post. */
 export type RankingEntry = {
   position: number;
@@ -62,7 +37,6 @@ export type PostFrontmatter = {
   updated?: string;
   slug: string;
   tags: string[];
-  cover: PostCover;
   /**
    * The 40-70 word answer to the question in the title, placed above the fold
    * and written to stand on its own. This is the block AI search engines lift.

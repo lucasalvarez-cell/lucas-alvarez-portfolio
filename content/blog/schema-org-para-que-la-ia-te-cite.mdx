@@ -1,0 +1,137 @@
+---
+title: "Schema.org para que la IA te entienda: qué poner y qué no"
+metaTitle: "Schema.org y datos estructurados: qué poner"
+description: "Qué datos estructurados sirven de verdad, cuáles ya no dan resultado enriquecido y qué prohíben las políticas de Google, con el mínimo útil por tipo de negocio."
+date: "2026-11-09"
+slug: "schema-org-para-que-la-ia-te-cite"
+tags: ["ia-y-busqueda", "seo"]
+quickAnswer: "Los datos estructurados son un código que explica a los buscadores qué es cada cosa de tu página. El mínimo útil son cuatro: Organization o LocalBusiness, Article en el blog, Product en una tienda y BreadcrumbList. Ayudan a que te entiendan, no son una palanca directa de citación."
+keyTakeaways:
+  - "El marcado no hace que te citen. Hace que te entiendan, y eso es un requisito y no una ventaja."
+  - "Los cuatro que merecen la pena en casi cualquier web: Organization o LocalBusiness, Article, Product y BreadcrumbList."
+  - "Marcar valoraciones sobre tu propio negocio en tu propia web es una infracción explícita de las políticas de Google."
+  - "El marcado de preguntas frecuentes casi no da resultado enriquecido desde que Google lo restringió, y sigue sirviendo para dejar clara la estructura."
+  - "Si el precio o la disponibilidad marcados no coinciden con lo que dice la página, Google retira la mejora y puede penalizar el dominio."
+faq:
+  - question: "¿Qué son exactamente los datos estructurados?"
+    answer: "Es un bloque de código, normalmente en formato JSON-LD, que se añade a una página para decirle a un buscador qué es cada cosa: esto es una empresa, esto un artículo con su autor y su fecha, esto un producto con su precio y su disponibilidad. El navegador no lo muestra y las máquinas lo leen. Su función es eliminar ambigüedad: sin marcado, un buscador tiene que inferir que ese número de la página es un precio; con marcado, se lo estás diciendo. Es la diferencia entre que te interpreten y que te entiendan."
+  - question: "¿Hace que la IA me cite más?"
+    answer: "No de forma directa, y quien lo vende así está prometiendo lo que no puede. Lo que hace el marcado es que el sistema comprenda bien la estructura y el tipo de tu contenido, lo que evita malentendidos. Pero si tu página no da la respuesta con un dato concreto, ningún marcado va a conseguir que se cite, porque lo que se cita es información. La forma correcta de verlo es como requisito de higiene: conviene tenerlo porque es barato y porque no tenerlo puede restar, y no esperar de él lo que solo da el texto."
+  - question: "¿Qué marcado necesito como mínimo?"
+    answer: "Cuatro tipos cubren casi cualquier web pequeña. Organization si eres una empresa sin local, o LocalBusiness con su variante específica si tienes dirección, que es el que incluye horarios, teléfono y zona de servicio. Article o BlogPosting en cada entrada del blog, con autor y fechas de publicación y de actualización. Product en cada ficha si vendes. Y BreadcrumbList, que es el que hace que en el resultado aparezca la ruta de navegación en lugar de la URL completa. Con esos cuatro está el noventa por ciento del valor."
+  - question: "¿Puedo marcar valoraciones de mi negocio?"
+    answer: "No en tu propia web sobre ti mismo, y es una de las infracciones que más se ven en webs pequeñas. Las políticas de datos estructurados de Google prohíben expresamente el marcado de valoraciones que una empresa se atribuye a sí misma en su propio sitio. Sí se pueden marcar valoraciones de productos concretos recogidas de clientes reales a través de tu propia web, con su nombre y su fecha. Las estrellas puestas a mano en la página de servicios son el caso típico y pueden costar la retirada de todas las mejoras del dominio."
+  - question: "¿Sirve todavía el marcado de preguntas frecuentes?"
+    answer: "Sirve menos de lo que servía y sigue teniendo sentido ponerlo. Google restringió la aparición del formato enriquecido de preguntas frecuentes en los resultados, así que ya casi no se ven los desplegables que se veían hace unos años, y ponerlo esperando eso decepciona. Lo que sí sigue haciendo es dejar clarísimo qué es una pregunta y cuál es su respuesta, lo que ayuda a cualquier sistema que extraiga información. Es barato de poner y no perjudica, y esa es toda la justificación que necesita."
+  - question: "¿Cómo compruebo si mi marcado está bien?"
+    answer: "Con dos herramientas gratuitas y complementarias. El validador de resultados enriquecidos de Google dice si tu página es apta para alguna mejora visual y qué errores bloquean cada una. El validador de schema.org es más estricto y detecta problemas de estructura que el de Google tolera. Y hay una tercera comprobación que no es una herramienta: leer el marcado y comparar cada dato con lo que dice la página, porque el error más caro no es de sintaxis sino de contenido, un precio marcado que no es el precio real."
+  - question: "¿Lo tengo que escribir a mano?"
+    answer: "Depende de cómo esté hecha tu web. En un gestor de contenidos, los complementos de SEO generan el marcado básico automáticamente y suelen bastar para Organization, Article y BreadcrumbList. En una web a medida se escribe una vez y se genera con los datos reales de cada página, que es lo mejor porque no se puede desactualizar. Lo que hay que evitar en los dos casos es tener dos fuentes de marcado a la vez, un complemento y un bloque manual, porque entonces la página declara cosas contradictorias."
+---
+
+Los datos estructurados son un bloque de código que le dice a un buscador qué es cada cosa de tu página. El navegador no lo muestra y las máquinas lo leen.
+
+Y conviene empezar por lo que no hacen: no consiguen que te citen. Consiguen que te entiendan, que es un requisito y no una ventaja.
+
+## El mínimo útil por tipo de negocio
+
+| Tipo de web | Marcado necesario |
+|---|---|
+| Negocio con local | `LocalBusiness` con su variante específica, `BreadcrumbList` |
+| Empresa sin local | `Organization`, `BreadcrumbList` |
+| Blog | `Article` o `BlogPosting` con autor y fechas |
+| Tienda | `Product` con precio y disponibilidad, `BreadcrumbList` |
+| Página de servicio | `Service` dentro de la organización |
+| Recetas, eventos, cursos | El tipo específico, que sí da mejora visual |
+
+Con los cuatro primeros está el noventa por ciento del valor en una web pequeña. Todo lo demás es refinamiento.
+
+<Callout type="error" title="La infracción que más veces veo">
+Marcar valoraciones sobre tu propio negocio en tu propia web. Las políticas de Google lo prohíben expresamente, y las cinco estrellas puestas a mano en la página de servicios son el caso típico. Puede costar la retirada de todas las mejoras del dominio, no solo de esa página.
+</Callout>
+
+## Lo que sí da resultado visible
+
+No todo el marcado cambia cómo se ve tu resultado. Estos sí:
+
+**`Product`**, que puede mostrar precio, disponibilidad y valoración directamente en la página de resultados. En comercio es la diferencia entre un resultado con información y un enlace de texto.
+
+**`BreadcrumbList`**, que sustituye la URL completa por la ruta de navegación. Parece cosmético y sube el clic.
+
+**`Event`, `Recipe`, `Course`, `JobPosting`**, que tienen formatos enriquecidos propios y bastante visibles.
+
+**`LocalBusiness`**, que refuerza la información del panel lateral.
+
+## Lo que ya casi no da resultado visible
+
+El marcado de preguntas frecuentes. Google restringió su aparición y ya casi no se ven los desplegables de hace unos años.
+
+Sigue teniendo sentido ponerlo, con otro argumento: deja clarísimo qué es pregunta y cuál es su respuesta, lo que ayuda a cualquier sistema que extraiga información. Es barato y no perjudica.
+
+Lo mismo con `HowTo`, que perdió su formato enriquecido en la mayoría de casos.
+
+## El error que de verdad cuesta dinero
+
+No es de sintaxis. Es de contenido.
+
+Si el precio marcado no coincide con el precio de la página, o si marcas disponibilidad de algo agotado, Google retira la mejora y puede penalizar el dominio.
+
+Pasa sobre todo en tiendas con promociones: se cambia el precio visible y el marcado se queda con el antiguo, porque lo genera otro sistema.
+
+## Cómo se comprueba
+
+<Checklist title="Tres comprobaciones, dos gratuitas y una manual">
+- El validador de resultados enriquecidos de Google: dice si eres apto para alguna mejora y qué la bloquea.
+- El validador de schema.org: más estricto, detecta problemas de estructura que Google tolera.
+- Leer el marcado y comparar cada dato con lo que dice la página. Esta es la que encuentra los errores caros.
+</Checklist>
+
+## ¿Hay que escribirlo a mano?
+
+Depende de cómo esté hecha la web.
+
+En un gestor de contenidos, los complementos de SEO generan el marcado básico y suelen bastar para organización, artículos y migas de pan.
+
+En una web a medida se escribe una vez y se genera con los datos reales de cada página, que es lo mejor porque no se puede desactualizar.
+
+Lo que hay que evitar en los dos casos es tener dos fuentes de marcado a la vez, un complemento y un bloque manual, porque entonces la página declara cosas contradictorias y el buscador elige por su cuenta.
+
+## Lo que aporta en el contexto de la IA
+
+Aporta desambiguación, y eso tiene un valor concreto aunque no sea una palanca.
+
+Cuando un sistema construye una respuesta necesita saber quién dice algo, cuándo lo dijo y qué credenciales tiene. El marcado de autor con fecha de publicación y de actualización responde a las tres cosas sin que el sistema tenga que inferirlas.
+
+Y en negocios locales, `LocalBusiness` bien puesto reafirma la información que el sistema ya está leyendo de tu ficha de Google, que es su fuente principal en esas consultas. Lo desarrollo en [cómo aparecer en las respuestas de IA de Google](/blog/como-aparecer-en-las-respuestas-de-ia-de-google).
+
+Lo que sigue decidiendo si te citan es el texto: un dato concreto, colocado arriba, en un bloque que se entienda solo. Está en [qué contenido cita la IA y cuál ignora](/blog/que-contenido-cita-la-ia-y-cual-ignora).
+
+## ¿Qué marcado usa un negocio local, exactamente?
+
+Es la duda más práctica y la que peor se resuelve en las guías generalistas, porque `LocalBusiness` tiene decenas de variantes específicas y elegir la correcta cambia lo que el buscador entiende.
+
+Si eres un restaurante, el tipo es `Restaurant` y admite campos que ningún otro tiene: rango de precios, tipo de cocina, si acepta reservas y el menú. Si eres una clínica, `MedicalBusiness` o su variante concreta. Un taller es `AutoRepair`. Un hotel es `Hotel` o `Campground` si es camping. Usar el genérico `LocalBusiness` cuando existe el específico funciona y desaprovecha información.
+
+Los campos que de verdad hay que rellenar en cualquiera de ellos son cinco: nombre exacto igual que en la ficha de Google, dirección completa con código postal, teléfono en formato internacional, horarios de apertura y la propiedad que apunta a tus perfiles y a tu ficha. Ese último campo es el que conecta tu web con el resto de tu presencia y el que más ayuda a que un sistema confirme que hablas de la misma entidad.
+
+Y una advertencia concreta: los horarios marcados tienen que coincidir con los de la ficha. Si no coinciden, el buscador tiene dos fuentes contradictorias sobre el mismo dato y eso es peor que no declarar ninguno.
+
+## Lo que no haría
+
+## Lo que no haría
+
+**Marcar cosas que no están en la página.** El marcado tiene que describir contenido visible.
+
+**Usar tipos raros esperando ventaja.** Marcar tu página de servicio como `Recipe` no la va a poner en ningún sitio bueno.
+
+**Poner valoraciones inventadas.** Además de ser infracción, se detecta.
+
+**Pagar por un servicio de «implementación de datos estructurados» como proyecto aparte.** Es media jornada de trabajo dentro de cualquier plan de SEO decente.
+
+## Por dónde empezaría
+
+Comprobar qué marcado tienes ya, porque en muchas webs con gestor de contenidos hay más de lo que el dueño cree y parte está mal.
+
+Después, los cuatro básicos bien puestos y coherentes con la página. Y una revisión con el validador cada vez que se toca algo del precio o del catálogo.
+
+Si quieres que alguien revise qué tienes y qué falta, entra en una [auditoría y consultoría digital](/servicios/auditoria-consultoria-digital) por 290 €, junto al resto del diagnóstico técnico.

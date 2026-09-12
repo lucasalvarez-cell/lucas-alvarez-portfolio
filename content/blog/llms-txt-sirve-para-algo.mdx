@@ -1,0 +1,153 @@
+---
+title: "llms.txt: ¿sirve para algo o es humo?"
+metaTitle: "llms.txt: ¿sirve para algo?"
+description: "Qué es el fichero llms.txt, qué dice Google sobre él, qué muestran los estudios de registros de servidor y si merece la pena ponerlo en tu web."
+date: "2026-11-19"
+slug: "llms-txt-sirve-para-algo"
+tags: ["ia-y-busqueda", "seo"]
+quickAnswer: "El llms.txt es un fichero de texto que resume tu web para los modelos de lenguaje. Google dice explícitamente que no es necesario para su buscador y que no ayuda ni perjudica. Los estudios de registros muestran que casi ningún rastreador lo pide. Ponerlo cuesta diez minutos y no es una palanca de posicionamiento."
+keyTakeaways:
+  - "Google lo dice por escrito en su documentación: los ficheros de texto para modelos no son necesarios y no cambian la visibilidad en su buscador."
+  - "Los análisis de registros de servidor publicados muestran que casi ningún rastreador de IA lo solicita."
+  - "Ponerlo cuesta diez minutos y no hace daño. Venderlo como servicio de optimización para IA sí es engañoso."
+  - "Lo que sí decide si te citan es que los rastreadores puedan leerte, que el texto llegue desde el servidor y que cada bloque tenga un dato."
+  - "Si tienes el tiempo, ese mismo rato invertido en reescribir la entradilla de tus cinco páginas principales rinde mucho más."
+faq:
+  - question: "¿Qué es exactamente el llms.txt?"
+    answer: "Es un fichero de texto plano que se coloca en la raíz del dominio, igual que el robots.txt, y que resume de qué va tu sitio y qué páginas son importantes, con un formato sencillo de título, descripción y lista de enlaces con su explicación. La idea detrás es razonable: darle a un modelo de lenguaje un mapa curado de tu web en lugar de obligarlo a inferirlo rastreando. El problema no es la idea, es que los sistemas a los que va dirigida no lo están consultando de forma apreciable."
+  - question: "¿Qué dice Google sobre él?"
+    answer: "Lo dice de forma inusualmente directa para ser documentación oficial: en su guía de optimización para funciones generativas, introducida en 2026, afirma que los ficheros de texto pensados para modelos de lenguaje no son necesarios para Google Search y que no ayudan ni perjudican a la visibilidad ni al posicionamiento. No es una interpretación de la comunidad ni una declaración informal en una entrevista: está escrito en la documentación de Search Central, que es la fuente que manda cuando hay discusión."
+  - question: "¿Lo usan ChatGPT o Perplexity?"
+    answer: "No hay evidencia pública de que lo consulten de forma sistemática, y los análisis de registros de servidor que se han publicado apuntan a lo contrario: la proporción de peticiones a ese fichero por parte de rastreadores conocidos es mínima o nula. Lo que sí piden todos son las páginas normales y el robots.txt. Eso no significa que nunca vaya a usarse, porque el estándar es reciente y las cosas cambian, y sí significa que hoy no es una palanca y que presentarlo como tal es prometer algo que no está respaldado."
+  - question: "¿Entonces lo pongo o no?"
+    answer: "Ponlo si tienes diez minutos y no lo pongas si eso significa dejar de hacer otra cosa. No hace ningún daño, cuesta muy poco y si en algún momento algún sistema empieza a consultarlo ya estará ahí. Lo que no hay que hacer es pagar por un servicio de implementación, ni considerarlo una tarea de optimización para IA, ni esperar que mueva ninguna métrica. La comparación que uso: ese mismo rato invertido en reescribir la entradilla de tus cinco páginas principales rinde muchísimo más."
+  - question: "¿Qué diferencia hay entre llms.txt y robots.txt?"
+    answer: "El robots.txt es un estándar de hace treinta años que todos los rastreadores respetan y que sirve para permitir o bloquear el acceso a partes de tu web. Es decisivo: si bloqueas ahí a GPTBot o a PerplexityBot, desapareces de sus respuestas. El llms.txt es una propuesta reciente que no bloquea ni permite nada, solo describe. Uno controla el acceso y el otro intenta guiar la comprensión, y solo el primero tiene efecto comprobable sobre tu visibilidad."
+  - question: "¿Y el llms-full.txt?"
+    answer: "Es una variante que propone volcar el contenido completo de la web en un solo fichero de texto, y tiene todavía menos justificación. En una web con cuarenta páginas eso son decenas de miles de palabras duplicadas en una segunda URL, con el coste de mantenerlas sincronizadas y sin ninguna evidencia de que algo lo consuma. Si el fichero corto ya es especulativo, el completo añade trabajo real de mantenimiento a cambio del mismo beneficio no demostrado."
+  - question: "¿Qué debería hacer en su lugar para que la IA me cite?"
+    answer: "Tres cosas con efecto comprobado, y ninguna es un fichero nuevo. Comprobar que tu robots.txt no bloquea a GPTBot, OAI-SearchBot, ClaudeBot ni PerplexityBot, porque ese bloqueo sí te saca de las respuestas. Verificar que el texto de tu web llega escrito desde el servidor, porque estos rastreadores no ejecutan JavaScript y sin eso tu página está vacía para ellos. Y escribir cada sección de forma que se entienda leída sola, con una cifra y su fuente dentro."
+---
+
+El llms.txt es un fichero de texto que se coloca en la raíz de tu dominio y resume de qué va tu web para los modelos de lenguaje.
+
+La idea es razonable. El problema es que los sistemas a los que va dirigida no lo están consultando.
+
+## Qué dice la fuente que manda
+
+Google, en su guía de optimización para funciones generativas dentro de la documentación de Search Central, afirma que los ficheros de texto pensados para modelos de lenguaje **no son necesarios para Google Search y no ayudan ni perjudican** a la visibilidad ni al posicionamiento.
+
+No es una interpretación de la comunidad ni una declaración informal en una entrevista. Está escrito en la documentación oficial.
+
+<Callout type="aviso" title="La diferencia con el robots.txt">
+El robots.txt es un estándar de treinta años que todos los rastreadores respetan y que decide si pueden acceder. Bloquear ahí a GPTBot te saca de las respuestas de ChatGPT. El llms.txt no bloquea ni permite nada: solo describe. Uno tiene efecto comprobable y el otro no.
+</Callout>
+
+## Los ficheros de la raíz, y qué hace cada uno
+
+| Fichero | Qué hace | ¿Tiene efecto comprobado? |
+|---|---|---|
+| `robots.txt` | Permite o bloquea el acceso de rastreadores | Sí, decisivo |
+| `sitemap.xml` | Lista tus URLs para facilitar el descubrimiento | Sí, útil |
+| `llms.txt` | Describe tu sitio para modelos de lenguaje | No |
+| `llms-full.txt` | Vuelca el contenido completo | No |
+| `ads.txt` | Declara quién puede vender tu publicidad | Sí, si vendes publicidad |
+| `security.txt` | Dice a quién avisar de una vulnerabilidad | Sí, para eso |
+
+Los dos primeros son los que deciden tu visibilidad. Confundir el tercero con ellos porque comparte la ubicación es exactamente el malentendido que hace que se venda como palanca.
+
+## Lo que muestran los registros de servidor
+
+Los análisis publicados sobre peticiones reales apuntan en la misma dirección: la proporción de solicitudes a ese fichero por parte de rastreadores conocidos es mínima o nula.
+
+Lo que sí piden todos son las páginas normales y el robots.txt.
+
+Eso no significa que nunca vaya a usarse. El estándar es reciente y las cosas cambian. Significa que hoy no es una palanca, y que presentarlo como tal es prometer algo sin respaldo.
+
+## ¿Lo pongo o no?
+
+Ponlo si tienes diez minutos. No lo pongas si eso significa dejar de hacer otra cosa.
+
+No hace daño, cuesta muy poco, y si algún sistema empieza a consultarlo ya estará ahí.
+
+Lo que no hay que hacer es pagar por un servicio de implementación, considerarlo una tarea de optimización para IA, ni esperar que mueva ninguna métrica.
+
+## Cómo se escribe, si lo pones
+
+El formato es sencillo: un título, una descripción entre comillas de bloque, y secciones con enlaces y su explicación.
+
+```
+# Nombre del sitio
+> Una frase que explique qué es y para quién.
+
+## Servicios
+- [Nombre del servicio](https://tudominio.com/servicios/x): qué resuelve y para quién.
+
+## Precios
+- [Precios](https://tudominio.com/precios): bandas reales por servicio.
+
+## Opcional
+- [Aviso legal](https://tudominio.com/legal): condiciones.
+```
+
+La sección `## Opcional` es la señal del propio formato para «sáltate esto si vas corto de contexto», así que ahí van las páginas legales y nunca una de servicio.
+
+## El llms-full.txt, que tiene menos sentido todavía
+
+Es una variante que propone volcar el contenido completo de la web en un solo fichero.
+
+En una web de cuarenta páginas eso son decenas de miles de palabras duplicadas en una segunda URL, con el coste de mantenerlas sincronizadas.
+
+Si el fichero corto ya es especulativo, el completo añade trabajo real de mantenimiento a cambio del mismo beneficio no demostrado.
+
+## Lo que sí hay que hacer en su lugar
+
+Tres cosas con efecto comprobado y ninguna es un fichero nuevo.
+
+<Checklist title="Los tres que sí mueven la aguja">
+- Comprobar que tu robots.txt no bloquea a GPTBot, OAI-SearchBot, ClaudeBot ni PerplexityBot. Ese bloqueo sí te saca de las respuestas.
+- Verificar que el texto de tu web llega escrito desde el servidor, porque estos rastreadores no ejecutan JavaScript.
+- Escribir cada sección de forma que se entienda leída sola, con una cifra y su fuente dentro.
+</Checklist>
+
+Los dos primeros son comprobaciones de cinco minutos y son la causa más frecuente de invisibilidad total. Están en [cómo aparecer en ChatGPT](/blog/como-aparecer-en-chatgpt).
+
+## Por qué esto importa más de lo que parece
+
+No por el fichero, que es una anécdota. Por lo que revela sobre cómo se vende este tema.
+
+En cada cambio del sector aparece una técnica nueva, fácil de implementar y fácil de facturar, que promete ventaja sin que nadie haya comprobado que la dé. El llms.txt es el ejemplo más limpio de los últimos dos años.
+
+La prueba que uso para separar el ruido: pedir la fuente. Si la respuesta es «lo dice todo el mundo» o un artículo de blog que cita a otro artículo de blog, no es una palanca. Si la respuesta es la documentación de Google o un estudio con datos, sí.
+
+## Lo que Google sí dice que importa
+
+En esa misma guía, la conclusión central es que optimizar para sus funciones generativas **sigue siendo SEO**, y que GEO y AEO son etiquetas nuevas para el mismo trabajo.
+
+Eso no significa que nada haya cambiado. Significa que lo que ha cambiado es qué contenido sobrevive, no qué palancas existen. El desarrollo completo está en [qué es el GEO](/blog/que-es-el-geo).
+
+## Lo que yo tengo puesto
+
+Un llms.txt generado automáticamente desde los mismos datos que renderizan las páginas, para que no se pueda quedar obsoleto.
+
+Y deliberadamente sin `llms-full.txt`, por el motivo de arriba.
+
+Lo tengo porque cuesta nada mantenerlo así, no porque espere nada de él. Si mañana algún sistema lo consulta, estará al día.
+
+## El caso donde sí puede tener sentido
+
+Hay un escenario, y conviene nombrarlo para no caer en el extremo opuesto de descartar la idea por completo.
+
+Si tu web es una documentación técnica, una base de conocimiento o un producto que la gente consulta preguntándole a un asistente, el fichero puede servir para otro propósito distinto del posicionamiento: facilitar que alguien que quiere trabajar con tu documentación tenga un índice limpio. Varias empresas de software lo publican con esa intención, y ahí el uso es deliberado y no especulativo.
+
+La diferencia está en quién es el consumidor. En ese caso es una persona o un sistema que ya ha decidido usar tu documentación y quiere un mapa. En el caso de un negocio local que quiere aparecer en recomendaciones, el consumidor sería un rastreador que no lo está pidiendo.
+
+Por eso la respuesta a si sirve depende de para qué. Como índice voluntario para quien ya te conoce, tiene sentido. Como palanca para que te descubran, no hay nada que lo respalde.
+
+## Cómo detectar a quien te lo venda como servicio
+
+Pregunta dos cosas: qué evidencia tiene de que ese fichero cambie alguna métrica, y qué va a hacer además de eso.
+
+Si la lista de acciones para «optimizar para IA» es poner un fichero y añadir marcado de preguntas frecuentes, estás pagando media hora de trabajo. Lo que de verdad cambia las cosas es más lento y menos vistoso: reescribir el contenido para que responda, conseguir que se hable de ti fuera de tu web, y mantenerlo fresco.
+
+Si quieres una revisión de por dónde andas en esto, con lo que sí tiene efecto, es parte de mi [auditoría y consultoría digital](/servicios/auditoria-consultoria-digital) por 290 €.

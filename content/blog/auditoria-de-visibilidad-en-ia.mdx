@@ -1,0 +1,152 @@
+---
+title: "Auditoría de visibilidad en IA: cómo se hace paso a paso"
+metaTitle: "Auditoría de visibilidad en IA"
+description: "Las siete comprobaciones para saber si los asistentes de IA pueden verte y citarte, todas gratuitas, y qué hacer con cada resultado."
+date: "2026-12-17"
+slug: "auditoria-de-visibilidad-en-ia"
+tags: ["ia-y-busqueda", "auditoria"]
+quickAnswer: "Una auditoría de visibilidad en IA son siete comprobaciones: los rastreadores en el robots.txt, si el texto llega desde el servidor, la citabilidad de tus pasajes, la frescura, la coherencia de entidad, la presencia fuera de tu web y las diez preguntas de control hechas a mano."
+keyTakeaways:
+  - "Empieza por lo técnico: si el robots.txt bloquea a los rastreadores, todo lo demás es irrelevante."
+  - "Los rastreadores de IA no ejecutan JavaScript. Si tu texto se pinta en el navegador, tu página está vacía para ellos."
+  - "Las diez preguntas de control hechas a mano cada mes son el único dato fiable que vas a tener."
+  - "La coherencia de entidad (que digas lo mismo sobre quién eres en todas partes) pesa más de lo que parece."
+  - "No hay panel oficial de citaciones. Cualquier herramienta que lo prometa está estimando desde sus propias consultas."
+faq:
+  - question: "¿Por dónde se empieza?"
+    answer: "Por el robots.txt, porque si ahí hay un bloqueo todo lo demás es irrelevante. Abre tu dominio seguido de barra robots.txt y busca GPTBot, OAI-SearchBot, ClaudeBot y PerplexityBot. Si alguno aparece con una regla de bloqueo, estás fuera de las respuestas de ese sistema y ninguna mejora de contenido lo va a compensar. Muchos sitios los cerraron en 2024 y 2025 cuando el debate iba de derechos de autor, y nadie ha vuelto a revisar ese fichero desde entonces."
+  - question: "¿Cómo compruebo si mi texto llega desde el servidor?"
+    answer: "Con el botón derecho en tu página, ver código fuente, y buscando un párrafo cualquiera de tu texto con la búsqueda del navegador. Si está ahí, llega desde el servidor y los rastreadores lo pueden leer. Si no está, se está generando en el navegador con JavaScript, y estos rastreadores no lo ejecutan: para ellos tu página está vacía. Es un problema silencioso que afecta sobre todo a webs hechas con constructores visuales modernos, y que no se detecta mirando la web con un navegador normal."
+  - question: "¿Cómo mido si mis pasajes son citables?"
+    answer: "Con una prueba manual de diez segundos por sección: copia una sección de tu artículo, pégala sola en un documento en blanco y léela. Si sigue diciendo algo concreto y verificable sin el contexto de arriba, es citable. Si empieza con «como hemos visto» o no contiene ningún dato, no lo es. Haz eso con las cinco páginas que más tráfico te traen y anota cuántas secciones pasan la prueba. Ese porcentaje es tu punto de partida y se puede mejorar reescribiendo, sin crear nada nuevo."
+  - question: "¿Qué es la coherencia de entidad y cómo se revisa?"
+    answer: "Es que lo que dices sobre quién eres coincida en todos los sitios donde apareces: el mismo nombre, la misma descripción de a qué te dedicas, la misma ciudad, el mismo teléfono. Se revisa buscando tu negocio en Google y abriendo todos los sitios donde aparezca: tu web, la ficha, LinkedIn, directorios, redes. Cuando esas piezas coinciden, un sistema puede afirmar algo sobre ti con confianza. Cuando se contradicen, no puede, y no te nombra. Es trabajo aburrido, se hace una vez y casi nadie lo hace."
+  - question: "¿Cuánto pesa la frescura del contenido?"
+    answer: "Bastante, y es la palanca más barata de esta auditoría. Los estudios sobre citaciones en respuestas generadas apuntan a que el contenido de menos de tres meses se cita del orden de tres veces más que el antiguo, y que a partir de los seis meses sin actualizar la elegibilidad cae de forma apreciable. La comprobación es directa: mira la fecha de tus cinco páginas más importantes. Si todas son de hace más de un año, actualizarlas con datos de este mes rinde más que escribir algo nuevo."
+  - question: "¿Sirven las herramientas que miden menciones en IA?"
+    answer: "Sirven como indicación y no como medida exacta, y conviene saber por qué. Consultan a los modelos desde sus propios sistemas, no desde la sesión de tus clientes, y las respuestas de estos modelos varían entre usuarios y entre momentos. Eso las hace útiles para ver tendencia en volumen alto y poco fiables para un negocio pequeño. No hay panel oficial de citaciones y cualquier herramienta que prometa un dato exacto está estimando. Para un negocio pequeño, diez preguntas a mano cada mes es más fiable y cuesta media hora."
+  - question: "¿Cada cuánto se repite la auditoría?"
+    answer: "Las comprobaciones técnicas, una vez y luego cada vez que se toque la web, porque un despliegue puede reintroducir un bloqueo sin que nadie se dé cuenta. Las diez preguntas de control, una vez al mes y siempre las mismas, que es lo que permite comparar. Y la revisión de citabilidad y frescura, cada trimestre, coincidiendo con el programa de actualización de contenido. Hacerlo más a menudo produce ruido: las respuestas de estos sistemas varían de un día para otro sin que haya cambiado nada en tu web."
+---
+
+Una auditoría de visibilidad en IA son siete comprobaciones y todas son gratuitas. Se hacen en una tarde y el orden importa, porque las dos primeras pueden hacer irrelevante el resto.
+
+## Las siete, en orden
+
+| # | Comprobación | Dónde | Si falla |
+|---|---|---|---|
+| 1 | Rastreadores permitidos | Tu `robots.txt` | Invisible, punto |
+| 2 | Texto desde el servidor | Código fuente | Invisible, punto |
+| 3 | Citabilidad de los pasajes | Tus cinco páginas top | No te citan |
+| 4 | Frescura del contenido | Las fechas | Te citan menos |
+| 5 | Coherencia de entidad | Todos tus perfiles | No te nombran |
+| 6 | Presencia fuera de tu web | Comunidades y vídeo | Pierdes la vía externa |
+| 7 | Las diez preguntas de control | A mano | No tienes punto de partida |
+
+## 1. Los rastreadores
+
+Abre `tudominio.com/robots.txt` y busca `GPTBot`, `OAI-SearchBot`, `ClaudeBot` y `PerplexityBot`.
+
+Si alguno aparece bloqueado, estás fuera de las respuestas de ese sistema y ninguna mejora de contenido lo compensa.
+
+<Callout type="error" title="El bloqueo más caro que existe ahora mismo">
+Muchos sitios cerraron estos rastreadores en 2024 y 2025, cuando el debate iba de derechos de autor. Nadie ha vuelto a revisar ese fichero desde entonces. Es la primera comprobación y la que más veces encuentra algo.
+</Callout>
+
+## 2. El texto desde el servidor
+
+Botón derecho en tu página, ver código fuente, y busca un párrafo cualquiera de tu texto.
+
+Si está ahí, los rastreadores lo pueden leer. Si no, se genera en el navegador con JavaScript y estos rastreadores no lo ejecutan: para ellos tu página está vacía.
+
+Es un problema silencioso que afecta sobre todo a webs hechas con constructores visuales modernos, y que no se detecta mirando la web con un navegador normal.
+
+## 3. La citabilidad
+
+Prueba manual de diez segundos por sección: copia una sección, pégala sola en un documento en blanco y léela.
+
+Si sigue diciendo algo concreto y verificable sin el contexto de arriba, es citable.
+
+Haz eso con las cinco páginas que más tráfico te traen y anota cuántas secciones pasan la prueba. Ese porcentaje es tu punto de partida, y se mejora reescribiendo sin crear nada nuevo. Qué formatos se citan está en [qué contenido cita la IA y cuál ignora](/blog/que-contenido-cita-la-ia-y-cual-ignora).
+
+## 4. La frescura
+
+Mira la fecha de tus cinco páginas más importantes.
+
+Los estudios sobre citaciones apuntan a que el contenido de menos de tres meses se cita del orden de tres veces más, y que a partir de los seis meses sin actualizar la elegibilidad cae.
+
+Si todas tus páginas son de hace más de un año, actualizarlas con datos de este mes rinde más que escribir algo nuevo. Y cuesta una hora por página en lugar de un día.
+
+## 5. La coherencia de entidad
+
+Busca tu negocio en Google y abre todos los sitios donde aparezca: tu web, la ficha, LinkedIn, directorios, redes.
+
+<Checklist title="Qué tiene que coincidir exactamente">
+- El nombre del negocio, escrito igual.
+- La descripción de a qué te dedicas.
+- La ciudad o la zona de servicio.
+- El teléfono, en el mismo formato.
+- La dirección, si la tienes.
+</Checklist>
+
+Cuando esas piezas coinciden, un sistema puede afirmar algo sobre ti con confianza. Cuando se contradicen, no puede y no te nombra.
+
+Es trabajo aburrido, se hace una vez y casi nadie lo hace.
+
+## 6. La presencia fuera de tu web
+
+Los estudios disponibles apuntan a que las menciones de marca correlacionan bastante más con ser citado que la autoridad de dominio medida por enlaces. Las de YouTube aparecen como la señal más fuerte, seguidas de Reddit.
+
+La comprobación es honesta y sencilla: busca el nombre de tu negocio y mira cuántos resultados no son tuyos.
+
+Si todos los resultados son tu propia web y tus propios perfiles, no existes fuera de ti mismo, y esa es la parte más lenta de construir. Cómo se trabaja está en [cómo aparecer en ChatGPT](/blog/como-aparecer-en-chatgpt).
+
+## 7. Las diez preguntas de control
+
+Es la única medición fiable que vas a tener.
+
+Coge las diez preguntas que haría un cliente tuyo, no búsquedas de tu marca. Hazlas en ChatGPT, en Perplexity y en el buscador de Google. Anota si apareces, con qué frase y junto a quién. Guarda capturas.
+
+Siempre las mismas diez y el mismo día del mes, que es lo que permite comparar.
+
+## ¿Sirven las herramientas que miden menciones en IA?
+
+Sirven como indicación y no como medida exacta.
+
+Consultan a los modelos desde sus propios sistemas, no desde la sesión de tus clientes, y las respuestas varían entre usuarios y momentos.
+
+Eso las hace útiles para ver tendencia en volumen alto y poco fiables para un negocio pequeño. No hay panel oficial y cualquier herramienta que prometa un dato exacto está estimando.
+
+## Cada cuánto se repite
+
+Las comprobaciones técnicas: una vez, y luego cada vez que se toque la web, porque un despliegue puede reintroducir un bloqueo sin que nadie se dé cuenta.
+
+Las diez preguntas: una vez al mes.
+
+La citabilidad y la frescura: cada trimestre, coincidiendo con el programa de actualización.
+
+Hacerlo más a menudo produce ruido: las respuestas de estos sistemas varían de un día para otro sin que haya cambiado nada en tu web.
+
+## Qué hacer con cada resultado
+
+La auditoría no vale nada si acaba en un documento. Cada fallo tiene una acción y un orden.
+
+**Si falla la 1 o la 2**, para todo lo demás y arréglalo. Son las dos únicas que hacen invisible el resto del trabajo, y las dos se resuelven con una línea de configuración o un cambio de plantilla.
+
+**Si falla la 3**, no escribas nada nuevo: reescribe las secciones de las cinco páginas que ya traen tráfico. Es medio día de trabajo y afecta a las páginas que ya tienen posibilidades.
+
+**Si falla la 4**, actualiza esas cinco páginas con datos de este mes y cambia la fecha. Una hora por página.
+
+**Si falla la 5**, dedica una tarde a igualar los perfiles. No se vuelve a tocar en un año.
+
+**Si falla la 6**, es lo único de esta lista que no se arregla en una semana. Se construye apareciendo en sitios que no son tuyos, y eso lleva meses.
+
+El orden no es negociable: las técnicas primero porque bloquean, la citabilidad después porque es la más rentable por hora, y la presencia externa al final porque es la más lenta.
+
+## Lo que no entra en esta auditoría
+
+El fichero `llms.txt`, que Google dice explícitamente que no cambia nada en su buscador y que los registros de servidor muestran que casi nadie pide. Lo desarrollo en [llms.txt: ¿sirve para algo?](/blog/llms-txt-sirve-para-algo).
+
+Y cualquier «puntuación de optimización para IA» que dé un número sobre cien. No existe una métrica así y quien la da la ha inventado.
+
+Si quieres esta revisión hecha junto al diagnóstico del buscador clásico, que es lo que la sostiene, entra en mi [auditoría y consultoría digital](/servicios/auditoria-consultoria-digital) por 290 €.

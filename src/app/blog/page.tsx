@@ -6,8 +6,10 @@ import { BlogPostCard } from "@/components/BlogPostCard";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { buildMetadata } from "@/lib/seo";
 import { blogGraph, breadcrumbSchema } from "@/lib/schema";
-import { getAllPosts } from "@/lib/blog";
+import { getAllPosts, featuredPost } from "@/lib/blog";
 import { activeTopics } from "@/lib/topics";
+import { pageCount, pageSlice } from "@/lib/pagination";
+import { Pagination } from "@/components/blog/Pagination";
 
 export const metadata: Metadata = buildMetadata({
   title: "Blog de marketing digital y SEO en Barcelona",
@@ -22,8 +24,14 @@ export default function BlogPage() {
 
   // The pillar is the entry point of the whole blog, so it gets the width and
   // the type size to say so. Everything else keeps the standard card.
-  const featured = posts.find((post) => post.pillar) ?? posts[0];
+  const featured = featuredPost(posts);
   const rest = posts.filter((post) => post.slug !== featured?.slug);
+
+  /* Page 1 shows the pillar plus the first 24. The rest live under
+     /blog/pagina/N, which is a real page with its own canonical, not a
+     JavaScript "load more" that a crawler never clicks. */
+  const totalPages = pageCount(rest.length);
+  const pagePosts = pageSlice(rest, 1);
 
   return (
     <>
@@ -83,10 +91,12 @@ export default function BlogPage() {
         </h2>
 
         <div className="mt-10 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
-          {rest.map((post) => (
+          {pagePosts.map((post) => (
             <BlogPostCard key={post.slug} post={post} />
           ))}
         </div>
+
+        <Pagination current={1} total={totalPages} />
       </Section>
     </>
   );

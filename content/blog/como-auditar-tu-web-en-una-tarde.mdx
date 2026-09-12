@@ -1,0 +1,149 @@
+---
+title: "Cómo auditar tu web en una tarde sin ser técnico"
+metaTitle: "Cómo auditar tu web en una tarde"
+description: "Ocho comprobaciones gratuitas que revelan el 80 % de lo que falla en una web pequeña, en el orden en que las haría y con qué hacer con cada resultado."
+date: "2026-10-31"
+slug: "como-auditar-tu-web-en-una-tarde"
+tags: ["auditoria", "seo"]
+quickAnswer: "Una auditoría básica son ocho comprobaciones gratuitas: páginas indexadas, velocidad en móvil, el formulario, la coherencia de datos, los títulos de las páginas, si el texto llega desde el servidor, los rastreadores de IA y la ficha de Google. Se hacen en una tarde y revelan la mayoría de los problemas."
+keyTakeaways:
+  - "Empieza por cuántas páginas tiene Google indexadas. Si falta la mitad del sitio, ninguna otra optimización sirve para nada."
+  - "Rellena tu propio formulario desde el móvil. Es la comprobación más barata y la que más veces encuentra algo roto."
+  - "La velocidad se mide en un móvil con datos, no en tu ordenador con fibra. Es donde se pierden las conversiones."
+  - "Revisa si el robots.txt bloquea a los rastreadores de IA. Muchos sitios los cerraron en 2024 y nadie ha vuelto a mirarlo."
+  - "Diagnosticar es barato y lo puedes hacer tú. Arreglar es donde se paga, y saber qué hay que arreglar ya vale dinero."
+faq:
+  - question: "¿Por dónde empiezo?"
+    answer: "Por cuántas páginas tiene Google indexadas, porque si falta la mitad del sitio ninguna otra cosa que hagas importa. La forma rápida es buscar en Google tu dominio precedido de site y dos puntos: el número aproximado de resultados es lo que Google tiene de ti. La forma buena es el informe de páginas de Search Console, que además dice el motivo de cada exclusión. Si tu web tiene treinta páginas y aparecen ocho, tu problema no es el contenido ni las palabras clave: es que dos tercios de tu sitio no existen para el buscador."
+  - question: "¿Cómo compruebo la velocidad de verdad?"
+    answer: "Con la herramienta gratuita de Google, mirando la pestaña de móvil y no la de ordenador, y prestando atención a los datos de usuarios reales si los hay, que son más fiables que la simulación. Y con una comprobación manual que vale más que cualquier informe: abre tu web desde tu móvil con datos, fuera de casa, y cuenta hasta que puedas leer algo. Si pasas de tres segundos, tienes un problema que afecta al posicionamiento y a la conversión a la vez, y que suele estar en las imágenes o en el exceso de complementos."
+  - question: "¿Qué miro en el formulario?"
+    answer: "Que funcione, que es menos obvio de lo que parece. Rellénalo tú desde el móvil con un correo real y comprueba que el aviso llega, y llega a la bandeja de entrada y no a la carpeta de correo no deseado. Después mira tres cosas más: cuántos campos tiene y si todos son necesarios, si el número de teléfono de la web es pulsable en móvil, y si hay una confirmación clara después de enviar. He visto webs con meses de formularios perdidos porque un cambio de alojamiento rompió el envío y nadie lo probó."
+  - question: "¿Qué es la coherencia de datos y por qué importa?"
+    answer: "Es que tu nombre, dirección y teléfono estén escritos exactamente igual en todos los sitios donde apareces: la web, la ficha de Google, los directorios, las redes y el pie de los correos. Importa porque los buscadores comparan cadenas de texto, y «Calle Mallorca 42» y «C/ Mallorca, 42, 2º» son dos direcciones distintas para un sistema. Las incoherencias son una de las causas más frecuentes y menos revisadas de mal posicionamiento local, y si alguna vez has cambiado de local, la dirección antigua suele seguir viva en tres o cuatro sitios."
+  - question: "¿Cómo reviso los títulos de mis páginas?"
+    answer: "Busca en Google tu dominio con site y dos puntos y lee los títulos tal y como salen, que es como los ve un cliente. Busca tres problemas concretos: títulos duplicados en varias páginas, títulos por defecto del gestor de contenidos del tipo «Inicio» o «Página 2», y títulos tan largos que se cortan con puntos suspensivos. Los tres son gratis de arreglar y los tres afectan a cuánta gente pincha tu resultado, que es tráfico que ya tenías ganado y no estabas cobrando."
+  - question: "¿Qué significa que el texto llegue desde el servidor?"
+    answer: "Que el contenido de tu página esté escrito en el código que se descarga, en lugar de generarse en el navegador con JavaScript. Se comprueba con el botón derecho, ver código fuente, y buscando un párrafo de tu texto. Si no está ahí, Google puede llegar a verlo con esfuerzo, pero los rastreadores de los asistentes de IA no ejecutan JavaScript y para ellos tu página está vacía. Es un problema silencioso que afecta sobre todo a webs hechas con constructores visuales modernos."
+  - question: "¿Qué hago con la lista de problemas que encuentre?"
+    answer: "Ordenarla por impacto y no por facilidad, que es la tentación natural. Primero lo que impide que te vean: indexación y rastreadores bloqueados. Segundo lo que rompe conversiones: formulario, teléfono, velocidad en móvil. Tercero lo que mejora lo que ya tienes: títulos, coherencia de datos, ficha de Google. Y llévala a quien mantenga tu web pidiendo explicación punto por punto: es la conversación más rentable que vas a tener sobre tu web este año."
+---
+
+Una auditoría básica de web son ocho comprobaciones, todas gratuitas, y revelan la mayoría de lo que falla en un sitio pequeño.
+
+Se hacen en una tarde. Lo que cuesta dinero es arreglarlas, no encontrarlas.
+
+## El orden, que importa más que la lista
+
+| # | Comprobación | Dónde | Si falla |
+|---|---|---|---|
+| 1 | Páginas indexadas | Search Console | Nada más importa |
+| 2 | Rastreadores de IA | Tu `robots.txt` | Invisible en asistentes |
+| 3 | Texto desde el servidor | Código fuente | Invisible en asistentes |
+| 4 | Velocidad en móvil | Herramienta de Google y tu móvil | Pierdes posiciones y ventas |
+| 5 | El formulario | Rellenándolo tú | Pierdes contactos sin saberlo |
+| 6 | Teléfono pulsable | Tu móvil | Pierdes llamadas |
+| 7 | Títulos de las páginas | Búsqueda con `site:` | Pierdes clics ganados |
+| 8 | Coherencia de datos | Buscando tu negocio | Pierdes posicionamiento local |
+
+## 1. ¿Cuántas páginas tiene Google?
+
+Busca en Google `site:tudominio.com`. El número aproximado de resultados es lo que Google tiene de ti.
+
+Compáralo con las páginas que crees tener. Si tu web tiene treinta y aparecen ocho, tu problema no es el contenido: es que dos tercios de tu sitio no existen para el buscador.
+
+La versión buena de esta comprobación está en el informe de páginas de Search Console, que además dice el motivo de cada exclusión. Cómo leerlo está en [cómo usar Search Console](/blog/como-usar-google-search-console).
+
+<Callout type="error" title="Por qué esto va primero">
+Optimizar textos de páginas que Google no tiene guardadas es pintar una habitación a la que no llega la luz. Es el error de orden más común en los presupuestos de SEO.
+</Callout>
+
+## 2. ¿Te dejan leer los asistentes de IA?
+
+Abre `tudominio.com/robots.txt` y busca `GPTBot`, `OAI-SearchBot`, `ClaudeBot` y `PerplexityBot`.
+
+Si alguno está bloqueado, estás fuera de las respuestas generadas. Muchos sitios los cerraron en 2024 y 2025, cuando el debate iba de derechos de autor, y nadie ha vuelto a revisar ese fichero.
+
+## 3. ¿Llega tu texto desde el servidor?
+
+Botón derecho en tu página, ver código fuente, y busca un párrafo de tu texto.
+
+Si no está ahí, se está generando en el navegador. Google puede llegar a verlo con esfuerzo; los rastreadores de asistentes no ejecutan JavaScript y para ellos tu página está vacía.
+
+Afecta sobre todo a webs hechas con constructores visuales modernos, y es un problema silencioso. El contexto está en [cómo aparecer en ChatGPT](/blog/como-aparecer-en-chatgpt).
+
+## 4. ¿Cuánto tarda en cargar de verdad?
+
+Dos comprobaciones y la segunda vale más.
+
+La herramienta gratuita de Google, mirando la pestaña de móvil y fijándose en los datos de usuarios reales si los hay.
+
+Y la manual: abre tu web desde tu móvil con datos, fuera de casa, y cuenta hasta que puedas leer algo. Si pasas de tres segundos, tienes un problema que afecta al posicionamiento y a la conversión a la vez.
+
+La causa está casi siempre en las imágenes sin optimizar o en el exceso de complementos.
+
+## 5. ¿Funciona tu formulario?
+
+Rellénalo tú, desde el móvil, con un correo real. Comprueba que el aviso llega, y que llega a la bandeja de entrada y no a la carpeta de correo no deseado.
+
+Es la comprobación más barata de todas y la que más veces encuentra algo roto. He visto webs con meses de formularios perdidos porque un cambio de alojamiento rompió el envío y nadie lo probó.
+
+Hazlo el primer lunes de cada mes.
+
+## 6. ¿Se puede llamar de un toque?
+
+El número de teléfono tiene que ser pulsable en móvil. Si hay que seleccionarlo y copiarlo, buena parte de la gente no llama.
+
+Y tiene que estar en texto, no dentro de una imagen.
+
+## 7. ¿Qué dicen tus títulos?
+
+Busca `site:tudominio.com` y lee los títulos como los ve un cliente.
+
+<Checklist title="Los tres problemas que vas a encontrar">
+- Títulos duplicados en varias páginas: Google no sabe cuál enseñar.
+- Títulos por defecto del gestor: «Inicio», «Página 2», «Sin título».
+- Títulos tan largos que se cortan con puntos suspensivos.
+</Checklist>
+
+Los tres son gratis de arreglar y afectan a cuánta gente pincha, que es tráfico ya ganado y no cobrado. Las reglas están en [cómo escribir un title y una meta description](/blog/como-escribir-un-title-y-una-meta-description).
+
+## 8. ¿Coinciden tus datos en todas partes?
+
+Busca tu negocio en Google y mira todos los sitios donde aparece. Apunta cómo está escrito el nombre, la dirección y el teléfono en cada uno.
+
+«Calle Mallorca 42» y «C/ Mallorca, 42, 2º» son dos direcciones distintas para un sistema que compara texto. Las incoherencias son una de las causas más frecuentes y menos revisadas de mal posicionamiento local.
+
+Si alguna vez has cambiado de local, busca la dirección antigua: suele seguir viva en tres o cuatro sitios.
+
+## Qué hacer con la lista
+
+Ordenarla por impacto y no por facilidad, que es la tentación natural.
+
+Primero lo que impide que te vean: indexación y rastreadores. Segundo lo que rompe conversiones: formulario, teléfono, velocidad. Tercero lo que mejora lo que ya tienes: títulos, coherencia, ficha.
+
+Y llévala a quien mantenga tu web pidiendo explicación punto por punto. Es la conversación más rentable que vas a tener sobre tu web este año.
+
+## La novena comprobación, que es la ficha de Google
+
+Si tu negocio tiene local o zona de servicio, esta es la que más rinde de todas y la he dejado aparte porque no está en la web.
+
+Busca tu negocio en el móvil como lo haría un cliente y mira tu propia ficha con ojos de desconocido. Cuatro cosas concretas:
+
+**La categoría principal.** Si dice «Clínica» y podría decir «Clínica de fisioterapia», ahí tienes la edición con más impacto de todo el marketing local, y se cambia en dos minutos.
+
+**Los servicios marcados.** Cada uno que falta es un filtro en el que no apareces cuando alguien busca.
+
+**La fecha de las fotos.** Si las más recientes son de hace tres años, la ficha transmite que el negocio ha bajado el ritmo.
+
+**Las reseñas sin responder.** Sobre todo las malas, que son las que más se leen antes de decidir.
+
+Las cuatro son gratis y las cuatro dan resultado en semanas, frente a los meses de cualquier cambio en la web. El detalle completo está en [cómo optimizar tu ficha de Google Business Profile](/blog/como-optimizar-tu-ficha-de-google-business-profile).
+
+## Lo que esta auditoría no cubre
+
+Tres cosas que necesitan más tiempo y criterio: si tus páginas responden a las búsquedas correctas, si la arquitectura del sitio tiene sentido, y si el contenido aporta algo que no esté en las otras diez páginas que rankean.
+
+Eso es lo que hace una auditoría de pago, y es la diferencia entre encontrar lo roto y saber qué construir. Mi [auditoría y consultoría digital](/servicios/auditoria-consultoria-digital) cuesta 290 €, sale con la lista ordenada por impacto y se descuenta del primer mes si seguimos.
+
+Pero las ocho de arriba hazlas tú antes. Diagnosticar es barato, y llegar a esa conversación sabiendo qué falla cambia por completo lo que te van a proponer.

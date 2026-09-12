@@ -1,0 +1,140 @@
+---
+title: "Qué son los Core Web Vitals y cómo se arreglan"
+metaTitle: "Qué son los Core Web Vitals"
+description: "Las tres métricas de Core Web Vitals explicadas sin tecnicismos, qué valores hay que alcanzar, qué las estropea en una web pequeña y cómo se corrigen."
+date: "2026-11-25"
+slug: "que-es-core-web-vitals"
+tags: ["diseno-web", "seo"]
+quickAnswer: "Los Core Web Vitals son tres métricas con las que Google mide la experiencia de carga de una página: cuánto tarda en aparecer el contenido principal, cuánto tarda en responder a un toque y cuánto se mueve mientras carga. Se miden con usuarios reales en móvil, no con simulaciones."
+keyTakeaways:
+  - "Se miden con datos de usuarios reales en sus móviles, no con la simulación de una herramienta. La diferencia es grande."
+  - "Las tres métricas son LCP (cuánto tarda en verse lo principal), INP (cuánto tarda en responder) y CLS (cuánto se mueve la página)."
+  - "En una web pequeña, la causa número uno de mal rendimiento son las imágenes sin optimizar."
+  - "Afectan al posicionamiento y a la conversión a la vez, y la segunda importa más que la primera."
+  - "Una web que tarda cuatro segundos en móvil pierde a la gente antes de que lea el titular, y si el tráfico es pagado eso es dinero."
+faq:
+  - question: "¿Qué mide cada una de las tres métricas?"
+    answer: "El LCP mide cuánto tarda en aparecer el elemento principal de la página, normalmente la imagen grande o el titular, y el objetivo es por debajo de dos segundos y medio. El INP mide cuánto tarda la página en responder cuando alguien toca algo, con el objetivo por debajo de doscientos milisegundos. Y el CLS mide cuánto se mueven los elementos mientras carga, ese salto que hace que pulses un botón equivocado, con el objetivo por debajo de 0,1. Las tres se miden en el percentil setenta y cinco de tus visitas reales."
+  - question: "¿Por qué se miden con usuarios reales y no con una herramienta?"
+    answer: "Porque la simulación de una herramienta prueba tu web en condiciones ideales de laboratorio y tus clientes la abren en un móvil de gama media con datos en el metro. La diferencia entre las dos medidas es a menudo de varios segundos, y Google usa la de usuarios reales para evaluar tu sitio. Eso significa que una web que da bien en la herramienta y mal en el informe de experiencia de usuario tiene un problema real: el que importa es el segundo, aunque el primero sea el que se enseña en las reuniones."
+  - question: "¿Afectan de verdad al posicionamiento?"
+    answer: "Afectan y menos de lo que se dice, y ese matiz es importante para no invertir mal. Google los usa como señal, y es una señal de desempate: entre dos páginas que responden igual de bien a una búsqueda, la más rápida tiene ventaja. No compensan un contenido que no responde. Lo que sí hacen de forma mucho más directa es afectar a la conversión, y ahí el efecto es medible en euros: una página que tarda cuatro segundos en móvil pierde a buena parte de la gente antes de que lea el titular."
+  - question: "¿Qué estropea el rendimiento en una web pequeña?"
+    answer: "Las imágenes, en el noventa por ciento de los casos, y concretamente imágenes subidas a tamaño completo desde una cámara o un móvil y mostradas pequeñas. Una foto de cinco megas en una cabecera es el problema más común y el más fácil de arreglar. Después vienen los complementos que cargan su código en todas las páginas aunque solo se usen en una, las tipografías externas mal cargadas, los vídeos incrustados que descargan su reproductor entero, y los avisos de cookies mal implementados que bloquean la pintura de la página."
+  - question: "¿Cómo se arregla el desplazamiento de contenido?"
+    answer: "Reservando el espacio de cada elemento antes de que cargue, que en la práctica significa declarar el ancho y el alto de todas las imágenes y de los espacios publicitarios o de los bloques incrustados. El salto ocurre porque el navegador dibuja el texto, luego llega la imagen y empuja todo hacia abajo. Con las dimensiones declaradas, el hueco está reservado desde el principio y nada se mueve. Es de los arreglos más agradecidos: es barato, es rápido y su efecto se nota inmediatamente en la sensación de calidad."
+  - question: "¿Qué herramientas uso para medirlo?"
+    answer: "Tres y las tres gratuitas. El informe de experiencia en la página de Search Console, que es el que usa los datos de tus usuarios reales y el que de verdad cuenta. PageSpeed Insights, que combina la simulación con los datos reales si tienes tráfico suficiente y además da la lista de qué arreglar. Y la comprobación manual, que es abrir tu web desde tu móvil con datos fuera de casa y contar hasta que puedas leer algo: si pasas de tres segundos, no hace falta ninguna herramienta para saber que hay trabajo."
+  - question: "¿Merece la pena rehacer la web por esto?"
+    answer: "Casi nunca, y es la conclusión a la que llegan bastantes proyectos por el camino equivocado. En la mayoría de webs pequeñas, optimizar las imágenes, quitar tres complementos que no se usan y declarar dimensiones arregla el ochenta por ciento del problema en una jornada de trabajo. Rehacer la web tiene sentido cuando la estructura es el problema de fondo, cuando el gestor de contenidos está lleno de código heredado de tres plantillas anteriores, o cuando además hay otras razones de negocio para hacerlo."
+---
+
+Los Core Web Vitals son tres métricas con las que Google mide la experiencia de carga de una página. Y lo importante de entender primero es cómo se miden.
+
+No con una simulación: con los datos de usuarios reales abriendo tu web en sus móviles.
+
+## Las tres métricas
+
+| Métrica | Qué mide | Objetivo |
+|---|---|---|
+| LCP | Cuánto tarda en verse el contenido principal | Menos de 2,5 segundos |
+| INP | Cuánto tarda en responder a un toque | Menos de 200 milisegundos |
+| CLS | Cuánto se mueve la página al cargar | Menos de 0,1 |
+
+Se evalúan en el percentil setenta y cinco de tus visitas reales, lo que significa que tres de cada cuatro personas tienen que estar por debajo de ese umbral.
+
+<Callout type="dato" title="La diferencia entre la simulación y la realidad">
+Una herramienta prueba tu web en condiciones de laboratorio. Tus clientes la abren en un móvil de gama media con datos en el metro. Entre las dos medidas hay a menudo varios segundos, y Google usa la segunda. Si tu web da bien en la herramienta y mal en el informe de usuarios reales, el que cuenta es el segundo.
+</Callout>
+
+## ¿Afectan al posicionamiento?
+
+Afectan y menos de lo que se dice, y ese matiz importa para no invertir mal.
+
+Google los usa como señal de desempate: entre dos páginas que responden igual de bien a una búsqueda, la más rápida tiene ventaja. No compensan un contenido que no responde.
+
+Lo que sí hacen de forma mucho más directa es afectar a la conversión, y ahí el efecto se mide en euros.
+
+Una página que tarda cuatro segundos en móvil pierde a buena parte de la gente antes de que lea el titular. Y si ese tráfico es pagado, cada una de esas personas te ha costado dinero.
+
+## Qué lo estropea en una web pequeña
+
+En el noventa por ciento de los casos, las imágenes.
+
+Concretamente, imágenes subidas a tamaño completo desde una cámara o un móvil y mostradas pequeñas. Una foto de cinco megas en una cabecera es el problema más común y el más fácil de arreglar.
+
+Después, por orden de frecuencia:
+
+<Checklist title="Los cinco culpables habituales">
+- Imágenes sin optimizar ni redimensionar.
+- Complementos que cargan su código en todas las páginas aunque solo se usen en una.
+- Tipografías externas mal cargadas, que bloquean la pintura del texto.
+- Vídeos incrustados que descargan su reproductor entero al abrir la página.
+- Avisos de cookies mal implementados que bloquean la pintura.
+</Checklist>
+
+## El desplazamiento, que es el más fácil de arreglar
+
+El CLS es ese salto que hace que pulses un botón equivocado porque la página se movió mientras cargaba.
+
+Ocurre porque el navegador dibuja el texto, luego llega la imagen y empuja todo hacia abajo.
+
+Se arregla declarando el ancho y el alto de todas las imágenes y de los bloques incrustados. Con las dimensiones declaradas, el hueco está reservado desde el principio y nada se mueve.
+
+Es el arreglo más agradecido de los tres: barato, rápido, y su efecto se nota inmediatamente en la sensación de calidad.
+
+## Cómo se mide
+
+Tres herramientas y las tres gratuitas.
+
+**El informe de experiencia en la página de Search Console.** Usa los datos de tus usuarios reales y es el que de verdad cuenta. Dónde está está en [cómo usar Search Console](/blog/como-usar-google-search-console).
+
+**PageSpeed Insights.** Combina la simulación con los datos reales si tienes tráfico suficiente, y da la lista de qué arreglar.
+
+**La comprobación manual.** Abre tu web desde tu móvil con datos, fuera de casa, y cuenta hasta que puedas leer algo. Si pasas de tres segundos, no hace falta ninguna herramienta.
+
+## ¿Hay que rehacer la web?
+
+Casi nunca, y es la conclusión a la que llegan bastantes proyectos por el camino equivocado.
+
+En la mayoría de webs pequeñas, optimizar las imágenes, quitar tres complementos que no se usan y declarar dimensiones arregla el ochenta por ciento del problema en una jornada de trabajo.
+
+Rehacer tiene sentido cuando la estructura es el problema de fondo, cuando el gestor está lleno de código heredado de tres plantillas anteriores, o cuando además hay otras razones de negocio. La comparación está en [WordPress o web a medida](/blog/wordpress-vs-web-a-medida).
+
+## El orden en que lo arreglaría
+
+Primero las imágenes, porque es donde está el problema y es lo más barato. Convertirlas a formatos modernos, redimensionarlas al tamaño en que se muestran y cargar en diferido las que están más abajo.
+
+Segundo, la lista de complementos: desactivar y comprobar, uno por uno. Es aburrido y encuentra sorpresas.
+
+Tercero, declarar dimensiones en todo.
+
+Y solo después, si sigue mal, mirar el alojamiento y la estructura, que es donde se empieza a necesitar a alguien técnico.
+
+## Lo que no haría
+
+**Perseguir el cien sobre cien de la herramienta.** Los últimos puntos cuestan mucho y no cambian la experiencia real.
+
+**Instalar un complemento de caché y dar el trabajo por hecho.** Ayuda y no arregla imágenes de cinco megas.
+
+**Optimizar la versión de escritorio.** Se mide en móvil, y es donde está tu cliente.
+
+**Rehacer la web por un número rojo** sin haber probado antes lo barato.
+
+## ¿Y si mi web va bien en escritorio y mal en móvil?
+
+Es la situación más común y la que más desconcierta, porque el dueño prueba su web desde el ordenador de la oficina y no entiende el informe.
+
+La diferencia tiene tres causas y las tres son de conexión y de potencia, no de diseño. Un móvil de gama media procesa el código bastante más despacio que un ordenador, así que todo el JavaScript que la página carga tarda varias veces más en ejecutarse. La conexión de datos es más lenta y más inestable que la fibra. Y la pantalla pequeña obliga a cargar imágenes que en escritorio se ven bien recortadas.
+
+Eso significa que la optimización que importa es la de móvil, y que las decisiones se toman al revés de como se suelen tomar: primero se decide qué es imprescindible en un móvil y después se añade lo que sobre para pantallas grandes.
+
+La comprobación que recomiendo a cualquier dueño de negocio es de un minuto y no requiere ninguna herramienta: abrir la web desde el móvil, con datos, fuera de casa y a una hora con red cargada. Lo que se ve ahí es lo que ve tu cliente. Lo que se ve en la oficina con fibra no lo ve casi nadie.
+
+## Por qué lo reviso siempre primero
+
+Porque afecta al posicionamiento y a la conversión a la vez, y porque es el único trabajo de esta lista cuyo efecto se nota en semanas.
+
+En cualquier proyecto que llega parado, lo primero que miro es la velocidad en un móvil real. Bastantes veces el problema que se describía como «no llegan clientes» era que la página tardaba cinco segundos y nadie la había abierto nunca fuera de la oficina.
+
+Si quieres esa revisión hecha con el resto del diagnóstico técnico, entra en mi [auditoría y consultoría digital](/servicios/auditoria-consultoria-digital) por 290 €.

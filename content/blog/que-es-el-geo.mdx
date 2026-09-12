@@ -1,0 +1,133 @@
+---
+title: "Qué es el GEO y en qué se diferencia del SEO de siempre"
+metaTitle: "Qué es el GEO (Generative Engine Optimization)"
+description: "Qué es el GEO, por qué Google dice que sigue siendo SEO, qué cambia de verdad en el contenido y qué trucos de los que circulan no sirven para nada."
+date: "2026-09-18"
+slug: "que-es-el-geo"
+tags: ["ia-y-busqueda", "seo"]
+quickAnswer: "El GEO es el trabajo de conseguir que los asistentes de inteligencia artificial citen tu web cuando responden a una pregunta. No es una disciplina aparte del SEO: usa las mismas señales de autoridad y relevancia, y añade una exigencia nueva, que cada bloque de contenido pueda arrancarse de la página y seguir teniendo sentido."
+keyTakeaways:
+  - "Google dice por escrito que optimizar para sus respuestas generadas sigue siendo SEO, y que GEO y AEO son etiquetas nuevas para el mismo trabajo."
+  - "En España ya aparece un resumen generado por IA en cerca del 41 % de las búsquedas informativas, y buena parte de esas consultas terminan sin clic."
+  - "Lo que se cita son párrafos autocontenidos de unas 150 palabras con un dato concreto dentro. Enterrar la conclusión al final del artículo ahora cuesta dinero."
+  - "Las menciones de marca correlacionan mucho más con la visibilidad en IA que los enlaces. YouTube, Reddit y Wikipedia pesan más que el perfil de enlaces."
+  - "El fichero llms.txt no sirve como palanca en Google: la propia documentación de Google dice que no ayuda ni perjudica. Puede servir para otros sistemas."
+faq:
+  - question: "¿GEO y SEO son cosas distintas?"
+    answer: "Comparten casi todo. Google publicó en 2026 una guía donde dice que optimizar para las funciones generativas de su buscador sigue siendo SEO, y que GEO y AEO son etiquetas nuevas para el mismo trabajo. Lo que cambia no es la técnica sino qué contenido sobrevive: un artículo que repite lo que dicen otros diez deja de tener sentido, porque la respuesta generada ya lo resume. Lo que gana espacio es el contenido con datos propios y estructura clara."
+  - question: "¿Cómo sé si un asistente está citando mi web?"
+    answer: "No hay todavía un panel oficial como Search Console para esto, así que se hace por dos vías. La manual, que es preguntarle a ChatGPT, a Perplexity y al buscador de Google las diez consultas que más te importan, anotando si apareces y con qué frase. Y la de analítica, que consiste en filtrar en tu herramienta de medición las visitas cuyo origen sea uno de esos dominios. Los volúmenes son pequeños comparados con la búsqueda clásica y la calidad de esas visitas suele ser más alta."
+  - question: "¿Sirve de algo poner un fichero llms.txt en mi web?"
+    answer: "Para Google, no. Su documentación dice explícitamente que los ficheros de texto pensados para modelos de lenguaje no son necesarios para su buscador y que no ayudan ni perjudican a la visibilidad. Puede tener sentido para otros sistemas que sí lo lean, y ponerlo cuesta muy poco, pero nadie debería venderlo como una palanca de posicionamiento. Los estudios de registros de servidor que se han publicado muestran que casi ningún rastreador lo pide."
+  - question: "¿Tengo que bloquear a los rastreadores de inteligencia artificial?"
+    answer: "Si quieres aparecer en esas respuestas, no. Bloquear a GPTBot, a ClaudeBot o a PerplexityBot en el robots.txt te saca del índice que alimenta esas respuestas. Es una decisión legítima para un medio que vive de sus visitas, y una decisión cara para un negocio que quiere que le recomienden. Cosa distinta son los rastreadores de entrenamiento puro, que se pueden bloquear sin perder visibilidad en búsqueda."
+  - question: "¿Qué contenido se cita más y cuál se ignora?"
+    answer: "Se cita lo que se puede arrancar de la página sin perder sentido: una definición que empieza por «X es», una cifra con su fuente, una tabla comparativa, una respuesta directa de un par de frases. Se ignora el rodeo, la opinión sin evidencia y la conclusión enterrada en el último párrafo. La regla práctica es que si un bloque de tu texto no se entiende leído solo, no va a aparecer en ninguna respuesta generada."
+  - question: "¿Cuánto pesa la frescura del contenido?"
+    answer: "Mucho más que en la búsqueda clásica. Los estudios sobre citaciones en respuestas generadas apuntan a que el contenido de menos de tres meses se cita del orden de tres veces más que el antiguo, y que a partir de los seis meses sin actualizar la elegibilidad cae de forma apreciable. Eso convierte un programa de actualización periódica en una de las acciones con más retorno, y en muchos casos en mejor inversión que publicar algo nuevo."
+---
+
+El GEO es el trabajo de conseguir que los asistentes de inteligencia artificial citen tu web cuando alguien les pregunta algo. Las siglas vienen de *generative engine optimization*, optimización para motores generativos.
+
+Lo primero que hay que decir es incómodo para quien lo vende como servicio nuevo: no es una disciplina aparte.
+
+## Lo que dice Google, que es la fuente que manda
+
+En 2026 Google publicó una guía dentro de su documentación oficial sobre cómo optimizar para sus funciones generativas. La conclusión, resumida, es que **optimizar para la IA de Google sigue siendo SEO**, y que las etiquetas GEO y AEO son nombres nuevos para el mismo trabajo.
+
+Esto no significa que nada haya cambiado. Significa que lo que ha cambiado es qué contenido sobrevive, no qué palancas existen.
+
+<Callout type="dato" title="El dato que ordena la conversación">
+En España ya se muestra un resumen generado por IA en cerca del 41 % de las búsquedas informativas, según mediciones del sector de principios de 2026. En inglés la cifra ronda el 68 %. Buena parte de esas consultas acaban sin que nadie entre en ninguna web.
+</Callout>
+
+## ¿Qué se evapora y qué gana valor?
+
+| Tipo de contenido | Qué le pasa en 2026 |
+|---|---|
+| Definición genérica de un término | La respuesta generada lo resume y nadie baja |
+| Comparativa con datos propios | Se cita, con enlace |
+| Opinión sin evidencia | Se ignora |
+| Guía con cifras y fuente enlazada | Se cita |
+| Página de servicio con intención local | Sigue dando clic |
+
+Lo que se evapora es el tráfico informativo barato. Es el mismo cambio que describo en [qué es el SEO](/blog/que-es-el-seo), visto desde el lado del contenido. El artículo de mil palabras que explica «qué es una hipoteca fija» tal y como lo explican otros diez: la respuesta generada lo resume arriba y nadie baja.
+
+Lo que gana valor es exactamente lo contrario. El contenido que tiene algo dentro que no está en ningún otro sitio: tu experiencia, tus cifras, tus casos concretos con nombre. Es más difícil de escribir y es lo único que no se puede resumir sin citarte.
+
+También gana valor la intención comercial. Alguien que busca «fisioterapeuta suelo pélvico Gràcia» no se conforma con un párrafo generado: quiere un sitio al que llamar. Esas búsquedas siguen dando clic, y son las que pagan.
+
+## Qué cambia de verdad en el contenido
+
+Cuatro cosas, todas comprobables.
+
+**El bloque autocontenido.** Un asistente levanta párrafos, no páginas. Cada sección tiene que poder arrancarse del artículo y seguir teniendo sentido sin lo de arriba. La longitud que mejor funciona ronda las 150 palabras.
+
+**La respuesta arriba.** Alrededor del 44 % de las citas salen del primer 30 % de la página. Empezar con tres párrafos de contexto antes de responder a la pregunta del título ha pasado de ser un vicio de estilo a ser un coste.
+
+**El dato con fuente.** Las investigaciones sobre este tema coinciden en que citar fuentes, añadir estadísticas e incluir declaraciones atribuidas mejora bastante la probabilidad de ser citado. «Según estudios» no cuenta como fuente.
+
+**La estructura escaneable.** Encabezados en forma de pregunta, párrafos cortos, tablas para lo comparable y listas para lo enumerable. Una tabla bien hecha es de lo que más se cita.
+
+## Las señales que no son contenido
+
+Aquí es donde el GEO se separa un poco del SEO clásico, y el dato es llamativo.
+
+Los estudios disponibles apuntan a que **las menciones de marca correlacionan bastante más con la visibilidad en respuestas generadas que los enlaces**. Las menciones en YouTube aparecen como la señal más fuerte, seguidas de Reddit y de la presencia en Wikipedia. La autoridad de dominio medida por enlaces correlaciona débilmente.
+
+Eso tiene una consecuencia práctica incómoda: parte del trabajo de GEO no se hace en tu web. Se hace estando donde se habla de tu sector.
+
+Y otra cosa importante: solo una minoría pequeña de dominios aparece citada a la vez por ChatGPT y por las respuestas de Google para la misma consulta. No son un sistema, son varios, y cada uno tiene sus fuentes preferidas.
+
+## Lo que no funciona, aunque se venda
+
+**El fichero llms.txt.** La documentación de Google dice que no es necesario para su buscador y que no ayuda ni perjudica. Los análisis de registros de servidor publicados muestran que casi ningún rastreador lo pide. Ponerlo cuesta diez minutos y puede servir para otros sistemas, pero venderlo como palanca de posicionamiento es falso.
+
+**Trocear el contenido artificialmente.** Partir un artículo en fragmentos pequeños porque «así lo lee mejor la IA» no tiene respaldo. Lo que importa es que cada bloque tenga sentido, no que sea corto.
+
+**Reescribir con IA para que suene a IA.** No existe ningún indicio de que un texto redactado por un modelo se cite más. Lo que se cita es información, venga de donde venga.
+
+**Sembrar menciones falsas.** Crear hilos artificiales para que tu marca aparezca en foros es detectable y es la clase de atajo que funciona seis meses.
+
+## Qué haría yo, en orden
+
+<Checklist title="Los seis pasos que sí mueven la aguja">
+- Responder a la pregunta del título en las primeras sesenta palabras, con el patrón «X es».
+- Convertir los encabezados en preguntas cuando la búsqueda lo sea.
+- Poner una cifra con fuente enlazada en cada sección que afirme algo.
+- Revisar que el robots.txt deja pasar a GPTBot, OAI-SearchBot, ClaudeBot y PerplexityBot.
+- Comprobar que el contenido se sirve desde el servidor, porque los rastreadores de IA no ejecutan JavaScript.
+- Montar un calendario de actualización, que en esto rinde más que publicar cosas nuevas.
+</Checklist>
+
+Ese último punto es el que más gente se salta. La frescura pesa mucho: el contenido de menos de tres meses se cita del orden de tres veces más que el antiguo. Un artículo bueno de hace dos años actualizado con datos de este mes rinde más que uno nuevo mediocre.
+
+## Cada plataforma cita de un sitio distinto
+
+Hablar de «la IA» en singular lleva a optimizar para un sistema que no existe. Las tres que importan en España se comportan de forma bastante distinta.
+
+**El buscador de Google** tiene en realidad dos motores de citación. El resumen que aparece sobre los resultados se apoya mucho en lo que ya rankea bien, así que el SEO clásico sigue siendo la vía. El modo conversacional, en cambio, tira de un conjunto de fuentes más amplio donde la frescura y la autoridad de entidad pesan más que la posición. Llegan a la misma conclusión la mayoría de las veces y citan URLs distintas casi siempre.
+
+**ChatGPT** se apoya de forma llamativa en Wikipedia, que supone cerca de la mitad de sus citas, y en Reddit. Para un negocio pequeño eso significa que la presencia de entidad (que exista una ficha coherente de quién eres en varios sitios) pesa más que tener el mejor artículo.
+
+**Perplexity** es el más comunitario de los tres: Reddit es su fuente principal con diferencia. Lo que se recomienda ahí suele salir de conversaciones reales, no de páginas comerciales.
+
+La consecuencia práctica es que no hay una sola palanca. La web bien estructurada te mete en Google, la coherencia de entidad te mete en ChatGPT y la conversación real te mete en Perplexity. Y ninguna de las tres se consigue en un mes.
+
+## Cómo se mide esto
+
+No hay Search Console para respuestas generadas todavía. Se mide de dos formas, ninguna perfecta.
+
+La manual: coger las diez preguntas que más importan a tu negocio, hacérselas a ChatGPT, a Perplexity y al buscador de Google una vez al mes, y anotar si apareces, con qué frase y junto a quién. Es tedioso y es el único dato fiable.
+
+La analítica: filtrar las visitas cuyo origen sean esos dominios. Los volúmenes son pequeños comparados con la búsqueda clásica, pero la calidad suele ser mayor, porque quien llega ya ha leído una recomendación.
+
+## Lo que esto significa para un negocio pequeño
+
+Que la barrera ha bajado en un sitio y ha subido en otro.
+
+Ha bajado porque la autoridad de dominio, que era el muro infranqueable frente a las marcas grandes, pesa menos en este juego. Un negocio pequeño con un dato propio puede ser citado junto a una marca nacional.
+
+Ha subido porque ya no sirve rellenar. Publicar dos artículos genéricos al mes durante un año era una estrategia mediocre pero funcionaba un poco; ahora no funciona nada. Lo que hay que tener es algo que contar, y eso no se compra por 200 € al mes.
+
+Si vienes de la parte de buscador clásico, [los fundamentos de SEO para negocios pequeños](/blog/fundamentos-seo-pequenos-negocios-2026) siguen siendo la base sobre la que se apoya todo esto. Y si quieres saber por dónde anda tu web, mi [auditoría y consultoría digital](/servicios/auditoria-consultoria-digital) incluye esa revisión y cuesta 290 €.

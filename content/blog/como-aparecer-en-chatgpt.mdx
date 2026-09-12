@@ -1,0 +1,149 @@
+---
+title: "Cómo aparecer en ChatGPT cuando alguien busca lo que vendes"
+metaTitle: "Cómo aparecer en ChatGPT: guía práctica"
+description: "Qué hace falta para que ChatGPT cite tu negocio: coherencia de entidad, contenido citable y presencia fuera de tu web. Con lo que sirve y lo que no."
+date: "2026-09-20"
+slug: "como-aparecer-en-chatgpt"
+tags: ["ia-y-busqueda", "seo"]
+pillar: true
+quickAnswer: "Para que ChatGPT te cite hacen falta tres cosas: que su rastreador pueda leer tu web, que tu negocio exista de forma coherente en varios sitios fuera de ella, y que tu contenido tenga bloques con datos concretos que se puedan citar sueltos. Wikipedia y Reddit son sus fuentes dominantes, muy por encima del perfil de enlaces."
+keyTakeaways:
+  - "ChatGPT se apoya en Wikipedia para cerca de la mitad de sus citas y en Reddit para una parte importante del resto. Tu web sola no basta."
+  - "Comprueba primero lo obvio: si el robots.txt bloquea a GPTBot o a OAI-SearchBot, estás fuera y ninguna otra cosa importa."
+  - "Los rastreadores de IA no ejecutan JavaScript. Si tu contenido se pinta en el navegador y no llega desde el servidor, para ellos no existe."
+  - "Lo que se cita son párrafos que se entienden solos, con un número y una fuente. El rodeo y la conclusión enterrada no aparecen nunca."
+  - "Las menciones de marca correlacionan mucho más con la visibilidad en IA que los enlaces, y las de YouTube son la señal más fuerte que se ha medido."
+faq:
+  - question: "¿Cómo compruebo si ChatGPT ya me menciona?"
+    answer: "Haciéndole las preguntas que haría un cliente tuyo, no buscando tu nombre. Prueba diez consultas del tipo «mejor fisioterapeuta de suelo pélvico en Barcelona» o «agencias de marketing para campings en Cataluña» y anota si apareces, con qué frase y junto a quién. Repítelo una vez al mes con las mismas diez. Buscar tu marca directamente no dice nada: el sistema encontrará tu web igual que la encuentra Google, y esa no es la consulta que te trae clientes."
+  - question: "¿Tengo que estar en Wikipedia?"
+    answer: "Ayuda mucho y no es viable para la mayoría. Wikipedia supone cerca de la mitad de las citas de ChatGPT, pero sus criterios de relevancia dejan fuera a casi cualquier negocio pequeño, y crear una página sobre uno mismo es una forma rápida de que la borren. Lo que sí está al alcance es la coherencia de entidad en otros sitios: ficha de Google, LinkedIn, directorios sectoriales y prensa local, todos diciendo lo mismo sobre quién eres y a qué te dedicas."
+  - question: "¿Bloquear los rastreadores de IA protege mi contenido?"
+    answer: "Protege el contenido de ser usado y te saca de las respuestas. Son las dos caras de la misma decisión y hay que tomarla a sabiendas. Para un medio que vive de sus visitas puede tener sentido; para un negocio que quiere que le recomienden es caro. Se pueden separar los casos: permitir a GPTBot y OAI-SearchBot, que alimentan la búsqueda, y bloquear los rastreadores dedicados solo a entrenamiento si esa parte te preocupa."
+  - question: "¿Sirve escribir el contenido con inteligencia artificial para que la IA lo cite?"
+    answer: "No hay ningún indicio de que un texto redactado por un modelo se cite más que uno escrito por una persona. Lo que se cita es información concreta, venga de donde venga. Y hay un efecto contrario que sí está medido: el contenido genérico, el que repite lo que dicen otros diez, es exactamente el que la respuesta generada resume sin citar a nadie. Escribir con IA no penaliza; escribir lo mismo que todos, sí."
+  - question: "¿Cuánto tarda en notarse?"
+    answer: "Más que en Google y de forma menos predecible. Los sistemas de búsqueda de estos asistentes reindexan con frecuencia, así que un contenido nuevo puede aparecer en semanas, pero la parte que de verdad mueve la aguja, la presencia de entidad fuera de tu web, se construye en meses. El patrón habitual es que primero empiezas a aparecer en consultas muy específicas de tu nicho y solo después, si acaso, en las genéricas."
+  - question: "¿Cuántas visitas trae esto realmente?"
+    answer: "Pocas comparadas con la búsqueda clásica, y de mucha mejor calidad. Quien llega desde una respuesta generada ya ha leído una recomendación con tu nombre dentro, así que viene con el trabajo de convencimiento medio hecho. El error es medir este canal con el volumen: si trae treinta visitas al mes y dos acaban en presupuesto, está rindiendo mejor que un artículo con mil visitas informativas que no deja ninguna."
+---
+
+Para que ChatGPT te cite hacen falta tres cosas y solo una está en tu web. Es lo que más sorprende a quien llega a esto desde el SEO clásico.
+
+## ¿Te pueden leer siquiera?
+
+Suena básico y es donde falla mucha gente sin saberlo.
+
+Abre `tudominio.com/robots.txt` y busca estas líneas. Si alguna está bloqueada, estás fuera de las respuestas y todo lo demás da igual.
+
+| Rastreador | Para qué sirve | ¿Debe pasar? |
+|---|---|---|
+| `GPTBot` | Búsqueda web de ChatGPT | Sí |
+| `OAI-SearchBot` | Funciones de búsqueda de OpenAI | Sí |
+| `ChatGPT-User` | Navegación lanzada por un usuario | No obedece robots.txt |
+| `CCBot` | Common Crawl, entrenamiento | Opcional |
+
+Muchos sitios los bloquearon en 2024 y 2025 por precaución, cuando el debate iba de derechos de autor, y nadie ha vuelto a mirar ese fichero desde entonces. Es el bloqueo más caro que existe ahora mismo.
+
+<Callout type="aviso" title="El segundo bloqueo, que no está en el robots.txt">
+Los rastreadores de IA no ejecutan JavaScript. Si el contenido de tu web se pinta en el navegador y no viene ya escrito desde el servidor, para ellos tu página está vacía. Compruébalo con el código fuente: botón derecho, ver código fuente, y busca un párrafo de tu texto. Si no está ahí, no existe.
+</Callout>
+
+## Lo segundo: existir de forma coherente fuera de tu web
+
+Aquí está la diferencia real con el SEO clásico, y el dato es contundente.
+
+En los análisis disponibles sobre de dónde saca ChatGPT sus citas, **Wikipedia aporta cerca de la mitad** y **Reddit una parte importante del resto**. La autoridad de dominio medida por enlaces, que es la métrica que vende medio sector, correlaciona débilmente.
+
+Traducido: el sistema no está buscando la web mejor optimizada. Está buscando una respuesta que pueda sostener, y la sostiene con fuentes que considera consensuadas.
+
+Para un negocio pequeño, Wikipedia está fuera de alcance y perseguirla es perder el tiempo. Lo que sí está al alcance es la coherencia de entidad.
+
+### Qué significa coherencia de entidad
+
+Que quien eres esté dicho igual en todos los sitios donde apareces.
+
+El mismo nombre, la misma descripción de a qué te dedicas, la misma ciudad, el mismo teléfono. En la ficha de Google, en LinkedIn, en los directorios del sector, en la prensa local, en tu web.
+
+Cuando esas piezas coinciden, el sistema puede afirmar algo sobre ti con confianza. Cuando se contradicen (un nombre en la ficha, otro en la web, una ciudad distinta en LinkedIn), no puede, y no te nombra.
+
+Es trabajo aburrido, se hace una vez y casi nadie lo hace.
+
+## Lo tercero: contenido que se pueda citar suelto
+
+Un asistente no enlaza páginas, levanta párrafos. Eso impone una forma de escribir.
+
+**El bloque tiene que entenderse solo.** Si una sección de tu artículo necesita haber leído la anterior, no va a aparecer en ninguna respuesta. La longitud que mejor funciona ronda las 150 palabras.
+
+**La respuesta va arriba.** Alrededor del 44 % de las citas salen del primer tercio de la página. Tres párrafos de contexto antes de responder a la pregunta del título es dinero tirado.
+
+**Tiene que haber un número.** Una cifra con su fuente es lo que convierte un párrafo en material citable. «Bastante más barato» no se cita nunca; «entre un 15 % y un 25 % de comisión» sí.
+
+**Las tablas se citan mucho.** Comparar dos opciones en una tabla es uno de los formatos que más aparece.
+
+Lo he desarrollado con más detalle en [qué es el GEO y en qué se diferencia del SEO](/blog/que-es-el-geo), y la base sobre la que se apoya sigue siendo [el SEO de siempre](/blog/que-es-el-seo).
+
+## Reddit, que es la parte incómoda
+
+Es la segunda fuente de ChatGPT y la primera de Perplexity. Y no se puede comprar.
+
+Lo que funciona es participar de verdad en los espacios donde se habla de tu sector, respondiendo preguntas con criterio y sin colocar el enlace en cada mensaje. Las comunidades de este tipo detectan el marketing con una facilidad que sorprende a quien viene de otros canales.
+
+Lo que no funciona, y además es detectable, es crear cuentas para recomendarse a uno mismo. Es la clase de atajo que aguanta seis meses.
+
+Si tu sector tiene foros propios en español, cuentan igual. Lo que el sistema valora es la conversación real, no la plataforma concreta.
+
+## YouTube, la señal más fuerte que se ha medido
+
+En los estudios sobre correlación entre señales y citas en respuestas generadas, las menciones en YouTube aparecen como la señal más fuerte de todas, por encima de Reddit y muy por encima de los enlaces.
+
+Tiene sentido: los vídeos llevan transcripción, la transcripción es texto indexable, y una mención hablada dentro de un vídeo sobre tu sector es una recomendación con contexto.
+
+No hace falta un canal con cien mil suscriptores. Un vídeo de cinco minutos explicando bien algo concreto de tu especialidad, con la transcripción activada, es material citable.
+
+## Qué haría en el primer mes
+
+<Checklist title="El orden que seguiría">
+- Revisar el robots.txt y desbloquear GPTBot y OAI-SearchBot si están cerrados.
+- Comprobar en el código fuente que el texto llega desde el servidor.
+- Igualar nombre, descripción y datos de contacto en ficha de Google, LinkedIn y web.
+- Reescribir los cinco artículos más importantes para que respondan en las primeras sesenta palabras.
+- Meter una cifra con fuente en cada sección que afirme algo.
+- Hacer las diez preguntas de cliente en ChatGPT y anotar el punto de partida.
+</Checklist>
+
+Ese último paso es el que convierte esto en algo medible. Sin una foto inicial, dentro de seis meses no vas a saber si algo ha cambiado.
+
+## Lo que no sirve, aunque te lo vendan
+
+**El fichero llms.txt.** Google dice en su documentación que no es necesario y que no cambia nada en su buscador. Para OpenAI no hay evidencia de que se consulte. Ponerlo cuesta diez minutos; venderlo como palanca es otra cosa.
+
+**Trocear el contenido en fragmentos pequeños.** No hay respaldo. Importa que el bloque tenga sentido, no que sea corto.
+
+**Repetir la marca muchas veces en el texto.** Eso es la densidad de palabra clave de hace quince años con ropa nueva.
+
+**Pagar por menciones en webs que existen para vender menciones.** El sistema tampoco las valora, y el rastro es evidente.
+
+## El caso concreto de un negocio local
+
+Todo lo anterior vale para cualquiera. En un negocio con local o zona de servicio hay un atajo que rinde más que el resto junto.
+
+Cuando alguien le pregunta a un asistente por un profesional de una zona, el sistema no está leyendo tu página de servicios. Está leyendo tu ficha de Google, las reseñas y lo que se dice de ti en directorios y prensa local. La descripción de la ficha, los servicios marcados y las respuestas a las reseñas son texto que el sistema procesa.
+
+Eso convierte una tarea de una tarde en la acción con mejor retorno del canal: dejar la ficha completa, con la categoría exacta, todos los servicios, fotos recientes y todas las reseñas respondidas, incluidas las malas y sobre todo las malas. Una respuesta bien escrita a una reseña de tres estrellas dice más sobre cómo trabajas que tu página de «quiénes somos», y el sistema la lee igual.
+
+El segundo atajo local es el contenido de zona. Una página que explique de verdad cómo funciona algo en tu comarca, con nombres de sitios y distancias reales, es material que ninguna marca nacional puede escribir y que el asistente necesita cuando la pregunta lleva una ciudad dentro.
+
+## Cuánto esperar de este canal
+
+Poco volumen y mucha calidad. Quien llega desde una respuesta generada ya ha leído una recomendación con tu nombre dentro, así que viene convencido a medias.
+
+Medirlo por visitas es el error. Si te trae treinta al mes y dos acaban en presupuesto, rinde mejor que un artículo con mil visitas informativas que no deja ninguna.
+
+
+<Serie
+  title="El resto de la serie sobre IA y búsqueda"
+  slugs="como-aparecer-en-las-respuestas-de-ia-de-google,por-que-ha-bajado-mi-trafico-organico,como-aparecer-en-perplexity,como-medir-el-trafico-que-llega-desde-la-ia,que-contenido-cita-la-ia-y-cual-ignora,schema-org-para-que-la-ia-te-cite,llms-txt-sirve-para-algo,busquedas-sin-clic-que-hacer,seo-para-busquedas-por-voz,usar-ia-para-crear-contenido-sin-que-se-note,auditoria-de-visibilidad-en-ia"
+/>
+
+Y una cosa que conviene asumir: esto no sustituye al SEO, se apoya en él. Las mismas señales de autoridad y relevancia siguen operando debajo. Si quieres una foto de por dónde andas, mi [auditoría y consultoría digital](/servicios/auditoria-consultoria-digital) cuesta 290 € e incluye esta revisión.

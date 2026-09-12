@@ -10,6 +10,7 @@ import {
   Stat,
   Stats,
 } from "@/components/blog/Blocks";
+import { Serie } from "@/components/blog/SerieLinks";
 import { externalRel } from "@/lib/links";
 
 /**
@@ -158,6 +159,7 @@ export const mdxComponents: MDXComponents = {
   Checklist,
   Disclosure,
   Ficha,
+  Serie,
   Stats,
   Stat,
   Bars,

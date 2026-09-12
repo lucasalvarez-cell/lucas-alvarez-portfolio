@@ -1,7 +1,9 @@
 import type { MetadataRoute } from "next";
 import { SERVICES, SITE_URL } from "@/lib/constants";
 import { SECTOR_PAGES, assertSectorPages } from "@/content/sectores";
-import { getAllPosts } from "@/lib/blog";
+import { getAllPosts, featuredPost } from "@/lib/blog";
+import { assertPosts } from "@/lib/blog-validate";
+import { pageCount } from "@/lib/pagination";
 import { activeTopics, postsByTopic } from "@/lib/topics";
 import { getPublishedCaseStudies } from "@/content/casos-de-exito";
 
@@ -21,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const latestPost = newest(posts.map((post) => post.updated ?? post.date));
   const latestCase = newest(caseStudies.map((caseStudy) => caseStudy.updated));
   const latestOverall = new Date(
-    Math.max(latestPost.getTime(), latestCase.getTime())
+    Math.max(latestPost.getTime(), latestCase.getTime()),
   );
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -88,6 +90,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   /* Throws if a sector page is thin or recycles an FAQ answer from another. */
   assertSectorPages();
 
+  /* Same job for blog posts, and it checks the future-dated ones too, so a
+     broken draft fails the build today instead of the morning it was due. */
+  assertPosts();
+
   const sectorRoutes: MetadataRoute.Sitemap = SECTOR_PAGES.map((page) => ({
     url: `${SITE_URL}/servicios/${page.service}/${page.sector}`,
     /* Their own `updated`, not the site-wide latest: fourteen routes all
@@ -111,7 +117,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(caseStudy.updated),
       changeFrequency: "yearly",
       priority: 0.7,
-    })
+    }),
   );
 
   const postRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
@@ -121,16 +127,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  /* Pages 2 and up of the index. They are listed rather than left to be
+     discovered because the posts on page 4 have no other route in, and a
+     paginated page that Google never fetches is forty posts it never sees.
+     Priority steps down from the index's 0.8 without falling off a cliff. */
+  const featuredSlug = featuredPost(posts)?.slug;
+  const indexPages = pageCount(
+    posts.filter((post) => post.slug !== featuredSlug).length,
+  );
+  const paginationRoutes: MetadataRoute.Sitemap = Array.from(
+    { length: Math.max(0, indexPages - 1) },
+    (_, index) => ({
+      url: `${SITE_URL}/blog/pagina/${index + 2}`,
+      lastModified: latestPost,
+      changeFrequency: "weekly" as const,
+      priority: Math.max(0.3, 0.7 - index * 0.05),
+    }),
+  );
+
   /* Topic hubs inherit the newest date among the posts they list. */
   const topicRoutes: MetadataRoute.Sitemap = activeTopics(posts).map(
     (topic) => ({
       url: `${SITE_URL}/blog/tema/${topic.tag}`,
       lastModified: newest(
-        postsByTopic(posts, topic.tag).map((post) => post.updated ?? post.date)
+        postsByTopic(posts, topic.tag).map((post) => post.updated ?? post.date),
       ),
       changeFrequency: "monthly",
       priority: 0.7,
-    })
+    }),
   );
 
   return [
@@ -139,6 +163,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...sectorRoutes,
     ...caseStudyRoutes,
     ...topicRoutes,
+    ...paginationRoutes,
     ...postRoutes,
   ];
 }

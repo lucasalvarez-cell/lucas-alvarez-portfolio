@@ -56,8 +56,17 @@ export default async function TopicPage({
   const topicPosts = postsByTopic(posts, topic.tag);
   const others = activeTopics(posts).filter((other) => other.tag !== topic.tag);
 
-  const pillar = topicPosts.find((post) => post.pillar);
+  const pillar = topic.pillarSlug
+    ? topicPosts.find((post) => post.slug === topic.pillarSlug)
+    : topicPosts.find((post) => post.pillar);
   const rest = topicPosts.filter((post) => post.slug !== pillar?.slug);
+
+  /* The reading path is written ahead of the posts it names, because a cluster
+     is planned as a whole. Posts publish one a day, so until a step's article
+     is live its link would be a 404. Filtering against the published set lets
+     the path fill itself in as the schedule advances. */
+  const published = new Set(posts.map((post) => post.slug));
+  const path = topic.path.filter((step) => published.has(step.slug));
 
   return (
     <>
@@ -116,13 +125,13 @@ export default async function TopicPage({
               </div>
             </div>
 
-            {topic.path.length ? (
+            {path.length ? (
               <div>
                 <h2 className="font-display text-sm font-extrabold uppercase tracking-[0.2em] text-ink-soft">
                   Qué leer, y para decidir qué
                 </h2>
                 <ol className="mt-6 divide-y-2 divide-light-grey border-y-2 border-light-grey">
-                  {topic.path.map((step, index) => (
+                  {path.map((step, index) => (
                     <li key={step.slug} className="py-5">
                       <div className="flex gap-4">
                         <span
