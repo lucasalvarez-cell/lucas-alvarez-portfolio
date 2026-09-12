@@ -1,0 +1,145 @@
+---
+title: "Por qué ha bajado mi tráfico orgánico: cómo diagnosticarlo"
+metaTitle: "Por qué ha bajado mi tráfico orgánico"
+description: "Las seis causas reales de una caída de tráfico en Google y cómo distinguirlas en veinte minutos, incluida la que más se repite en 2026: las respuestas de IA."
+date: "2026-10-11"
+slug: "por-que-ha-bajado-mi-trafico-organico"
+tags: ["ia-y-busqueda", "seo", "analitica"]
+quickAnswer: "Una caída de tráfico orgánico tiene seis causas posibles: un problema de indexación, un cambio en la web, estacionalidad, una actualización del algoritmo, competencia nueva, o que las respuestas generadas por IA se están quedando con los clics informativos. Se distinguen comparando por tipo de consulta en Search Console."
+keyTakeaways:
+  - "Lo primero es mirar si han bajado las impresiones o solo los clics. Si bajan solo los clics, no has perdido posiciones: has perdido el clic."
+  - "La caída de 2026 más frecuente es selectiva: se hunden las consultas informativas y se mantienen las comerciales. Ese patrón es el de las respuestas de IA."
+  - "Si el número de páginas indexadas ha caído, deja de buscar en otra parte. Eso explica casi cualquier caída y es lo primero que hay que arreglar."
+  - "La estacionalidad se descarta comparando con el mismo periodo del año anterior, no con el mes pasado."
+  - "Una web nueva que pierde tráfico de golpe casi siempre tiene un problema de redirecciones, no de contenido."
+faq:
+  - question: "¿Cómo sé si he perdido posiciones o solo clics?"
+    answer: "Mirando impresiones y clics por separado en Search Console. Si las impresiones se mantienen y los clics caen, sigues apareciendo lo mismo y la gente ha dejado de entrar: eso apunta a un cambio en lo que se ve antes del clic, a un competidor nuevo más atractivo en el resultado, o a que una respuesta generada está resolviendo la consulta arriba. Si caen las dos cosas a la vez, sí has perdido visibilidad y hay que buscar por qué. Son diagnósticos distintos y llevan a trabajos distintos."
+  - question: "¿Cómo distingo el efecto de las respuestas de IA?"
+    answer: "Por el patrón, que es muy característico: la caída es selectiva. Filtra en Search Console las consultas que contienen «qué es», «cómo», «por qué» o «cuánto» y compáralas con las que llevan tu servicio y una ciudad. Si las primeras se han hundido y las segundas siguen igual o mejor, eso es el resumen generado quedándose con los clics informativos. Si ha caído todo por igual, el problema es otro y hay que buscarlo en indexación o en algo que se rompió."
+  - question: "¿Qué hago si han caído las páginas indexadas?"
+    answer: "Dejar de buscar en otra parte, porque eso explica casi cualquier caída. Entra en el informe de páginas de Search Console y mira qué motivo de exclusión ha crecido. Los habituales son un bloqueo en el robots.txt que alguien añadió sin querer, una etiqueta noindex que se colocó en un despliegue, o redirecciones mal hechas después de tocar la web. Los tres se arreglan y el tráfico vuelve, normalmente en semanas, aunque la recuperación completa puede tardar un mes o dos."
+  - question: "¿Cuánto tarda en recuperarse el tráfico tras arreglar el problema?"
+    answer: "Depende del tipo. Un bloqueo técnico corregido se recupera en semanas, en cuanto Google vuelve a rastrear e indexar. Una caída por actualización del algoritmo puede tardar meses y a veces no se recupera del todo sin cambiar el contenido de fondo. Y lo que se pierde por respuestas generadas no vuelve: ese tráfico informativo no va a regresar, así que la respuesta correcta no es recuperarlo sino reorientar el contenido hacia intenciones que sí siguen dando clic."
+  - question: "¿Cómo sé si es una actualización del algoritmo?"
+    answer: "Por la fecha y por la forma. Busca si la caída coincide con una actualización confirmada por Google, que se anuncian públicamente, y mira la forma de la curva: las actualizaciones producen caídas bruscas en un intervalo de días, no descensos graduales. Si la caída es lenta y sostenida durante meses, no es el algoritmo: es competencia nueva, contenido que ha envejecido o el efecto acumulado de las respuestas generadas."
+  - question: "¿Puede ser simplemente estacionalidad?"
+    answer: "Es la causa más frecuente y la más ignorada, sobre todo en sectores con temporada marcada. La forma de descartarla es comparar con el mismo periodo del año anterior y no con el mes pasado: un camping que pierde el 60 % del tráfico en octubre no tiene ningún problema, tiene otoño. Search Console permite esa comparación directamente en el selector de fechas, y es lo primero que haría antes de tocar nada, porque evita arreglar algo que no está roto."
+  - question: "¿Y si rehice la web hace poco?"
+    answer: "Entonces empieza por ahí, porque una web nueva que pierde tráfico de golpe casi siempre tiene un problema de redirecciones. Cada URL antigua que tenía posiciones debería redirigir a su equivalente nueva, y si no lo hace, esa página desaparece del índice y su tráfico con ella. La comprobación es rápida: coge las diez URLs que más tráfico traían antes y ábrelas. Si alguna da error o lleva a la portada en lugar de a su contenido, ahí está la causa."
+---
+
+Una caída de tráfico orgánico tiene seis causas posibles y se distinguen en veinte minutos. Lo que hace que la gente se pase semanas dando vueltas es empezar por la que está de moda en lugar de por la que se descarta más rápido.
+
+Este es el orden en que lo miro.
+
+## Paso 1: ¿han bajado las impresiones o solo los clics?
+
+Es la primera bifurcación y define todo lo demás.
+
+En Search Console, informe de rendimiento, activa las cuatro casillas y compara los últimos tres meses con los tres anteriores.
+
+| Qué ves | Qué significa |
+|---|---|
+| Caen impresiones y clics | Has perdido visibilidad. Sigue al paso 2 |
+| Caen solo los clics | Sigues apareciendo y no entran. Salta al paso 5 |
+| Suben impresiones, caen clics | Apareces en más búsquedas peor posicionadas |
+| No cae nada y lo notas | Puede ser tráfico de otro canal, no del buscador |
+
+## Paso 2: ¿han caído las páginas indexadas?
+
+Informe de páginas. Si el número de páginas indexadas ha bajado, deja de buscar en otra parte: eso explica casi cualquier caída.
+
+Mira qué motivo de exclusión ha crecido. Los tres habituales:
+
+Un bloqueo en el `robots.txt` que alguien añadió en un despliegue. Una etiqueta `noindex` que se quedó puesta de la versión de pruebas. Redirecciones mal hechas después de tocar la web.
+
+Los tres se arreglan y el tráfico vuelve, normalmente en semanas.
+
+<Callout type="error" title="La causa número uno tras una web nueva">
+Si rehiciste la web hace poco, empieza aquí. Coge las diez URLs que más tráfico traían antes y ábrelas. Si alguna da error o lleva a la portada en lugar de a su contenido equivalente, ahí está la causa y todavía se puede arreglar.
+</Callout>
+
+## Paso 3: ¿es estacionalidad?
+
+Es la causa más frecuente y la más ignorada.
+
+Compara con el mismo periodo del año anterior, no con el mes pasado. Search Console lo permite en el selector de fechas.
+
+Un camping que pierde el 60 % del tráfico en octubre no tiene un problema: tiene otoño. Un despacho de abogados que baja en agosto tampoco.
+
+Hacer esta comprobación antes de tocar nada evita arreglar algo que no está roto, que es una forma habitual de romperlo.
+
+## Paso 4: ¿coincide con una actualización del algoritmo?
+
+Google anuncia públicamente las actualizaciones importantes. Busca si la fecha de tu caída coincide con alguna.
+
+Y mira la forma de la curva: las actualizaciones producen caídas bruscas en unos días, no descensos graduales. Si la caída es lenta y sostenida durante meses, no es el algoritmo.
+
+## Paso 5: ¿es el efecto de las respuestas generadas?
+
+Aquí está la causa que más ha crecido en 2026, y tiene una firma muy reconocible: **la caída es selectiva**.
+
+Filtra en Search Console las consultas que contienen «qué es», «cómo», «por qué» o «cuánto». Compáralas con las que llevan tu servicio y una ciudad.
+
+Si las primeras se han hundido y las segundas siguen igual o mejor, eso es el resumen generado quedándose con los clics informativos. En España ya aparece en cerca del 41 % de las búsquedas informativas.
+
+Si ha caído todo por igual, no es esto.
+
+## Paso 6: ¿hay competencia nueva?
+
+Busca tus cinco consultas principales y mira quién sale ahora. Si hay dos nombres que no estaban hace seis meses, has perdido posición contra alguien que ha hecho el trabajo.
+
+Es la causa más lenta de todas y la que menos se nota mes a mes, porque se come el tráfico poco a poco.
+
+## Lo que se recupera y lo que no
+
+| Causa | ¿Se recupera? | Plazo |
+|---|---|---|
+| Bloqueo técnico | Sí, del todo | 2 a 6 semanas |
+| Redirecciones mal hechas | Sí, casi del todo | 1 a 3 meses |
+| Estacionalidad | Sí, sola | La temporada siguiente |
+| Actualización del algoritmo | A veces, cambiando el contenido | Meses |
+| Competencia nueva | Sí, trabajando | Meses |
+| Respuestas generadas | No | Ese tráfico no vuelve |
+
+La última fila es la que cuesta aceptar. El tráfico informativo que se está quedando la IA no va a volver, así que la respuesta correcta no es intentar recuperarlo: es reorientar el contenido hacia intenciones que sí siguen dando clic.
+
+## ¿Qué hago si la causa es la IA?
+
+Dos cosas, y ninguna es escribir más artículos genéricos.
+
+**Reorientar el contenido nuevo** hacia intenciones comerciales y locales, que siguen dando clic porque quien las hace quiere un sitio al que llamar, no un párrafo.
+
+**Hacer citable lo que ya tienes.** Si tu página está en la primera página de resultados, puede ser la fuente que cite el resumen, y entonces recuperas parte de la visibilidad en otra forma. Cómo se escribe eso está en [cómo aparecer en las respuestas de IA de Google](/blog/como-aparecer-en-las-respuestas-de-ia-de-google).
+
+<Checklist title="El diagnóstico de veinte minutos">
+- Impresiones y clics por separado, tres meses contra tres meses.
+- Páginas indexadas, comparadas con hace seis meses.
+- El mismo periodo del año anterior, para descartar temporada.
+- Las diez URLs que más traían, abiertas una por una.
+- Consultas informativas contra consultas comerciales.
+- Los cinco resultados principales de tus búsquedas clave, mirados a mano.
+</Checklist>
+
+## Las dos caídas que no salen en Search Console
+
+Hay dos causas que este diagnóstico no detecta, porque no son caídas de tráfico sino de resultado, y conviene descartarlas antes de dar el problema por cerrado.
+
+**El tráfico está igual y los contactos han bajado.** Eso no es SEO: es algo que se rompió después del clic. Un formulario que dejó de enviar tras una actualización, un número de teléfono que no es pulsable en móvil, un aviso de cookies que tapa la página. Lo he visto varias veces y siempre lleva semanas detectarlo, porque nadie mira si el formulario funciona hasta que alguien se queja, y quien no consigue escribirte no se queja: se va.
+
+La comprobación es de dos minutos: rellena tu propio formulario desde el móvil y comprueba que el correo llega. Hazlo el primer lunes de cada mes.
+
+**El tráfico está igual y es de peor calidad.** Pasa cuando el contenido nuevo apunta a búsquedas informativas amplias en lugar de comerciales. Las visitas suben, los contactos no, y el panel dice que todo va bien. Se detecta mirando qué páginas reciben el tráfico: si las que crecen son artículos y las de servicio están planas, el crecimiento no va a llegar al negocio.
+
+Las dos se resumen en lo mismo: el tráfico no es el objetivo, es el medio. Un mes con menos visitas y más clientes es un buen mes.
+
+## El error que más tiempo cuesta
+
+Empezar por el contenido.
+
+La reacción habitual ante una caída es escribir más y mejor. Y si la causa es un bloqueo técnico, seis meses de contenido nuevo no van a mover nada, porque el problema es que Google no puede leer lo que hay.
+
+El orden importa más que la lista. Dónde mirar cada informe está en [cómo usar Search Console](/blog/como-usar-google-search-console), y el orden completo de prioridades para un negocio pequeño en [los fundamentos](/blog/fundamentos-seo-pequenos-negocios-2026).
+
+Si lo que quieres es que alguien haga este diagnóstico y te diga cuál de las seis es, es exactamente lo que entrega una [auditoría y consultoría digital](/servicios/auditoria-consultoria-digital) por 290 €.
