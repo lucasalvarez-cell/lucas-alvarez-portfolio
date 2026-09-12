@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { clsx } from "clsx";
+import { externalRel } from "@/lib/links";
 
 /**
  * The in-body formats the articles were missing.
@@ -306,7 +307,7 @@ export function Ficha({
             <a
               href={web}
               target="_blank"
-              rel="noreferrer noopener"
+              rel={externalRel(web)}
               className="font-semibold text-purple underline decoration-purple/30 underline-offset-4 transition-colors hover:decoration-purple"
             >
               {webLabel ?? web.replace(/^https?:\/\//, "").replace(/\/$/, "")}

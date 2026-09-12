@@ -9,6 +9,7 @@ import {
   SITE_LANG,
   SITE_NAME,
   SITE_URL,
+  SOCIALS,
   SOCIAL_PROFILE_URLS,
 } from "./constants";
 import type { Service, ServicePricing } from "./constants";
@@ -46,7 +47,15 @@ export function personSchema() {
     name: "Lucas Álvarez",
     givenName: "Lucas",
     familyName: "Álvarez",
+    /* El handle atado al nombre legal: sin esto, el perfil de Instagram y la
+       persona son dos entidades que un motor no tiene por qué unir. */
+    additionalName: SOCIALS.instagram.handle,
     jobTitle: "Estratega de contenido y social media manager",
+    nationality: { "@type": "Country", name: "España" },
+    /* El único reconocimiento verificable, y está afirmado en /sobre-mi. No se
+       añade `hasCredential`: no hay certificación real que declarar, e
+       inventar una es la vía rápida a que la entidad deje de ser creíble. */
+    award: ["Embajador de marca de Gymshark"],
     description:
       "Estratega digital en Barcelona y cofundador de Publiqo. Gestiona la estrategia de contenido y las redes sociales de marcas de turismo, industria y medios.",
     url: SITE_URL,
@@ -57,11 +66,13 @@ export function personSchema() {
     knowsAbout: [
       "Marketing digital",
       "Gestión de redes sociales",
+      "Community management",
       "Estrategia de contenido",
       "SEO",
       "Desarrollo web",
       "Google Ads",
       "Meta Ads",
+      "Marketing turístico",
     ],
     homeLocation: {
       "@type": "Place",
@@ -84,7 +95,7 @@ export function personSchema() {
       name: "Estratega de contenido y social media manager",
       occupationLocation: { "@type": "City", name: "Barcelona" },
       skills:
-        "Estrategia de contenido, gestión de redes sociales, SEO, Google Ads, Meta Ads, desarrollo web",
+        "Estrategia de contenido, gestión de redes sociales, community manager, SEO, Google Ads, Meta Ads, desarrollo web",
     },
     ...(SOCIAL_PROFILE_URLS.length ? { sameAs: SOCIAL_PROFILE_URLS } : {}),
   };
@@ -103,7 +114,12 @@ export function businessSchema() {
     "@type": "ProfessionalService",
     "@id": BUSINESS_ID,
     name: BUSINESS_NAME,
-    alternateName: "Lucas Álvarez · Social media manager en Barcelona",
+    /* Las dos formas en que se nombra el mismo trabajo. "Community manager" es
+       con la que se busca en España y no aparecía en ningún nodo del grafo. */
+    alternateName: [
+      "Lucas Álvarez · Social media manager en Barcelona",
+      "Lucas Álvarez · Community manager en Barcelona",
+    ],
     description: BUSINESS_DESCRIPTION,
     url: SITE_URL,
     image: `${SITE_URL}/images/lucas-alvarez.jpg`,
@@ -254,6 +270,9 @@ function serviceNode(service: Service) {
     "@type": "Service",
     "@id": `${url}#service`,
     name: service.h1,
+    ...(service.alternateName
+      ? { alternateName: service.alternateName }
+      : {}),
     serviceType: service.title,
     description: service.description,
     url,

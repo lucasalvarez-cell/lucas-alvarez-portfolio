@@ -17,6 +17,20 @@ const ROBOTS: Metadata["robots"] = {
   },
 };
 
+/**
+ * Las dos representaciones legibles por máquina del sitio, anunciadas como
+ * `<link rel="alternate">`: el feed del blog y el resumen en markdown que leen
+ * los motores generativos.
+ */
+const ALTERNATE_TYPES: NonNullable<
+  NonNullable<Metadata["alternates"]>["types"]
+> = {
+  "application/rss+xml": [
+    { url: "/feed.xml", title: `Blog de ${SITE_NAME}` },
+  ],
+  "text/markdown": [{ url: "/llms.txt", title: `Resumen de ${SITE_NAME}` }],
+};
+
 type ArticleFields = {
   publishedTime: string;
   modifiedTime?: string;
@@ -75,7 +89,11 @@ export function buildMetadata({
   return {
     title: resolveTitle(title),
     description: clamped,
-    alternates: { canonical: path },
+    /* `alternates` sustituye al del layout raíz, no se fusiona con él: si los
+       `types` no van aquí, el feed y llms.txt solo se anuncian en la home.
+       Van en todas las páginas porque llms.txt no estaba enlazado en ningún
+       sitio y un archivo que nadie encuentra no lo lee nadie. */
+    alternates: { canonical: path, types: ALTERNATE_TYPES },
     robots: ROBOTS,
     openGraph: {
       title,

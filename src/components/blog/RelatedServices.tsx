@@ -71,7 +71,22 @@ export function RelatedServices({ tags }: { tags?: string[] }) {
         ))}
       </ul>
 
+      {/* La página de precios solo recibía enlaces desde el menú y el pie, que
+          son los que menos pesan porque están en las 69 URLs. Este enlace la
+          conecta con el contenido que trata su mismo tema, y lo hace con el
+          término por el que se busca. */}
       <p className="mt-6 text-base text-ink-soft">
+        Antes de pedir presupuesto:{" "}
+        <Link
+          href="/precios"
+          className="font-semibold text-purple underline decoration-purple/30 underline-offset-4 transition-colors hover:decoration-purple"
+        >
+          cuánto cuesta un community manager en 2026
+        </Link>
+        , con las bandas de mercado y mis precios de partida.
+      </p>
+
+      <p className="mt-3 text-base text-ink-soft">
         ¿Prefieres que lo veamos sobre tu caso?{" "}
         <Link
           href="/contacto"

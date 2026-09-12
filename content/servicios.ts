@@ -61,6 +61,22 @@ export type ServicePricing = {
 export type Service = {
   slug: string;
   title: string;
+  /**
+   * Otro nombre con el que se vende el mismo servicio, si lo hay. Va al
+   * `alternateName` del nodo Service y a ningún sitio visible: es el puente
+   * entre cómo llamo yo al servicio y cómo lo busca la gente.
+   */
+  alternateName?: string;
+  /**
+   * El servicio nombrado como sintagma dentro de una frase: "Qué incluye {X}",
+   * "Cuánto cuesta {X}".
+   *
+   * Existe porque la plantilla construía esos títulos con `title.toLowerCase()`
+   * y salían mal en los dos sentidos: sin artículo ("Qué incluye gestión de
+   * redes sociales") y con el acrónimo destrozado ("Qué incluye seo y
+   * posicionamiento web"). Son seis de los H2 de cada página de servicio.
+   */
+  h2Noun: string;
   /** Short display name used in nav-style listings and cross-sell blocks. */
   shortTitle: string;
   /**
@@ -97,6 +113,8 @@ export const SERVICES: Service[] = [
   {
     slug: "gestion-redes-sociales",
     title: "Gestión de redes sociales",
+    h2Noun: "la gestión de redes sociales",
+    alternateName: "Community manager",
     shortTitle: "Redes sociales",
     h1: "Gestión de redes sociales en Barcelona",
     shortDescription:
@@ -105,11 +123,13 @@ export const SERVICES: Service[] = [
       "Gestión completa de redes sociales para marcas: diagnóstico del perfil, línea editorial, guionaje, plan de grabación, publicación y análisis mensual de resultados para escalar lo que funciona y descartar lo que no.",
     intro:
       "Publicar más no arregla una cuenta estancada. Camping Collvert subió un 250 % sus visualizaciones en un mes sin publicar el doble: publicando otra cosa.",
-    metaTitle: "Gestión de redes sociales en Barcelona",
+    /* "Community manager" es el término con el que se busca esto en España: el
+       H1 mantiene el nombre del servicio y el <title> captura la consulta. */
+    metaTitle: "Community manager en Barcelona desde 490 €",
     metaDescription:
-      "Gestión de redes sociales en Barcelona desde 490 € al mes: estrategia, guion, publicación y análisis. +250 % de visualizaciones en un mes para Camping Collvert.",
+      "Community manager y gestión de redes sociales en Barcelona desde 490 € al mes: estrategia, guion, publicación y análisis. +250 % en un mes para Camping Collvert.",
     quickAnswer:
-      "La gestión de redes sociales en Barcelona cuesta desde 490 € al mes e incluye diagnóstico del perfil, línea editorial, guion, edición, publicación y un informe mensual que termina en una decisión. La llevo yo personalmente, no un equipo rotativo. Las cuentas que gestiono subieron entre un 62 % y un 500 % de visualizaciones en su primer mes.",
+      "Un community manager en Barcelona cuesta desde 490 € al mes. El servicio incluye diagnóstico del perfil, línea editorial, guion, edición, publicación y un informe mensual que termina en una decisión. La cuenta la llevo yo personalmente, no un equipo rotativo. Las cuentas que gestiono subieron entre un 62 % y un 500 % de visualizaciones en su primer mes.",
     includes: [
       "Diagnóstico del perfil: formatos, retención, ganchos y audiencia real frente a la que crees tener",
       "Línea editorial escrita, con pilares de contenido y objetivos medibles por plataforma",
@@ -175,9 +195,19 @@ export const SERVICES: Service[] = [
     ],
     faq: [
       {
-        question: "¿Cuánto cuesta la gestión de redes sociales en Barcelona?",
+        question: "¿Cuánto cuesta un community manager en Barcelona?",
         answer:
-          "Mi servicio empieza en 490 € al mes e incluye estrategia, guion, edición, publicación e informe mensual. En el mercado español un community manager freelance se mueve entre 300 y 1.200 € al mes, y una agencia entre 500 y 3.000 €. Empiezo en la mitad baja de esa banda porque trabajo solo y no tengo una estructura de agencia que sostener: lo que pagas es producción y criterio, no una capa comercial.",
+          "Mi servicio empieza en 490 € al mes e incluye estrategia, guion, edición, publicación e informe mensual. En el mercado español un community manager freelance se mueve entre 250 y 1.200 € al mes, y una agencia entre 500 y 3.000 €. Empiezo en la mitad baja de esa banda porque trabajo solo y no tengo una estructura de agencia que sostener: lo que pagas es producción y criterio, no una capa comercial.",
+      },
+      {
+        question: "¿Qué hace exactamente un community manager?",
+        answer:
+          "Un community manager gestiona la presencia diaria de una marca en redes sociales: decide qué se publica, lo produce, lo publica y responde a la comunidad. En la práctica el trabajo son cuatro cosas: diagnóstico de qué está fallando, línea editorial, producción de las piezas e informe de qué ha funcionado. Lo que no es: alguien que solo sube a Instagram lo que tú le mandas ya montado. Eso es un ejecutor de calendario y cuesta la mitad.",
+      },
+      {
+        question: "¿Puedo contratarte solo como community manager, sin lo demás?",
+        answer:
+          "Sí. Los seis servicios se contratan por separado y la gestión de redes sociales es el más habitual de forma aislada. No hay paquete obligatorio ni venta cruzada: si lo único que necesitas es que alguien lleve la cuenta con criterio, eso es exactamente lo que son los 490 € al mes.",
       },
       {
         question: "¿En cuánto tiempo se ven resultados?",
@@ -217,6 +247,16 @@ export const SERVICES: Service[] = [
     ],
     sections: [
       {
+        /* La frase de definición autocontenida: nombra el sujeto, lo separa del
+           término con el que se confunde y cierra con una cifra. Es la forma
+           que un motor generativo puede citar sin arrastrar contexto. */
+        title: "Qué hace un community manager y qué incluye esto",
+        body: "Un community manager es quien gestiona la presencia diaria de una marca en redes sociales: decide qué se publica, lo produce, lo publica y responde a la comunidad. Un social media manager es quien además fija la estrategia y responde de los resultados; en un negocio pequeño es la misma persona, y lo que cambia el precio no es el título sino cuál de los dos trabajos estás comprando. Lo que contratas aquí es el segundo, desde 490 € al mes: diagnóstico, línea editorial, guion, edición, publicación e informe mensual. La diferencia se nota en una cosa concreta: un ejecutor de calendario te pregunta qué quieres publicar, y esto te lo dice.",
+        image: "/images/work/work-03.jpg",
+        imageAlt:
+          "Línea editorial y calendario de contenido de una cuenta gestionada por Lucas Álvarez",
+      },
+      {
         title: "Primero el diagnóstico, después el calendario",
         body: "Antes de planificar una sola publicación reviso qué está pasando de verdad en tu perfil: qué formatos has probado, en qué segundo se cae la retención, qué ganchos aguantan, qué frecuencia sostienes y a qué audiencia estás atrayendo realmente frente a la que crees tener. De ahí sale una línea editorial concreta, con objetivos medibles por plataforma. La mayoría de cuentas estancadas no publican poco: publican lo que no toca.",
         image: "/images/work/work-01.jpg",
@@ -235,6 +275,7 @@ export const SERVICES: Service[] = [
   {
     slug: "estrategia-contenido-crecimiento-organico",
     title: "Estrategia de contenido y crecimiento orgánico",
+    h2Noun: "la estrategia de contenido",
     shortTitle: "Estrategia de contenido",
     h1: "Estrategia de contenido y crecimiento orgánico en Barcelona",
     shortDescription:
@@ -360,6 +401,7 @@ export const SERVICES: Service[] = [
   {
     slug: "seo",
     title: "SEO y posicionamiento web",
+    h2Noun: "el SEO",
     shortTitle: "SEO",
     h1: "Consultor SEO en Barcelona",
     shortDescription:
@@ -491,6 +533,7 @@ export const SERVICES: Service[] = [
   {
     slug: "desarrollo-web",
     title: "Diseño y desarrollo web",
+    h2Noun: "el diseño y desarrollo web",
     shortTitle: "Desarrollo web",
     h1: "Diseño y desarrollo web en Barcelona",
     shortDescription:
@@ -616,6 +659,7 @@ export const SERVICES: Service[] = [
   {
     slug: "publicidad-meta-ads-google-ads",
     title: "Publicidad en Meta Ads y Google Ads",
+    h2Noun: "la publicidad en Meta Ads y Google Ads",
     shortTitle: "Publicidad online",
     h1: "Gestión de Meta Ads y Google Ads en Barcelona",
     shortDescription:
@@ -739,6 +783,7 @@ export const SERVICES: Service[] = [
   {
     slug: "auditoria-consultoria-digital",
     title: "Auditoría y consultoría digital",
+    h2Noun: "la auditoría y consultoría digital",
     shortTitle: "Consultoría",
     h1: "Auditoría y consultoría de marketing digital en Barcelona",
     shortDescription:

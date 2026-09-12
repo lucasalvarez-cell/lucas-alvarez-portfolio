@@ -31,7 +31,7 @@ import { notificationEmail } from "@/lib/email/notification";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const DEFAULT_TO = "lucasalvarezblancob@gmail.com";
+const DEFAULT_TO = "lucas@publiqo.es";
 const DEFAULT_FROM = "Formulario lucasalvarez.info <formulario@lucasalvarez.info>";
 const DEFAULT_REPLY_FROM = "Lucas Álvarez <hola@lucasalvarez.info>";
 

@@ -12,14 +12,58 @@ import { breadcrumbSchema, faqSchema, pricingGraph } from "@/lib/schema";
 import { SERVICES, SITE_URL, formatEuros } from "@/lib/constants";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Precios: cuánto cuesta un social media manager",
+  title: "Precios de community manager 2026: desde 290 €",
   description:
-    "Precios de gestión de redes sociales, estrategia de contenido, SEO, web y campañas en Barcelona. Desde 290 €, con lo que incluye y lo que no. Sin permanencia.",
+    "Cuánto cuesta un community manager en 2026: tarifas reales de freelance, agencia y plantilla, qué incluye cada banda y mis precios desde 290 €. Sin permanencia.",
   path: "/precios",
 });
 
+/**
+ * Opens with the definition and the number, in that order, and says everything
+ * it needs to say without the rest of the page. That is the shape a featured
+ * snippet takes and the shape a generative engine quotes.
+ */
 const QUICK_ANSWER =
-  "Un social media manager en Barcelona cuesta entre 300 y 1.200 € al mes en régimen freelance y entre 500 y 3.000 € en agencia. Mis servicios empiezan en 490 € al mes la gestión de redes, 390 € el SEO, 350 € las campañas, 290 € una auditoría y 1.190 € una web. Sin permanencia y sin porcentaje sobre la inversión publicitaria.";
+  "Un community manager cuesta entre 250 y 1.200 € al mes si es freelance y entre 500 y 3.000 € si es una agencia; por horas, la tarifa habitual en España va de 35 a 60 € la hora. Mis servicios empiezan en 490 € al mes la gestión de redes sociales, 390 € el SEO, 350 € las campañas, 290 € una auditoría y 1.190 € una web. Sin permanencia y sin porcentaje sobre la inversión publicitaria.";
+
+/**
+ * Market bands, not my prices. The six pages that rank for "precio community
+ * manager" all publish a table like this one and it is the block this page was
+ * missing; without it the page answers what I cobro but not what la gente
+ * pregunta, which is cuánto cuesta esto en general.
+ */
+const MARKET_RATES = [
+  {
+    modality: "Freelance junior",
+    band: "250 – 400 € / mes",
+    buys:
+      "Publicación de contenido que tú ya has producido, respuesta a comentarios y un informe de métricas descargado de la propia plataforma.",
+  },
+  {
+    modality: "Freelance con criterio",
+    band: "450 – 900 € / mes",
+    buys:
+      "Estrategia, línea editorial, guion y producción propia. La misma persona que te lo explica es la que lo hace. Aquí es donde estoy yo.",
+  },
+  {
+    modality: "Agencia pequeña",
+    band: "500 – 1.200 € / mes",
+    buys:
+      "Equipo con roles separados y capacidad de absorber un pico de trabajo. Quien te vende la cuenta rara vez es quien la lleva después.",
+  },
+  {
+    modality: "Agencia grande",
+    band: "1.200 – 3.000 € / mes",
+    buys:
+      "Estructura, varios canales a la vez y departamento de paid. Tiene sentido con un volumen de contenido diario y un presupuesto de medios detrás.",
+  },
+  {
+    modality: "En plantilla",
+    band: "24.000 – 33.000 € / año",
+    buys:
+      "Jornada completa, más seguridad social, equipo y el tiempo de alguien que sepa dirigirle. Sale a cuenta cuando el contenido es diario y hay criterio interno.",
+  },
+];
 
 /**
  * What actually moves a quote up. Published because the alternative — "precio a
@@ -55,9 +99,25 @@ const DRIVERS = [
 
 const FAQ = [
   {
-    question: "¿Cuánto cuesta un social media manager en España?",
+    question: "¿Cuánto cuesta un community manager en España?",
     answer:
-      "Entre 300 y 1.200 € al mes si es freelance, y entre 500 y 3.000 € si es una agencia. La banda es tan ancha porque incluye desde alguien que solo publica lo que le pasas hasta quien diseña la estrategia, produce el contenido y responde de los resultados. Mi servicio empieza en 490 € al mes y es lo segundo.",
+      "Entre 250 y 1.200 € al mes si es freelance, y entre 500 y 3.000 € si es una agencia. La banda es tan ancha porque incluye desde alguien que solo publica lo que le pasas hasta quien diseña la estrategia, produce el contenido y responde de los resultados. Mi servicio empieza en 490 € al mes y es lo segundo.",
+  },
+  {
+    question: "¿Cuánto cobra un community manager por horas?",
+    answer:
+      "Entre 35 y 60 € la hora en España, según experiencia y sector. Es la referencia más útil para auditar un presupuesto cerrado: divide la cuota mensual entre las horas que implica el alcance que te han descrito. Si sale por debajo de 20 € la hora, o el alcance está inflado o el trabajo lo va a hacer otra persona más barata.",
+  },
+  {
+    question:
+      "¿Qué diferencia hay entre un community manager y un social media manager?",
+    answer:
+      "Community manager es el término con el que casi todo el mundo busca, y describe a quien gestiona la comunidad: publica, responde y modera. Social media manager describe a quien además decide la estrategia: qué se publica, por qué y con qué objetivo medible. En un negocio pequeño suele ser la misma persona, y lo que cambia el precio no es el título sino cuál de los dos trabajos estás comprando.",
+  },
+  {
+    question: "¿Cuánto cuesta un community manager en Barcelona?",
+    answer:
+      "Lo mismo que en el resto de España: entre 250 y 1.200 € al mes en freelance y entre 500 y 3.000 € en agencia. Barcelona no encarece la cuota, encarece la producción presencial: si hay que grabar en tu local cada mes, eso es lo que se acuerda aparte. Yo trabajo desde Barcelona y una sesión mensual dentro del área metropolitana ya va incluida.",
   },
   {
     question: "¿Por qué no eres el más barato?",
@@ -103,8 +163,8 @@ export default function PreciosPage() {
         <Reveal immediate>
           <SectionHeading
             kicker="Precios"
-            title="Cuánto cuesta un social media manager en Barcelona"
-            subtitle="Los precios están publicados porque tú también los buscarías antes de escribir a nadie. Son suelos reales: lo que cuesta empezar, con lo que entra y lo que no."
+            title="Cuánto cuesta un community manager en 2026"
+            subtitle="Las tarifas de mercado y las mías, publicadas, porque tú también las buscarías antes de escribir a nadie. Son suelos reales: lo que cuesta empezar, con lo que entra y lo que no."
             tone="dark"
             as="h1"
           />
@@ -114,18 +174,81 @@ export default function PreciosPage() {
       <Section>
         <div className="max-w-4xl">
           <QuickAnswer
-            question="¿Cuánto cuesta un social media manager en Barcelona?"
+            question="¿Cuánto cuesta un community manager?"
             answer={QUICK_ANSWER}
             label="En corto"
             id="en-corto"
           />
+
+          <section aria-labelledby="tarifas-mercado" className="mt-20">
+            <h2
+              id="tarifas-mercado"
+              className="scroll-mt-28 text-[clamp(1.75rem,3vw,2.5rem)] normal-case leading-tight tracking-[-0.01em] text-ink"
+            >
+              Tarifas de community manager en España 2026
+            </h2>
+
+            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-ink-body">
+              Antes de mis precios, los del mercado. La banda es ancha porque
+              bajo el mismo nombre se venden dos trabajos distintos: ejecutar un
+              calendario que alguien ya ha pensado, y pensarlo. Esto es lo que
+              se paga en España en 2026.
+            </p>
+
+            <div className="mt-8 -mx-6 overflow-x-auto px-6 sm:mx-0 sm:px-0">
+              <table className="w-full min-w-[36rem] border-collapse text-left">
+                <caption className="sr-only">
+                  Bandas de precio de un community manager en España en 2026
+                  según la modalidad de contratación
+                </caption>
+                <thead>
+                  <tr className="border-b-2 border-ink/15">
+                    <th className="py-4 pr-6 font-display text-sm font-extrabold uppercase tracking-[0.15em] text-ink">
+                      Modalidad
+                    </th>
+                    <th className="py-4 pr-6 font-display text-sm font-extrabold uppercase tracking-[0.15em] text-ink">
+                      Precio
+                    </th>
+                    <th className="py-4 font-display text-sm font-extrabold uppercase tracking-[0.15em] text-ink">
+                      Qué compra esa banda
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {MARKET_RATES.map((rate) => (
+                    <tr
+                      key={rate.modality}
+                      className="border-b border-light-grey align-top"
+                    >
+                      <td className="py-5 pr-6 text-lg font-semibold text-ink">
+                        {rate.modality}
+                      </td>
+                      <td className="py-5 pr-6 whitespace-nowrap font-display text-lg font-extrabold text-purple">
+                        {rate.band}
+                      </td>
+                      <td className="py-5 text-base leading-relaxed text-ink-body">
+                        {rate.buys}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <p className="mt-6 text-base leading-relaxed text-ink-soft">
+              Por horas, la tarifa habitual de un community manager autónomo en
+              España va de 35 a 60 € la hora. Es un buen contraste: si un
+              presupuesto de 300 € al mes implica veinte horas de trabajo, los
+              números no salen y algo del alcance es mentira.
+            </p>
+          </section>
 
           <section aria-labelledby="tabla" className="mt-20">
             <h2
               id="tabla"
               className="scroll-mt-28 text-[clamp(1.75rem,3vw,2.5rem)] normal-case leading-tight tracking-[-0.01em] text-ink"
             >
-              Precios por servicio
+              Mis precios por servicio
             </h2>
 
             <div className="mt-8 -mx-6 overflow-x-auto px-6 sm:mx-0 sm:px-0">

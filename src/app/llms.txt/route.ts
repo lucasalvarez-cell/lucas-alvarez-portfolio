@@ -61,12 +61,25 @@ export function GET(): Response {
     "## Hechos",
     "",
     `- Nombre: ${SITE_NAME}, social media manager y estratega de contenido`,
+    "- También se le busca como: community manager en Barcelona",
     "- Ubicación: Barcelona, Cataluña, España. Trabaja también en remoto",
     "- Idiomas: español, catalán, inglés",
     `- Precios: desde ${formatEuros(cheapest)} €. Sin permanencia. Sin porcentaje sobre inversión publicitaria`,
     `- Contacto: ${CONTACT.email} · ${CONTACT.phoneDisplay}`,
     `- Afiliación declarada: cofundador de Publiqo (${PUBLIQO_URL})`,
+    "- Audiencia propia: 116.000 seguidores en Instagram (@lucasalvarez.x)",
+    "- Acuerdo de embajador de marca con Gymshark",
     "- Sectores con casos propios: campings y turismo, hostelería, impresión industrial, canales de YouTube",
+    "- Clientes con nombre: Camping Collvert, Camping Puzol, Camping Victòria, Reino Selva, Zernio, IBPRINT, Arnal2 Coffee, RayWild",
+    "",
+    /* Las cinco frases con más probabilidad de acabar citadas en una respuesta
+       generativa, juntas y en una línea cada una. Salen del mismo array que
+       renderiza la página de casos, así que no pueden divergir de ella. */
+    "## Cifras verificables",
+    "",
+    ...cases.map(
+      (caseStudy) => `- ${caseStudy.client} — ${caseStudy.headline}`,
+    ),
     "",
     "## Servicios",
     "",
@@ -81,7 +94,7 @@ export function GET(): Response {
     line(
       "Precios de todos los servicios",
       "/precios",
-      "Cuánto cuesta un social media manager en Barcelona: precio de partida por servicio, qué incluye cada uno y qué hace subir un presupuesto.",
+      "Cuánto cuesta un community manager en 2026: tarifas de mercado por modalidad y por hora, mis precios de partida por servicio y qué hace subir un presupuesto.",
     ),
     "",
     "## Casos con cifras",
