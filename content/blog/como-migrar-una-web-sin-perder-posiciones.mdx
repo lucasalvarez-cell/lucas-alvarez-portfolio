@@ -1,0 +1,131 @@
+---
+title: "Cómo migrar una web sin perder posiciones en Google"
+metaTitle: "Migrar una web sin perder posiciones"
+description: "El proceso paso a paso de una migración: el inventario de URLs, el mapa de redirecciones, qué comprobar el día del lanzamiento y cuánto tarda en recuperarse."
+date: "2026-12-05"
+slug: "como-migrar-una-web-sin-perder-posiciones"
+tags: ["seo", "diseno-web"]
+quickAnswer: "Una migración se hace bien con tres cosas: un inventario de todas las URLs actuales con su tráfico, un mapa de redirecciones de cada URL antigua a su equivalente nueva, y una comprobación el mismo día del lanzamiento. Sin el mapa, se pierde el tráfico acumulado y recuperarlo tarda meses."
+keyTakeaways:
+  - "El inventario de URLs se hace antes de tocar nada. Después del lanzamiento ya no se puede reconstruir con fiabilidad."
+  - "Cada URL antigua redirige a su equivalente nueva con una redirección permanente. Nunca todas a la portada."
+  - "Redirigir todo a la portada es lo que hace la mitad de las migraciones y Google lo interpreta como página inexistente."
+  - "Una caída del diez al veinte por ciento las primeras semanas es normal incluso en una migración bien hecha."
+  - "Si a las seis semanas no se ha recuperado, hay un problema concreto y se puede encontrar en el informe de páginas."
+faq:
+  - question: "¿Qué es lo primero que hay que hacer?"
+    answer: "El inventario completo de URLs actuales, antes de tocar nada, y es el paso que más veces se salta. Se saca de tres sitios que hay que cruzar: el sitemap actual, el informe de páginas de Search Console con las que están indexadas, y el informe de páginas más vistas de tu analítica de los últimos doce meses. Ese cruce da la lista real, que casi siempre incluye páginas que nadie recordaba y que están recibiendo tráfico. Después del lanzamiento esa lista ya no se puede reconstruir con fiabilidad, y sin ella la migración se hace a ciegas."
+  - question: "¿Qué es el mapa de redirecciones?"
+    answer: "Es una tabla con dos columnas: cada URL antigua y la URL nueva a la que debe llevar. Cada línea tiene que apuntar a la página equivalente en contenido, no a la portada ni a una categoría genérica. Si una página desaparece y no tiene equivalente, se redirige a la página más parecida que exista, y solo si de verdad no hay nada relacionado se deja que devuelva un error. La redirección tiene que ser permanente, del tipo 301, porque es la que transmite las señales acumuladas a la nueva dirección."
+  - question: "¿Por qué no vale redirigir todo a la portada?"
+    answer: "Porque Google lo interpreta como que esa página ya no existe, y trata la redirección como un error suave en lugar de como un traslado. El efecto práctico es que la página antigua pierde sus posiciones y la portada no las hereda, así que el tráfico desaparece por completo. Es lo que hace la mitad de las migraciones porque es la opción más rápida de configurar, y es exactamente la que borra el trabajo de años. Cada página necesita su destino concreto, aunque eso signifique revisar doscientas líneas a mano."
+  - question: "¿Qué hay que comprobar el día del lanzamiento?"
+    answer: "Seis cosas, en la primera hora. Que el robots.txt no bloquee el sitio entero, que es el error más frecuente porque la versión de pruebas suele tenerlo bloqueado. Que no haya quedado ninguna etiqueta noindex de la versión de desarrollo. Que las diez URLs con más tráfico redirijan bien, probándolas a mano. Que el sitemap nuevo esté generado y enviado. Que la analítica siga registrando visitas. Y que el formulario funcione y el aviso llegue, que se rompe en una migración más veces de lo que parece."
+  - question: "¿Cuánto se pierde y cuánto tarda en recuperarse?"
+    answer: "Una caída del diez al veinte por ciento durante las primeras dos o cuatro semanas es normal incluso en una migración bien hecha, porque Google necesita rastrear las URLs nuevas, procesar las redirecciones y recalcular. La recuperación completa suele llegar entre la cuarta y la octava semana. Lo que no es normal es una caída del cincuenta por ciento o una que no empieza a recuperarse a las seis semanas: eso indica un problema concreto y casi siempre está en las redirecciones o en una directiva que quedó puesta."
+  - question: "¿Puedo cambiar de dominio y de diseño a la vez?"
+    answer: "Puedes y no conviene, porque si algo sale mal no vas a saber qué de las dos cosas lo causó. Lo que recomiendo cuando hay margen es separar los cambios: primero la migración técnica manteniendo las URLs y el contenido, comprobar que todo está estable dos o tres semanas, y después el rediseño. Si el calendario no lo permite, al menos hay que documentar todos los cambios de forma que se puedan revertir por separado, porque el diagnóstico a ciegas de una migración doble puede llevar semanas."
+  - question: "¿Qué pasa con los enlaces externos que apuntan a las URLs antiguas?"
+    answer: "Siguen funcionando mientras las redirecciones estén puestas, y eso es precisamente lo que las hace imprescindibles a largo plazo. Una redirección permanente transmite la mayor parte de la autoridad del enlace a la nueva dirección, así que los enlaces que otras webs te pusieron hace años siguen contando. Por eso las redirecciones no se quitan al año: se mantienen indefinidamente, porque nadie va a ir a actualizar los enlaces que te pusieron, y quitarlas es perder todo ese trabajo de golpe."
+---
+
+Una migración mal hecha borra el trabajo de años en un día. Y el paso que lo evita se hace antes de tocar nada.
+
+## Los tres elementos imprescindibles
+
+| Elemento | Cuándo | Si falta |
+|---|---|---|
+| Inventario de URLs actuales | Antes de empezar | La migración se hace a ciegas |
+| Mapa de redirecciones | Antes del lanzamiento | Se pierde el tráfico acumulado |
+| Comprobación el mismo día | Primera hora | Los errores se descubren en semanas |
+
+## Paso 1: el inventario, que se hace antes
+
+Se saca de tres sitios y hay que cruzarlos.
+
+**El sitemap actual**, que dice qué URLs declaras tener.
+
+**El informe de páginas de Search Console**, que dice qué tiene Google indexado de verdad.
+
+**El informe de páginas más vistas de tu analítica**, últimos doce meses, que dice qué recibe tráfico.
+
+Ese cruce da la lista real, y casi siempre incluye páginas que nadie recordaba y que están recibiendo visitas.
+
+<Callout type="error" title="Por qué el inventario va antes">
+Después del lanzamiento esa lista ya no se puede reconstruir con fiabilidad: las URLs viejas dejan de estar en el sitemap y el histórico de analítica se complica. Es el paso que más veces se salta y el único que no se puede hacer después.
+</Callout>
+
+## Paso 2: el mapa de redirecciones
+
+Una tabla con dos columnas: cada URL antigua y la URL nueva a la que debe llevar.
+
+Cada línea tiene que apuntar a la página **equivalente en contenido**. No a la portada, no a una categoría genérica.
+
+Si una página desaparece y no tiene equivalente, se redirige a la más parecida que exista. Y solo si de verdad no hay nada relacionado, se deja que devuelva un error.
+
+La redirección tiene que ser permanente, del tipo 301, porque es la que transmite las señales acumuladas.
+
+## Por qué no vale redirigir todo a la portada
+
+Es lo que hace la mitad de las migraciones, porque es la opción más rápida de configurar.
+
+Google lo interpreta como que esa página ya no existe, y trata la redirección como un error suave en lugar de como un traslado. El efecto es que la página antigua pierde sus posiciones y la portada no las hereda.
+
+El tráfico desaparece por completo. Cada página necesita su destino concreto, aunque eso signifique revisar doscientas líneas a mano.
+
+## Paso 3: la comprobación del día del lanzamiento
+
+<Checklist title="Seis cosas, en la primera hora">
+- Que el robots.txt no bloquee el sitio entero. Es el error más frecuente, porque la versión de pruebas suele estar bloqueada.
+- Que no haya quedado ninguna etiqueta noindex de la versión de desarrollo.
+- Que las diez URLs con más tráfico redirijan bien, probándolas a mano.
+- Que el sitemap nuevo esté generado y enviado en Search Console.
+- Que la analítica siga registrando visitas.
+- Que el formulario funcione y el aviso llegue.
+</Checklist>
+
+El último punto se rompe en una migración más veces de lo que parece, y es el que menos se comprueba porque nadie asocia un cambio de web con el correo.
+
+## Cuánto se pierde y cuánto tarda
+
+Una caída del diez al veinte por ciento durante las primeras dos a cuatro semanas es normal, incluso en una migración bien hecha.
+
+Google necesita rastrear las URLs nuevas, procesar las redirecciones y recalcular. La recuperación completa suele llegar entre la cuarta y la octava semana.
+
+Lo que no es normal: una caída del cincuenta por ciento, o una que no empieza a recuperarse a las seis semanas. Eso indica un problema concreto y casi siempre está en las redirecciones o en una directiva que quedó puesta.
+
+Dónde mirarlo está en [por qué ha bajado mi tráfico orgánico](/blog/por-que-ha-bajado-mi-trafico-organico).
+
+## No cambies dos cosas a la vez
+
+Se puede cambiar de dominio y de diseño en la misma operación, y no conviene: si algo sale mal, no vas a saber cuál de las dos lo causó.
+
+Lo que recomiendo cuando hay margen es separar. Primero la migración técnica manteniendo URLs y contenido. Comprobar que está estable dos o tres semanas. Y después el rediseño.
+
+Si el calendario no lo permite, al menos hay que documentar todos los cambios de forma que se puedan revertir por separado.
+
+## Las redirecciones no se quitan
+
+Una duda que aparece al año: ¿se pueden eliminar ya?
+
+No. Los enlaces que otras webs te pusieron hace años siguen apuntando a las URLs antiguas, y nadie va a ir a actualizarlos.
+
+Una redirección permanente transmite la mayor parte de la autoridad de ese enlace a la nueva dirección. Quitarla es perder todo ese trabajo de golpe. Por qué esos enlaces siguen contando está en [qué es un backlink](/blog/que-es-un-backlink).
+
+## El caso de cambiar de plataforma
+
+Si además cambias de gestor de contenidos, hay dos cosas que suelen romperse y conviene vigilar.
+
+**La estructura de URLs.** Muchas plataformas imponen su formato, y eso puede significar que las doscientas URLs cambian todas. Es la situación donde el mapa de redirecciones es más largo y más necesario.
+
+**Las imágenes.** Cambian de dirección y las que estaban indexadas en búsqueda de imágenes se pierden si no se redirigen también.
+
+Las diferencias entre plataformas y qué te atan están en [WordPress o web a medida](/blog/wordpress-vs-web-a-medida).
+
+## Cuánto presupuestar
+
+Entre 300 y 1.000 € solo para esta parte en una web pequeña o mediana, y más si el catálogo es grande.
+
+Es la partida que más presupuestos de web omiten, y la que sale más cara si se omite: recuperar el tráfico de una migración mal hecha cuesta meses de trabajo y no siempre se recupera del todo.
+
+Si quieres que alguien la planifique antes de que empiece el proyecto, entra en mi [auditoría y consultoría digital](/servicios/auditoria-consultoria-digital) por 290 €, que es bastante menos que el coste de arreglarla después.
