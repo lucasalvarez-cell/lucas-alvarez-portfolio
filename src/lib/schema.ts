@@ -14,7 +14,6 @@ import {
 } from "./constants";
 import type { Service, ServicePricing } from "./constants";
 import type { Sector, SectorPage } from "@/content/sectores";
-import { coverAlt } from "./cover-svg";
 import type { PostFrontmatter, PostMeta } from "@/types/blog";
 import type { CaseStudy } from "@/types/case-study";
 
@@ -596,20 +595,12 @@ export function blogPostingSchema(post: PostFrontmatter, wordCount: number) {
     keywords: post.tags?.join(", "),
     articleSection: post.tags?.[0]?.replace(/-/g, " "),
     /*
-     * Two images, and they do different jobs: the cover is the artwork that
-     * appears on the page and carries the post's own figure, the OG card is
-     * the 1200x630 raster social platforms need. Declaring both gives Google
-     * something to index for the article and something to show in a share.
+     * One image, and it never appears on the page: the OG card is the 1200x630
+     * raster social platforms need for a share preview. The generated cover
+     * art that used to sit here was removed because a drawing built from the
+     * post's own numbers reads, to a 2026 visitor, as a chart a machine made.
      */
     image: [
-      {
-        "@type": "ImageObject",
-        url: `${url}/cover.svg`,
-        width: 1200,
-        height: 675,
-        caption: coverAlt(post.cover),
-        encodingFormat: "image/svg+xml",
-      },
       {
         "@type": "ImageObject",
         url: `${url}/opengraph-image`,

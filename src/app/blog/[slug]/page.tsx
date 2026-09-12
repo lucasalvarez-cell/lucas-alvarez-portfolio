@@ -8,7 +8,6 @@ import { Container } from "@/components/ui/Container";
 import { CTASection } from "@/components/sections/CTASection";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { mdxComponents } from "@/components/MdxComponents";
-import { PostCover } from "@/components/blog/PostCover";
 import { ArticleMeta } from "@/components/blog/ArticleMeta";
 import { ReadingProgress } from "@/components/blog/ReadingProgress";
 import {
@@ -212,13 +211,11 @@ export default async function BlogPostPage({
       </header>
 
       <Container className="max-w-[70rem] py-10 sm:py-14">
-        <div className="overflow-hidden rounded-[var(--radius-card)]">
-          <div className="aspect-[16/9] w-full sm:aspect-[21/9]">
-            <PostCover cover={post.cover} slug={post.slug} priority />
-          </div>
-        </div>
-
-        <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-14">
+        {/* No cover image, and that is the point: the quick answer is now the
+            first thing under the header instead of sitting 450px down behind a
+            21:9 band of artwork. It is the block AI search engines lift, and
+            they lift it from the top of the page. */}
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-14">
           <div className="min-w-0 max-w-[44rem]">
             <TableOfContentsMobile headings={headings} />
 
