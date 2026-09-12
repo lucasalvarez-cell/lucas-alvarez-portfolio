@@ -22,10 +22,18 @@ import type { PostFrontmatter } from "@/types/blog";
  * pages are prerendered, so a bad one ships to every crawler at once.
  */
 
-const MIN_BODY_WORDS = 1200;
 /**
- * The word floor is not retroactive. 26 of the 38 posts that existed when this
- * validator was written are under 1.200 words, several of them deliberately:
+ * Counted over what the reader actually receives, not over the MDX body alone.
+ * A post renders the quick answer, the takeaways and the FAQ as visible page
+ * copy, and those carry 600 to 800 words that the body count cannot see. A
+ * floor measured on the body only was rejecting posts that render at nearly
+ * 2.000 words while it would have waved through a 1.300-word body with no
+ * quick answer and no FAQ, which is the thinner page of the two.
+ */
+const MIN_RENDERED_WORDS = 1900;
+/**
+ * The word floor is not retroactive. Most of the 38 posts that existed when
+ * this validator was written fall under it, several of them deliberately:
  * `cuantas-publicaciones-a-la-semana` answers its question in 642 words and
  * padding it would make it worse. Rewriting them is a separate decision from
  * setting a standard for what comes next, so the floor applies from the day
@@ -148,10 +156,17 @@ export function assertPosts(): void {
       seenAnswers.set(key, slug);
     }
 
-    const bodyWords = words(content);
-    if (post.date! >= WORD_FLOOR_FROM && bodyWords < MIN_BODY_WORDS) {
+    const renderedWords =
+      words(content) +
+      words(post.quickAnswer ?? "") +
+      (post.keyTakeaways ?? []).reduce((sum, item) => sum + words(item), 0) +
+      (post.faq ?? []).reduce(
+        (sum, item) => sum + words(item.question) + words(item.answer),
+        0,
+      );
+    if (post.date! >= WORD_FLOOR_FROM && renderedWords < MIN_RENDERED_WORDS) {
       throw new Error(
-        `Post ${id}: ${bodyWords} palabras de cuerpo. El mínimo son ${MIN_BODY_WORDS}: por debajo de eso no responde mejor que las diez páginas que ya rankean.`,
+        `Post ${id}: ${renderedWords} palabras en la página. El mínimo son ${MIN_RENDERED_WORDS} contando cuerpo, respuesta rápida, claves y FAQ: por debajo de eso no responde mejor que las diez páginas que ya rankean.`,
       );
     }
   }
