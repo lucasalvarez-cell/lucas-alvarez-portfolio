@@ -43,6 +43,19 @@ No es una interpretación de la comunidad ni una declaración informal en una en
 El robots.txt es un estándar de treinta años que todos los rastreadores respetan y que decide si pueden acceder. Bloquear ahí a GPTBot te saca de las respuestas de ChatGPT. El llms.txt no bloquea ni permite nada: solo describe. Uno tiene efecto comprobable y el otro no.
 </Callout>
 
+## Los ficheros de la raíz, y qué hace cada uno
+
+| Fichero | Qué hace | ¿Tiene efecto comprobado? |
+|---|---|---|
+| `robots.txt` | Permite o bloquea el acceso de rastreadores | Sí, decisivo |
+| `sitemap.xml` | Lista tus URLs para facilitar el descubrimiento | Sí, útil |
+| `llms.txt` | Describe tu sitio para modelos de lenguaje | No |
+| `llms-full.txt` | Vuelca el contenido completo | No |
+| `ads.txt` | Declara quién puede vender tu publicidad | Sí, si vendes publicidad |
+| `security.txt` | Dice a quién avisar de una vulnerabilidad | Sí, para eso |
+
+Los dos primeros son los que deciden tu visibilidad. Confundir el tercero con ellos porque comparte la ubicación es exactamente el malentendido que hace que se venda como palanca.
+
 ## Lo que muestran los registros de servidor
 
 Los análisis publicados sobre peticiones reales apuntan en la misma dirección: la proporción de solicitudes a ese fichero por parte de rastreadores conocidos es mínima o nula.
