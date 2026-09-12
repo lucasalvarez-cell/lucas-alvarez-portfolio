@@ -10,7 +10,7 @@ export const SITE_DESCRIPTION =
 export const PUBLIQO_URL = "https://publiqo.es/";
 
 export const CONTACT = {
-  email: "bsocialspain@gmail.com",
+  email: "lucas@publiqo.es",
   phoneDisplay: "+34 644 956 232",
   phoneHref: "tel:+34644956232",
   whatsappHref: "https://wa.me/34644956232",

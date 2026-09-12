@@ -10,6 +10,7 @@ import {
   Stat,
   Stats,
 } from "@/components/blog/Blocks";
+import { externalRel } from "@/lib/links";
 
 /**
  * Article typography.
@@ -118,7 +119,7 @@ export const mdxComponents: MDXComponents = {
         <a
           href={href}
           target="_blank"
-          rel="noreferrer noopener"
+          rel={externalRel(href)}
           className={className}
           {...props}
         />

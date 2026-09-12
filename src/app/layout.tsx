@@ -38,7 +38,15 @@ export const metadata: Metadata = {
   creator: SITE_NAME,
   publisher: SITE_NAME,
   category: "Marketing digital",
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    types: {
+      "application/rss+xml": [
+        { url: "/feed.xml", title: `Blog de ${SITE_NAME}` },
+      ],
+      "text/markdown": [{ url: "/llms.txt", title: `Resumen de ${SITE_NAME}` }],
+    },
+  },
   robots: ROBOTS,
   openGraph: {
     type: "website",
@@ -47,8 +55,22 @@ export const metadata: Metadata = {
     url: "/",
   },
   twitter: { card: "summary_large_image" },
-  /* Google Search Console verification goes here once the property is claimed. */
-  // verification: { google: "..." },
+  /**
+   * Verificación de propiedad. Los tokens salen de la consola de cada buscador
+   * y se ponen como variables de entorno para que no viajen en el repositorio.
+   *
+   * Bing importa: es el índice que alimenta Copilot y la búsqueda web de
+   * ChatGPT, y hoy este dominio no aparece en él. Sin darlo de alta ahí, todo
+   * el trabajo de citabilidad no tiene por dónde llegar a un motor generativo.
+   */
+  verification: {
+    ...(process.env.GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+      : {}),
+    ...(process.env.BING_SITE_VERIFICATION
+      ? { other: { "msvalidate.01": process.env.BING_SITE_VERIFICATION } }
+      : {}),
+  },
 };
 
 export const viewport: Viewport = {

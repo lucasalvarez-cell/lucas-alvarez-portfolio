@@ -16,7 +16,7 @@ const TITLE = "Social media manager y estratega de contenido en Barcelona";
 export const metadata: Metadata = buildMetadata({
   title: TITLE,
   description:
-    "Social media manager en Barcelona. Gestión de redes sociales, contenido y SEO desde 290 €. +250 % de visualizaciones en un mes para Camping Collvert, x6 para Camping Victòria.",
+    "Social media manager y community manager en Barcelona. Gestión de redes sociales, contenido y SEO desde 290 € al mes. +250 % de visualizaciones en un mes para Camping Collvert.",
   path: "/",
 });
 

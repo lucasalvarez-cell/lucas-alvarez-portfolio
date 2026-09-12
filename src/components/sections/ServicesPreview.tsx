@@ -9,7 +9,7 @@ export function ServicesPreview() {
     <section className="bg-brand-gradient py-24 text-white">
       <Container>
         <Reveal>
-          <h2 className="text-white">Servicios</h2>
+          <h2 className="text-white">Servicios de social media y community management en Barcelona</h2>
         </Reveal>
 
         <div className="mt-20 grid gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
@@ -22,7 +22,7 @@ export function ServicesPreview() {
 
         <Reveal className="mt-20">
           <Button href="/servicios" variant="outline">
-            Ver los cinco servicios
+            Ver los seis servicios
           </Button>
         </Reveal>
       </Container>

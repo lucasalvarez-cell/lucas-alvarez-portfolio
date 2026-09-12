@@ -11,7 +11,10 @@ import { breadcrumbSchema, contactPageSchema, faqSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contacto | Social media manager en Barcelona",
+  /* Sin barra dentro del texto: a 44 caracteres esta cadena entraba en el
+     presupuesto de `resolveTitle` y se le añadía el sufijo de marca, así que el
+     <title> renderizado salía con dos barras. */
+  title: "Contacta con un community manager en Barcelona",
   description:
     "Hablemos de tu cuenta: gestión de redes sociales, estrategia de contenido, SEO o desarrollo web en Barcelona. Respondo personalmente en menos de 24 h laborables.",
   path: "/contacto",

@@ -142,14 +142,14 @@ export default async function ServicioPage({
 
           <IncludesList
             items={service.includes}
-            title={`Qué incluye ${service.title.toLowerCase()}`}
+            title={`Qué incluye ${service.h2Noun}`}
           />
 
           <ProcessSteps steps={service.process} title="Cómo trabajo, paso a paso" />
 
           <PriceBlock
             pricing={service.pricing}
-            title={`Cuánto cuesta ${service.title.toLowerCase()}`}
+            title={`Cuánto cuesta ${service.h2Noun}`}
           />
 
           <ProofStrip
@@ -174,7 +174,7 @@ export default async function ServicioPage({
           */}
           <FaqSection
             items={service.faq}
-            title={`Preguntas frecuentes sobre ${service.title.toLowerCase()}`}
+            title={`Preguntas frecuentes sobre ${service.h2Noun}`}
           />
         </div>
       </Section>

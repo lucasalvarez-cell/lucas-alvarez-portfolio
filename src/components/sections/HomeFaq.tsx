@@ -18,6 +18,11 @@ export const HOME_FAQ = [
       "Un community manager ejecuta: publica, responde y modera. Un social media manager decide qué se publica y por qué: diagnostica la cuenta, define la línea editorial, valida el formato con datos y ajusta la estrategia cada mes. La diferencia práctica es que uno rellena un calendario y el otro responde de que ese calendario funcione.",
   },
   {
+    question: "¿Cuánto cuesta un community manager en Barcelona?",
+    answer:
+      "Entre 250 y 1.200 € al mes con un freelance y entre 500 y 3.000 € con una agencia; por horas, entre 35 y 60 €. Mi gestión de redes sociales empieza en 490 € al mes, sin permanencia y sin porcentaje sobre la inversión publicitaria. Barcelona no encarece la cuota: encarece la producción presencial si hay que grabar en tu local cada mes.",
+  },
+  {
     question: "¿Cuánto cuesta contratar a Lucas Álvarez?",
     answer:
       "La gestión de redes sociales empieza en 490 € al mes, el SEO en 390 €, las campañas de Meta Ads y Google Ads en 350 € más inversión, una auditoría completa en 290 € y una web en 1.190 €. Ninguno tiene permanencia y todos los precios están publicados en la página de precios.",

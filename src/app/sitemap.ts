@@ -26,10 +26,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {
-      /* With the trailing slash: a sitemap <loc> is a complete URL, and the
-         bare origin has no path at all. Google normalises both to the same
-         address, but validators flag the short form. */
-      url: `${SITE_URL}/`,
+      /* Sin barra final, igual que la canónica que declara la home. Google
+         normaliza las dos formas al mismo destino, pero anunciar en el sitemap
+         una URL distinta de la canónica es pedirle que elija, y no hay ninguna
+         razón para dejarle esa elección. */
+      url: SITE_URL,
       lastModified: latestOverall,
       changeFrequency: "monthly",
       priority: 1,

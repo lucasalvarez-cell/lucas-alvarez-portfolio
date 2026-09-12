@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/components/MdxComponents.tsx"
+        ],
+        "createdAt": "2026-09-12T08:38:51.556Z",
+        "reason": "El unico borde lateral del archivo es el filete de <blockquote> (border-l-4 border-purple pl-6), convencion tipografica estandar para una cita, no una tarjeta con pestana de acento. Codigo preexistente, no modificado en este trabajo."
+      }
+    ]
+  }
+}
