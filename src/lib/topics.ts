@@ -195,8 +195,38 @@ export const TOPICS: Topic[] = [
       "Qué debe incluir un proyecto web sí o sí: rendimiento medido en móvil, SEO de base, textos escritos para convertir y propiedad del código.",
     intro:
       "Qué separa una web que convierte de una web bonita, y qué tiene que estar por escrito antes de firmar.",
-    overview: [],
-    path: [],
+    overview: [
+      "Una web bonita que no convierte es un gasto con buen aspecto. La diferencia entre las dos casi nunca está en el diseño: está en si alguien decidió, página por página, qué queremos que haga quien llega ahí, y si el resultado carga rápido en el móvil de alguien que va en el metro.",
+      "Los tres números que deciden un proyecto web se pueden pedir antes de firmar y casi nadie los pide: cuánto tarda en cargar medido en un móvil real, quién se queda el código y el dominio si dejáis de trabajar juntos, y qué pasa con las URLs antiguas el día del lanzamiento. Las tres respuestas caben en un correo y las tres cuestan dinero si llegan tarde.",
+      "Estas guías están escritas para que puedas juzgar un presupuesto sin saber programar. Lo que no vas a encontrar aquí es una comparativa de gestores de contenido en abstracto: la pregunta útil no es cuál es mejor, es cuál te deja mantener la web tú mismo dentro de dos años.",
+    ],
+    path: [
+      {
+        decision: "Cuánto debería costar, y qué encarece un presupuesto",
+        slug: "cuanto-cuesta-una-pagina-web",
+        label: "Cuánto cuesta una página web",
+      },
+      {
+        decision: "Si te sirve una plantilla o necesitas algo a medida",
+        slug: "wordpress-vs-web-a-medida",
+        label: "WordPress o web a medida",
+      },
+      {
+        decision: "Qué se mide de verdad cuando se habla de velocidad",
+        slug: "que-es-core-web-vitals",
+        label: "Qué son los Core Web Vitals",
+      },
+      {
+        decision: "Antes de rehacer una web que ya tiene posiciones",
+        slug: "como-migrar-una-web-sin-perder-posiciones",
+        label: "Migrar sin perder posiciones",
+      },
+      {
+        decision: "Qué tiene que hacer la página donde aterriza una campaña",
+        slug: "que-es-una-landing-page",
+        label: "Qué es una landing page",
+      },
+    ],
   },
   {
     tag: "turismo",
@@ -265,6 +295,294 @@ export const TOPICS: Topic[] = [
       },
     ],
   },
+  {
+    tag: "ia-y-busqueda",
+    label: "IA y búsqueda",
+    title: "Aparecer en ChatGPT, en las respuestas de IA de Google y en Perplexity",
+    description:
+      "Cómo se consigue que un asistente de IA cite tu web: qué contenido levantan, qué ignoran, cómo se mide ese tráfico y qué ha cambiado desde 2025.",
+    intro:
+      "Qué hay que cambiar en una web para que las respuestas generadas la citen, y cómo saber si está funcionando.",
+    overview: [
+      "En España ya hay un resumen generado por IA en cerca del 41 % de las búsquedas informativas, y buena parte de esas consultas terminan sin que nadie haga clic. Eso no significa que el SEO se haya acabado. Significa que el tráfico informativo barato se está evaporando y el que queda llega más decidido.",
+      "Lo que cambia no es la técnica, es qué contenido sobrevive. Un asistente cita párrafos que se sostienen solos, con una cifra y una fuente, colocados arriba. No cita rodeos. La consecuencia práctica es incómoda: el artículo de mil palabras que repite lo que dicen otros diez deja de tener sentido, y el que trae un dato propio vale más que nunca.",
+      "Aquí no vas a encontrar trucos. Google ha dicho por escrito que optimizar para sus respuestas generadas sigue siendo SEO, y que ficheros como llms.txt no cambian nada en su buscador. Lo que sí cambia las cosas es la frescura, la estructura y tener algo que no esté ya publicado, y de eso va esta sección.",
+    ],
+    path: [
+      {
+        decision: "Entender de qué se habla cuando se dice GEO",
+        slug: "que-es-el-geo",
+        label: "Qué es el GEO",
+      },
+      {
+        decision: "Aparecer en la respuesta de ChatGPT cuando busca por ti",
+        slug: "como-aparecer-en-chatgpt",
+        label: "Cómo aparecer en ChatGPT",
+      },
+      {
+        decision: "Entrar en el resumen que Google pone encima de todo",
+        slug: "como-aparecer-en-las-respuestas-de-ia-de-google",
+        label: "Aparecer en las respuestas de IA de Google",
+      },
+      {
+        decision: "Saber si el tráfico que perdiste se lo llevó la IA",
+        slug: "por-que-ha-bajado-mi-trafico-organico",
+        label: "Por qué ha bajado tu tráfico",
+      },
+      {
+        decision: "Medir lo que llega desde asistentes, que no aparece solo",
+        slug: "como-medir-el-trafico-que-llega-desde-la-ia",
+        label: "Medir el tráfico que llega desde la IA",
+      },
+    ],
+  },
+  {
+    tag: "precios",
+    label: "Precios y presupuestos",
+    title: "Qué cuesta cada cosa en marketing digital",
+    description:
+      "Precios reales de una web, una tienda online, el SEO, Google Ads, Meta Ads y un vídeo, con lo que encarece cada partida y cómo comparar dos ofertas.",
+    intro:
+      "Rangos reales del mercado español, qué mueve el precio arriba y abajo, y cómo leer un presupuesto antes de firmarlo.",
+    overview: [
+      "Publico precios porque el «precio a medida» obliga al visitante a adivinar, y quien adivina alto se va sin preguntar. Estas guías hacen lo mismo con el resto del mercado: dicen la banda, dicen de qué depende y dicen cuándo un número bajo es una señal de alarma en lugar de una oportunidad.",
+      "Casi todos los presupuestos que llegan a comparación son incomparables, porque cada uno mete cosas distintas bajo la misma palabra. La forma de arreglarlo es siempre la misma: pedir el desglose en partidas y comparar partida contra partida. Una cifra única no se puede juzgar, y esa es exactamente la razón por la que se da.",
+      "Un aviso que vale para toda la sección: los rangos son del mercado español en 2026 y se mueven por sector y por competencia. Sirven para saber si una oferta está dentro de lo razonable, no para exigir un número concreto a nadie.",
+    ],
+    path: [
+      {
+        decision: "Cuánto pedir para una web, y qué la encarece",
+        slug: "cuanto-cuesta-una-pagina-web",
+        label: "Cuánto cuesta una página web",
+      },
+      {
+        decision: "Qué se paga por posicionar y durante cuánto tiempo",
+        slug: "cuanto-cuesta-el-seo-en-espana",
+        label: "Cuánto cuesta el SEO",
+      },
+      {
+        decision: "Cuánto poner en campañas y cuánto cuesta gestionarlas",
+        slug: "cuanto-cuesta-una-campana-de-google-ads",
+        label: "Cuánto cuesta Google Ads",
+      },
+      {
+        decision: "Repartir un presupuesto anual entre canales",
+        slug: "presupuesto-de-marketing-digital-para-una-pyme",
+        label: "Presupuesto de marketing para una pyme",
+      },
+      {
+        decision: "Saber cuándo es razonable esperar resultados",
+        slug: "cuanto-tarda-el-seo-en-dar-resultados",
+        label: "Cuánto tarda el SEO",
+      },
+    ],
+  },
+  {
+    tag: "analitica",
+    label: "Analítica y medición",
+    title: "Medir lo que hace tu web y tus redes",
+    description:
+      "Search Console, GA4 y las métricas que de verdad deciden algo: qué mirar, qué ignorar y cómo montar la medición en un negocio pequeño.",
+    intro:
+      "Qué mirar, cada cuánto y qué decisión sale de cada número. Sin cuadros de mando que nadie abre.",
+    overview: [
+      "La mayoría de los informes de marketing que veo miden esfuerzo, no resultado. Número de publicaciones, número de palabras, número de impresiones. Ninguno responde a la única pregunta que importa: ¿ha entrado alguien nuevo por aquí y ha hecho algo?",
+      "Un negocio pequeño necesita cuatro números, no cuarenta: cuántas páginas tiene indexadas, por qué búsquedas aparece, cuántas visitas acaban en un contacto y de dónde vienen esas visitas. Los cuatro salen gratis de Search Console y de Analytics, y los cuatro se revisan en media hora al mes.",
+      "Lo demás es decoración. Si una métrica no cambia lo que vas a hacer el mes que viene, no la mires: te está cobrando atención sin darte nada a cambio.",
+    ],
+    path: [
+      {
+        decision: "Saber qué ve Google de tu web, que es el punto de partida",
+        slug: "como-usar-google-search-console",
+        label: "Cómo usar Search Console",
+      },
+      {
+        decision: "Montar la medición sin liarla con eventos",
+        slug: "como-configurar-ga4-en-un-negocio-pequeno",
+        label: "Configurar GA4 en un negocio pequeño",
+      },
+      {
+        decision: "Entender la métrica que más se cita y peor se usa",
+        slug: "que-es-el-ctr",
+        label: "Qué es el CTR",
+      },
+      {
+        decision: "Saber si la publicidad está devolviendo el dinero",
+        slug: "que-es-el-roas",
+        label: "Qué es el ROAS",
+      },
+      {
+        decision: "Ver cuánto tráfico llega desde asistentes de IA",
+        slug: "como-medir-el-trafico-que-llega-desde-la-ia",
+        label: "Medir el tráfico que llega desde la IA",
+      },
+    ],
+  },
+  {
+    tag: "conversion",
+    label: "Conversión",
+    title: "Convertir visitas en clientes",
+    description:
+      "Qué es un embudo, qué es una landing page, qué es un lead cualificado y cómo se monta un sistema de captación que no dependa de publicar más.",
+    intro:
+      "El tramo entre la visita y el contacto, que es donde se pierde casi todo el dinero que se gasta en atraer tráfico.",
+    overview: [
+      "Meter más tráfico en una web que no convierte solo hace las pérdidas más grandes. Es la conversación más incómoda que tengo con clientes que llegan pidiendo campañas: el problema casi nunca está en la cantidad de visitas, está en lo que pasa en los quince segundos siguientes.",
+      "Lo que falla suele ser una de tres cosas, y las tres se comprueban en una tarde: el tráfico aterriza en la home en lugar de en una página que responda a lo que buscaba, no está claro qué se espera que haga el visitante, o la página tarda tanto en el móvil que nadie llega a verla.",
+      "Esta sección es el vocabulario y el método de ese tramo. No hay trucos de urgencia falsa ni contadores. Lo que funciona es aburrido: una página por intención, una acción clara, y medir qué porcentaje la hace.",
+    ],
+    path: [
+      {
+        decision: "Entender por dónde pasa alguien antes de comprarte",
+        slug: "que-es-un-embudo-de-conversion",
+        label: "Qué es un embudo de conversión",
+      },
+      {
+        decision: "Saber a qué página mandar el tráfico de una campaña",
+        slug: "que-es-una-landing-page",
+        label: "Qué es una landing page",
+      },
+      {
+        decision: "Dejar de contar contactos que nunca iban a comprar",
+        slug: "que-es-un-lead-cualificado",
+        label: "Qué es un lead cualificado",
+      },
+      {
+        decision: "Mejorar lo que ya tienes antes de traer más gente",
+        slug: "que-es-el-cro",
+        label: "Qué es el CRO",
+      },
+      {
+        decision: "Montar el sistema completo sin herramientas caras",
+        slug: "como-montar-un-embudo-de-captacion-simple",
+        label: "Montar un embudo simple",
+      },
+    ],
+  },
+  {
+    tag: "ecommerce",
+    label: "Ecommerce",
+    title: "Marketing para tiendas online pequeñas",
+    description:
+      "Qué cuesta montar una tienda online, qué plataforma elegir y cómo se posiciona un ecommerce pequeño frente a marketplaces con mil veces su presupuesto.",
+    intro:
+      "Lo que cambia cuando el producto se vende desde la web y no desde una llamada.",
+    overview: [
+      "Una tienda online pequeña no compite con Amazon y no debería intentarlo. Compite por las búsquedas que Amazon no responde bien: la talla rara, el repuesto concreto, el producto con una duda que nadie contesta en la ficha.",
+      "Ahí es donde el ecommerce pequeño tiene ventaja real, y es una ventaja de contenido, no de precio. Quien sabe explicar qué diferencia dos modelos gana la búsqueda de quien está decidiendo entre los dos, y esa es la persona que compra.",
+      "La parte técnica importa más que en una web de servicios, porque un catálogo genera cientos de URLs solo. Facetas, filtros y variantes son la causa más común de que una tienda tenga mil páginas indexadas y ninguna posición.",
+    ],
+    path: [
+      {
+        decision: "Cuánto cuesta de verdad montar y mantener una tienda",
+        slug: "cuanto-cuesta-una-tienda-online",
+        label: "Cuánto cuesta una tienda online",
+      },
+      {
+        decision: "Elegir plataforma sin quedarte atrapado en ella",
+        slug: "shopify-vs-woocommerce",
+        label: "Shopify o WooCommerce",
+      },
+      {
+        decision: "Posicionar un catálogo sin generar mil páginas vacías",
+        slug: "seo-para-un-ecommerce-pequeno",
+        label: "SEO para un ecommerce pequeño",
+      },
+    ],
+  },
+  {
+    tag: "b2b",
+    label: "B2B e industria",
+    title: "Marketing digital para empresas que venden a empresas",
+    description:
+      "Redes sociales, contenido y captación para industria, asesorías y servicios B2B: ciclos largos, pocos clientes y decisiones que firman varias personas.",
+    intro:
+      "Lo que cambia cuando tu cliente es una empresa, el ciclo dura meses y la decisión la firman tres personas.",
+    overview: [
+      "En B2B el número de clientes potenciales es pequeño y cada uno vale mucho. Eso invierte casi todas las reglas del marketing de consumo: el alcance importa poco, la frecuencia importa poco, y lo que importa es que las quince empresas que podrían comprarte sepan quién eres cuando les toque decidir.",
+      "El error más caro que veo es medir una cuenta de LinkedIn de industria con las métricas de una cuenta de restaurante. Doscientas visualizaciones de las personas correctas valen más que veinte mil de gente que nunca va a comprar, y ninguna herramienta te va a decir eso: lo tienes que decidir tú antes de empezar.",
+      "La otra diferencia es el ciclo. Entre el primer contacto y la firma pueden pasar seis meses, así que el contenido no persigue una venta, sostiene una conversación hasta que llega el momento. Publicar tres veces por semana no acelera nada; estar presente cuando se abre el presupuesto sí.",
+    ],
+    path: [
+      {
+        decision: "Qué publicar cuando tu cliente es una fábrica",
+        slug: "redes-sociales-para-industria-b2b",
+        label: "Redes sociales para industria",
+      },
+      {
+        decision: "En qué red estar, si solo puedes estar en una",
+        slug: "linkedin-vs-instagram-para-b2b",
+        label: "LinkedIn o Instagram para B2B",
+      },
+      {
+        decision: "Captar clientes en un servicio profesional",
+        slug: "marketing-para-asesorias-y-gestorias",
+        label: "Marketing para asesorías",
+      },
+    ],
+  },
+  {
+    tag: "email-marketing",
+    label: "Email marketing",
+    title: "Email y newsletter para negocios pequeños",
+    description:
+      "Cuándo una lista de correo rinde más que las redes sociales, qué es un lead magnet y si conviene una newsletter o un blog.",
+    intro:
+      "El único canal donde la audiencia es tuya y no te la puede quitar un cambio de algoritmo.",
+    overview: [
+      "Una lista de correo es el único activo digital que no depende de la decisión de una plataforma. El alcance orgánico en redes lleva años bajando y va a seguir bajando, porque las plataformas venden ese alcance. Una dirección de correo no se devalúa por eso.",
+      "Dicho eso, no es para todo el mundo. Una lista exige algo que publicar con regularidad y algo que decir que merezca abrirse. Un negocio que no tiene ninguna de las dos cosas monta la lista, la abandona a los dos meses y se queda con mil direcciones que ya no le abren.",
+      "La forma de saber si te conviene es anterior a la herramienta: si ahora mismo tuvieras mil correos, ¿qué les mandarías el mes que viene? Si no hay respuesta, el problema no es el email.",
+    ],
+    path: [
+      {
+        decision: "Decidir si te conviene la lista o las redes",
+        slug: "email-marketing-vs-redes-sociales",
+        label: "Email marketing o redes sociales",
+      },
+      {
+        decision: "Conseguir que alguien te deje su correo",
+        slug: "que-es-un-lead-magnet",
+        label: "Qué es un lead magnet",
+      },
+      {
+        decision: "Elegir dónde publicar lo que escribes",
+        slug: "newsletter-vs-blog",
+        label: "Newsletter o blog",
+      },
+    ],
+  },
+  {
+    tag: "salud",
+    label: "Clínicas y salud",
+    title: "Marketing para clínicas y profesionales sanitarios",
+    description:
+      "Qué se puede publicar y qué no en el sector salud, cómo captar pacientes sin prometer resultados y qué funciona en Google Ads para clínicas.",
+    intro:
+      "Un sector donde la mitad de lo que funciona en otros está prohibido, y la otra mitad funciona mejor.",
+    overview: [
+      "El marketing sanitario tiene una restricción que cambia todo lo demás: no se pueden prometer resultados, y en buena parte de España la publicidad sanitaria está regulada por el colegio profesional correspondiente. Eso descarta de entrada el antes y después sin matices, el testimonio que garantiza un desenlace y casi todo el repertorio del sector estético menos cuidadoso.",
+      "La buena noticia es que la restricción empuja hacia lo que mejor funciona de todas formas. Explicar un procedimiento, enseñar la consulta, responder la duda que el paciente no se atreve a preguntar por teléfono. Es contenido que genera confianza y que además cumple, y produce más visitas que cualquier promesa.",
+      "El otro factor decisivo es local y no está en las redes: la ficha de Google, las reseñas y la página de cada tratamiento. Un paciente busca «fisioterapeuta cerca de mí» mucho más a menudo que el nombre de tu clínica.",
+    ],
+    path: [
+      {
+        decision: "Saber qué se puede publicar sin arriesgar el colegiado",
+        slug: "redes-sociales-clinicas-dentales",
+        label: "Qué puede publicar una clínica",
+      },
+      {
+        decision: "Captar pacientes con campañas en un sector regulado",
+        slug: "google-ads-para-clinicas",
+        label: "Google Ads para clínicas",
+      },
+      {
+        decision: "Llenar la agenda de un gabinete pequeño",
+        slug: "marketing-para-fisioterapeutas",
+        label: "Marketing para fisioterapeutas",
+      },
+    ],
+  },
 ];
 
 /** Human labels for every tag in use, hub or not. Feeds chips and breadcrumbs. */
@@ -291,6 +609,18 @@ export const TAG_LABELS: Record<string, string> = {
   hosteleria: "Hostelería",
   salud: "Clínicas y salud",
   deporte: "Gimnasios y deporte",
+
+  /* Added with the 2026 content plan. Kept hand-written rather than derived
+     from the slug: deriving would print "ia y busqueda" where this has to say
+     "IA y búsqueda". Forgetting one is a build error (see blog-validate.ts),
+     which is the trade that makes the manual list safe. */
+  "ia-y-busqueda": "IA y búsqueda",
+  precios: "Precios y presupuestos",
+  analitica: "Analítica y medición",
+  conversion: "Conversión",
+  ecommerce: "Ecommerce",
+  b2b: "B2B e industria",
+  "email-marketing": "Email marketing",
 };
 
 export function postsByTopic(posts: PostMeta[], tag: string): PostMeta[] {

@@ -26,6 +26,23 @@ const TAG_TO_SERVICE: Record<string, string> = {
   agencias: "auditoria-consultoria-digital",
   pymes: "auditoria-consultoria-digital",
   publiqo: "auditoria-consultoria-digital",
+
+  /* Tags introduced with the 2026 content plan. Every one needs an entry or
+     its posts fall through to consultancy, which is the right default and the
+     wrong answer for a post about Meta Ads pricing. */
+  "ia-y-busqueda": "seo",
+  precios: "auditoria-consultoria-digital",
+  analitica: "auditoria-consultoria-digital",
+  conversion: "desarrollo-web",
+  ecommerce: "desarrollo-web",
+  b2b: "gestion-redes-sociales",
+  "email-marketing": "estrategia-contenido-crecimiento-organico",
+  "google-ads": "publicidad-meta-ads-google-ads",
+  "meta-ads": "publicidad-meta-ads-google-ads",
+  hosteleria: "gestion-redes-sociales",
+  salud: "gestion-redes-sociales",
+  deporte: "gestion-redes-sociales",
+  "marca-personal": "estrategia-contenido-crecimiento-organico",
 };
 
 /** Falls back to consultancy so the block is never empty on an untagged post. */
