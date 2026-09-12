@@ -1,0 +1,144 @@
+---
+title: "Cómo configurar GA4 en un negocio pequeño sin liarla"
+metaTitle: "Cómo configurar GA4 paso a paso"
+description: "La configuración mínima de Google Analytics 4 que sirve de verdad: tres conversiones, el filtro de tu propio tráfico y los cuatro informes que hay que mirar."
+date: "2026-10-09"
+slug: "como-configurar-ga4-en-un-negocio-pequeno"
+tags: ["analitica"]
+quickAnswer: "En un negocio pequeño, GA4 se configura en cuatro pasos: instalar la etiqueta, excluir tu propio tráfico, marcar como conversión los dos o tres eventos que importan (formulario enviado, clic en teléfono, clic en WhatsApp) y enlazar Search Console. Todo lo demás se puede ignorar sin perder nada."
+keyTakeaways:
+  - "GA4 trae decenas de informes y tres decisiones. Configurar más de lo necesario es la forma más rápida de no mirarlo nunca."
+  - "Excluir tu propia IP y la de quien mantenga tu web es lo primero: en una web con pocas visitas, las tuyas distorsionan todo."
+  - "Si no marcas conversiones, GA4 te cuenta visitas y no te dice nada. Con dos o tres marcadas, empieza a servir."
+  - "Enlazar Search Console mete las búsquedas dentro de GA4 y evita tener que mirar en dos sitios."
+  - "Los datos no son comparables con Universal Analytics: si comparas con 2023 vas a sacar conclusiones falsas por la forma de contar, no por el negocio."
+faq:
+  - question: "¿Qué eventos debo marcar como conversión?"
+    answer: "Los dos o tres que significan que alguien ha dado un paso real hacia contratarte, y no más. En un negocio de servicios suelen ser el envío del formulario de contacto, el clic en el número de teléfono y el clic en el enlace de WhatsApp. En una tienda, la compra y el añadir al carrito. Lo que no debe marcarse como conversión es el desplazamiento por la página, el tiempo de permanencia o la visita a una sección, porque inflan el número y hacen imposible saber si algo está funcionando."
+  - question: "¿Por qué hay que excluir mi propio tráfico?"
+    answer: "Porque en una web con pocas visitas las tuyas distorsionan todo. Si recibes doscientas visitas al mes y tú entras quince veces para revisar cambios, estás inflando un 7 % los datos y además con un comportamiento que no se parece nada al de un cliente: entras directo, navegas rápido y nunca conviertes. Se excluye por IP en la configuración de la propiedad, y conviene excluir también la de quien mantenga la web, que suele visitarla más que tú."
+  - question: "¿GA4 sustituye a Search Console?"
+    answer: "No, hacen cosas distintas y las dos son gratis. Search Console cuenta lo que pasa antes del clic: por qué búsquedas apareces, cuántas veces te ven y cuántas te pinchan. GA4 cuenta lo que pasa después: por dónde navega la gente y qué acaba haciendo. Se pueden enlazar, y merece la pena, porque entonces las búsquedas aparecen dentro de los informes de GA4 y no hay que mirar en dos paneles. Si solo pudieras usar una, para un negocio pequeño Search Console da información más accionable."
+  - question: "¿Puedo comparar los datos con los de Universal Analytics?"
+    answer: "No de forma fiable, y es una fuente habitual de conclusiones falsas. GA4 cuenta las sesiones, los usuarios y las conversiones con criterios distintos a los de la herramienta anterior, así que una caída del 20 % al migrar puede no significar nada sobre el negocio. Lo que sí sirve es comparar GA4 contra GA4: desde el mes en que lo instalaste hacia adelante. Si necesitas comparar con años anteriores, hazlo con Search Console, que mantiene el mismo criterio de conteo."
+  - question: "¿Tengo que usar Google Tag Manager?"
+    answer: "En un negocio pequeño, casi nunca. Tag Manager tiene sentido cuando hay muchas etiquetas de muchas herramientas y conviene gestionarlas sin tocar la web cada vez. Con GA4 y poco más, instalar la etiqueta directamente es más simple y hay menos que romper. La excepción es si quieres medir eventos personalizados que la configuración automática no detecta, como un clic en un botón concreto, y no tienes a quien pedirle un cambio en el código."
+  - question: "¿Cada cuánto hay que mirarlo?"
+    answer: "Una vez al mes y media hora bastan en un negocio pequeño. Mirarlo cada día lleva a reaccionar a ruido: con pocas visitas, las variaciones diarias son estadísticamente irrelevantes y cambiar cosas por ellas suele empeorar lo que estaba bien. Lo que sí merece una mirada más frecuente es el periodo justo después de un cambio grande, como una web nueva o el arranque de una campaña, y ahí conviene mirar semana contra semana, no día contra día."
+  - question: "¿Qué informes de GA4 sirven de verdad?"
+    answer: "Cuatro. Adquisición de tráfico, para saber de dónde viene la gente. Páginas y pantallas, para saber qué se lee. Conversiones, para saber cuánta gente hace lo que quieres. Y el informe de tiempo real, solo para comprobar que la instalación funciona el día que la haces. Todo lo demás está bien tenerlo y no cambia lo que vas a hacer el mes que viene, que es el único criterio útil para decidir si una métrica merece tu atención."
+---
+
+Google Analytics 4 trae decenas de informes y, en un negocio pequeño, tres decisiones. Configurar más de lo necesario es la forma más rápida de acabar no mirándolo nunca.
+
+Esto es la configuración mínima que sirve, en el orden en que la haría.
+
+## Paso 1: instalar la etiqueta
+
+Crea una propiedad en analytics.google.com, coge el identificador de medición (empieza por G) y ponlo en tu web.
+
+Si tienes WordPress, cualquier complemento oficial de Google lo hace. Si tienes web a medida, se lo pasas a quien la mantenga. Si usas una plataforma de comercio, casi todas tienen un campo específico para pegarlo.
+
+Comprueba que funciona el mismo día con el informe de tiempo real: abre tu web desde el móvil y mira si apareces.
+
+## Paso 2: excluir tu propio tráfico
+
+Es lo primero que hago y lo que casi nadie hace.
+
+En una web con doscientas visitas al mes, si tú entras quince veces para revisar cambios estás inflando los datos un 7 %, y con un comportamiento que no se parece al de un cliente: entras directo, navegas rápido y nunca conviertes.
+
+Se configura en Administrar, Flujos de datos, Configuración de etiquetas, Definir tráfico interno. Añade tu IP y la de quien mantenga la web, que normalmente la visita más que tú.
+
+<Callout type="aviso" title="El detalle que se olvida">
+Si trabajas desde casa con IP dinámica, la exclusión por IP se queda obsoleta cada pocas semanas. En ese caso es más fiable excluir por parámetro en la URL o simplemente aceptar el ruido y no sacar conclusiones de meses con muy pocas visitas.
+</Callout>
+
+## Paso 3: marcar las conversiones
+
+Sin esto, GA4 te cuenta visitas y no te dice nada.
+
+| Tipo de negocio | Qué marcar como conversión |
+|---|---|
+| Servicios | Formulario enviado, clic en teléfono, clic en WhatsApp |
+| Tienda online | Compra, añadir al carrito |
+| Restaurante | Clic en reservar, clic en teléfono, ver la carta |
+| Clínica | Pedir cita, clic en teléfono |
+
+Dos o tres, no más. Lo que no debe marcarse como conversión es el desplazamiento por la página, el tiempo de permanencia o la visita a una sección: inflan el número y hacen imposible saber si algo funciona.
+
+GA4 detecta algunos eventos solo, pero los clics en teléfono y en WhatsApp suelen necesitar configuración. Se marcan en Administrar, Eventos, con el interruptor de «marcar como conversión».
+
+## Paso 4: enlazar Search Console
+
+En Administrar, Enlaces de productos, Search Console. Dos clics.
+
+Eso mete las búsquedas dentro de los informes de GA4, así que puedes ver por qué consulta entró alguien y qué hizo después, sin mirar en dos paneles.
+
+Lo que Search Console hace y GA4 no, y por qué conviene tener las dos, está en [cómo usar Search Console](/blog/como-usar-google-search-console).
+
+## Los cuatro informes que sirven
+
+**Adquisición de tráfico.** De dónde viene la gente: buscador, redes, directo, campañas. Es el que dice si lo que estás haciendo trae visitas.
+
+**Páginas y pantallas.** Qué se lee. Sirve para descubrir que la página que creías importante no la ve nadie.
+
+**Conversiones.** Cuánta gente hace lo que quieres, y desde qué canal. Es el único que responde a la pregunta del negocio.
+
+**Tiempo real.** Solo el día que instalas, para comprobar que funciona.
+
+Todo lo demás está bien tenerlo y no cambia lo que vas a hacer el mes que viene, que es el único criterio útil para decidir si una métrica merece tu atención.
+
+## Lo que no se puede comparar
+
+Los datos de GA4 no son comparables con los de Universal Analytics.
+
+Cuenta las sesiones, los usuarios y las conversiones con criterios distintos, así que una caída del 20 % al migrar puede no significar nada sobre el negocio. He visto tomar decisiones importantes sobre ese fantasma.
+
+Si necesitas comparar con años anteriores, hazlo con Search Console, que mantiene el mismo criterio de conteo desde siempre.
+
+## ¿Hace falta Tag Manager?
+
+En un negocio pequeño, casi nunca.
+
+Tiene sentido cuando hay muchas etiquetas de muchas herramientas y conviene gestionarlas sin tocar la web cada vez. Con GA4 y poco más, instalar la etiqueta directamente es más simple y hay menos que romper.
+
+La excepción es si quieres medir clics en botones concretos y no tienes a quien pedirle un cambio en el código.
+
+## El consentimiento de cookies, que no es opcional
+
+En España, GA4 necesita consentimiento previo para instalar sus cookies. Eso significa dos cosas prácticas.
+
+La primera, que necesitas un aviso de cookies que de verdad bloquee la etiqueta hasta que alguien acepte, no uno decorativo que informa y carga todo igualmente.
+
+La segunda, y es la que sorprende: vas a medir menos de lo que ocurre. Si la mitad de tus visitantes no acepta, tus datos son de la otra mitad. Eso no invalida la herramienta, pero obliga a leerla como una tendencia y no como un recuento exacto.
+
+<Checklist title="La configuración mínima, en una hora">
+- Propiedad creada y etiqueta instalada.
+- Tu IP y la de tu desarrollador excluidas.
+- Dos o tres conversiones marcadas.
+- Search Console enlazado.
+- Aviso de cookies que bloquee de verdad hasta el consentimiento.
+- Comprobado en tiempo real desde un móvil.
+</Checklist>
+
+## Cómo saber de dónde viene de verdad una visita
+
+El informe de adquisición trae una trampa que hace que muchos negocios crean que su canal principal es «directo», y casi nunca lo es.
+
+«Directo» significa que GA4 no ha podido saber de dónde venía esa visita. Ahí se acumulan cosas muy distintas: alguien que escribió tu dominio a mano, alguien que pinchó un enlace desde WhatsApp, alguien que venía de un PDF o de una aplicación, y alguien cuyo navegador bloqueó la información de procedencia.
+
+En un negocio local con mucho tráfico de móvil y de mensajería, «directo» puede ser un tercio del total y no dice nada útil. Las dos formas de reducirlo:
+
+**Etiquetar los enlaces que pones tú.** Cualquier enlace que compartas en una publicación, en un correo o en un mensaje puede llevar parámetros al final que le digan a GA4 de dónde viene. Google tiene un generador de esos parámetros y lleva dos minutos por enlace.
+
+**Mirar las páginas de entrada.** Si el tráfico «directo» aterriza en una página interna concreta que nadie escribiría de memoria, eso no es directo: es un enlace compartido en algún sitio. Averiguar dónde suele revelar un canal que no sabías que tenías.
+
+## El error que hace que nadie lo mire
+
+Configurarlo todo.
+
+He visto propiedades con cuarenta eventos personalizados, ocho audiencias y tres paneles a medida, en negocios que reciben trescientas visitas al mes. Nadie abre eso, porque no hay ninguna decisión que dependa de ello.
+
+Cuatro números al mes, mirados de verdad, valen más que cuarenta que nadie consulta. Y si lo que quieres es saber qué números son los tuyos y en qué fase se te está cayendo la gente, eso es un [embudo de conversión](/blog/que-es-un-embudo-de-conversion) y se puede montar en una hoja de cálculo.
+
+Si prefieres que alguien lo deje configurado y te diga qué mirar, es parte de lo que hago en una [auditoría y consultoría digital](/servicios/auditoria-consultoria-digital), que cuesta 290 €.
