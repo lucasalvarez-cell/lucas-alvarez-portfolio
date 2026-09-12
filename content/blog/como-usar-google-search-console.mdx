@@ -1,0 +1,130 @@
+---
+title: "Cómo usar Google Search Console sin ser técnico"
+metaTitle: "Cómo usar Google Search Console paso a paso"
+description: "Los cuatro informes de Search Console que sirven de verdad, qué decisión sale de cada uno y cómo detectar las páginas que Google no tiene indexadas."
+date: "2026-09-21"
+slug: "como-usar-google-search-console"
+tags: ["analitica", "seo"]
+quickAnswer: "Search Console es la herramienta gratuita que dice qué sabe Google de tu web. Cuatro informes bastan: indexación, para saber qué páginas tiene guardadas; rendimiento, para ver por qué búsquedas apareces; experiencia en la página, para la velocidad en móvil; y enlaces, para ver quién te menciona."
+keyTakeaways:
+  - "Antes de tocar una palabra clave, mira cuántas páginas tienes indexadas. Es habitual descubrir que falta la mitad del sitio, y ahí ninguna optimización sirve."
+  - "El filón está en las búsquedas con muchas impresiones, casi ningún clic y posición entre 8 y 25: Google ya cree que encajas, solo falta empujar."
+  - "La posición media es la métrica que peor decide, porque mezcla búsquedas incomparables. Mira el número de consultas distintas en su lugar."
+  - "Los datos tardan entre dos y tres días en aparecer, así que no sirve para mirar qué pasó ayer. Es una herramienta de tendencia, no de tiempo real."
+  - "Es gratis, es el único sitio donde Google te habla directamente y la mayoría de webs pequeñas ni la tienen dada de alta."
+faq:
+  - question: "¿Cómo doy de alta mi web en Search Console?"
+    answer: "Entras en la herramienta con una cuenta de Google, eliges añadir propiedad y te da dos opciones. La de dominio verifica todo el sitio a la vez pero exige tocar los registros DNS donde tengas contratado el dominio. La de prefijo de URL es más sencilla: descargas un fichero HTML y se lo pides a quien lleve tu web, o lo subes tú si tienes acceso. La de dominio es la buena a largo plazo porque incluye subdominios y las dos versiones del protocolo."
+  - question: "¿Cuánto tarda en aparecer información?"
+    answer: "Los primeros datos tardan entre dos y tres días, y la foto completa unas dos semanas. Search Console no guarda histórico anterior a la fecha en que la diste de alta, así que si acabas de empezar no vas a poder comparar con el año pasado. Es el motivo por el que conviene darla de alta aunque no la vayas a mirar todavía: el histórico solo empieza a acumularse desde ese momento y no hay forma de recuperarlo después."
+  - question: "¿Qué significa «descubierta, actualmente sin indexar»?"
+    answer: "Que Google conoce la existencia de esa página pero ha decidido no guardarla, normalmente porque considera que no aporta nada respecto a lo que ya tiene o porque la calidad general del sitio no le anima a gastar recursos. No es una penalización: es una decisión de prioridad. La forma de resolverlo casi nunca es pedir indexación otra vez, sino mejorar esa página hasta que responda a algo que las demás no responden, o enlazarla mejor desde dentro del sitio."
+  - question: "¿Sirve de algo pedir la indexación manualmente?"
+    answer: "Para una página nueva o recién corregida, sí: acelera de semanas a horas. Para una página que Google ha decidido no indexar, no, y repetirlo no cambia la decisión. El límite diario es pequeño, así que conviene reservarlo para lo que de verdad importa: una página nueva de servicio, un artículo recién publicado o una corrección grande. Usarlo en serie sobre cincuenta páginas flojas no consigue nada."
+  - question: "¿Qué diferencia hay entre Search Console y Analytics?"
+    answer: "Search Console cuenta lo que pasa antes del clic: por qué búsquedas apareces, cuántas veces te ven y cuántas veces te pinchan. Analytics cuenta lo que pasa después: por dónde navega la gente y qué acaba haciendo. Son complementarias y ninguna sustituye a la otra. Para un negocio pequeño que solo puede mirar una, Search Console da más información accionable, porque señala oportunidades concretas en lugar de describir comportamiento."
+  - question: "¿Cada cuánto tengo que mirarla?"
+    answer: "Una vez al mes es suficiente para un negocio pequeño, y media hora basta. Mirarla todos los días lleva a reaccionar a ruido: los datos oscilan por motivos que no tienen que ver con nada que hayas hecho. Lo único que merece una alerta inmediata es una caída brusca de páginas indexadas o un aviso de la propia herramienta, y para eso ya te llega un correo sin que tengas que entrar."
+---
+
+Search Console es la única herramienta donde Google te habla directamente sobre tu web. Es gratis, y la mayoría de webs pequeñas ni siquiera la tienen dada de alta.
+
+Tiene decenas de informes y solo cuatro sirven de verdad para tomar decisiones. Los otros son interesantes y no cambian nada de lo que vas a hacer el mes que viene.
+
+## Informe 1: indexación, el que va primero
+
+Menú de la izquierda, «Páginas». Este informe responde a la pregunta que precede a todas las demás: ¿cuántas de mis páginas tiene Google guardadas?
+
+Compara ese número con el de páginas que crees tener. Si tu web tiene treinta y aquí salen ocho, tu problema no es el contenido ni las palabras clave: es que dos tercios de tu sitio no existen para el buscador.
+
+Debajo está la lista de motivos por los que las demás están fuera. Los que más aparecen:
+
+| Motivo | Qué significa | Qué hacer |
+|---|---|---|
+| Descubierta, sin indexar | Google la conoce y no la ha querido | Mejorarla o enlazarla mejor |
+| Rastreada, sin indexar | La leyó y decidió no guardarla | Casi siempre, contenido flojo |
+| Duplicada sin canónica | Hay otra página casi igual | Unificar o marcar cuál manda |
+| Bloqueada por robots.txt | Se lo has prohibido tú | Revisar si es a propósito |
+| Con redirección | Apunta a otro sitio | Normal si es intencionado |
+
+No hace falta que entiendas cada causa. Basta con llevar esa lista a quien mantenga tu web y pedir explicación página por página. Es la conversación más rentable que vas a tener sobre tu web este año.
+
+## Informe 2: rendimiento, donde está el dinero
+
+«Rendimiento», y lo primero, cambiar el rango a tres meses. Por defecto muestra veintiocho días y eso es poco para ver una tendencia.
+
+Arriba hay cuatro cajas. Activa las cuatro: clics, impresiones, CTR medio y posición media.
+
+Debajo, la pestaña «Consultas» es la lista de búsquedas por las que has aparecido. Aquí está lo que buscas.
+
+<Callout type="dato" title="El patrón que más rinde de todo el informe">
+Ordena por impresiones y busca filas con muchas impresiones, cero o casi cero clics y posición entre 8 y 25. Google te está diciendo que eres relevante pero no la respuesta. Son las búsquedas que menos esfuerzo necesitan para moverse, porque el trabajo ya está medio hecho.
+</Callout>
+
+La otra lectura útil es al revés: búsquedas donde estás arriba pero nadie te pincha. Si estás en la posición 3 con un 1 % de clics, el problema no es el posicionamiento, es el título y la descripción que sale en el resultado.
+
+### La métrica que hay que dejar de mirar
+
+La posición media. Mezcla búsquedas que no tienen nada que ver y sube o baja por motivos que no significan nada: si empiezas a aparecer por cuarenta búsquedas nuevas en posición 40, tu media empeora y tu situación ha mejorado.
+
+Mira en su lugar el número de consultas distintas que te traen impresiones. Que pase de treinta a ciento veinte en un trimestre es una buena noticia aunque ninguna esté la primera.
+
+## Informe 3: experiencia en la página
+
+Aquí están los Core Web Vitals, que miden tres cosas: cuánto tarda en verse lo principal, cuánto tarda en responder a un toque y cuánto se mueve la página mientras carga.
+
+Lo importante de este informe es que usa datos de usuarios reales en sus móviles reales, no una simulación. Es la diferencia entre medir tu web con fibra en el ordenador de la oficina y medirla como la vive alguien en el metro.
+
+Si la pestaña de móvil está en rojo, eso afecta al posicionamiento y a la conversión a la vez, y es de las pocas cosas que arreglar da resultado rápido.
+
+## Informe 4: enlaces
+
+Menú de abajo, «Enlaces». Dice quién te enlaza desde fuera y cómo enlazas tú dentro de tu propia web.
+
+La parte de enlaces externos sirve para saber si hay algo raro (una avalancha de dominios extranjeros sin sentido suele ser spam ajeno que no requiere acción).
+
+La parte interna es más útil de lo que parece: si una página importante tuya recibe dos enlaces desde dentro de tu web y la de cookies recibe cuarenta, le estás diciendo a Google cuál te parece más importante, y no es la que crees.
+
+## Las tres cosas que hago cada mes
+
+<Checklist title="La revisión de media hora">
+- Mirar si el número de páginas indexadas ha bajado. Si ha bajado, averiguar por qué antes que nada.
+- Ordenar consultas por impresiones y buscar las de posición 8 a 25 sin clics. Elegir una y mejorar su página.
+- Comprobar si hay avisos nuevos en la campana. Los de indexación importan; los de datos estructurados casi nunca son urgentes.
+</Checklist>
+
+Con eso basta. Todo lo demás es interesante y no cambia lo que vas a hacer.
+
+## Los errores que veo más a menudo
+
+**Mirarla todos los días.** Los datos oscilan por motivos que no tienen que ver con nada que hayas hecho. Reaccionar a esas oscilaciones lleva a cambiar cosas que estaban bien.
+
+**Confundir impresiones con visitas.** Una impresión es que has salido en la lista de resultados, aunque nadie haya bajado a verla. Mil impresiones con cinco clics no son mil visitas.
+
+**Dar de alta solo una versión del dominio.** Si verificas `https://tudominio.com` y la gente entra por `https://www.tudominio.com`, estás mirando datos de un sitio distinto al que tienes. La propiedad de dominio evita esto.
+
+**Pedir indexación en serie.** El botón de inspección vale para una página nueva o recién corregida. Usarlo cincuenta veces sobre páginas flojas no cambia ninguna decisión de Google.
+
+## Dos usos que casi nadie le da
+
+Hay dos cosas que esta herramienta hace muy bien y que rara vez se aprovechan, porque no están en la primera pantalla.
+
+**Encontrar ideas de contenido que ya funcionan a medias.** En el informe de rendimiento, filtra las consultas que contengan «cómo», «qué es», «cuánto» o «por qué». Esa lista son preguntas reales que ha hecho gente real y por las que ya apareces, aunque sea en la posición treinta. Cada una de esas preguntas, convertida en su propia página, parte con una ventaja enorme sobre una idea inventada desde cero: Google ya ha decidido que tu sitio tiene algo que ver con ese tema.
+
+**Comparar dos periodos para saber si algo funcionó.** En el selector de fechas hay una pestaña de comparación. Si en marzo reescribiste cinco páginas, compara abril contra febrero filtrando por esas URLs. Es la única forma honesta de saber si el trabajo sirvió, y evita la conversación circular de si el tráfico subió por lo que hiciste o por la temporada.
+
+Hay un tercer uso, más defensivo, que conviene tener presente: cuando una web se rehace, este es el sitio donde se ve si la migración salió bien. Si a las dos semanas del lanzamiento el número de páginas indexadas ha caído a la mitad, algo se hizo mal con las redirecciones y todavía se está a tiempo de arreglarlo. Enterarse tres meses después es enterarse cuando ya has perdido la temporada.
+
+## Lo que Search Console no te va a decir
+
+Conviene saberlo para no buscar lo que no está.
+
+No dice qué hace la gente una vez entra: eso es analítica, y va aparte. No dice qué posición ocupas exactamente en una búsqueda concreta hecha desde una ciudad concreta, porque los resultados se personalizan. No guarda histórico anterior a la fecha de alta. Y no dice nada sobre las respuestas generadas por IA, que todavía no tienen un informe propio.
+
+Para eso último hay que ir a mano, preguntando a los asistentes las consultas que importan, como explico en [cómo aparecer en ChatGPT](/blog/como-aparecer-en-chatgpt).
+
+## Por dónde empezar si nunca la has abierto
+
+Dala de alta hoy aunque no la vayas a mirar hasta dentro de un mes. El histórico empieza a acumularse desde ese momento y no hay forma de recuperar lo anterior.
+
+Cuando haya datos, el primer sitio al que ir es el informe de indexación. La mitad de los proyectos que audito tienen ahí un problema que nadie había visto, y arreglarlo rinde más que cualquier cosa que pudieras hacer con las palabras clave. El resto del orden está en [los fundamentos de SEO para negocios pequeños](/blog/fundamentos-seo-pequenos-negocios-2026).
