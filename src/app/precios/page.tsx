@@ -69,6 +69,32 @@ const MARKET_RATES = [
  * What actually moves a quote up. Published because the alternative — "precio a
  * medida" — makes the visitor guess, and the ones who guess high leave.
  */
+/**
+ * Cada entrada cubre una pregunta distinta de la misma búsqueda comercial:
+ * qué tarifa por unidad es creíble, cómo se construye el presupuesto y qué
+ * hay que exigir antes de firmarlo. La cifra vive aquí; el desarrollo, allí.
+ */
+const DEEP_DIVES = [
+  {
+    href: "/blog/tarifas-community-manager",
+    title: "Tarifas por hora, por pieza y por proyecto",
+    detail:
+      "Las unidades sueltas del mercado y las dos divisiones que dicen en treinta segundos si una cuota mensual cerrada es creíble.",
+  },
+  {
+    href: "/blog/presupuesto-community-manager",
+    title: "Cómo se construye un presupuesto y cómo se compara",
+    detail:
+      "Las tres partidas reales, cuáles son relleno habitual y una plantilla para poner tres ofertas distintas en la misma escala.",
+  },
+  {
+    href: "/blog/contratar-community-manager",
+    title: "Qué exigir antes de firmar",
+    detail:
+      "Las ocho preguntas de filtro y las tres cosas que tienen que estar por escrito, empezando por de quién son las cuentas al terminar.",
+  },
+] as const;
+
 const DRIVERS = [
   {
     title: "Cuántas plataformas",
@@ -347,6 +373,35 @@ export default function PreciosPage() {
               en cuatro idiomas, no soy tu opción y te lo diré en la primera
               llamada.
             </p>
+          </section>
+
+          {/* Los tres artículos que trabajan la misma intención comercial que
+              esta página. Enlazarlos desde aquí, y no solo al revés, es lo que
+              convierte cuatro URLs que competían entre sí en un cluster con un
+              destino claro. */}
+          <section aria-labelledby="mas-a-fondo" className="mt-20">
+            <h2
+              id="mas-a-fondo"
+              className="scroll-mt-28 text-[clamp(1.75rem,3vw,2.5rem)] normal-case leading-tight tracking-[-0.01em] text-ink"
+            >
+              Antes de pedir presupuesto
+            </h2>
+
+            <ul className="mt-8 space-y-6">
+              {DEEP_DIVES.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="text-lg font-semibold text-ink underline decoration-1 underline-offset-4 hover:opacity-70"
+                  >
+                    {item.title}
+                  </Link>
+                  <p className="mt-2 max-w-3xl text-lg leading-relaxed text-ink-body">
+                    {item.detail}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </section>
 
           <FaqSection
