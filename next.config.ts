@@ -65,11 +65,49 @@ const nextConfig: NextConfig = {
       "mejor-agencia-meta-ads-barcelona": "agencia-meta-ads-barcelona",
     };
 
-    return Object.entries(merged).map(([from, to]) => ({
-      source: `/blog/${from}`,
-      destination: `/blog/${to}`,
-      permanent: true,
-    }));
+    /**
+     * Tres URLs del sitio anterior que siguen indexadas y devuelven 404.
+     * Search Console las sitúa en los puestos 3,6, 7,6 y 4,5, y una de ellas
+     * generó uno de los cuatro clics del último trimestre. Recuperarlas es
+     * más barato que volver a ganarse esas posiciones.
+     */
+    const legacy: Record<string, string> = {
+      "/privacy.html": "/politica-privacidad",
+      "/cookies.html": "/politica-cookies",
+      /* El aviso legal del sitio antiguo no tiene equivalente propio: su
+         contenido vive hoy dentro de la política de privacidad. */
+      "/legal.html": "/politica-privacidad",
+    };
+
+    /**
+     * `cuanto-cuesta-gestion-redes-sociales` repetía las mismas bandas de
+     * precio que /precios, y Search Console mostraba las dos compitiendo por
+     * las diecisiete consultas de "precio community manager". El contenido
+     * útil que no estaba duplicado (tarifas por hora, por pieza y por
+     * proyecto) vive ahora en `tarifas-community-manager`; la intención de
+     * precio se consolida en /precios, que es la página que Google ya elegía.
+     */
+    const consolidated: Record<string, string> = {
+      "/blog/cuanto-cuesta-gestion-redes-sociales": "/precios",
+    };
+
+    return [
+      ...Object.entries(consolidated).map(([source, destination]) => ({
+        source,
+        destination,
+        permanent: true,
+      })),
+      ...Object.entries(merged).map(([from, to]) => ({
+        source: `/blog/${from}`,
+        destination: `/blog/${to}`,
+        permanent: true,
+      })),
+      ...Object.entries(legacy).map(([source, destination]) => ({
+        source,
+        destination,
+        permanent: true,
+      })),
+    ];
   },
 };
 
