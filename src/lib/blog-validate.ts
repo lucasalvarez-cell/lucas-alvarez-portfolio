@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import matter from "gray-matter";
 import { readAllPostSources } from "@/lib/blog";
 import { TAG_LABELS } from "@/lib/topics";
@@ -158,6 +160,25 @@ export function assertPosts(): void {
         if (wanted && !onDisk.has(wanted)) {
           throw new Error(
             `Post ${id}: <Serie> nombra "${wanted}", que no existe en content/blog. El componente oculta lo que no está publicado, así que una errata aquí no se ve nunca.`,
+          );
+        }
+      }
+    }
+
+    /* A missing file renders as a broken frame in a prerendered page, and a
+       photo without its credit breaks the licence it was taken under. */
+    for (const match of raw.matchAll(/<Foto\b[^>]*>/g)) {
+      const tag = match[0];
+      const src = tag.match(/\bsrc="([^"]*)"/)?.[1];
+      if (!src || !fs.existsSync(path.join(process.cwd(), "public", src))) {
+        throw new Error(
+          `Post ${id}: <Foto> apunta a "${src}", que no existe en public/.`,
+        );
+      }
+      for (const attr of ["alt", "credito", "fuente"]) {
+        if (!new RegExp(`\\b${attr}="[^"]+"`).test(tag)) {
+          throw new Error(
+            `Post ${id}: <Foto src="${src}"> no tiene ${attr}. El crédito y la fuente son condición de la licencia.`,
           );
         }
       }

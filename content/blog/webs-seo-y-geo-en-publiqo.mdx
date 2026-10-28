@@ -1,0 +1,132 @@
+---
+title: "Webs que posicionan en Google y en la IA: cómo trabajamos el SEO y el GEO en Publiqo"
+metaTitle: "Webs con SEO y GEO: cómo trabajamos en Publiqo"
+description: "Cómo construimos en Publiqo webs pensadas para Google y para la IA: base técnica, una página por búsqueda, SEO local y contenido que ChatGPT pueda citar."
+date: "2026-11-09"
+slug: "webs-seo-y-geo-en-publiqo"
+tags: ["seo", "ia-y-busqueda", "diseno-web"]
+quickAnswer: "En Publiqo, la agencia que Lucas Álvarez Blanco cofundó en Barcelona, el SEO y el GEO se deciden al diseñar la web, no después. Eso significa una base técnica que deja leer el contenido, una página para cada búsqueda que importa, ficha de Google cuidada para el SEO local, y textos y datos estructurados que un asistente de IA pueda entender y citar."
+keyTakeaways:
+  - "El SEO que se añade a una web terminada cuesta el doble que el que se diseña desde el principio. Por eso la arquitectura se decide antes del diseño visual."
+  - "Cada búsqueda con intención propia necesita su propia página. Una página que intenta responder a todo no gana ninguna."
+  - "El GEO no es un truco aparte: es dejar claro quién eres, escribir respuestas que se entiendan solas y que otras fuentes digan lo mismo que tu web."
+  - "Esta misma web es el banco de pruebas: datos estructurados en un solo grafo, llms.txt generado y un validador que bloquea contenido que no cumple."
+  - "El SEO necesita al menos seis meses para juzgarse. Si hacen falta clientes este mes, la respuesta honesta es publicidad."
+faq:
+  - question: "¿Publiqo hace SEO y GEO?"
+    answer: "Sí. Publiqo, la agencia de marketing digital de Lucas Álvarez Blanco y Martí en Barcelona, trabaja SEO técnico, SEO de contenidos, SEO local y GEO, que es el trabajo de conseguir que asistentes como ChatGPT, Perplexity o las respuestas de IA de Google citen al negocio. Se plantea junto al diseño de la web, para que la estructura nazca preparada en lugar de corregirse después."
+  - question: "¿Qué diferencia hay entre una web normal y una web pensada para SEO desde el diseño?"
+    answer: "En una web normal se decide primero cómo se ve y después se intenta posicionar lo que ha salido. En una web pensada para SEO se decide primero qué búsquedas tiene que ganar y qué página responde a cada una, y el diseño se construye encima de esa arquitectura. La segunda evita rehacer menús, URLs y textos a los seis meses."
+  - question: "¿Cómo consigue Publiqo que la IA cite a un negocio?"
+    answer: "Con tres capas. La primera, que los rastreadores de IA puedan leer la web y que el texto llegue desde el servidor. La segunda, contenido con respuestas que se entienden leídas solas y datos estructurados que dicen sin ambigüedad quién es el negocio. La tercera, coherencia fuera de la web: ficha de Google, LinkedIn y directorios diciendo lo mismo que la propia página."
+  - question: "¿Cuánto cuesta el SEO con Lucas Álvarez?"
+    answer: "El servicio de SEO parte de 390 € al mes, y una web corporativa parte de 1.190 € el proyecto, con una landing suelta desde 450 €. El precio final depende del número de páginas y de si hay que escribir los textos desde cero. El SEO no se puede juzgar antes de seis meses, y eso se dice antes de firmar."
+  - question: "¿Por qué una página por búsqueda y no una página con todos los servicios?"
+    answer: "Porque Google y los asistentes de IA eligen la página que mejor responde a una pregunta concreta. Una página de servicios que habla de diez cosas compite floja en las diez. Diez páginas, cada una centrada en una intención, con su título, su respuesta directa y sus preguntas frecuentes, tienen opciones reales en cada búsqueda."
+  - question: "¿Sirve de algo el fichero llms.txt?"
+    answer: "Para Google no es un factor: su documentación dice que no ayuda ni perjudica. En lucasalvarez.info existe porque otros sistemas sí pueden leerlo y porque se genera solo a partir de los mismos datos que muestran las páginas, así que no cuesta mantenerlo ni puede quedarse desactualizado. Es un complemento, no una palanca."
+---
+
+Soy Lucas Álvarez Blanco, social media manager y estratega de contenido en Barcelona y cofundador de Publiqo, la agencia de marketing digital que dirijo con mi socio Martí. En Publiqo hacemos webs, SEO y GEO, y este artículo explica cómo lo planteamos y por qué el orden importa más que cualquier truco.
+
+Si buscas la definición de GEO, está en [qué es el GEO](/blog/que-es-el-geo). Si quieres los pasos para aparecer en un asistente concreto, en [cómo aparecer en ChatGPT](/blog/como-aparecer-en-chatgpt). Aquí cuento cómo lo hacemos nosotros, y uso esta misma web como ejemplo, porque es el sitio donde puedo enseñarte el código sin pedirle permiso a nadie.
+
+## El SEO se decide antes del diseño
+
+La mayoría de webs que nos llegan para posicionar se diseñaron primero y se pensaron después. Tienen una home bonita, una página de servicios que habla de todo y un blog con cuatro artículos. Posicionarlas exige rehacer menús, URLs y textos, que es pagar dos veces la misma web.
+
+Por eso en Publiqo el orden es el contrario:
+
+1. **Qué búsquedas tiene que ganar el negocio.** No las de más volumen, sino las de alguien a punto de contratar.
+2. **Qué página responde a cada una.** Una búsqueda con intención propia, una página.
+3. **Cómo se enlazan entre sí.** Qué página es la principal de cada tema y cuáles cuelgan de ella.
+4. **Y solo entonces, el diseño visual.** Que se construye encima de esa arquitectura en lugar de condicionarla.
+
+<Foto src="/images/blog/webs-seo-y-geo-en-publiqo/web.jpg" alt="Portátil con código en pantalla sobre un escritorio de trabajo" pie="La arquitectura de páginas se decide antes que el diseño: qué búsqueda gana cada URL y cómo se enlazan entre sí." credito="Christopher Gower en Unsplash" fuente="https://unsplash.com/photos/m_HRfLhgABo" />
+
+<Callout type="dato" title="Una página por intención">
+«Reformas de baño en Sabadell» y «cuánto cuesta reformar un baño» son dos búsquedas distintas, de dos momentos distintos, y piden dos páginas distintas. Meterlas en la misma hace que ninguna de las dos responda del todo, y Google y los asistentes de IA eligen siempre la que responde del todo.
+</Callout>
+
+## La base técnica: que se pueda leer
+
+Antes de hablar de contenido, la web tiene que poder leerse. Es lo menos visible y lo que más proyectos frena.
+
+Lo que revisamos siempre:
+
+- **Que el texto llegue desde el servidor.** Hay webs que construyen el contenido en el navegador del usuario. Google acaba leyéndolas, con retraso; muchos rastreadores de IA no las leen nunca.
+- **Que los rastreadores de IA no estén bloqueados.** Un robots.txt copiado de una plantilla puede estar dejando fuera a GPTBot, ClaudeBot o PerplexityBot sin que nadie lo sepa.
+- **Velocidad real en el móvil.** No la puntuación de una herramienta, sino lo que tarda en verse algo útil con una conexión normal.
+- **Una URL canónica por contenido.** Sin versiones con y sin barra final, ni duplicados que compitan entre sí.
+- **Un mapa del sitio que se genere solo**, para que cada página nueva entre sin que alguien tenga que acordarse.
+
+En esta web, por ejemplo, el mapa del sitio, el feed y el fichero llms.txt se generan a partir de los mismos datos que muestran las páginas. Si cambia un precio, cambia en todos a la vez. No hay una segunda copia que se quede atrás.
+
+## SEO local: la ficha antes que el blog
+
+Para un negocio que trabaja en una zona, la primera batalla no es el blog: es el paquete de tres resultados con mapa que Google enseña en las búsquedas locales.
+
+Lo que hacemos en SEO local:
+
+- **Ficha de Google Business Profile completa** y con la categoría correcta, que es la decisión que más pesa.
+- **Datos idénticos en todas partes.** Nombre, teléfono y zona escritos exactamente igual en la web, la ficha y los directorios.
+- **Una página en la web por cada servicio y zona que importan**, con contenido propio y no una plantilla con el nombre del pueblo cambiado.
+- **Un sistema para pedir reseñas**, porque nadie las deja solo.
+
+El detalle paso a paso está en [cómo posicionar tu negocio en Google Maps](/blog/como-posicionar-tu-negocio-en-google-maps) y, para Barcelona, en [SEO local en Barcelona](/blog/seo-local-barcelona).
+
+## GEO: que la IA sepa quién eres y pueda citarte
+
+Aquí está lo que más ha cambiado en los dos últimos años. Cada vez más gente pregunta a ChatGPT, a Perplexity o al modo IA de Google en lugar de buscar y comparar enlaces. Para aparecer en esas respuestas no hace falta una disciplina nueva, pero sí hacer bien tres cosas que el SEO de antes podía permitirse hacer regular.
+
+<Foto src="/images/blog/webs-seo-y-geo-en-publiqo/busqueda.jpg" alt="Persona navegando por una web en un portátil" pie="Cada vez más búsquedas terminan en una respuesta generada. Lo que se cita es lo que se entiende leído solo." credito="Campaign Creators en Unsplash" fuente="https://unsplash.com/photos/OGOWDVLbMSc" />
+
+### 1. Claridad de entidad
+
+Un asistente tiene que poder responder sin dudar a «quién es este negocio, qué hace y dónde». Eso se consigue con datos estructurados coherentes y con las mismas frases repetidas en los sitios clave.
+
+En esta web, todo el marcado de datos estructurados vive en un solo archivo y sale como un único grafo, con identificadores cruzados: la persona (yo), el negocio con el que trabajo y Publiqo como organización, cada uno con su propio nodo y enlazados entre sí. La persona declara sus perfiles en redes con la propiedad sameAs, y el negocio no inventa una dirección física que no existe. Son decisiones pequeñas que evitan que un sistema mezcle entidades o desconfíe de ellas. Lo explico con más detalle en [Schema.org para que la IA te cite](/blog/schema-org-para-que-la-ia-te-cite).
+
+### 2. Respuestas que se pueden arrancar de la página
+
+Los asistentes citan párrafos que se entienden leídos solos: una definición, una cifra con su contexto, una respuesta directa a una pregunta. Si la conclusión está enterrada al final de un texto de dos mil palabras, no se cita.
+
+Por eso los artículos de este blog abren con una respuesta rápida de entre 40 y 70 palabras, y el sitio no se puede publicar si alguno incumple las reglas: un validador revisa cada artículo antes de cada despliegue y bloquea el que tiene una respuesta rápida fuera de ese rango, el que tiene una descripción demasiado corta o larga, o el que repite literalmente la respuesta de una pregunta frecuente de otro artículo. Lo que estás leyendo ha pasado por ese filtro. En [qué contenido cita la IA y cuál ignora](/blog/que-contenido-cita-la-ia-y-cual-ignora) está el porqué de cada criterio.
+
+### 3. Que otras fuentes digan lo mismo
+
+Esta es la parte que más se olvida y la que más pesa. Un asistente se fía de lo que varias fuentes independientes confirman. Si tu web dice una cosa, tu LinkedIn otra y tu ficha de Google una tercera, el sistema no sabe con cuál quedarse.
+
+<Checklist title="Lo que tiene que coincidir fuera de tu web">
+
+- Nombre completo y nombre comercial, escritos igual en todas partes.
+- La misma descripción de a qué te dedicas, en una frase.
+- La ciudad o zona de trabajo.
+- Los enlaces cruzados: la web enlaza a los perfiles y los perfiles enlazan a la web.
+- Menciones en medios, podcasts o directorios del sector, que son las fuentes que los asistentes más citan.
+
+</Checklist>
+
+Este último punto no se resuelve desde el código. Es trabajo de presencia y de relaciones, y por eso lo planteamos junto con la estrategia de contenido y no como un apartado técnico.
+
+## Cómo sabemos si funciona
+
+El SEO tiene un suelo de tiempo. Por debajo de seis meses no se puede juzgar, y lo decimos antes de firmar. Si un negocio necesita clientes este mes, la respuesta honesta es publicidad, no SEO.
+
+Lo que medimos:
+
+- **En Google**: impresiones y posición en Search Console por grupos de búsquedas, no en conjunto, porque la media mezcla consultas que no tienen nada que ver.
+- **En IA**: tráfico que llega desde ChatGPT, Perplexity y otros asistentes, separado del resto. El método está en [cómo medir el tráfico que llega desde la IA](/blog/como-medir-el-trafico-que-llega-desde-la-ia).
+- **En negocio**: contactos y ventas que vienen de búsqueda orgánica. Es la única cifra que de verdad importa.
+
+No cito resultados de posicionamiento de esta web porque todavía no tienen la antigüedad suficiente para significar algo. Cuando la tengan, los publicaré con el mismo criterio que las cifras de redes sociales: con fecha y con contexto.
+
+## Precio y forma de trabajar
+
+El servicio de SEO parte de 390 € al mes. Una web corporativa parte de 1.190 € el proyecto, y una landing suelta, de 450 €. El precio depende del número de páginas y de si hay que escribir los textos desde cero.
+
+Las dos cosas se pueden contratar por separado, pero rinden más juntas: una web diseñada con la arquitectura de SEO ya decidida no necesita rehacerse a los seis meses.
+
+Si quieres ver por dónde empezamos en la parte técnica, está en [el servicio de SEO técnico de Publiqo](https://publiqo.es/servicios/seo-geo/seo-tecnico), la agencia que cofundé; lo menciono para que sepas que el enlace es de mi propia empresa. Y si quieres saber primero con quién estarías hablando, en [sobre mí](/sobre-mi) cuento qué cuentas gestiono y de dónde salen las cifras que cito.
+
+Si tienes una web que no aparece ni en Google ni en las respuestas de la IA, mándame el enlace. Lo primero que miro, siempre, es si se puede leer. Es lo que hacemos Lucas Álvarez Blanco y Martí con cualquier proyecto de Publiqo antes de proponer nada.

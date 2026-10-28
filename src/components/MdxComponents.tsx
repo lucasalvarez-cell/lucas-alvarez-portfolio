@@ -7,6 +7,7 @@ import {
   Checklist,
   Disclosure,
   Ficha,
+  Foto,
   Stat,
   Stats,
 } from "@/components/blog/Blocks";
@@ -87,8 +88,8 @@ export const mdxComponents: MDXComponents = {
   /**
    * Body images are captioned figures, not decoration: the alt text doubles as
    * the caption, which forces whoever writes the post to say what the image
-   * proves. There is no stock photography on this blog — the only images that
-   * belong in a body here are captures and charts.
+   * proves. Captures and charts go through here; licensed stock photos go
+   * through <Foto>, which carries the credit.
    */
   img: ({ src, alt, ...props }) => (
     <figure className="mt-10">
@@ -159,6 +160,7 @@ export const mdxComponents: MDXComponents = {
   Checklist,
   Disclosure,
   Ficha,
+  Foto,
   Serie,
   Stats,
   Stat,

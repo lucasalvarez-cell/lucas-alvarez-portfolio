@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { clsx } from "clsx";
 import { externalRel } from "@/lib/links";
@@ -329,5 +330,60 @@ export function Disclosure({ children }: { children: React.ReactNode }) {
     <aside className="mt-8 border-l-4 border-purple bg-purple/[0.04] p-5 [&>p:first-child]:mt-0">
       {children}
     </aside>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/* Foto                                                                       */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * A licensed stock photo, served from public/images/blog/<slug>/ and run
+ * through the image optimiser like every other picture on the site.
+ *
+ * `alt` describes what is in the frame; `pie` is the caption, which says why
+ * the image is there. They are separate on purpose: a stock photo is never a
+ * picture of a client or of Lucas, and the caption is where that stays honest.
+ * The credit is mandatory, which blog-validate.ts enforces.
+ */
+export function Foto({
+  src,
+  alt,
+  pie,
+  credito,
+  fuente,
+}: {
+  src: string;
+  alt: string;
+  pie?: string;
+  credito: string;
+  fuente: string;
+}) {
+  return (
+    <figure className="mt-10">
+      <div className="relative aspect-3/2 overflow-hidden rounded-[var(--radius-card)] bg-light-grey">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(min-width: 1024px) 44rem, 92vw"
+          className="object-cover"
+        />
+      </div>
+      <figcaption className="mt-3 text-sm leading-relaxed text-ink-soft/80">
+        {pie ? <span>{pie} </span> : null}
+        <span className="text-ink-soft/60">
+          Foto:{" "}
+          <a
+            href={fuente}
+            target="_blank"
+            rel="nofollow noreferrer noopener"
+            className="underline decoration-ink-soft/30 underline-offset-2"
+          >
+            {credito}
+          </a>
+        </span>
+      </figcaption>
+    </figure>
   );
 }
