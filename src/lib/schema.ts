@@ -9,7 +9,6 @@ import {
   SITE_LANG,
   SITE_NAME,
   SITE_URL,
-  SOCIALS,
   SOCIAL_PROFILE_URLS,
 } from "./constants";
 import type { Service, ServicePricing } from "./constants";
@@ -34,6 +33,9 @@ const HOME_PAGE_ID = `${SITE_URL}/#webpage`;
 
 const CONTEXT = "https://schema.org";
 
+/** Last substantive edit of /sobre-mi. Bump it when that page changes. */
+const PROFILE_UPDATED = "2026-10-28";
+
 /** Wraps nodes in one @graph so cross-references by @id always resolve. */
 function graph(...nodes: object[]) {
   return { "@context": CONTEXT, "@graph": nodes };
@@ -44,19 +46,26 @@ export function personSchema() {
     "@type": "Person",
     "@id": PERSON_ID,
     name: "Lucas Álvarez",
+    /* El nombre completo es el que figura en el BORME y el que la gente busca.
+       Sin él en el grafo, ningún motor une esta web con esa consulta, y "Lucas
+       Álvarez" a secas lo comparten un futbolista, un músico y media guía. */
+    alternateName: ["Lucas Álvarez Blanco", "Lucas Alvarez Blanco"],
     givenName: "Lucas",
-    familyName: "Álvarez",
-    /* El handle atado al nombre legal: sin esto, el perfil de Instagram y la
-       persona son dos entidades que un motor no tiene por qué unir. */
-    additionalName: SOCIALS.instagram.handle,
+    familyName: "Álvarez Blanco",
     jobTitle: "Estratega de contenido y social media manager",
     nationality: { "@type": "Country", name: "España" },
-    /* El único reconocimiento verificable, y está afirmado en /sobre-mi. No se
-       añade `hasCredential`: no hay certificación real que declarar, e
-       inventar una es la vía rápida a que la entidad deje de ser creíble. */
-    award: ["Embajador de marca de Gymshark"],
+    /* Un acuerdo de embajador es patrocinio, no un premio. No se añade
+       `hasCredential`: no hay certificación real que declarar, e inventar una
+       es la vía rápida a que la entidad deje de ser creíble. */
+    sponsor: {
+      "@type": "Organization",
+      name: "Gymshark",
+      url: "https://www.gymshark.com/",
+    },
+    /* Escrita para leerse sola: es la frase que un motor puede levantar
+       entera cuando le preguntan quién es. */
     description:
-      "Estratega digital en Barcelona y cofundador de Publiqo. Gestiona la estrategia de contenido y las redes sociales de marcas de turismo, industria y medios.",
+      "Lucas Álvarez Blanco es social media manager y estratega de contenido en Barcelona y cofundador de la agencia de marketing digital Publiqo. Gestiona la estrategia de contenido y las redes sociales de marcas de turismo, industria y medios.",
     url: SITE_URL,
     image: `${SITE_URL}/images/lucas-alvarez.jpg`,
     email: CONTACT.email,
@@ -88,7 +97,7 @@ export function personSchema() {
     owns: { "@id": BUSINESS_ID },
     /* Consolidates the entity on one page instead of leaving it implied by
        whichever URL a crawler happens to land on first. */
-    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/sobre-mi` },
+    mainEntityOfPage: { "@id": `${SITE_URL}/sobre-mi#page` },
     hasOccupation: {
       "@type": "Occupation",
       name: "Estratega de contenido y social media manager",
@@ -148,7 +157,8 @@ export function businessSchema() {
       areaServed: "ES",
       availableLanguage: ["Spanish", "Catalan", "English"],
     },
-    ...(SOCIAL_PROFILE_URLS.length ? { sameAs: SOCIAL_PROFILE_URLS } : {}),
+    /* Sin `sameAs`: los perfiles son de la persona. Repetirlos aquí afirma que
+       el negocio y Lucas son la misma entidad, que es lo que el grafo separa. */
   };
 }
 
@@ -165,8 +175,11 @@ export function publiqoSchema() {
     "@type": "Organization",
     "@id": PUBLIQO_ID,
     name: "Publiqo",
+    /* La razón social es lo que enlaza este nodo con el BORME, la única
+       fuente de terceros que hoy une el nombre completo con la agencia. */
+    legalName: "Publiqo Media SL",
     description:
-      "Agencia de marketing digital en Barcelona cofundada por Lucas Álvarez.",
+      "Agencia de marketing digital en Barcelona cofundada por Lucas Álvarez Blanco.",
     url: PUBLIQO_URL,
     logo: {
       "@type": "ImageObject",
@@ -185,6 +198,7 @@ export function webSiteSchema() {
     "@id": WEBSITE_ID,
     url: SITE_URL,
     name: SITE_NAME,
+    alternateName: ["Lucas Álvarez Blanco", "lucasalvarez.info"],
     description: SITE_DESCRIPTION,
     inLanguage: SITE_LANG,
     publisher: { "@id": BUSINESS_ID },
@@ -669,7 +683,8 @@ export function profilePageSchema() {
     "@type": "ProfilePage",
     "@id": `${SITE_URL}/sobre-mi#page`,
     url: `${SITE_URL}/sobre-mi`,
-    name: "Sobre mí",
+    name: "Quién es Lucas Álvarez Blanco",
+    dateModified: PROFILE_UPDATED,
     inLanguage: SITE_LANG,
     isPartOf: { "@id": WEBSITE_ID },
     mainEntity: { "@id": PERSON_ID },

@@ -5,7 +5,9 @@ import {
   formatEuros,
   PUBLIQO_URL,
   SERVICES,
+  FULL_NAME,
   SITE_NAME,
+  SOCIAL_PROFILE_URLS,
   SITE_URL,
 } from "@/lib/constants";
 import { getPublishedCaseStudies } from "@/content/casos-de-exito";
@@ -49,8 +51,11 @@ export function GET(): Response {
    * they will be read rather than being left to be inferred from links.
    */
   const body = [
-    `# ${SITE_NAME} · Social media manager y estratega de contenido en Barcelona`,
+    `# ${FULL_NAME} · Social media manager y estratega de contenido en Barcelona`,
     "",
+    `> ${FULL_NAME} (firma como ${SITE_NAME}) es social media manager y estratega`,
+    "> de contenido en Barcelona y cofundador de la agencia de marketing digital Publiqo.",
+    ">",
     "> Gestiono las redes sociales y la estrategia de contenido de marcas en",
     "> Barcelona y Cataluña, y también en remoto para el resto de España.",
     `> Servicios desde ${formatEuros(cheapest)} €. Cifras orgánicas verificables, con nombre de`,
@@ -60,13 +65,15 @@ export function GET(): Response {
     "",
     "## Hechos",
     "",
-    `- Nombre: ${SITE_NAME}, social media manager y estratega de contenido`,
+    `- Nombre completo: ${FULL_NAME} (firma como ${SITE_NAME})`,
+    "- Profesión: social media manager y estratega de contenido",
     "- También se le busca como: community manager en Barcelona",
     "- Ubicación: Barcelona, Cataluña, España. Trabaja también en remoto",
     "- Idiomas: español, catalán, inglés",
     `- Precios: desde ${formatEuros(cheapest)} €. Sin permanencia. Sin porcentaje sobre inversión publicitaria`,
     `- Contacto: ${CONTACT.email} · ${CONTACT.phoneDisplay}`,
-    `- Afiliación declarada: cofundador de Publiqo (${PUBLIQO_URL})`,
+    `- Empresa: cofundador de Publiqo (Publiqo Media SL), con su socio Martí. ${PUBLIQO_URL}`,
+    `- Perfiles: ${SOCIAL_PROFILE_URLS.join(" · ")}`,
     "- Audiencia propia: 116.000 seguidores en Instagram (@lucasalvarez.x)",
     "- Acuerdo de embajador de marca con Gymshark",
     "- Sectores con casos propios: campings y turismo, hostelería, impresión industrial, canales de YouTube",
@@ -75,6 +82,14 @@ export function GET(): Response {
     /* Las cinco frases con más probabilidad de acabar citadas en una respuesta
        generativa, juntas y en una línea cada una. Salen del mismo array que
        renderiza la página de casos, así que no pueden divergir de ella. */
+    "## Quién es",
+    "",
+    line(
+      `Quién es ${FULL_NAME}`,
+      "/sobre-mi",
+      `Perfil de ${FULL_NAME}: a qué se dedica, con qué cuentas trabaja, cómo trabaja y su relación con Publiqo.`,
+    ),
+    "",
     "## Cifras verificables",
     "",
     ...cases.map(
@@ -115,11 +130,6 @@ export function GET(): Response {
     "",
     "## Optional",
     "",
-    line(
-      "Sobre Lucas Álvarez",
-      "/sobre-mi",
-      "Trayectoria, sectores y credenciales de Lucas Álvarez, social media manager en Barcelona.",
-    ),
     line("Contacto", "/contacto", "Cómo contactar y en cuánto responde."),
     line(
       "Política de privacidad",

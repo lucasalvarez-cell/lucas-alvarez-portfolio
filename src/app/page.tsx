@@ -11,7 +11,7 @@ import { buildMetadata } from "@/lib/seo";
 import { homeGraph, faqSchema } from "@/lib/schema";
 import { SITE_URL } from "@/lib/constants";
 
-const TITLE = "Social media manager y estratega de contenido en Barcelona";
+const TITLE = "Lucas Álvarez | Social media manager en Barcelona";
 
 export const metadata: Metadata = buildMetadata({
   title: TITLE,

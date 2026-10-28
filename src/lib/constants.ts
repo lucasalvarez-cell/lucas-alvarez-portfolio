@@ -1,5 +1,7 @@
 export const SITE_URL = "https://lucasalvarez.info";
 export const SITE_NAME = "Lucas Álvarez";
+/** The legal name. The site signs as SITE_NAME; this is what people search. */
+export const FULL_NAME = "Lucas Álvarez Blanco";
 export const SITE_LOCALE = "es_ES";
 export const SITE_LANG = "es";
 
@@ -56,11 +58,15 @@ export const SOCIAL_PROFILE_URLS: string[] = [
   SOCIALS.youtube.href,
 ].filter((href): href is string => Boolean(href));
 
-/** Organisation `sameAs`: its own site plus any channel with a real URL. */
+/**
+ * Organisation `sameAs`: Publiqo's own profiles, the same ones publiqo.es
+ * declares. Not its URL (that is `url`) and not the client channels: `sameAs`
+ * means "is the same entity", and Reino Selva is not Publiqo.
+ */
 export const ORGANIZATION_PROFILE_URLS: string[] = [
-  PUBLIQO_URL,
-  ...MANAGED_CHANNELS.map((channel) => channel.href),
-].filter((href): href is string => Boolean(href));
+  "https://www.linkedin.com/company/publiqo-agency/",
+  "https://www.instagram.com/publiqo.agency/",
+];
 
 /**
  * Brands Lucas has worked with. Each slug has three files in
@@ -71,8 +77,8 @@ export const ORGANIZATION_PROFILE_URLS: string[] = [
  * is too pale to read.
  */
 export const CLIENT_LOGOS = [
-  { slug: "camping-victoria", name: "Camping Victoria", file: "camping-victoria" },
-  { slug: "camping-collvert", name: "Camping Coll Vert", file: "camping-collvert-dark" },
+  { slug: "camping-victoria", name: "Camping Victòria", file: "camping-victoria" },
+  { slug: "camping-collvert", name: "Camping Collvert", file: "camping-collvert-dark" },
   { slug: "camping-puzol", name: "Camping Puzol", file: "camping-puzol-dark" },
   { slug: "reino-selva", name: "Reino Selva", file: "reino-selva" },
   { slug: "grupo-arnal2", name: "Grupo Arnal2", file: "grupo-arnal2-dark" },
