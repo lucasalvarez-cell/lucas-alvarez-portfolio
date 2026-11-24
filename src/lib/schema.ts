@@ -34,7 +34,7 @@ const HOME_PAGE_ID = `${SITE_URL}/#webpage`;
 const CONTEXT = "https://schema.org";
 
 /** Last substantive edit of /sobre-mi. Bump it when that page changes. */
-const PROFILE_UPDATED = "2026-10-28";
+const PROFILE_UPDATED = "2026-11-24";
 
 /** Wraps nodes in one @graph so cross-references by @id always resolve. */
 function graph(...nodes: object[]) {
@@ -70,7 +70,13 @@ export function personSchema() {
     image: `${SITE_URL}/images/lucas-alvarez.jpg`,
     email: CONTACT.email,
     telephone: CONTACT.phoneDisplay,
-    knowsLanguage: ["es", "ca", "en"],
+    knowsLanguage: ["es", "ca", "en", "fr"],
+    /* En curso: `alumniOf` cubre a quien ha estudiado allí, haya terminado o no. */
+    alumniOf: {
+      "@type": "CollegeOrUniversity",
+      name: "Universitat Politècnica de Catalunya",
+      url: "https://www.upc.edu/",
+    },
     knowsAbout: [
       "Marketing digital",
       "Gestión de redes sociales",
@@ -81,6 +87,9 @@ export function personSchema() {
       "Google Ads",
       "Meta Ads",
       "Marketing turístico",
+      "Generative Engine Optimization (GEO)",
+      "Automatización de marketing con IA",
+      "Analítica web (GA4)",
     ],
     homeLocation: {
       "@type": "Place",
@@ -493,6 +502,7 @@ export function servicesGraph() {
 export function faqSchema(
   faq?: { question: string; answer: string }[],
   url?: string,
+  lang: string = SITE_LANG,
 ) {
   if (!faq?.length) return null;
 
@@ -502,7 +512,7 @@ export function faqSchema(
     ...(url
       ? { "@id": `${url}#faq`, url, mainEntityOfPage: { "@id": url } }
       : {}),
-    inLanguage: SITE_LANG,
+    inLanguage: lang,
     mainEntity: faq.map((item) => ({
       "@type": "Question",
       name: item.question,
@@ -700,5 +710,132 @@ export function contactPageSchema() {
     inLanguage: SITE_LANG,
     isPartOf: { "@id": WEBSITE_ID },
     mainEntity: { "@id": BUSINESS_ID },
+  });
+}
+
+/* ------------------------------------------------------------------------ */
+/* English section (/en)                                                     */
+/* ------------------------------------------------------------------------ */
+
+/**
+ * The English entity page. Same Person @id as the Spanish graph, so engines
+ * merge both into one entity; the English description and job title are what
+ * an English-language answer lifts.
+ */
+export function enProfileGraph({
+  bio,
+  jobTitle,
+  updated,
+}: {
+  bio: string;
+  jobTitle: string;
+  updated: string;
+}) {
+  const url = `${SITE_URL}/en`;
+  return graph(
+    {
+      ...personSchema(),
+      description: bio,
+      jobTitle,
+      nationality: { "@type": "Country", name: "Spain" },
+      knowsAbout: [
+        "Marketing leadership",
+        "Growth marketing",
+        "Content strategy",
+        "Social media marketing",
+        "Paid media",
+        "Google Ads",
+        "Meta Ads",
+        "SEO",
+        "Generative engine optimization",
+        "Marketing analytics",
+        "Marketing automation with AI",
+        "Spanish-language marketing",
+      ],
+      hasOccupation: {
+        "@type": "Occupation",
+        name: jobTitle,
+        occupationLocation: { "@type": "City", name: "Barcelona" },
+        skills:
+          "Marketing strategy, growth marketing, content strategy, social media, Google Ads, Meta Ads, SEO, GEO, GA4, marketing automation with AI agents",
+      },
+      mainEntityOfPage: { "@id": `${url}#page` },
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${url}#page`,
+      url,
+      name: "Lucas Álvarez, Head of Marketing",
+      dateModified: updated,
+      inLanguage: "en",
+      isPartOf: { "@id": WEBSITE_ID },
+      mainEntity: { "@id": PERSON_ID },
+    },
+  );
+}
+
+export function enCaseStudyGraph(caseStudy: {
+  slug: string;
+  client: string;
+  headline: string;
+  metaDescription: string;
+  published: string;
+  updated: string;
+}) {
+  const url = `${SITE_URL}/en/case-studies/${caseStudy.slug}`;
+  return graph({
+    "@type": "Article",
+    "@id": `${url}#article`,
+    headline: `${caseStudy.client}: ${caseStudy.headline}`,
+    description: caseStudy.metaDescription,
+    datePublished: caseStudy.published,
+    dateModified: caseStudy.updated,
+    inLanguage: "en",
+    image: {
+      "@type": "ImageObject",
+      url: `${url}/opengraph-image`,
+      width: 1200,
+      height: 630,
+    },
+    about: { "@type": "Organization", name: caseStudy.client },
+    author: { "@id": PERSON_ID },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    translationOfWork: { "@id": `${SITE_URL}/casos-de-exito/${caseStudy.slug}#article` },
+  });
+}
+
+export function enCaseStudiesGraph(
+  items: { slug: string; client: string; headline: string }[],
+) {
+  return graph({
+    "@type": "CollectionPage",
+    "@id": `${SITE_URL}/en/case-studies#page`,
+    url: `${SITE_URL}/en/case-studies`,
+    name: "Case studies",
+    inLanguage: "en",
+    isPartOf: { "@id": WEBSITE_ID },
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `${SITE_URL}/en/case-studies/${item.slug}`,
+        name: `${item.client}: ${item.headline}`,
+      })),
+    },
+  });
+}
+
+export function enBreadcrumbSchema(crumbs: { name: string; path: string }[]) {
+  return graph({
+    "@type": "BreadcrumbList",
+    itemListElement: [{ name: "Home", path: "/en" }, ...crumbs].map(
+      (crumb, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: crumb.name,
+        item: `${SITE_URL}${crumb.path}`,
+      }),
+    ),
   });
 }

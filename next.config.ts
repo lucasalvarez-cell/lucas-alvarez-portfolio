@@ -17,6 +17,11 @@ const nextConfig: NextConfig = {
      no-slash form. Explicit here so the choice survives a config edit. */
   trailingSlash: false,
   poweredByHeader: false,
+  /* Two root layouts, (es) and (en), so unmatched URLs need a 404 that does
+     not depend on either: app/global-not-found.tsx. */
+  experimental: {
+    globalNotFound: true,
+  },
 
   /**
    * Six "mejor agencia de X" posts were merged away.

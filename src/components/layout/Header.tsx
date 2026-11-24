@@ -32,7 +32,18 @@ export function Header() {
           )}
         </nav>
 
-        <div className="ml-4 hidden md:block">
+        <div className="ml-4 hidden items-center gap-5 md:flex">
+          {/* A plain <a>: /en has its own root layout, so the switch is a full
+              page load either way, and hrefLang tells crawlers what it is. */}
+          <a
+            href="/en"
+            hrefLang="en"
+            lang="en"
+            aria-label="English version"
+            className="text-sm font-semibold uppercase tracking-[0.1em] text-ink/60 transition-colors hover:text-ink"
+          >
+            EN
+          </a>
           <Button href="/contacto" variant="primary" size="sm">
             Hablemos
           </Button>

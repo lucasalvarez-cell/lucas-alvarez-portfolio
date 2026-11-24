@@ -20,6 +20,7 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Resultados reales: +250 % de visualizaciones para Camping Collvert, +62 % para Camping Puzol, x6 para Camping Victòria y 2,6 M de visualizaciones para Reino Selva.",
   path: "/casos-de-exito",
+  languages: { es: "/casos-de-exito", en: "/en/case-studies" },
 });
 
 const QUICK_ANSWER =

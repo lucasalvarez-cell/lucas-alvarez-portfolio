@@ -49,6 +49,14 @@ type BuildMetadataOptions = {
   image?: string;
   /** Present on blog posts: switches `og:type` to `article`. */
   article?: ArticleFields;
+  /** OG locale. Spanish by default; the /en section passes "en_US". */
+  locale?: string;
+  /**
+   * hreflang pairs, path per language. Only for pages that have a real
+   * equivalent in the other language: a pair has to be declared on both
+   * sides or Google ignores it. Shape: { es: "/", en: "/en" }.
+   */
+  languages?: { es: string; en: string };
 };
 
 /**
@@ -82,6 +90,8 @@ export function buildMetadata({
   path,
   image,
   article,
+  locale = SITE_LOCALE,
+  languages,
 }: BuildMetadataOptions): Metadata {
   const url = `${SITE_URL}${path}`;
   const clamped = clampDescription(description);
@@ -93,14 +103,30 @@ export function buildMetadata({
        `types` no van aquí, el feed y llms.txt solo se anuncian en la home.
        Van en todas las páginas porque llms.txt no estaba enlazado en ningún
        sitio y un archivo que nadie encuentra no lo lee nadie. */
-    alternates: { canonical: path, types: ALTERNATE_TYPES },
+    alternates: {
+      canonical: path,
+      types: ALTERNATE_TYPES,
+      ...(languages
+        ? {
+            languages: {
+              es: languages.es,
+              en: languages.en,
+              /* Spanish is the site's default language and its audience. */
+              "x-default": languages.es,
+            },
+          }
+        : {}),
+    },
     robots: ROBOTS,
     openGraph: {
       title,
       description: clamped,
       url,
       siteName: SITE_NAME,
-      locale: SITE_LOCALE,
+      locale,
+      ...(languages
+        ? { alternateLocale: locale === SITE_LOCALE ? "en_US" : SITE_LOCALE }
+        : {}),
       ...(article
         ? {
             type: "article" as const,

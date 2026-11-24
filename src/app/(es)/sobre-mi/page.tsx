@@ -52,7 +52,16 @@ const QUICK_FACTS: { term: string; value: React.ReactNode }[] = [
     ),
   },
   { term: "Ciudad", value: "Barcelona, Cataluña. Trabaja en remoto para el resto de España" },
-  { term: "Idiomas", value: "Castellano, catalán e inglés" },
+  { term: "Idiomas", value: "Castellano y catalán (nativos), inglés y francés (C1)" },
+  {
+    term: "Trayectoria",
+    value:
+      "Social media manager autónomo (2022–2024), webmaster y community manager en IBPRINT (2022–2024), becario de TI en QA de software en el Ayuntamiento de Barcelona (2024) y cofundador de Publiqo desde agosto de 2024",
+  },
+  {
+    term: "Formación",
+    value: "Grado en Ingeniería Informática en la UPC, mención en Sistemas de Información (en curso)",
+  },
   {
     term: "Clientes",
     value:
@@ -238,8 +247,39 @@ export default function SobreMiPage() {
               que nadie puede darlas.
             </p>
             <p className="mt-5">
-              Trabajo en castellano, catalán e inglés, desde Barcelona, en toda
-              Cataluña y en remoto para el resto de España.
+              Trabajo en castellano, catalán, inglés y francés, desde
+              Barcelona, en toda Cataluña y en remoto para el resto de España.
+            </p>
+
+            <h2 className="mt-12 text-[1.875rem] normal-case leading-tight text-ink">
+              De dónde vengo
+            </h2>
+            <p className="mt-5">
+              Empecé en 2022 llevando redes sociales como autónomo para negocios
+              locales y, a la vez, la web y las redes de IBPRINT, un fabricante
+              de maquinaria de impresión de Igualada que hoy es cliente de
+              Publiqo. Allí aprendí cómo vende una empresa industrial que trabaja
+              por presupuesto. En 2024 hice prácticas de TI en el Ayuntamiento de
+              Barcelona, en control de calidad de software, y en agosto de ese
+              año fundé Publiqo con Martí.
+            </p>
+            <p className="mt-5">
+              Estudio Ingeniería Informática en la UPC, con mención en Sistemas
+              de Información. De ahí viene mi forma de mirar un negocio: como un
+              sistema que se puede auditar entero, encontrar dónde se atasca y
+              arreglarlo con datos antes de producir más.
+            </p>
+
+            <h2 className="mt-12 text-[1.875rem] normal-case leading-tight text-ink">
+              Cómo uso la IA
+            </h2>
+            <p className="mt-5">
+              He convertido el trabajo recurrente de la agencia en flujos de
+              agentes de IA: edición de reels y guiones, montaje de campañas de
+              Google Ads y Meta Ads, carruseles, auditorías SEO, medición e
+              informes. No sustituyen el criterio, lo ejecutan más rápido. Por
+              eso dos socios pueden llevar el marketing completo de varias
+              empresas sin bajar la calidad.
             </p>
           </Reveal>
         </div>

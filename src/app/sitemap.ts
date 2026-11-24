@@ -6,6 +6,21 @@ import { assertPosts } from "@/lib/blog-validate";
 import { pageCount } from "@/lib/pagination";
 import { activeTopics, postsByTopic } from "@/lib/topics";
 import { getPublishedCaseStudies } from "@/content/casos-de-exito";
+import { EN_CASE_STUDIES, assertEnglishCases } from "@/content/en/case-studies";
+
+/** hreflang pair as the sitemap spells it; the same pairs the pages declare. */
+function pair(es: string, en: string) {
+  return {
+    languages: {
+      es: `${SITE_URL}${es}`,
+      en: `${SITE_URL}${en}`,
+      "x-default": `${SITE_URL}${es}`,
+    },
+  };
+}
+
+/** Last substantive edit of the English profile page. */
+const EN_PROFILE_UPDATED = "2026-11-24";
 
 /**
  * `lastModified` is a ranking-neutral crawl hint, but a wrong one is worse than
@@ -36,6 +51,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: latestOverall,
       changeFrequency: "monthly",
       priority: 1,
+      alternates: pair("", "/en"),
     },
     {
       url: `${SITE_URL}/servicios`,
@@ -54,6 +70,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: latestCase,
       changeFrequency: "monthly",
       priority: 0.9,
+      alternates: pair("/casos-de-exito", "/en/case-studies"),
     },
     {
       url: `${SITE_URL}/blog`,
@@ -117,8 +134,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(caseStudy.updated),
       changeFrequency: "yearly",
       priority: 0.7,
+      alternates: pair(
+        `/casos-de-exito/${caseStudy.slug}`,
+        `/en/case-studies/${caseStudy.slug}`,
+      ),
     }),
   );
+
+  /* English section: profile, case index and one page per case, each paired
+     with its Spanish equivalent. */
+  assertEnglishCases();
+  const englishRoutes: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE_URL}/en`,
+      lastModified: new Date(EN_PROFILE_UPDATED),
+      changeFrequency: "monthly",
+      priority: 0.9,
+      alternates: pair("", "/en"),
+    },
+    {
+      url: `${SITE_URL}/en/case-studies`,
+      lastModified: newest(EN_CASE_STUDIES.map((c) => c.updated)),
+      changeFrequency: "monthly",
+      priority: 0.8,
+      alternates: pair("/casos-de-exito", "/en/case-studies"),
+    },
+    ...EN_CASE_STUDIES.map((caseStudy) => ({
+      url: `${SITE_URL}/en/case-studies/${caseStudy.slug}`,
+      lastModified: new Date(caseStudy.updated),
+      changeFrequency: "yearly" as const,
+      priority: 0.7,
+      alternates: pair(
+        `/casos-de-exito/${caseStudy.slug}`,
+        `/en/case-studies/${caseStudy.slug}`,
+      ),
+    })),
+  ];
 
   const postRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
@@ -162,6 +213,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...serviceRoutes,
     ...sectorRoutes,
     ...caseStudyRoutes,
+    ...englishRoutes,
     ...topicRoutes,
     ...paginationRoutes,
     ...postRoutes,

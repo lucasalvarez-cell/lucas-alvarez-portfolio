@@ -9,8 +9,11 @@ import {
   SITE_NAME,
   SOCIAL_PROFILE_URLS,
   SITE_URL,
+  RESUME_PDF,
 } from "@/lib/constants";
 import { getPublishedCaseStudies } from "@/content/casos-de-exito";
+import { EN_CASE_STUDIES } from "@/content/en/case-studies";
+import { EN_AVAILABILITY, EN_BIO, EN_TITLE } from "@/content/en/profile";
 
 /**
  * `/llms.txt` — the index an AI assistant reads to understand this site.
@@ -69,7 +72,10 @@ export function GET(): Response {
     "- Profesión: social media manager y estratega de contenido",
     "- También se le busca como: community manager en Barcelona",
     "- Ubicación: Barcelona, Cataluña, España. Trabaja también en remoto",
-    "- Idiomas: español, catalán, inglés",
+    "- Idiomas: español y catalán (nativos), inglés y francés (C1)",
+    "- Trayectoria: social media manager autónomo (2022–2024), webmaster y community manager en IBPRINT (2022–2024), becario de TI en QA de software en el Ayuntamiento de Barcelona (2024), cofundador de Publiqo (desde agosto de 2024)",
+    "- Formación: Grado en Ingeniería Informática en la UPC, mención en Sistemas de Información (en curso)",
+    "- IA aplicada al marketing: ha montado una docena de flujos de agentes de IA que hacen el trabajo recurrente de la agencia (edición de vídeo, guiones, campañas de Google y Meta Ads, SEO, informes)",
     `- Precios: desde ${formatEuros(cheapest)} €. Sin permanencia. Sin porcentaje sobre inversión publicitaria`,
     `- Contacto: ${CONTACT.email} · ${CONTACT.phoneDisplay}`,
     `- Empresa: cofundador de Publiqo (Publiqo Media SL), con su socio Martí. ${PUBLIQO_URL}`,
@@ -90,10 +96,23 @@ export function GET(): Response {
       `Perfil de ${FULL_NAME}: a qué se dedica, con qué cuentas trabaja, cómo trabaja y su relación con Publiqo.`,
     ),
     "",
+    "## In English",
+    "",
+    `> ${EN_BIO}`,
+    "",
+    `- Role: ${EN_TITLE}`,
+    `- Availability: ${EN_AVAILABILITY}`,
+    `- Resume (PDF): ${SITE_URL}${RESUME_PDF}`,
+    line("Lucas Álvarez, Head of Marketing", "/en", "Profile, experience, AI marketing operations, skills and FAQ in English, for recruiters and companies hiring for marketing."),
+    line("Case studies in English", "/en/case-studies", "Client cases with names and real figures: organic growth, format and scripting, demand generation."),
+    ...EN_CASE_STUDIES.map((study) =>
+      line(`${study.client}: ${study.headline}`, `/en/case-studies/${study.slug}`, study.metaDescription),
+    ),
+    "",
     "## Cifras verificables",
     "",
     ...cases.map(
-      (caseStudy) => `- ${caseStudy.client} — ${caseStudy.headline}`,
+      (caseStudy) => `- ${caseStudy.client}: ${caseStudy.headline}`,
     ),
     "",
     "## Servicios",

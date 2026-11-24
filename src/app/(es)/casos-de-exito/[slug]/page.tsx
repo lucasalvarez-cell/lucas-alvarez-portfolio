@@ -52,6 +52,10 @@ export async function generateMetadata({
     title: `${caseStudy.client}: ${caseStudy.headline}`,
     description: caseStudy.metaDescription,
     path: `/casos-de-exito/${caseStudy.slug}`,
+    languages: {
+      es: `/casos-de-exito/${caseStudy.slug}`,
+      en: `/en/case-studies/${caseStudy.slug}`,
+    },
   });
 }
 

@@ -62,6 +62,15 @@ export function Button(props: ButtonProps) {
   );
 
   if ("href" in props && props.href) {
+    /* Files, mail and other sites are not routes: next/link would try to
+       prefetch them as pages. */
+    if (/^(mailto:|tel:|https?:)|\.pdf$/.test(props.href)) {
+      return (
+        <a href={props.href} className={styles}>
+          {children}
+        </a>
+      );
+    }
     return (
       <Link href={props.href} className={styles}>
         {children}

@@ -129,6 +129,14 @@ export function MobileNav() {
           >
             {CONTACT.email}
           </a>
+          <a
+            href="/en"
+            hrefLang="en"
+            lang="en"
+            className="mt-4 block text-base font-semibold text-turquoise transition-opacity hover:opacity-70"
+          >
+            English version
+          </a>
         </nav>
       ) : null}
     </div>

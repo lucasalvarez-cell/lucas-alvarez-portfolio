@@ -35,6 +35,16 @@ src/
   lib/links.ts        Qué enlaces salientes pasan autoridad y cuáles van en nofollow
 ```
 
+## Sección en inglés (/en)
+
+Perfil profesional de Lucas para recruiters y empresas de EE. UU.: `/en`, `/en/case-studies` y una página por caso.
+
+- **Dos layouts raíz**: `src/app/(es)/layout.tsx` sirve `<html lang="es">` y `src/app/(en)/layout.tsx` sirve `<html lang="en">`. Pasar de un idioma a otro recarga la página entera (es lo esperado). Las URL que no existen las pinta `src/app/global-not-found.tsx` (flag `experimental.globalNotFound`).
+- **Contenido**: `content/en/profile.ts` (bio, experiencia, IA, FAQ) y `content/en/case-studies.ts` (mismos slugs que `casos-de-exito.ts`; el build falla si no cuadran).
+- **hreflang**: solo entre páginas equivalentes (`/` ↔ `/en`, `/casos-de-exito` ↔ `/en/case-studies`, cada caso con el suyo). Se declara con `languages` en `buildMetadata()` y en `sitemap.ts`, siempre en las dos direcciones.
+- **CV**: `public/lucas-alvarez-resume.pdf` se exporta desde `~/Documents/personal/cv/cv-web.html` (lleva el email público, no el personal).
+- **Fuente de los datos**: `~/Documents/personal/CONTEXTO-LABORAL.md`. Si cambia, se actualizan `content/en/*`, `/sobre-mi`, `personSchema()` y los hechos de `llms.txt`.
+
 ## Reglas que el código da por supuestas
 
 - **Una sola fuente por dato.** Los precios viven en `content/servicios.ts` y de ahí salen la página, el `Offer` del schema, `/precios` y `llms.txt`. Cambiarlos en un sitio los cambia en todos.

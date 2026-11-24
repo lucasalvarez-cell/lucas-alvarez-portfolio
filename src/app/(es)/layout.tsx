@@ -12,7 +12,7 @@ import {
   SITE_NAME,
   SITE_URL,
 } from "@/lib/constants";
-import "./globals.css";
+import "../globals.css";
 
 const karla = Karla({
   variable: "--font-karla",

@@ -5,6 +5,11 @@ export const FULL_NAME = "Lucas Álvarez Blanco";
 export const SITE_LOCALE = "es_ES";
 export const SITE_LANG = "es";
 
+/** The English section lives under /en, for recruiters and US companies. */
+export const EN_HOME = "/en";
+/** Public copy of the resume. Contact details are the site's public ones. */
+export const RESUME_PDF = "/lucas-alvarez-resume.pdf";
+
 /** Default meta/OG description, reused by the root layout and the WebSite node. */
 export const SITE_DESCRIPTION =
   "Estratega de contenido y social media manager en Barcelona. Cofundador de Publiqo. Gestiono las redes sociales de marcas reales: +250 % de visualizaciones en un mes para Camping Collvert, x6 para Camping Victòria.";
@@ -30,12 +35,16 @@ export const SOCIALS = {
    */
   linkedin: {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/lucas-alvarez-199b63219/" as string | null,
+    href: "https://www.linkedin.com/in/lucasalvarezblanco/" as string | null,
   },
-  /* TODO(lucas): canal propio, si lo hay. */
   youtube: {
     label: "YouTube",
-    href: null as string | null,
+    href: "https://www.youtube.com/@lucasalvarez.x" as string | null,
+  },
+  /* Solo para `sameAs`: el usuario de TikTok no es el de Instagram. */
+  tiktok: {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@lucaselatleta" as string | null,
   },
 };
 
@@ -56,6 +65,7 @@ export const SOCIAL_PROFILE_URLS: string[] = [
   SOCIALS.instagram.href,
   SOCIALS.linkedin.href,
   SOCIALS.youtube.href,
+  SOCIALS.tiktok.href,
 ].filter((href): href is string => Boolean(href));
 
 /**
