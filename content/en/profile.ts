@@ -22,7 +22,7 @@ export const EN_AVAILABILITY =
 export const EN_PILLARS: { title: string; body: string }[] = [
   {
     title: "I run marketing and lead the team",
-    body: "Audit, strategy, budget and reporting across brand, web, SEO, paid media, social and video. I set clear standards, review and correct when needed, and listen to other points of view, because I can be wrong too.",
+    body: "Strategy from scratch (market and competitor analysis, positioning, channels, budget), then execution and reporting across brand, web, SEO, paid media, social and video. I set clear standards, review and correct when needed, and listen to other points of view, because I can be wrong too.",
   },
   {
     title: "I have creative judgment",
@@ -49,7 +49,7 @@ export const EN_EXPERIENCE: Role[] = [
     dates: "Aug 2024 – Present",
     place: "Barcelona",
     points: [
-      "Run marketing for SMB clients in industrial B2B, SaaS, hospitality and media: audit, strategy, budget, execution and reporting against revenue KPIs.",
+      "Strategy from zero: for SMB clients in industrial B2B, SaaS, hospitality and media, analyze the market and competitors, define positioning, channels and budget, then run execution and report against revenue KPIs.",
       "Team leadership: lead the people who deliver (designers, video editors, developers): set priorities and standards, brief and review their work, correct when needed and stay open to their point of view.",
       "Content and creative strategy: diagnose why content is not working (hooks, retention, format, audience) before producing more; write hooks, video structures and formats for organic social and Meta Ads creative, validate with data, then scale what works.",
       "Demand generation: rebuilt an industrial manufacturer's website and quote funnel, then launched paid search, doubling inbound quote requests; built a B2B brand's organic acquisition channel from zero.",
@@ -111,7 +111,7 @@ export const EN_AI_WORKFLOWS: { title: string; body: string }[] = [
 ];
 
 export const EN_SKILLS: { group: string; items: string }[] = [
-  { group: "Growth & strategy", items: "Business and funnel audits, go-to-market, positioning, CRO, budgeting and forecasting models" },
+  { group: "Growth & strategy", items: "Marketing strategy from scratch, market and competitor analysis, go-to-market, positioning, funnel audits, CRO, budgeting and forecasting models" },
   { group: "Paid media & SEO", items: "Google Ads, Meta Ads, TikTok Ads, LinkedIn Ads · technical, content and local SEO, AI search visibility (GEO), Semrush" },
   { group: "Content & creative", items: "Creative strategy (hooks, video structures, paid social creative), scripting, short-form video, community management, creator partnerships" },
   { group: "Data, web & AI", items: "GA4, Google Tag Manager, Search Console, SQL, Next.js, Shopify, CRM setup · Claude Code, AI agents, ChatGPT, ElevenLabs, Remotion" },
