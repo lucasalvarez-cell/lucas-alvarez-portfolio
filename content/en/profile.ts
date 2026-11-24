@@ -49,12 +49,13 @@ export const EN_EXPERIENCE: Role[] = [
     dates: "Aug 2024 – Present",
     place: "Barcelona",
     points: [
-      "Strategy from zero: for SMB clients in industrial B2B, SaaS, hospitality and media, analyze the market and competitors, define positioning, channels and budget, then run execution and report against revenue KPIs.",
-      "Team leadership: lead the people who deliver (designers, video editors, developers): set priorities and standards, brief and review their work, correct when needed and stay open to their point of view.",
-      "Content and creative strategy: diagnose why content is not working (hooks, retention, format, audience) before producing more; write hooks, video structures and formats for organic social and Meta Ads creative, validate with data, then scale what works.",
-      "Demand generation: rebuilt an industrial manufacturer's website and quote funnel, then launched paid search, doubling inbound quote requests; built a B2B brand's organic acquisition channel from zero.",
-      "Paid media and analytics: Google, Meta, TikTok and LinkedIn Ads, with GA4 and Google Tag Manager tracking and leads routed into CRM.",
-      "Brand: naming, visual identity and brand guidelines.",
+      "Strategy from zero: for SMB clients in industrial B2B, SaaS, hospitality and media, research customers and competitors, define the ideal customer, positioning and messaging, set channels and budget, then run execution and report against revenue KPIs.",
+      "Team leadership and hiring: hire and lead the people who deliver (designers, video editors, developers, freelancers): set priorities and standards, brief and review their work, correct when needed and stay open to their point of view.",
+      "Content and creative strategy: diagnose why content is not working before producing more; write hooks, video structures and formats for organic social and Meta Ads creative, validate with data, then scale what works.",
+      "Demand generation: websites, landing pages and lead funnels, SEO/GEO, and paid campaigns on Google, Meta, TikTok and LinkedIn Ads, built to bring qualified leads, whether starting from zero or fixing a channel that had stalled.",
+      "Lifecycle, CRM and sales: newsletters and automated email sequences (welcome, nurture, reactivation); CRM setup, lead qualification and sales materials, working with the client's sales team.",
+      "Launches and partnerships: messaging and campaigns for product and feature launches; influencer and creator partnerships, from sourcing and negotiation to the brief.",
+      "Analytics and brand: GA4 and Google Tag Manager tracking with leads routed into CRM and dashboards on cost per lead, CPA, ROAS and LTV; naming, visual identity and brand guidelines.",
     ],
   },
   {
@@ -111,10 +112,10 @@ export const EN_AI_WORKFLOWS: { title: string; body: string }[] = [
 ];
 
 export const EN_SKILLS: { group: string; items: string }[] = [
-  { group: "Growth & strategy", items: "Marketing strategy from scratch, market and competitor analysis, go-to-market, positioning, funnel audits, CRO, budgeting and forecasting models" },
+  { group: "Growth & strategy", items: "Strategy from scratch, customer research and ICP, competitor analysis, positioning, go-to-market, product launches, CRO, budgeting and forecasting models" },
   { group: "Paid media & SEO", items: "Google Ads, Meta Ads, TikTok Ads, LinkedIn Ads · technical, content and local SEO, AI search visibility (GEO), Semrush" },
-  { group: "Content & creative", items: "Creative strategy (hooks, video structures, paid social creative), scripting, short-form video, community management, creator partnerships" },
-  { group: "Data, web & AI", items: "GA4, Google Tag Manager, Search Console, SQL, Next.js, Shopify, CRM setup · Claude Code, AI agents, ChatGPT, ElevenLabs, Remotion" },
+  { group: "Content & creative", items: "Creative strategy (hooks, video structures, paid social creative), scripting, short-form video, email and lifecycle marketing, influencer and creator partnerships" },
+  { group: "Data, web & AI", items: "GA4, Google Tag Manager, Search Console, SQL, Next.js, Shopify, CRM and email automation · Claude Code, AI agents, ChatGPT, ElevenLabs, Remotion" },
 ];
 
 export const EN_EDUCATION: { title: string; org: string; dates: string }[] = [
