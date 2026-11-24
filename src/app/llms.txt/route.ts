@@ -103,7 +103,7 @@ export function GET(): Response {
     `- Role: ${EN_TITLE}`,
     `- Availability: ${EN_AVAILABILITY}`,
     `- Resume (PDF): ${SITE_URL}${RESUME_PDF}`,
-    line("Lucas Álvarez, Head of Marketing", "/en", "Profile, experience, AI marketing operations, skills and FAQ in English, for recruiters and companies hiring for marketing."),
+    line("Lucas Álvarez, Marketing Lead", "/en", "Profile, experience, AI marketing operations, skills and FAQ in English, for recruiters and companies hiring for marketing."),
     line("Case studies in English", "/en/case-studies", "Client cases with names and real figures: organic growth, format and scripting, demand generation."),
     ...EN_CASE_STUDIES.map((study) =>
       line(`${study.client}: ${study.headline}`, `/en/case-studies/${study.slug}`, study.metaDescription),

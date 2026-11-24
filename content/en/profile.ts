@@ -7,26 +7,26 @@
  * with it (and the resume PDF in /public is exported again).
  */
 
-export const EN_TITLE = "Head of Marketing · Growth, Content & Paid Media";
+export const EN_TITLE = "Marketing Lead · Growth, Content & Paid Media";
 
 export const EN_TAGLINE =
-  "I run the whole marketing function and make it ship more with fewer people.";
+  "I run marketing end to end, with strong creative judgment and a team that ships more with AI.";
 
 /** Written to be lifted whole when an engine is asked who Lucas is. */
 export const EN_BIO =
-  "Lucas Álvarez Blanco is a marketing lead based in Barcelona, Spain, and co-founder of Publiqo, a marketing agency that works as the outsourced marketing department of its clients. He has over four years of experience running growth end to end (strategy, brand, content, paid media, SEO, web and analytics), grew his own fitness brand to more than 110,000 Instagram followers organically and is a Gymshark ambassador. At Publiqo he owns the plan, the budget and the delivery team. Trained in computer engineering, he audits businesses as systems and has rebuilt his agency's delivery around AI workflows. He works remotely on US Eastern hours.";
+  "Lucas Álvarez Blanco is a marketing lead based in Barcelona, Spain, and co-founder of Publiqo, a marketing agency that works as the outsourced marketing department of SMBs. He has over four years of hands-on experience (strategy, brand, content, paid media, SEO, web and analytics), grew his own fitness brand to more than 110,000 Instagram followers organically and is a Gymshark ambassador. At Publiqo he owns the plan, the budget and the results for each client and leads the people who deliver the work. He is known for his creative judgment on social and paid social: hooks, video structures and formats that hold attention. Trained in computer engineering, he audits businesses as systems and has rebuilt his agency's delivery around AI workflows. He works remotely on US Eastern hours.";
 
 export const EN_AVAILABILITY =
   "Open to remote marketing leadership roles · Working hours fully overlap US Eastern Time (9am–5pm ET)";
 
 export const EN_PILLARS: { title: string; body: string }[] = [
   {
-    title: "I run the whole function",
-    body: "Audit, strategy, budget, team and reporting across brand, web, SEO, paid media, social and video. I lead the people doing the work, and campaigns are judged on leads and sales, not on clicks.",
+    title: "I run marketing and lead the team",
+    body: "Audit, strategy, budget and reporting across brand, web, SEO, paid media, social and video. I set clear standards, review and correct when needed, and listen to other points of view, because I can be wrong too.",
   },
   {
-    title: "I build audiences myself",
-    body: "110K+ followers and 2M+ monthly views on my own brand, all organic. I know from the inside what makes content travel, and I test every method on my account before a client's.",
+    title: "I have creative judgment",
+    body: "I know what works on social and why: hooks, video structures, formats and pacing, for organic content and for Meta Ads creative. Tested on my own brand: 110K+ followers and 2M+ monthly views, all organic.",
   },
   {
     title: "I make teams faster with AI",
@@ -44,14 +44,14 @@ export type Role = {
 
 export const EN_EXPERIENCE: Role[] = [
   {
-    title: "Co-founder · Head of Growth & Digital Strategy",
+    title: "Co-founder · Growth & Digital Strategy",
     org: "Publiqo",
     dates: "Aug 2024 – Present",
     place: "Barcelona",
     points: [
-      "Lead the full marketing function for clients in industrial B2B, SaaS, hospitality and media: audit, strategy, budget, execution and reporting against revenue KPIs.",
-      "Team leadership: lead the delivery team, setting priorities, briefing and reviewing the work of designers, video editors and developers, and owning quality and deadlines with each client.",
-      "Content and social: diagnose why existing content is not working (hooks, retention, format, audience) before producing more; redesign format, scripting and calendar, validate with data, then scale only what works.",
+      "Run marketing for SMB clients in industrial B2B, SaaS, hospitality and media: audit, strategy, budget, execution and reporting against revenue KPIs.",
+      "Team leadership: lead the people who deliver (designers, video editors, developers): set priorities and standards, brief and review their work, correct when needed and stay open to their point of view.",
+      "Content and creative strategy: diagnose why content is not working (hooks, retention, format, audience) before producing more; write hooks, video structures and formats for organic social and Meta Ads creative, validate with data, then scale what works.",
       "Demand generation: rebuilt an industrial manufacturer's website and quote funnel, then launched paid search, doubling inbound quote requests; built a B2B brand's organic acquisition channel from zero.",
       "Paid media and analytics: Google, Meta, TikTok and LinkedIn Ads, with GA4 and Google Tag Manager tracking and leads routed into CRM.",
       "Brand: naming, visual identity and brand guidelines.",
@@ -113,7 +113,7 @@ export const EN_AI_WORKFLOWS: { title: string; body: string }[] = [
 export const EN_SKILLS: { group: string; items: string }[] = [
   { group: "Growth & strategy", items: "Business and funnel audits, go-to-market, positioning, CRO, budgeting and forecasting models" },
   { group: "Paid media & SEO", items: "Google Ads, Meta Ads, TikTok Ads, LinkedIn Ads · technical, content and local SEO, AI search visibility (GEO), Semrush" },
-  { group: "Content & social", items: "Strategy, scripting, short-form video, community management, creator partnerships" },
+  { group: "Content & creative", items: "Creative strategy (hooks, video structures, paid social creative), scripting, short-form video, community management, creator partnerships" },
   { group: "Data, web & AI", items: "GA4, Google Tag Manager, Search Console, SQL, Next.js, Shopify, CRM setup · Claude Code, AI agents, ChatGPT, ElevenLabs, Remotion" },
 ];
 

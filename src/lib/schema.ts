@@ -740,6 +740,7 @@ export function enProfileGraph({
       nationality: { "@type": "Country", name: "Spain" },
       knowsAbout: [
         "Marketing leadership",
+        "Creative strategy",
         "Growth marketing",
         "Content strategy",
         "Social media marketing",
@@ -765,7 +766,7 @@ export function enProfileGraph({
       "@type": "ProfilePage",
       "@id": `${url}#page`,
       url,
-      name: "Lucas Álvarez, Head of Marketing",
+      name: "Lucas Álvarez, Marketing Lead",
       dateModified: updated,
       inLanguage: "en",
       isPartOf: { "@id": WEBSITE_ID },

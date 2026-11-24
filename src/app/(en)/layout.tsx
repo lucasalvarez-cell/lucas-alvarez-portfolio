@@ -27,7 +27,7 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} | Head of Marketing`,
+    default: `${SITE_NAME} | Marketing Lead`,
     template: `%s | ${SITE_NAME}`,
   },
   description: EN_BIO,

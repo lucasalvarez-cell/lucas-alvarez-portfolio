@@ -30,9 +30,9 @@ import { EN_CASE_STUDIES } from "@/content/en/case-studies";
 const UPDATED = "2026-11-24";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Lucas Álvarez | Head of Marketing, remote (US Eastern hours)",
+  title: "Lucas Álvarez | Marketing Lead, remote on US Eastern hours",
   description:
-    "Marketing lead in Barcelona and co-founder of Publiqo. Growth, content, paid media and SEO end to end, 110K+ organic followers on his own brand, AI-powered marketing ops.",
+    "Marketing lead in Barcelona and co-founder of Publiqo. Growth, creative strategy, paid media and SEO, 110K+ organic followers on his own brand, AI-powered marketing ops.",
   path: "/en",
   locale: "en_US",
   languages: { es: "/", en: "/en" },
@@ -61,7 +61,7 @@ export default function EnglishHome() {
                 Barcelona · Remote · US Eastern hours
               </p>
               <h1 className="text-[clamp(2.25rem,5vw,4rem)]">
-                Lucas Álvarez, Head of Marketing
+                Lucas Álvarez, Marketing Lead
               </h1>
               <p className="mt-6 max-w-2xl text-[clamp(1.25rem,2vw,1.75rem)] font-semibold leading-tight text-turquoise">
                 {EN_TAGLINE}
@@ -87,7 +87,7 @@ export default function EnglishHome() {
               <div className="relative aspect-4/5 overflow-hidden rounded-[var(--radius-card)]">
                 <Image
                   src="/images/lucas-alvarez.jpg"
-                  alt="Lucas Álvarez, Head of Marketing based in Barcelona"
+                  alt="Lucas Álvarez, marketing lead based in Barcelona"
                   fill
                   priority
                   sizes="(min-width: 1024px) 35vw, 90vw"
@@ -170,7 +170,7 @@ export default function EnglishHome() {
       {/* Experience */}
       <Section id="experience">
         <Reveal>
-          <SectionHeading kicker="Experience" title="Four years running marketing end to end" />
+          <SectionHeading kicker="Experience" title="Four years of hands-on marketing" />
         </Reveal>
         <ol className="mt-12 space-y-10 border-l-2 border-light-grey pl-8">
           {EN_EXPERIENCE.map((role) => (
