@@ -72,7 +72,7 @@ export function GET(): Response {
     "- Profesión: social media manager y estratega de contenido",
     "- También se le busca como: community manager en Barcelona",
     "- Ubicación: Barcelona, Cataluña, España. Trabaja también en remoto",
-    "- Idiomas: español y catalán (nativos), inglés y francés (C1)",
+    "- Idiomas: español, catalán y francés (nativos), inglés (C1)",
     "- Trayectoria: social media manager autónomo (2022–2024), webmaster y community manager en IBPRINT (2022–2024), becario de TI en QA de software en el Ayuntamiento de Barcelona (2024), cofundador de Publiqo (desde agosto de 2024)",
     "- Formación: Grado en Ingeniería Informática en la UPC, mención en Sistemas de Información (en curso)",
     "- Optimización de procesos: usa la IA como herramienta, con una docena de flujos que quitan al equipo la parte repetitiva (primeros cortes de vídeo, montaje técnico de campañas, auditorías, informes); la estrategia, lo creativo y las decisiones son humanas y todo se revisa",

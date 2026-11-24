@@ -52,7 +52,7 @@ const QUICK_FACTS: { term: string; value: React.ReactNode }[] = [
     ),
   },
   { term: "Ciudad", value: "Barcelona, Cataluña. Trabaja en remoto para el resto de España" },
-  { term: "Idiomas", value: "Castellano y catalán (nativos), inglés y francés (C1)" },
+  { term: "Idiomas", value: "Castellano, catalán y francés (nativos), inglés (C1)" },
   {
     term: "Trayectoria",
     value:

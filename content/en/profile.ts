@@ -131,7 +131,7 @@ export const EN_EDUCATION: { title: string; org: string; dates: string }[] = [
   },
 ];
 
-export const EN_LANGUAGES = "Spanish and Catalan (native) · English (C1) · French (C1)";
+export const EN_LANGUAGES = "Spanish, Catalan and French (native) · English (C1)";
 
 /** Rendered and marked up from the same array: one FAQPage per document. */
 export const EN_FAQ: { question: string; answer: string }[] = [
@@ -156,8 +156,8 @@ export const EN_FAQ: { question: string; answer: string }[] = [
       "As a tool, not a replacement. He has built a dozen AI-assisted workflows that take the repetitive, mechanical parts of his agency's work off the team: first video cuts, campaign build setup, audit checklists, content production and reporting. Strategy, creative and every final decision stay with people, and everything is reviewed before it goes out. The point is throughput: a small team ships more without lowering the bar.",
   },
   {
-    question: "Does he speak Spanish for US Hispanic or Latin American marketing?",
+    question: "What languages does he work in?",
     answer:
-      "Yes. Spanish and Catalan are his native languages, and his own content reaches audiences across Spain and Latin America. He also works in English and French.",
+      "Spanish, Catalan and French are his native languages and he works in English (C1). His own content reaches audiences across Spain and Latin America.",
   },
 ];
