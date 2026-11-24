@@ -14,22 +14,15 @@ export const EN_TAGLINE =
 
 /** Written to be lifted whole when an engine is asked who Lucas is. */
 export const EN_BIO =
-  "Lucas Álvarez Blanco is a marketing lead based in Barcelona, Spain, and co-founder of Publiqo, a marketing agency that works as the outsourced marketing department of its clients. He has over four years of experience running growth end to end (strategy, brand, content, paid media, SEO, web and analytics), grew his own fitness brand to more than 110,000 Instagram followers organically and is a Gymshark ambassador. Trained in computer engineering, he audits businesses as systems and has rebuilt his agency's delivery around AI workflows. He works remotely on US Eastern hours.";
+  "Lucas Álvarez Blanco is a marketing lead based in Barcelona, Spain, and co-founder of Publiqo, a marketing agency that works as the outsourced marketing department of its clients. He has over four years of experience running growth end to end (strategy, brand, content, paid media, SEO, web and analytics), grew his own fitness brand to more than 110,000 Instagram followers organically and is a Gymshark ambassador. At Publiqo he owns the plan, the budget and the delivery team. Trained in computer engineering, he audits businesses as systems and has rebuilt his agency's delivery around AI workflows. He works remotely on US Eastern hours.";
 
 export const EN_AVAILABILITY =
   "Open to remote marketing leadership roles · Working hours fully overlap US Eastern Time (9am–5pm ET)";
 
-export const EN_PROOF: { value: string; label: string }[] = [
-  { value: "110K+", label: "Instagram followers on my own brand, built from zero with no ad spend" },
-  { value: "2M+", label: "monthly views on my own content; Gymshark ambassador" },
-  { value: "+483%", label: "views in one month for a client media brand, fully organic" },
-  { value: "6 channels", label: "owned end to end: brand, web, SEO/GEO, paid, social, video" },
-];
-
 export const EN_PILLARS: { title: string; body: string }[] = [
   {
     title: "I run the whole function",
-    body: "Audit, strategy, budget, execution and reporting across brand, web, SEO, paid media, social and video. Campaigns are judged on leads and sales, not on clicks.",
+    body: "Audit, strategy, budget, team and reporting across brand, web, SEO, paid media, social and video. I lead the people doing the work, and campaigns are judged on leads and sales, not on clicks.",
   },
   {
     title: "I build audiences myself",
@@ -57,7 +50,8 @@ export const EN_EXPERIENCE: Role[] = [
     place: "Barcelona",
     points: [
       "Lead the full marketing function for clients in industrial B2B, SaaS, hospitality and media: audit, strategy, budget, execution and reporting against revenue KPIs.",
-      "Content and social: format and scripting strategies that multiplied reach, +483% views in a month for a media brand, +250% and 6× for hospitality brands, +82% median views per video for a SaaS channel. All organic.",
+      "Team leadership: lead the delivery team, setting priorities, briefing and reviewing the work of designers, video editors and developers, and owning quality and deadlines with each client.",
+      "Content and social: diagnose why existing content is not working (hooks, retention, format, audience) before producing more; redesign format, scripting and calendar, validate with data, then scale only what works.",
       "Demand generation: rebuilt an industrial manufacturer's website and quote funnel, then launched paid search, doubling inbound quote requests; built a B2B brand's organic acquisition channel from zero.",
       "Paid media and analytics: Google, Meta, TikTok and LinkedIn Ads, with GA4 and Google Tag Manager tracking and leads routed into CRM.",
       "Brand: naming, visual identity and brand guidelines.",

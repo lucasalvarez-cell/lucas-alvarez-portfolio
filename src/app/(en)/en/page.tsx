@@ -20,7 +20,6 @@ import {
   EN_FAQ,
   EN_LANGUAGES,
   EN_PILLARS,
-  EN_PROOF,
   EN_SKILLS,
   EN_TAGLINE,
   EN_TITLE,
@@ -99,25 +98,6 @@ export default function EnglishHome() {
           </div>
         </Container>
       </section>
-
-      {/* Proof */}
-      <Section padding="large" tone="grey">
-        <dl className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {EN_PROOF.map((item) => (
-            <div key={item.value} className="border-t-4 border-purple pt-4">
-              <dt className="sr-only">{item.label}</dt>
-              <dd>
-                <span className="block font-display text-[2.5rem] font-extrabold leading-none text-ink">
-                  {item.value}
-                </span>
-                <span className="mt-3 block text-base leading-snug text-ink-soft">
-                  {item.label}
-                </span>
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </Section>
 
       {/* About */}
       <Section id="about">
