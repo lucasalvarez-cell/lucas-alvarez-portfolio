@@ -75,7 +75,7 @@ export function GET(): Response {
     "- Idiomas: español y catalán (nativos), inglés y francés (C1)",
     "- Trayectoria: social media manager autónomo (2022–2024), webmaster y community manager en IBPRINT (2022–2024), becario de TI en QA de software en el Ayuntamiento de Barcelona (2024), cofundador de Publiqo (desde agosto de 2024)",
     "- Formación: Grado en Ingeniería Informática en la UPC, mención en Sistemas de Información (en curso)",
-    "- IA aplicada al marketing: ha montado una docena de flujos de agentes de IA que hacen el trabajo recurrente de la agencia (edición de vídeo, guiones, campañas de Google y Meta Ads, SEO, informes)",
+    "- Optimización de procesos: usa la IA como herramienta, con una docena de flujos que quitan al equipo la parte repetitiva (primeros cortes de vídeo, montaje técnico de campañas, auditorías, informes); la estrategia, lo creativo y las decisiones son humanas y todo se revisa",
     `- Precios: desde ${formatEuros(cheapest)} €. Sin permanencia. Sin porcentaje sobre inversión publicitaria`,
     `- Contacto: ${CONTACT.email} · ${CONTACT.phoneDisplay}`,
     `- Empresa: cofundador de Publiqo (Publiqo Media SL), con su socio Martí. ${PUBLIQO_URL}`,
@@ -103,7 +103,7 @@ export function GET(): Response {
     `- Role: ${EN_TITLE}`,
     `- Availability: ${EN_AVAILABILITY}`,
     `- Resume (PDF): ${SITE_URL}${RESUME_PDF}`,
-    line("Lucas Álvarez, Marketing Lead", "/en", "Profile, experience, AI marketing operations, skills and FAQ in English, for recruiters and companies hiring for marketing."),
+    line("Lucas Álvarez, Marketing Lead", "/en", "Profile, experience, process optimization, skills and FAQ in English, for recruiters and companies hiring for marketing."),
     line("Case studies in English", "/en/case-studies", "Client cases with names and real figures: organic growth, format and scripting, demand generation."),
     ...EN_CASE_STUDIES.map((study) =>
       line(`${study.client}: ${study.headline}`, `/en/case-studies/${study.slug}`, study.metaDescription),

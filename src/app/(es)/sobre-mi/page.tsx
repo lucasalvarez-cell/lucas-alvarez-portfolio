@@ -274,12 +274,13 @@ export default function SobreMiPage() {
               Cómo uso la IA
             </h2>
             <p className="mt-5">
-              He convertido el trabajo recurrente de la agencia en flujos de
-              agentes de IA: edición de reels y guiones, montaje de campañas de
-              Google Ads y Meta Ads, carruseles, auditorías SEO, medición e
-              informes. No sustituyen el criterio, lo ejecutan más rápido. Por
-              eso dos socios pueden llevar el marketing completo de varias
-              empresas sin bajar la calidad.
+              Como una herramienta, no como un sustituto. He montado flujos
+              asistidos por IA que quitan al equipo la parte repetitiva y
+              mecánica del trabajo: primeros cortes de reels, montaje técnico
+              de campañas de Google Ads y Meta Ads, carruseles, listas de
+              auditoría, medición e informes. La estrategia, lo creativo y
+              cada decisión son nuestras, y todo se revisa antes de salir. Así
+              un equipo pequeño produce más sin bajar la calidad.
             </p>
           </Reveal>
         </div>

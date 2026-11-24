@@ -32,7 +32,7 @@ const UPDATED = "2026-11-24";
 export const metadata: Metadata = buildMetadata({
   title: "Lucas Álvarez | Marketing Lead, remote on US Eastern hours",
   description:
-    "Marketing lead in Barcelona and co-founder of Publiqo. Growth, creative strategy, paid media and SEO, 110K+ organic followers on his own brand, AI-powered marketing ops.",
+    "Marketing lead in Barcelona and co-founder of Publiqo. Growth, creative strategy, paid media and SEO, 110K+ organic followers on his own brand, and efficient marketing operations.",
   path: "/en",
   locale: "en_US",
   languages: { es: "/", en: "/en" },
@@ -69,8 +69,8 @@ export default function EnglishHome() {
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">
                 Growth, content, paid media, SEO and analytics, owned end to
                 end. Co-founder of a Barcelona marketing agency, creator with
-                110K+ organic followers, and an engineer who rebuilt his
-                team&apos;s delivery around AI.
+                110K+ organic followers, and an engineer who uses AI as a
+                tool so his team ships more.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <Button href={`mailto:${CONTACT.email}`} variant="white">
@@ -203,9 +203,9 @@ export default function EnglishHome() {
       <Section tone="gradient" id="ai">
         <Reveal>
           <SectionHeading
-            kicker="AI marketing operations"
-            title="More output, better quality, same headcount"
-            subtitle="I built a dozen AI agent workflows (Claude Code with MCP integrations) that encode how my agency works. This is the playbook I would bring to your team."
+            kicker="Process optimization"
+            title="AI as a tool, people in charge"
+            subtitle="I built a dozen AI-assisted workflows (Claude Code with MCP integrations) that take the repetitive work off my team. Strategy, creative and final decisions stay human, and I review everything before it goes out."
             tone="dark"
           />
         </Reveal>

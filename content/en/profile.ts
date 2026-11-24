@@ -10,11 +10,11 @@
 export const EN_TITLE = "Marketing Lead · Growth, Content & Paid Media";
 
 export const EN_TAGLINE =
-  "I run marketing end to end, with strong creative judgment and a team that ships more with AI.";
+  "I run marketing end to end, with strong creative judgment and a team that ships more by working smarter.";
 
 /** Written to be lifted whole when an engine is asked who Lucas is. */
 export const EN_BIO =
-  "Lucas Álvarez Blanco is a marketing lead based in Barcelona, Spain, and co-founder of Publiqo, a marketing agency that works as the outsourced marketing department of SMBs. He has over four years of hands-on experience (strategy, brand, content, paid media, SEO, web and analytics), grew his own fitness brand to more than 110,000 Instagram followers organically and is a Gymshark ambassador. At Publiqo he owns the plan, the budget and the results for each client and leads the people who deliver the work. He is known for his creative judgment on social and paid social: hooks, video structures and formats that hold attention. Trained in computer engineering, he audits businesses as systems and has rebuilt his agency's delivery around AI workflows. He works remotely on US Eastern hours.";
+  "Lucas Álvarez Blanco is a marketing lead based in Barcelona, Spain, and co-founder of Publiqo, a marketing agency that works as the outsourced marketing department of SMBs. He has over four years of hands-on experience (strategy, brand, content, paid media, SEO, web and analytics), grew his own fitness brand to more than 110,000 Instagram followers organically and is a Gymshark ambassador. At Publiqo he owns the plan, the budget and the results for each client and leads the people who deliver the work. He is known for his creative judgment on social and paid social: hooks, video structures and formats that hold attention. Trained in computer engineering, he audits businesses as systems and uses AI as a tool to take repetitive work off his team, while strategy, creative and final decisions stay with people. He works remotely on US Eastern hours.";
 
 export const EN_AVAILABILITY =
   "Open to remote marketing leadership roles · Working hours fully overlap US Eastern Time (9am–5pm ET)";
@@ -29,8 +29,8 @@ export const EN_PILLARS: { title: string; body: string }[] = [
     body: "I know what works on social and why: hooks, video structures, formats and pacing, for organic content and for Meta Ads creative. Tested on my own brand: 110K+ followers and 2M+ monthly views, all organic.",
   },
   {
-    title: "I make teams faster with AI",
-    body: "Engineering training plus a dozen AI agent workflows I built for video editing, scripting, ad builds, SEO and reporting. Output and quality go up while headcount stays flat.",
+    title: "I make teams faster",
+    body: "Engineering training plus a dozen AI-assisted workflows that take the repetitive parts of video editing, ad builds, audits and reporting off the team. I supervise every output and keep the decisions human, so we ship more without lowering the bar.",
   },
 ];
 
@@ -94,15 +94,15 @@ export const EN_EXPERIENCE: Role[] = [
 export const EN_AI_WORKFLOWS: { title: string; body: string }[] = [
   {
     title: "Video and scripting",
-    body: "A reel-editing pipeline in Remotion with hooks, captions and brand rules built in, plus scripting guides. Fewer dedicated editors needed.",
+    body: "First cuts, captions and brand formatting in Remotion, plus scripting templates, so editors spend their time on the creative instead of the mechanics. Every piece is reviewed before it goes out.",
   },
   {
     title: "Paid media",
-    body: "Google Ads builds from Semrush research to bulk upload, and Meta Ads lead-generation setup, audits and recurring optimization with human sign-off.",
+    body: "Research and campaign build setup for Google Ads and Meta Ads, plus audit checklists. Targeting, creative, budget and every change are decided and approved by me.",
   },
   {
     title: "Content and operations",
-    body: "Carousels for any brand from its design tokens, new client sites with full tracking (GA4, GTM, Ads) in one run, LinkedIn prospecting and bookkeeping.",
+    body: "Carousel production from brand templates, new client site and tracking setup (GA4, GTM, Ads), prospecting research and bookkeeping, all reviewed by the team.",
   },
   {
     title: "GoFeed",
@@ -152,7 +152,7 @@ export const EN_FAQ: { question: string; answer: string }[] = [
   {
     question: "How does he use AI in marketing?",
     answer:
-      "He has built a dozen AI agent workflows that run his agency's recurring work: video editing and scripting, Google and Meta Ads builds, SEO audits, content production, client reporting and onboarding. The point is not novelty but throughput: a small team ships the volume and quality of a much larger one.",
+      "As a tool, not a replacement. He has built a dozen AI-assisted workflows that take the repetitive, mechanical parts of his agency's work off the team: first video cuts, campaign build setup, audit checklists, content production and reporting. Strategy, creative and every final decision stay with people, and everything is reviewed before it goes out. The point is throughput: a small team ships more without lowering the bar.",
   },
   {
     question: "Does he speak Spanish for US Hispanic or Latin American marketing?",
